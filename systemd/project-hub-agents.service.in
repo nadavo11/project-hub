@@ -1,0 +1,23 @@
+[Unit]
+Description=Project Hub private AI thread coordinator
+After=network-online.target project-hub.service
+Wants=network-online.target project-hub.service
+
+[Service]
+Type=simple
+WorkingDirectory=@PROJECT_DIR@
+ExecStart=/usr/bin/python3 @PROJECT_DIR@/agent_worker.py
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillMode=control-group
+UMask=0077
+StandardOutput=append:@PROJECT_DIR@/logs/agent-coordinator.log
+StandardError=append:@PROJECT_DIR@/logs/agent-coordinator.log
+NoNewPrivileges=true
+Environment=HUB_AGENT_WORKERS=3
+Environment=HUB_AGENT_CWD=@HOME@
+Environment=PATH=@HOME@/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target

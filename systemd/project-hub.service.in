@@ -1,0 +1,18 @@
+[Unit]
+Description=Project Hub local dashboard
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=@PROJECT_DIR@
+ExecStart=/usr/bin/python3 @PROJECT_DIR@/server.py
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+KillMode=control-group
+UMask=0077
+# Set to 0.0.0.0 to reach the hub from other devices on your network.
+Environment=PROJECT_HUB_HOST=@HOST@
+
+[Install]
+WantedBy=default.target
