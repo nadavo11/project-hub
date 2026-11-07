@@ -918,7 +918,11 @@ class Handler(BaseHTTPRequestHandler):
                 ai_tasks = self._sync_ai_tasks()
             except sqlite3.Error:
                 ai_tasks = {}
-            self._send(200, {**self.server.workspace.snapshot(), "ai_tasks": ai_tasks})
+            try:
+                chat_states = {str(k): v for k, v in self.server.agents.indicators().items()}
+            except sqlite3.Error:
+                chat_states = {}
+            self._send(200, {**self.server.workspace.snapshot(), "ai_tasks": ai_tasks, "chat_states": chat_states})
         elif path == "/api/workspace/trash":
             self._send(200, {"items": self.server.workspace.snapshot()["trash"]})
         elif path.startswith("/api/workspace/"):
@@ -1134,8 +1138,11 @@ class Handler(BaseHTTPRequestHandler):
                     self._send(200, store.thread(item_id, int(before) if before else None))
                     return True
                 if len(parts) == 4 and method == "PATCH":
-                    body = self._json_body()
-                    self._send(200, store.set_closed(item_id, (body or {}).get("closed")))
+                    body = self._json_body() or {}
+                    if "archived" in body:
+                        self._send(200, store.set_archived(item_id, body["archived"]))
+                    else:
+                        self._send(200, store.set_closed(item_id, body.get("closed")))
                     return True
                 if parts[4:] == ["messages"] and method == "POST":
                     self._send(201, store.submit(item_id, self._json_body()))

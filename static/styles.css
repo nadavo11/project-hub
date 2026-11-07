@@ -477,3 +477,13 @@ html[data-input="keyboard"] *, html[data-input="keyboard"] *::before, html[data-
 @media (max-width: 720px) {
     .pane-head > .pane-titlebox { grid-column: 2; grid-row: 1; }
 }
+.chat-state { flex: none; display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; background: var(--muted); color: #fff; font-size: 10px; font-weight: 800; line-height: 1; }
+.chat-state.done { background: #16a34a; }
+.chat-state.waiting { background: #f59e0b; color: #1a1a1a; }
+.chat-state.error { background: #dc2626; }
+.chat-state.working { background: #3b82f6; width: 9px; height: 9px; animation: chat-pulse 1.2s ease-in-out infinite; }
+@keyframes chat-pulse { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .chat-state.working { animation: none; } }
+.badge.chat-alert.done { background: #16a34a; color: #fff; }
+.badge.chat-alert.waiting { background: #f59e0b; color: #1a1a1a; }
+.badge.chat-alert.error { background: #dc2626; color: #fff; }

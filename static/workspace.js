@@ -53,6 +53,10 @@
     let mode = 'chat', active = false, loaded = false, fetching = false, refreshAgain = false;
     let epoch = 0, writes = 0, mainKey = '', search = '', modalTrigger = null, modalVersion = 0;
     let aiTasks = {};
+    let chatStates = {};
+    const chatLabels = { error: 'Error', waiting: 'Waiting for input', working: 'Working', done: 'Done' };
+    const chatPriority = ['error', 'waiting', 'working', 'done'];
+    let lastChatStates = null;
     const sideRows = new Map();
     let sideMode = '';
     let pane = null;
@@ -138,6 +142,7 @@
         wrap.append(field, add);
         return wrap;
     }
+    window.hubWithEmoji = withEmoji;
     function iconButton(current, defaultIcon, pick) {
         const node = button('', 'icon-pick', null, { 'aria-haspopup': 'dialog', 'aria-expanded': 'false' });
         node.addEventListener('click', () => openEmoji(node, async emoji => {
@@ -152,6 +157,12 @@
         };
         node.setIcon(current);
         return node;
+    }
+    function richText(node, value) {
+        const source = String(value);
+        if (node.dataset.src === source) return;
+        node.dataset.src = source;
+        node.replaceChildren(hubMarkdown.render(source));
     }
     function text(node, value) { if (node.textContent !== String(value)) node.textContent = value; }
     function setError(key, error) {
@@ -199,11 +210,51 @@
         if (minutes < 1440) return `${Math.floor(minutes / 60)}h ago`;
         return new Date(timestamp * 1000).toLocaleDateString();
     }
+    const chatGlyphs = { error: '!', waiting: '?', done: '✓', working: '' };
+    const chatSeen = store.get('chat-seen', {});
+    function topKind(items) { return chatPriority.find(kind => items.some(item => item.kind === kind)) || ''; }
+    function chatDot(el_, kind) {
+        el_.className = kind ? `chat-state ${kind}` : 'chat-state';
+        el_.hidden = !kind;
+        el_.textContent = chatGlyphs[kind] || '';
+        if (kind) { el_.title = chatLabels[kind]; el_.setAttribute('aria-label', chatLabels[kind]); }
+    }
+    function markThreadSeen(thread) {
+        const item = Object.values(chatStates).flat().find(entry => entry.thread === thread);
+        if (!item || item.kind !== 'done' || chatSeen[thread] === item.job) return;
+        chatSeen[thread] = item.job; store.set('chat-seen', chatSeen); updateBadges(); renderSide();
+    }
+    function attention() {
+        return Object.values(chatStates).flat().filter(item => ['error', 'waiting'].includes(item.kind)
+            || (item.kind === 'done' && chatSeen[item.thread] !== item.job));
+    }
+    function announceChatStates() {
+        const names = Object.fromEntries(S.channels.map(channel => [String(channel.id), channel.name]));
+        const flat = Object.fromEntries(Object.values(chatStates).flat().map(item => [item.thread, item.kind]));
+        if (lastChatStates) {
+            for (const [id, items] of Object.entries(chatStates)) {
+                for (const item of items) {
+                    if (lastChatStates[item.thread] === 'working' && ['error', 'waiting', 'done'].includes(item.kind)) {
+                        toast(`#${names[id] || id}: ${chatLabels[item.kind].toLowerCase()}`, 'Open', () => navigate('chat', Number(id)));
+                        $('workspaceToast').dataset.kind = item.kind;
+                    }
+                }
+            }
+        }
+        lastChatStates = flat;
+    }
     function updateBadges() {
+        const needs = attention(), top = topKind(needs), mark = $('badge-chat-state');
+        if (mark) {
+            mark.hidden = !needs.length; text(mark, needs.length > 99 ? '99+' : needs.length);
+            mark.className = `badge chat-alert ${top}`;
+            mark.title = needs.length ? `${needs.length} chat${needs.length > 1 ? 's' : ''} need attention · ${chatLabels[top]}` : '';
+        }
         for (const [id, count] of [['badge-chat', S.channels.reduce((sum, channel) => sum + unread(channel.id), 0)], ['badge-todos', S.todos.filter(task => !task.done).length]]) {
             if ($(id)) { $(id).hidden = !count; text($(id), count > 99 ? '99+' : count); }
         }
     }
+    window.addEventListener('hub-thread-seen', event => markThreadSeen(event.detail));
     function markSeen(id) {
         if (!active || mode !== 'chat' || document.hidden || !pane?.log || pane.id !== id
             || !pane.log.getClientRects().length || !atBottom(pane.log)) return;
@@ -250,10 +301,11 @@
                 const title = el('span', 'side-title');
                 const sub = el('span', 'side-sub');
                 const badge = el('span', 'badge');
+                const state = el('span', 'chat-state'); state.hidden = true;
                 content.append(title, sub);
-                item.append(icon, content, badge);
+                item.append(icon, content, state, badge);
                 li.append(item); list.append(li);
-                entry = { li, item, icon, title, sub, badge }; sideRows.set(id, entry);
+                entry = { li, item, icon, title, sub, badge, state }; sideRows.set(id, entry);
             }
             const on = String(selected[mode]) === id;
             entry.item.classList.toggle('active', on);
@@ -273,6 +325,7 @@
             const count = mode === 'chat' ? unread(row.id) : 0;
             entry.badge.hidden = !count;
             text(entry.badge, count);
+            chatDot(entry.state, mode === 'chat' ? topKind((chatStates[row.id] || []).filter(item => item.kind !== 'done' || chatSeen[item.thread] !== item.job)) : '');
         }
         const focused = document.activeElement;
         const scroll = list.scrollTop;
@@ -410,6 +463,8 @@
             if (start !== epoch || writes) { refreshAgain = true; return; }
             for (const kind of Object.keys(S)) S[kind] = Array.isArray(snapshot[kind]) ? snapshot[kind] : [];
             aiTasks = snapshot.ai_tasks || {};
+            chatStates = snapshot.chat_states || {};
+            announceChatStates();
             for (const state of noteStates.values()) {
                 const note = S.notes.find(item => item.id === state.id);
                 state.deleted = !note;
@@ -728,7 +783,8 @@
         pane.pendingSignature = signature; pane.pending.replaceChildren(); pane.pending.hidden = !entries.length;
         for (const entry of entries) {
             const box = el('div', 'outbox-item');
-            box.append(el('p', 'msg-text', entry.text), el('p', 'save-status', entry.state === 'pending' ? 'Sending…' : entry.error));
+            const pendingText = el('div', 'msg-text md-host'); richText(pendingText, entry.text);
+            box.append(pendingText, el('p', 'save-status', entry.state === 'pending' ? 'Sending…' : entry.error));
             if (entry.state === 'failed') {
                 box.append(button('Retry send', 'btn', () => sendMessage(channel, entry)),
                     button('Move to draft', 'btn', () => {
@@ -774,12 +830,13 @@
                 const concise = date.toLocaleString([], { hour: '2-digit', minute: '2-digit',
                     ...(!today ? { month: 'short', day: 'numeric', ...(date.getFullYear() !== new Date().getFullYear() ? { year: 'numeric' } : {}) } : {}) });
                 meta.append(el('b', '', message.author), el('time', '', concise, { datetime: date.toISOString(), title: date.toLocaleString() }));
-                body.append(meta, el('div', 'msg-text', message.text));
+                const msgText = el('div', 'msg-text md-host'); richText(msgText, message.text);
+                body.append(meta, msgText);
                 node.append(avatar, body, button('×', 'icon-btn danger', () => deleteItem('chat', message.id), { 'aria-label': 'Move message to Trash' }));
                 messageRows.set(message.id, node); added = true;
             }
             if (node.dataset.revision !== String(message.revision)) {
-                text(node.querySelector('.msg-text'), message.text);
+                richText(node.querySelector('.msg-text'), message.text);
                 text(node.querySelector('.msg-meta b'), message.author);
                 node.dataset.revision = String(message.revision);
             }

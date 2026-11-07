@@ -30,13 +30,11 @@ const hubAgents = (() => {
 
     function mount(main, channel) {
         disposeCurrent();
-        let disposed = false, opened = false, authenticated = false, busy = false;
+        let disposed = false, opened = false, authenticated = false, authKnown = false, busy = false;
         let selected = selections.get(channel.id) || null, channelState = null, threadState = null;
         let sending = false, creating = false, lastThread = null;
         let authVersion = 0;
         const abort = new AbortController();
-        const STICKERS = ['🎉', '🚀', '👍', '🔥', '❤️', '😂', '🤯', '🙏', '👀', '✅', '🐛', '☕'];
-        const STICKER_RE = new RegExp(`^(${STICKERS.join('|')})$`);
         const messageRows = new Map(), eventRows = new Map(), threadTabs = new Map();
         const modes = node('div', 'chat-modes');
         const tabs = node('div', 'chat-tabs');
@@ -103,7 +101,34 @@ const hubAgents = (() => {
         newButton.id = 'newAgentChat';
         newButton.setAttribute('aria-controls', panel.id);
         newButton.title = 'New private agent chat';
-        modes.append(newButton);
+        const lockHint = button('🔒 Private chats', () => { creating = false; show(true); key.focus(); }, 'btn chat-lock-hint');
+        lockHint.hidden = true;
+        lockHint.title = 'Private agent chat tabs are hidden until you unlock with the operator key';
+        lockHint.setAttribute('aria-controls', panel.id);
+        const archiveMenu = node('details', 'chat-archive');
+        archiveMenu.hidden = true;
+        const archiveSummary = node('summary', 'chat-archive-toggle');
+        archiveSummary.setAttribute('aria-label', 'Archived chats');
+        archiveSummary.title = 'Archived chats';
+        archiveSummary.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 5h18v4H3zM5 9v10h14V9M10 13h4"/></svg>';
+        const archiveCount = node('span', 'badge');
+        archiveSummary.append(archiveCount);
+        const archivePopover = node('div', 'chat-archive-pop');
+        const archiveHead = node('div', 'chat-archive-head', 'Archived chats');
+        const archiveList = node('div', 'chat-archive-list');
+        archivePopover.append(archiveHead, archiveList);
+        archiveMenu.append(archiveSummary, archivePopover);
+        document.addEventListener('click', event => { if (!archiveMenu.contains(event.target)) archiveMenu.open = false; }, { signal: abort.signal });
+        archiveMenu.addEventListener('keydown', event => { if (event.key === 'Escape') { archiveMenu.open = false; archiveSummary.focus(); } });
+        async function setArchived(id, archived) {
+            try {
+                await api(`threads/${id}`, 'PATCH', { archived });
+                fail('');
+                if (archived && id === selected && opened) { selected = null; selections.delete(channel.id); show(false); }
+                await refresh();
+            } catch (e) { fail(e.message); }
+        }
+        modes.append(lockHint, newButton, archiveMenu);
         const newForm = node('form', 'agent-new-thread');
         newForm.hidden = true;
         const title = input('New thread title', 'What are we working on?', 120);
@@ -165,21 +190,7 @@ const hubAgents = (() => {
         message.maxLength = 16000;
         const send = node('button', 'btn btn-primary', 'Send');
         send.type = 'submit';
-        const stickerBtn = node('button', 'btn sticker-toggle', '🙂');
-        stickerBtn.type = 'button'; stickerBtn.title = 'Stickers'; stickerBtn.setAttribute('aria-label', 'Stickers');
-        const stickerTray = node('div', 'sticker-tray');
-        stickerTray.hidden = true;
-        for (const s of STICKERS) {
-            const b = node('button', 'sticker-item', s); b.type = 'button';
-            b.addEventListener('click', () => {
-                stickerTray.hidden = true;
-                if (send.disabled && !message.disabled) return;
-                message.value = s; message.dispatchEvent(new Event('input')); form.requestSubmit();
-            });
-            stickerTray.append(b);
-        }
-        stickerBtn.addEventListener('click', () => { stickerTray.hidden = !stickerTray.hidden; });
-        form.append(stickerTray, message, stickerBtn, send);
+        form.append(window.hubWithEmoji ? window.hubWithEmoji(message) : message, send);
         content.append(newForm, threadControls, log, form);
         panel.append(error, locked, content);
         main.append(panel);
@@ -200,15 +211,16 @@ const hubAgents = (() => {
         function lock() {
             const wasAuthenticated = authenticated;
             authVersion++;
-            authenticated = false;
+            authenticated = false; authKnown = true;
             locked.hidden = false; content.hidden = true;
             messages.replaceChildren(); events.replaceChildren();
             messageRows.clear(); eventRows.clear(); lastThread = null;
             threadState = null; channelState = null;
             if (wasAuthenticated) key.value = '';
             message.value = '';
-            for (const tab of threadTabs.values()) tab.remove();
+            for (const tab of threadTabs.values()) tab.parentElement.remove();
             threadTabs.clear();
+            archiveList.replaceChildren(); archiveMenu.hidden = true; archiveMenu.open = false;
             state.textContent = ''; threadControls.hidden = true;
             updateView();
         }
@@ -222,6 +234,7 @@ const hubAgents = (() => {
             }
             panel.setAttribute('aria-labelledby', threadTabs.get(selected)?.id || newButton.id);
             toolbar.hidden = !opened || !authenticated;
+            lockHint.hidden = authenticated || !authKnown;
             newForm.hidden = !creating;
             log.hidden = creating || !selected;
             form.hidden = creating || !selected;
@@ -253,26 +266,7 @@ const hubAgents = (() => {
         const INDICATORS = {
             working: ['Working', '⏳'], done: ['Done', '✓'], waiting: ['Waiting for your input', '?'], error: ['Error', '!'],
         };
-        function threadIndicator(thread) {
-            if (thread.closed) return '';
-            if (['queued', 'running', 'cancelling'].includes(thread.status)) return 'working';
-            if (['failed', 'cancelled'].includes(thread.status) || thread.outcome === 'failed' || thread.outcome === 'stopped') return 'error';
-            if (thread.status !== 'done') return '';
-            if (thread.outcome === 'needs_input') return 'waiting';
-            return thread.outcome === 'working' ? 'working' : 'done';
-        }
-        const lastIndicators = new Map();
-        function notify(message, kind) {
-            const box = document.getElementById('workspaceToast');
-            if (!box) return;
-            const item = node('span', `chat-notice ${kind}`, message);
-            item.dataset.kind = kind;
-            box.replaceChildren(item);
-            box.dataset.kind = kind;
-            box.hidden = false;
-            clearTimeout(notify.timer);
-            notify.timer = setTimeout(() => { if (box.firstChild === item) { box.replaceChildren(); delete box.dataset.kind; } }, 6000);
-        }
+        function threadIndicator(thread) { return thread.indicator || ''; }
         function revealActiveTab() {
             if (opened && !creating) {
                 threadTabs.get(selected)?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
@@ -280,7 +274,7 @@ const hubAgents = (() => {
         }
         tabs.addEventListener('keydown', event => {
             if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-            const items = [...tabs.children];
+            const items = [...tabs.querySelectorAll('.chat-tab')];
             const current = items.indexOf(document.activeElement);
             if (current < 0) return;
             event.preventDefault();
@@ -366,16 +360,17 @@ const hubAgents = (() => {
                 lastThread = selected; message.value = drafts[selected]?.text || '';
             }
             threadState = data;
+            if (!document.hidden) window.dispatchEvent(new CustomEvent('hub-thread-seen', { detail: data.thread.id }));
             for (const item of data.messages) {
                 if (!messageRows.has(item.id)) {
                     const row = node('article', `agent-message ${item.role}`);
                     const isUser = item.role === 'user';
-                    const head = node('div', 'msg-head');
-                    head.append(node('span', 'msg-avatar', isUser ? '🧑‍🚀' : '🤖'), node('span', 'msg-author', isUser ? 'You' : 'Agent'));
-                    const sticker = STICKER_RE.test(item.text.trim());
-                    const body = node('div', sticker ? 'msg-text msg-sticker' : 'msg-text md-host');
-                    if (sticker) body.textContent = item.text; else body.append(hubMarkdown.render(item.text));
-                    row.append(head, body);
+                    const body = node('div', 'msg-body');
+                    const text = node('div', 'msg-text');
+                    if (typeof hubMarkdown === 'undefined') text.textContent = item.text;
+                    else { try { text.append(hubMarkdown.render(item.text)); } catch { text.textContent = item.text; } }
+                    body.append(node('div', 'msg-author', isUser ? 'You' : 'Agent'), text);
+                    row.append(node('span', 'msg-avatar', isUser ? '🧑‍🚀' : '🤖'), body);
                     messages.append(row); messageRows.set(item.id, row);
                 }
                 if (item.nonce && item.nonce === drafts[selected]?.nonce) {
@@ -413,7 +408,7 @@ const hubAgents = (() => {
                 if (!authenticated) {
                     const session = await api('session');
                     if (requestedAuth !== authVersion) return;
-                    authenticated = session.authenticated;
+                    authenticated = session.authenticated; authKnown = true;
                     if (!authenticated) { lock(); return; }
                 }
                 locked.hidden = true; content.hidden = false;
@@ -422,19 +417,37 @@ const hubAgents = (() => {
                 toggle.textContent = channelState.enabled ? 'AI on' : 'AI off';
                 toggle.setAttribute('aria-checked', String(channelState.enabled));
                 service = channelState.online ? '' : 'Coordinator offline · requests wait in the queue';
-                const ids = new Set(channelState.threads.map(thread => thread.id));
+                const activeThreads = channelState.threads.filter(thread => !thread.archived);
+                const archivedThreads = channelState.threads.filter(thread => thread.archived);
+                const ids = new Set(activeThreads.map(thread => thread.id));
                 for (const [id, tab] of threadTabs) {
-                    if (!ids.has(id)) { tab.remove(); threadTabs.delete(id); lastIndicators.delete(id); }
+                    if (!ids.has(id)) { tab.parentElement.remove(); threadTabs.delete(id); }
                 }
+                archiveMenu.hidden = !archivedThreads.length;
+                archiveCount.textContent = archivedThreads.length;
+                archiveList.replaceChildren(...archivedThreads.map(thread => {
+                    const row = node('div', 'chat-archive-row');
+                    const name = node('span', 'chat-archive-name', thread.title);
+                    name.title = thread.title;
+                    const restore = button('Restore', () => { archiveMenu.open = false; setArchived(thread.id, false); }, 'btn btn-sm');
+                    restore.setAttribute('aria-label', `Restore chat ${thread.title}`);
+                    row.append(name, restore);
+                    return row;
+                }));
                 let revealSelection = false;
-                channelState.threads.forEach((thread, index) => {
+                activeThreads.forEach((thread, index) => {
                     let tab = threadTabs.get(thread.id);
                     if (!tab) {
+                        const wrap = node('div', 'chat-tab-wrap');
+                        const x = button('×', () => setArchived(thread.id, true), 'chat-tab-x');
+                        x.setAttribute('aria-label', `Archive chat ${thread.title}`);
+                        x.title = 'Archive chat';
                         tab = button('', () => choose(thread.id), 'chat-tab');
                         tab.id = `agentChatTab-${thread.id}`;
                         tab.setAttribute('role', 'tab');
                         tab.setAttribute('aria-controls', panel.id);
                         tab.title = 'Private agent chat';
+                        wrap.append(tab, x);
                         threadTabs.set(thread.id, tab);
                         if (thread.id === selected) revealSelection = true;
                     }
@@ -445,19 +458,15 @@ const hubAgents = (() => {
                         tab.dataset.label = label; tab.dataset.indicator = indicator;
                         tab.replaceChildren();
                         if (indicator) {
-                            const dot = node('span', `tab-indicator ${indicator}`);
+                            const dot = node('span', `tab-indicator ${indicator}`, { error: '!', waiting: '?', done: '✓' }[indicator] || '');
                             dot.setAttribute('aria-hidden', 'true');
                             tab.append(dot);
                         }
                         tab.append(label);
                         if (name) tab.setAttribute('aria-description', name); else tab.removeAttribute('aria-description');
                     }
-                    const before = lastIndicators.get(thread.id);
-                    lastIndicators.set(thread.id, indicator);
-                    if (before === 'working' && ['done', 'waiting', 'error'].includes(indicator)) {
-                        notify(`${thread.title}: ${INDICATORS[indicator][0].toLowerCase()}`, indicator);
-                    }
-                    if (tabs.children[index + 1] !== tab) tabs.insertBefore(tab, tabs.children[index + 1] || null);
+                    const wrap = tab.parentElement;
+                    if (tabs.children[index + 1] !== wrap) tabs.insertBefore(wrap, tabs.children[index + 1] || null);
                 });
                 updateView();
                 if (revealSelection) revealActiveTab();

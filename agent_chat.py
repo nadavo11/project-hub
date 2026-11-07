@@ -66,6 +66,8 @@ class AgentStore:
                 CREATE INDEX IF NOT EXISTS jobs_status ON jobs(status, id);
                 CREATE INDEX IF NOT EXISTS events_thread ON events(thread, id);
             """)
+            if not any(row["name"] == "archived" for row in db.execute("PRAGMA table_info(threads)")):
+                db.execute("ALTER TABLE threads ADD COLUMN archived INTEGER NOT NULL DEFAULT 0")
         os.chmod(self.path, 0o600)
 
     @contextmanager
@@ -153,20 +155,60 @@ class AgentStore:
         for channel in stale:
             self.set_enabled(channel, False)
 
+    @staticmethod
+    def _indicator(db, thread):
+        if thread["closed"] or thread["archived"]:
+            return ""
+        status, outcome = thread["status"], thread["outcome"]
+        if status in ("queued", "running", "cancelling"):
+            return "working"
+        if status in ("failed", "cancelled") or outcome in ("failed", "stopped"):
+            return "error"
+        if status != "done":
+            return ""
+        if outcome == "needs_input":
+            return "waiting"
+        if outcome == "working":
+            return "working"
+        if outcome is None:
+            reply = db.execute(
+                "SELECT text FROM messages WHERE thread=? AND role='assistant' ORDER BY id DESC LIMIT 1",
+                (thread["id"],)).fetchone()
+            lines = [line for line in (reply["text"] if reply else "").splitlines() if line.strip()]
+            if lines and (lines[-1].rstrip().endswith("?") or STATUS_LINE.findall(reply["text"])[-1:] == ["NEEDS_INPUT"]):
+                return "waiting"
+        return "done"
+
+    def indicators(self):
+        """Per-channel list of thread indicators with the latest job id, for the sidebar and Chat badge."""
+        result = {}
+        with self.connect() as db:
+            for row in self._threads(db):
+                kind = self._indicator(db, row)
+                if kind:
+                    job = db.execute("SELECT max(id) FROM jobs WHERE thread=?", (row["id"],)).fetchone()[0]
+                    result.setdefault(row["channel"], []).append({"thread": row["id"], "kind": kind, "job": job})
+        return result
+
+    @staticmethod
+    def _threads(db, channel=None):
+        where, params = ("WHERE channel=?", (channel,)) if channel is not None else ("", ())
+        return db.execute(f"""
+            SELECT t.*, COALESCE((SELECT status FROM jobs WHERE thread=t.id
+                ORDER BY id DESC LIMIT 1), 'idle') AS status,
+                (SELECT outcome FROM task_links WHERE thread=t.id) AS outcome
+            FROM threads t {where} ORDER BY id DESC
+        """, params).fetchall()
+
     def channel(self, channel):
         with self.connect() as db:
             row = db.execute("SELECT enabled FROM channels WHERE id=?", (channel,)).fetchone()
-            threads = db.execute("""
-                SELECT t.*, COALESCE((SELECT status FROM jobs WHERE thread=t.id
-                    ORDER BY id DESC LIMIT 1), 'idle') AS status,
-                    (SELECT outcome FROM task_links WHERE thread=t.id) AS outcome
-                FROM threads t WHERE channel=? ORDER BY id DESC
-            """, (channel,)).fetchall()
+            threads = self._threads(db, channel)
             beat = db.execute("SELECT heartbeat FROM service WHERE id=1").fetchone()
             return {
                 "enabled": bool(row and row["enabled"]),
                 "online": bool(beat and time.time() - beat["heartbeat"] < 15),
-                "threads": [dict(row) for row in threads],
+                "threads": [{**dict(row), "indicator": self._indicator(db, row)} for row in threads],
             }
 
     def create_thread(self, channel, body):
@@ -208,6 +250,16 @@ class AgentStore:
                 self._cancel(db, "thread=?", (thread_id,), "Thread closed. Stopping pending work.")
         return {"closed": closed}
 
+    def set_archived(self, thread_id, archived):
+        if type(archived) is not bool:
+            raise ValueError("archived must be true or false.")
+        with self.transaction() as db:
+            self._thread(db, thread_id)
+            db.execute("UPDATE threads SET archived=? WHERE id=?", (archived, thread_id))
+            if archived:
+                self._cancel(db, "thread=?", (thread_id,), "Thread archived. Stopping pending work.")
+        return {"archived": archived}
+
     def submit(self, thread_id, body):
         content = self.string(body, "text", 16000)
         nonce = self.string(body, "nonce", 100)
@@ -219,7 +271,7 @@ class AgentStore:
                 return dict(previous)
             thread = self._thread(db, thread_id)
             channel = db.execute("SELECT enabled FROM channels WHERE id=?", (thread["channel"],)).fetchone()
-            if thread["closed"] or not channel or not channel["enabled"]:
+            if thread["closed"] or thread["archived"] or not channel or not channel["enabled"]:
                 raise AgentConflict("Enable AI and reopen this thread before sending.")
             if db.execute("SELECT count(*) FROM messages WHERE thread=?", (thread_id,)).fetchone()[0] >= 1000:
                 raise ValueError("This thread is full. Start a new thread.")
@@ -304,7 +356,7 @@ class AgentStore:
                 SELECT j.*, t.session_id, t.title, t.channel, m.text
                 FROM jobs j JOIN threads t ON t.id=j.thread
                 JOIN channels c ON c.id=t.channel JOIN messages m ON m.id=j.message
-                WHERE j.status='queued' AND c.enabled=1 AND t.closed=0
+                WHERE j.status='queued' AND c.enabled=1 AND t.closed=0 AND t.archived=0
                 AND NOT EXISTS (SELECT 1 FROM jobs active WHERE active.thread=j.thread
                     AND active.status IN ('running','cancelling'))
                 ORDER BY j.id LIMIT 1

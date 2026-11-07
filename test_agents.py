@@ -92,6 +92,19 @@ class AgentStoreTests(unittest.TestCase):
         self.submit(self.first, nonce="three")
         self.assertIsNotNone(self.store.claim())
 
+    def test_archive_hides_indicator_blocks_work_and_restores(self):
+        self.submit(self.first)
+        self.store.set_archived(self.first["id"], True)
+        self.assertTrue(self.store.channel(1)["threads"][-1]["archived"])
+        self.assertNotIn(self.first["id"], [i["thread"] for i in self.store.indicators().get(1, [])])
+        self.assertIsNone(self.store.claim())
+        with self.assertRaises(AgentConflict):
+            self.submit(self.first, nonce="two")
+        self.store.set_archived(self.first["id"], False)
+        self.submit(self.first, nonce="two")
+        with self.assertRaises(ValueError):
+            self.store.set_archived(self.first["id"], "yes")
+
     def test_restart_blocks_uncertain_turns_but_preserves_unstarted_other_threads(self):
         self.submit(self.first)
         self.submit(self.first, nonce="two")
