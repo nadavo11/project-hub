@@ -193,7 +193,7 @@ input.pane-title, .pane-title { flex: 1; min-width: 0; width: 0; font-size: 20px
 .msg-body { flex: 1; min-width: 0; }
 .msg-meta { color: var(--muted); font-size: 11px; line-height: 1.7; }
 .msg-meta b { font-size: 12px; font-weight: 600; color: var(--text); margin-right: 8px; }
-.msg-text { font-size: 14px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+.msg-text { font-size: 14px; line-height: 1.65; white-space: normal; overflow-wrap: anywhere; }
 .msg .icon-btn { align-self: flex-start; }
 .jump { position: sticky; bottom: 4px; align-self: center; flex: none; min-height: 36px; padding: 7px 14px; border: 1px solid var(--border); border-radius: 20px; background: var(--surface); color: var(--accent); font-size: 12px; box-shadow: 0 2px 8px rgb(0 0 0 / 8%); }
 .composer { flex: none; display: flex; gap: 10px; align-items: flex-end; padding: 16px 24px 10px; border-top: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in srgb, var(--selected) 30%, var(--surface)), var(--surface)); min-width: 0; }

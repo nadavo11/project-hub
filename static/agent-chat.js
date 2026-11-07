@@ -35,6 +35,8 @@ const hubAgents = (() => {
         let sending = false, creating = false, lastThread = null;
         let authVersion = 0;
         const abort = new AbortController();
+        const STICKERS = ['🎉', '🚀', '👍', '🔥', '❤️', '😂', '🤯', '🙏', '👀', '✅', '🐛', '☕'];
+        const STICKER_RE = new RegExp(`^(${STICKERS.join('|')})$`);
         const messageRows = new Map(), eventRows = new Map(), threadTabs = new Map();
         const modes = node('div', 'chat-modes');
         const tabs = node('div', 'chat-tabs');
@@ -163,7 +165,21 @@ const hubAgents = (() => {
         message.maxLength = 16000;
         const send = node('button', 'btn btn-primary', 'Send');
         send.type = 'submit';
-        form.append(message, send);
+        const stickerBtn = node('button', 'btn sticker-toggle', '🙂');
+        stickerBtn.type = 'button'; stickerBtn.title = 'Stickers'; stickerBtn.setAttribute('aria-label', 'Stickers');
+        const stickerTray = node('div', 'sticker-tray');
+        stickerTray.hidden = true;
+        for (const s of STICKERS) {
+            const b = node('button', 'sticker-item', s); b.type = 'button';
+            b.addEventListener('click', () => {
+                stickerTray.hidden = true;
+                if (send.disabled && !message.disabled) return;
+                message.value = s; message.dispatchEvent(new Event('input')); form.requestSubmit();
+            });
+            stickerTray.append(b);
+        }
+        stickerBtn.addEventListener('click', () => { stickerTray.hidden = !stickerTray.hidden; });
+        form.append(stickerTray, message, stickerBtn, send);
         content.append(newForm, threadControls, log, form);
         panel.append(error, locked, content);
         main.append(panel);
@@ -233,6 +249,29 @@ const hubAgents = (() => {
             message.readOnly = !!drafts[selected]?.nonce;
             show(true);
             revealActiveTab();
+        }
+        const INDICATORS = {
+            working: ['Working', '⏳'], done: ['Done', '✓'], waiting: ['Waiting for your input', '?'], error: ['Error', '!'],
+        };
+        function threadIndicator(thread) {
+            if (thread.closed) return '';
+            if (['queued', 'running', 'cancelling'].includes(thread.status)) return 'working';
+            if (['failed', 'cancelled'].includes(thread.status) || thread.outcome === 'failed' || thread.outcome === 'stopped') return 'error';
+            if (thread.status !== 'done') return '';
+            if (thread.outcome === 'needs_input') return 'waiting';
+            return thread.outcome === 'working' ? 'working' : 'done';
+        }
+        const lastIndicators = new Map();
+        function notify(message, kind) {
+            const box = document.getElementById('workspaceToast');
+            if (!box) return;
+            const item = node('span', `chat-notice ${kind}`, message);
+            item.dataset.kind = kind;
+            box.replaceChildren(item);
+            box.dataset.kind = kind;
+            box.hidden = false;
+            clearTimeout(notify.timer);
+            notify.timer = setTimeout(() => { if (box.firstChild === item) { box.replaceChildren(); delete box.dataset.kind; } }, 6000);
         }
         function revealActiveTab() {
             if (opened && !creating) {
@@ -330,7 +369,13 @@ const hubAgents = (() => {
             for (const item of data.messages) {
                 if (!messageRows.has(item.id)) {
                     const row = node('article', `agent-message ${item.role}`);
-                    row.append(node('div', 'msg-text', item.text));
+                    const isUser = item.role === 'user';
+                    const head = node('div', 'msg-head');
+                    head.append(node('span', 'msg-avatar', isUser ? '🧑‍🚀' : '🤖'), node('span', 'msg-author', isUser ? 'You' : 'Agent'));
+                    const sticker = STICKER_RE.test(item.text.trim());
+                    const body = node('div', sticker ? 'msg-text msg-sticker' : 'msg-text md-host');
+                    if (sticker) body.textContent = item.text; else body.append(hubMarkdown.render(item.text));
+                    row.append(head, body);
                     messages.append(row); messageRows.set(item.id, row);
                 }
                 if (item.nonce && item.nonce === drafts[selected]?.nonce) {
@@ -379,7 +424,7 @@ const hubAgents = (() => {
                 service = channelState.online ? '' : 'Coordinator offline · requests wait in the queue';
                 const ids = new Set(channelState.threads.map(thread => thread.id));
                 for (const [id, tab] of threadTabs) {
-                    if (!ids.has(id)) { tab.remove(); threadTabs.delete(id); }
+                    if (!ids.has(id)) { tab.remove(); threadTabs.delete(id); lastIndicators.delete(id); }
                 }
                 let revealSelection = false;
                 channelState.threads.forEach((thread, index) => {
@@ -394,7 +439,24 @@ const hubAgents = (() => {
                         if (thread.id === selected) revealSelection = true;
                     }
                     const label = thread.closed ? `${thread.title} (closed)` : thread.title;
-                    if (tab.textContent !== label) tab.textContent = label;
+                    const indicator = threadIndicator(thread);
+                    const [name] = INDICATORS[indicator] || [''];
+                    if (tab.dataset.label !== label || (tab.dataset.indicator || '') !== indicator) {
+                        tab.dataset.label = label; tab.dataset.indicator = indicator;
+                        tab.replaceChildren();
+                        if (indicator) {
+                            const dot = node('span', `tab-indicator ${indicator}`);
+                            dot.setAttribute('aria-hidden', 'true');
+                            tab.append(dot);
+                        }
+                        tab.append(label);
+                        if (name) tab.setAttribute('aria-description', name); else tab.removeAttribute('aria-description');
+                    }
+                    const before = lastIndicators.get(thread.id);
+                    lastIndicators.set(thread.id, indicator);
+                    if (before === 'working' && ['done', 'waiting', 'error'].includes(indicator)) {
+                        notify(`${thread.title}: ${INDICATORS[indicator][0].toLowerCase()}`, indicator);
+                    }
                     if (tabs.children[index + 1] !== tab) tabs.insertBefore(tab, tabs.children[index + 1] || null);
                 });
                 updateView();

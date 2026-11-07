@@ -158,7 +158,8 @@ class AgentStore:
             row = db.execute("SELECT enabled FROM channels WHERE id=?", (channel,)).fetchone()
             threads = db.execute("""
                 SELECT t.*, COALESCE((SELECT status FROM jobs WHERE thread=t.id
-                    ORDER BY id DESC LIMIT 1), 'idle') AS status
+                    ORDER BY id DESC LIMIT 1), 'idle') AS status,
+                    (SELECT outcome FROM task_links WHERE thread=t.id) AS outcome
                 FROM threads t WHERE channel=? ORDER BY id DESC
             """, (channel,)).fetchall()
             beat = db.execute("SELECT heartbeat FROM service WHERE id=1").fetchone()

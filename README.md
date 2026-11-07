@@ -2,7 +2,7 @@
 
 A small, self-hosted workspace for you and your team: **chat channels, markdown notes and task lists** in one page, plus a launcher for your local web projects and optional **private AI agent threads**. No database server, no build step, no third-party Python packages — just `python3`.
 
-- **Chat** – channels with drafts, an outbox that survives reloads, unread badges.
+- **Chat** – channels with drafts, an outbox that survives reloads, unread badges. Agent and user messages render markdown (`**bold**`, `# headings`, lists, code, links) and math (`$E=mc^2$`, `$$\frac{a}{b}$$`).
 - **Notes** – markdown with preview, autosave, conflict detection so two people never silently overwrite each other.
 - **Tasks** – lists with progress, priority stars, undo and clear-completed.
 - **Icons** – pick an emoji icon for any channel, note or task list, and use the ☺ button in any text field to insert emoji.
@@ -81,7 +81,7 @@ server.py        HTTP server, workspace store, project launcher
 agent_chat.py    durable private-thread store (SQLite)
 agent_worker.py  coordinator that runs Copilot CLI per thread
 launch.py        start service + open browser
-static/          index.html, app.js (projects), workspace.js (chat/notes/tasks), agent-chat.js, CSS
+static/          index.html, app.js (projects), workspace.js (chat/notes/tasks), agent-chat.js, markdown.js (safe md + math renderer), CSS
 systemd/         unit templates used by install.sh
 test_*.py        unit and browser tests
 ```

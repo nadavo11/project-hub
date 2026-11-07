@@ -941,6 +941,9 @@ class Handler(BaseHTTPRequestHandler):
                     ROOT / "static/workspace.js",
                     "text/javascript; charset=utf-8",
                 ),
+                "/markdown.js": (
+                    ROOT / "static/markdown.js", "text/javascript; charset=utf-8",
+                ),
                 "/agent-chat.js": (
                     ROOT / "static/agent-chat.js", "text/javascript; charset=utf-8",
                 ),

@@ -988,7 +988,7 @@
     function toast(message, label, action) {
         const box = $('workspaceToast');
         if (!box) return;
-        box.replaceChildren(el('span', '', message));
+        box.replaceChildren(el('span', '', message)); delete box.dataset.kind;
         if (action) box.append(button(label, 'toast-action', async event => {
             const control = event.currentTarget; control.disabled = true;
             try { await action(); box.hidden = true; } catch (error) { setError('recovery', error); control.disabled = false; }
