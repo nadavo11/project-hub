@@ -108,6 +108,9 @@ const hubMarkdown = (() => {
         const root = el('div', 'md');
         const lines = String(source).replace(/\r\n?/g, '\n').split('\n');
         let i = 0;
+        const isRow = (l) => l !== undefined && l.includes('|');
+        const isSep = (l) => l !== undefined && /^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$/.test(l) && l.includes('|');
+        const cells = (l) => l.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim());
         const isBlockStart = (l) => /^(#{1,6}\s|```|>\s?|\s*([-*+]|\d+[.)])\s|\s*(---+|\*\*\*+)\s*$|\$\$)/.test(l);
         while (i < lines.length) {
             const line = lines[i];
@@ -134,6 +137,22 @@ const hubMarkdown = (() => {
                 const d = el('div', 'md-math md-math-block');
                 d.append(math(body.trim()));
                 root.append(d);
+            } else if (isRow(line) && isSep(lines[i + 1])) {
+                const aligns = cells(lines[i + 1]).map(c => c.startsWith(':') && c.endsWith(':') ? 'center' : c.endsWith(':') ? 'right' : '');
+                const table = el('table', 'md-table');
+                const addRow = (parent, tag, row) => {
+                    const tr = el('tr');
+                    row.forEach((c, k) => { const cell = el(tag); if (aligns[k]) cell.style.textAlign = aligns[k]; inline(c, cell); tr.append(cell); });
+                    parent.append(tr);
+                };
+                const thead = el('thead'), tbody = el('tbody');
+                addRow(thead, 'th', cells(line));
+                i += 2;
+                while (i < lines.length && lines[i].trim() && isRow(lines[i])) addRow(tbody, 'td', cells(lines[i++]));
+                table.append(thead, tbody);
+                const wrap = el('div', 'md-table-wrap');
+                wrap.append(table);
+                root.append(wrap);
             } else if ((m = /^(#{1,6})\s+(.*?)\s*#*$/.exec(line))) {
                 const h = el('h' + m[1].length, 'md-h');
                 inline(m[2], h);
@@ -158,7 +177,7 @@ const hubMarkdown = (() => {
             } else {
                 const p = el('p');
                 const body = [];
-                while (i < lines.length && lines[i].trim() && (body.length === 0 || !isBlockStart(lines[i]))) body.push(lines[i++]);
+                while (i < lines.length && lines[i].trim() && (body.length === 0 || !(isBlockStart(lines[i]) || (isRow(lines[i]) && isSep(lines[i + 1]))))) body.push(lines[i++]);
                 body.forEach((l, k) => { if (k) p.append(el('br')); inline(l, p); });
                 root.append(p);
             }

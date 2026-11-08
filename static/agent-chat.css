@@ -113,3 +113,8 @@
 .msg-text .md .md-math-block { display: block; text-align: center; margin: 6px 0; }
 .msg-text .md a { color: inherit; text-decoration: underline; }
 .chat-lock-hint { background: transparent; border-color: transparent; color: var(--muted); white-space: nowrap; }
+
+.md .md-table-wrap { overflow-x: auto; margin: 0 0 .6em; }
+.md .md-table { border-collapse: collapse; font-size: .95em; }
+.md .md-table th, .md .md-table td { border: 1px solid rgba(127,127,127,.4); padding: .3em .6em; }
+.md .md-table th { background: rgba(127,127,127,.15); }

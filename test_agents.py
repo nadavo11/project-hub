@@ -105,6 +105,15 @@ class AgentStoreTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.store.set_archived(self.first["id"], "yes")
 
+    def test_task_done_archives_linked_thread_and_reopen_restores(self):
+        started = self.store.start_task(7, 1, "Task: ship", "AI-COMPLETE TASK #7")
+        self.store.archive_for_task(7, True)
+        self.assertTrue(self.store.thread(started["thread"])["thread"]["archived"])
+        self.assertIsNone(self.store.claim())
+        self.store.archive_for_task(7, False)
+        self.assertFalse(self.store.thread(started["thread"])["thread"]["archived"])
+        self.store.archive_for_task(99, True)
+
     def test_restart_blocks_uncertain_turns_but_preserves_unstarted_other_threads(self):
         self.submit(self.first)
         self.submit(self.first, nonce="two")

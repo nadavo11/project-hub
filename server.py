@@ -1222,6 +1222,8 @@ class Handler(BaseHTTPRequestHandler):
         if item is None:
             self._send(404, {"error": "Not found."})
         else:
+            if kind == "todos" and method != "POST" and isinstance(body.get("done"), bool):
+                self.server.agents.archive_for_task(item_id, body["done"])
             self._send(201 if method == "POST" else 200, item)
         return True
 

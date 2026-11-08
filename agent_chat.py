@@ -166,17 +166,22 @@ class AgentStore:
             return "error"
         if status != "done":
             return ""
-        if outcome == "needs_input":
-            return "waiting"
-        if outcome == "working":
+        reply = db.execute(
+            "SELECT text FROM messages WHERE thread=? AND role='assistant' ORDER BY id DESC LIMIT 1",
+            (thread["id"],)).fetchone()
+        text = reply["text"] if reply else ""
+        declared = STATUS_LINE.findall(text)[-1:]
+        if declared == ["DONE"]:
+            return "done"
+        if declared == ["IN_PROGRESS"]:
             return "working"
-        if outcome is None:
-            reply = db.execute(
-                "SELECT text FROM messages WHERE thread=? AND role='assistant' ORDER BY id DESC LIMIT 1",
-                (thread["id"],)).fetchone()
-            lines = [line for line in (reply["text"] if reply else "").splitlines() if line.strip()]
-            if lines and (lines[-1].rstrip().endswith("?") or STATUS_LINE.findall(reply["text"])[-1:] == ["NEEDS_INPUT"]):
-                return "waiting"
+        if declared == ["NEEDS_INPUT"] or outcome == "needs_input":
+            return "waiting"
+        if outcome == "working" and not text:
+            return "working"
+        lines = [line for line in text.splitlines() if line.strip()]
+        if lines and lines[-1].rstrip().endswith("?"):
+            return "waiting"
         return "done"
 
     def indicators(self):
@@ -338,6 +343,15 @@ class AgentStore:
                     "pending": row["outcome"] == "done" and not row["applied"],
                 } for row in rows
             }
+
+    def archive_for_task(self, task, archived):
+        """Mirror a task's crossed-out state onto its dedicated chat thread."""
+        with self.transaction() as db:
+            link = db.execute("SELECT thread FROM task_links WHERE task=?", (task,)).fetchone()
+            if link:
+                db.execute("UPDATE threads SET archived=? WHERE id=?", (archived, link["thread"]))
+                if archived:
+                    self._cancel(db, "thread=?", (link["thread"],), "Task completed. Stopping pending work.")
 
     def mark_applied(self, task):
         with self.connect() as db:
