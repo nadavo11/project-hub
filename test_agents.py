@@ -26,6 +26,78 @@ class AgentStoreTests(unittest.TestCase):
     def submit(self, thread, content="Do this", nonce="one"):
         return self.store.submit(thread["id"], {"text": content, "nonce": nonce})
 
+    def test_thread_model_must_be_in_fetched_list_and_reaches_the_job(self):
+        with patch("agent_chat.fetch_models", return_value=[{"id": "gpt-x", "name": "GPT X", "cost": "low", "default": False}]):
+            with self.assertRaises(ValueError):
+                self.store.create_thread(1, {"title": "Bad", "model": "other"})
+            thread = self.store.create_thread(1, {"title": "Picked", "model": "gpt-x"})
+        self.store.submit(thread["id"], {"text": "Go", "nonce": "m1"})
+        jobs = []
+        while (job := self.store.claim()):
+            jobs.append(job)
+        self.assertIn("gpt-x", [job["model"] for job in jobs])
+
+    def test_hosting_channel_prefers_the_project_channel(self):
+        self.store.set_enabled(2, True)
+        self.assertEqual(self.store.hosting_channel({1, 2}), 1)
+        self.assertEqual(self.store.hosting_channel({1, 2}, {2}), 2)
+        self.assertEqual(self.store.hosting_channel({1, 2}, {3}), 1)
+        self.store.set_enabled(2, False)
+        self.assertEqual(self.store.hosting_channel({1, 2}, {2}), 1)
+
+    def test_thread_project_reaches_job_prompt_and_working_directory(self):
+        from agent_worker import prompt_for
+        from projects import project_context, project_directory
+        thread = self.store.create_thread(1, {"title": "Paired"}, "sample4geo")
+        self.store.submit(thread["id"], {"text": "Go", "nonce": "p1"})
+        job = next(job for job in iter(self.store.claim, None) if job["thread"] == thread["id"])
+        self.assertEqual(job["project"], "sample4geo")
+        self.assertIn(project_context("sample4geo"), prompt_for(job))
+        self.assertEqual(project_directory("nope"), None)
+        self.assertEqual(project_context(""), "")
+
+    def test_astra_tree_spawns_within_cap_and_archive_cascades(self):
+        astra = self.store.create_astra(1, "sample4geo", "Sample4Geo Atlas")
+        self.store.submit(astra["id"], {"text": "Build it", "nonce": "a1"})
+        job = next(job for job in iter(self.store.claim, None) if job["thread"] == astra["id"])
+        self.assertEqual(job["role"], "astra")
+        agents = [{"title": f"W{i}", "brief": f"Brief {i}"} for i in range(8)] + [{"title": "no brief"}]
+        report = "Plan\n```spawn-json\n" + json.dumps({"agents": agents}) + "\n```"
+        self.store.finish(job, "done", report)
+        with self.store.connect() as db:
+            children = db.execute("SELECT * FROM threads WHERE parent=?", (astra["id"],)).fetchall()
+        self.assertEqual(len(children), 5)
+        self.assertTrue(all(c["project"] == "sample4geo" and c["role"] == "worker" for c in children))
+        worker = next(job for job in iter(self.store.claim, None) if job["thread"] == children[0]["id"])
+        self.store.finish(worker, "done", report)
+        with self.store.connect() as db:
+            grandchildren = db.execute("SELECT * FROM threads WHERE parent=?", (children[0]["id"],)).fetchall()
+        self.assertEqual(len(grandchildren), 5)
+        self.store.set_archived(astra["id"], True)
+        with self.store.connect() as db:
+            self.assertEqual(db.execute("SELECT count(*) FROM threads WHERE parent IS NOT NULL AND archived=0").fetchone()[0], 0)
+            self.assertEqual(db.execute("SELECT count(*) FROM jobs WHERE status='queued'").fetchone()[0], 0)
+
+    def test_ensure_astra_is_idempotent_per_project(self):
+        first = self.store.ensure_astra(1, "crossview", "Drone & Aerial Explorer")
+        again = self.store.ensure_astra(1, "crossview", "Drone & Aerial Explorer")
+        self.assertEqual((first["created"], again["created"], first["id"]), (True, False, again["id"]))
+        self.assertEqual(first["role"], "astra")
+
+    def test_add_project_validates_and_attach_existing_agent(self):
+        import projects
+        with self.assertRaises(ValueError):
+            projects.add_project("Bad", "relative/path")
+        with self.assertRaises(ValueError):
+            projects.add_project("Localization", self.temp.name)
+        projects._store = Path(self.temp.name) / "projects.json"
+        key = projects.add_project("My New Badge", self.temp.name, "About it")
+        self.addCleanup(projects.PROJECTS.pop, key, None)
+        self.assertIn("About it", projects.project_context(key))
+        self.assertIn(key, projects._store.read_text())
+        attached = self.store.attach_agent(self.first["id"], key, "astra")
+        self.assertEqual((attached["project"], attached["role"]), (key, "astra"))
+
     def test_ai_complete_task_links_thread_and_reports_done_marker(self):
         started = self.store.start_task(7, 1, "Task: ship", "AI-COMPLETE TASK #7")
         self.assertEqual(self.store.start_task(7, 1, "Task: ship", "again")["thread"], started["thread"])

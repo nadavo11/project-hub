@@ -145,6 +145,15 @@ class WorkspaceBrowserTests(unittest.TestCase):
         self.page.locator("#noteBody").wait_for()
         self.assertEqual(self.page.input_value("#noteBody"), "A saved revision")
 
+    def test_project_picker_pairs_note_and_list_and_shows_badge(self):
+        self.open_note()
+        self.page.get_by_label("Project for this note").select_option("sample4geo")
+        self.wait_until(lambda: self.saved_note().get("project") == "sample4geo")
+        self.assertIn("Sample4Geo Atlas", self.page.locator(".side-project .proj-badge").first.inner_text())
+        self.page.goto(f"{self.url}/#todos/{self.task_list['id']}")
+        self.page.get_by_label("Project for this task list").select_option("localization")
+        self.wait_until(lambda: self.workspace.list("lists")[0].get("project") == "localization")
+
     def test_icon_picker_and_emoji_buttons(self):
         self.open_note()
         self.page.locator(".pane-head .icon-pick").click()

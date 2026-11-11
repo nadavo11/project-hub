@@ -203,6 +203,46 @@ class WorkspaceTests(unittest.TestCase):
             self.assertEqual(raised.exception.current, changed)
         self.assertEqual(Workspace(self.path).list("notes")[0]["body"], "First editor")
 
+    def test_project_pairing_is_validated_and_survives_restart(self):
+        legacy = self.workspace.add("lists", {"name": "Plain"})
+        self.assertNotIn("project", legacy)
+        for kind, name in (("lists", "name"), ("channels", "name"), ("notes", "title")):
+            item = self.workspace.add(kind, {name: "Paired", "project": "sample4geo"})
+            self.assertEqual(item["project"], "sample4geo")
+            with self.assertRaises(ValueError):
+                self.workspace.update(kind, item["id"], {"project": "../etc", "revision": item["revision"]})
+        self.assertEqual(Workspace(self.path).list("lists")[-1]["project"], "sample4geo")
+
+    def test_server_loads_custom_projects_before_workspace(self):
+        root = Path(self.temp.name)
+        data = root / "data"
+        data.mkdir()
+        path = data / "workspace.json"
+        workspace = Workspace(path)
+        workspace.add("channels", {"name": "Custom", "project": "sample4geo"})
+        stored = json.loads(path.read_text())
+        stored["channels"][0]["project"] = "test-custom"
+        path.write_text(json.dumps(stored))
+        (data / "projects.json").write_text(json.dumps([{
+            "id": "test-custom", "name": "Test", "directory": str(root),
+        }]))
+        launcher = Launcher(
+            project=root,
+            prior_art=root / "review.html",
+            video_project=root,
+            prior_art_root=root,
+            sample4geo_project=root,
+        )
+        server = None
+        try:
+            with patch("server.ROOT", root):
+                server = HubServer(("127.0.0.1", 0), launcher)
+            self.assertEqual(server.workspace.list("channels")[0]["project"], "test-custom")
+        finally:
+            if server:
+                server.server_close()
+            launcher.close()
+
     def test_template_creation_is_atomic_and_reusable(self):
         template = self.workspace.add("templates", {
             "kind": "todos", "name": "Review", "items": ["Read", "Summarize"],
@@ -550,6 +590,95 @@ class HTTPTests(unittest.TestCase):
             {"Origin": f"http://{self.host}"},
         )
         self.assertEqual(status, 409)
+
+    def test_issue_lifecycle_validation_and_persistence(self):
+        headers = {"Origin": f"http://{self.host}", "Content-Type": "application/json"}
+
+        def call(path, method="GET", body=None, head=headers):
+            status, data = self.request(
+                "/api/issues" + path, method, head,
+                json.dumps(body) if body is not None else None,
+            )
+            return status, json.loads(data)
+
+        actor = {"actor": "Dana"}
+        self.assertEqual(call("", "POST", {"title": "x"}, {"Content-Type": "application/json"})[0], 403)
+        self.assertEqual(call("", "POST", {"title": "  ", **actor})[0], 400)
+        self.assertEqual(call("", "POST", {"title": "x"})[0], 400)
+        self.assertEqual(call("", "POST", {"title": "x", "priority": "urgent", **actor})[0], 400)
+        status, issue = call("", "POST", {
+            "title": "Crash on save", "type": "bug", "priority": "high",
+            "labels": ["ui", "UI", " "], **actor,
+        })
+        self.assertEqual((status, issue["number"], issue["reporter"]), (201, 1, "Dana"))
+        self.assertEqual(issue["labels"], ["ui"])
+        path = f"/{issue['number']}"
+        status, moved = call(path, "PATCH", {"status": "in_progress", "assignee": "Sam", "rev": 1, **actor})
+        self.assertEqual((status, moved["rev"], moved["closed_at"]), (200, 2, None))
+        status, conflict = call(path, "PATCH", {"title": "Stale", "rev": 1, **actor})
+        self.assertEqual((status, conflict["current"]["status"]), (409, "in_progress"))
+        status, done = call(path, "PATCH", {"status": "done", **actor})
+        self.assertTrue(done["closed_at"])
+        status, reopened = call(path, "PATCH", {"status": "open", **actor})
+        self.assertIsNone(reopened["closed_at"])
+        status, comment = call(path + "/comments", "POST", {"text": "Repro attached", **actor})
+        self.assertEqual(status, 201)
+        self.assertEqual(call(path + "/comments", "POST", {"text": " ", **actor})[0], 400)
+        status, edited = call(f"{path}/comments/{comment['id']}", "PATCH", {"text": "Fixed", **actor})
+        self.assertTrue(edited["edited_at"])
+        status, full = call(path)
+        self.assertEqual(len(full["comments"]), 1)
+        self.assertEqual(
+            [entry["type"] for entry in full["activity"]],
+            ["created", "status", "assignee", "status", "status"],
+        )
+        status, listing = call("")
+        self.assertEqual(listing["issues"][0]["comment_count"], 1)
+        self.assertNotIn("comments", listing["issues"][0])
+        self.assertEqual(call(f"{path}/comments/{comment['id']}", "DELETE")[0], 200)
+        self.assertEqual(call(f"{path}/comments/{comment['id']}", "DELETE")[0], 404)
+        self.assertEqual(call("/99")[0], 404)
+        self.assertEqual(call(path, "DELETE")[0], 200)
+        self.assertEqual(call(path)[0], 404)
+        self.assertEqual(call("", "POST", {"title": "Next", **actor})[1]["number"], 2)
+
+    def test_ai_report_is_applied_to_its_issue(self):
+        issue = self.server.issues.create({"title": "raw words", "body": "raw words", "labels": ["ai-triage"], "actor": "Dana"})
+        report = 'Done.\n```issue-json\n{"title": "Crash on save", "body": "## Summary\\nx", "type": "bug", "priority": "high", "labels": ["ui"]}\n```'
+        agents = self.server.agents
+        state = {"thread": 7, "channel": 1, "state": "done", "pending": True, "agent": "0a1b2c3d"}
+        with (
+            patch.object(agents, "task_states", return_value={-issue["number"]: state}),
+            patch.object(agents, "last_reply", return_value=report),
+            patch.object(agents, "mark_applied") as applied,
+        ):
+            status, body = self.request("/api/issues")
+        data = json.loads(body)
+        self.assertEqual(status, 200)
+        applied.assert_called_once_with(-issue["number"])
+        self.assertEqual((data["issues"][0]["title"], data["issues"][0]["priority"]), ("Crash on save", "high"))
+        self.assertEqual(data["issues"][0]["labels"], ["ui", "ai-triaged"])
+        self.assertEqual(data["ai"]["1"]["thread"], 7)
+        self.assertEqual(data["ai"]["1"]["agent"], "0a1b2c3d")
+        self.assertEqual(self.server.issues.get(issue["number"])["activity"][-1]["actor"], "agent-0a1b2c3d")
+
+    def test_ai_report_may_only_promote_to_in_review(self):
+        from issues import parse_ai_report
+        block = '```issue-json\n{"title": "t", "status": "%s"}\n```'
+        self.assertEqual(parse_ai_report(block % "in_review")["status"], "in_review")
+        for status in ("done", "closed", "bogus"):
+            self.assertNotIn("status", parse_ai_report(block % status))
+
+    def test_workspace_sync_does_not_consume_issue_reports(self):
+        agents = self.server.agents
+        state = {"thread": 7, "channel": 1, "state": "done", "pending": True, "agent": "0a1b2c3d"}
+        with (
+            patch.object(agents, "task_states", return_value={-1: state}),
+            patch.object(agents, "mark_applied") as applied,
+        ):
+            status, _ = self.request("/api/workspace/snapshot")
+        self.assertEqual(status, 200)
+        applied.assert_not_called()
 
 
 if __name__ == "__main__":

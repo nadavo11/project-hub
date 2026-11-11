@@ -1,3 +1,26 @@
+const hubAgentIdentity = (() => {
+    const EMOJI = ['🦊','🐙','🦉','🐳','🦄','🐲','🦖','🐼','🦩','🐸','🦔','🐝','🦋','🐧','🦝','🐯','🦜','🐢','🦦','🐨','👾','🛸','🧙','🧚'];
+    const ACTOR = /^agent-([0-9a-f]{8})$/;
+    function look(short) {
+        let h = 2166136261, g = 0x9e3779b9;
+        for (const c of short) { h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0; g = Math.imul(g ^ c.charCodeAt(0), 2246822519) >>> 0; }
+        return { emoji: EMOJI[h % EMOJI.length], hue: h % 360, seed: h.toString(36) + g.toString(36) };
+    }
+    function avatar(short, className = 'msg-avatar') {
+        const v = look(short), box = document.createElement('span');
+        box.className = className; box.textContent = v.emoji; box.setAttribute('aria-hidden', 'true');
+        box.style.background = `linear-gradient(145deg, hsl(${v.hue} 80% 65%), hsl(${(v.hue + 60) % 360} 80% 75%))`;
+        const img = document.createElement('img');
+        img.className = 'msg-avatar-img'; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer';
+        img.onload = () => { box.textContent = ''; box.append(img); };
+        img.src = `https://api.dicebear.com/9.x/thumbs/svg?seed=${encodeURIComponent(v.seed)}`;
+        return box;
+    }
+    const actorShort = actor => ACTOR.exec(actor || '')?.[1] || '';
+    const name = short => `Agent ${short}`;
+    return { avatar, actorShort, name };
+})();
+
 const hubAgents = (() => {
     let disposeCurrent = () => {};
     const selections = new Map();
@@ -95,7 +118,7 @@ const hubAgents = (() => {
             selected = null; threadState = null;
             history.replaceState(null, '', `#chat/${channel.id}`);
             show(true);
-            if (authenticated) title.focus();
+            if (authenticated) { title.focus(); loadModels(); }
             else key.focus();
         });
         newButton.id = 'newAgentChat';
@@ -135,7 +158,51 @@ const hubAgents = (() => {
         title.required = true;
         const create = node('button', 'btn btn-primary', 'Create thread');
         create.type = 'submit';
-        newForm.append(title, create);
+        const modelSelect = node('select', 'agent-model');
+        modelSelect.setAttribute('aria-label', 'Model');
+        modelSelect.append(new Option('Default model', ''));
+        let modelNames = new Map(), defaultModel = '', modelsFailedAt = 0;
+        modelSelect.disabled = true;
+        let modelsLoaded = false;
+        async function loadModels() {
+            if (modelsLoaded || Date.now() - modelsFailedAt < 30000) return;
+            modelSelect.options[0].textContent = 'Loading models…';
+            try {
+                const { models } = await api('models');
+                const current = modelSelect.value;
+                modelNames = new Map(models.map(model => [model.id, model.name]));
+                defaultModel = models.find(model => model.default)?.name || '';
+                modelSelect.replaceChildren(new Option(defaultModel ? `Default (${defaultModel})` : 'Default model', ''));
+                for (const model of models) {
+                    modelSelect.append(new Option(model.cost ? `${model.name} — ${model.cost} cost` : model.name, model.id));
+                }
+                updateModelChip();
+                modelSelect.value = current;
+                modelsLoaded = true;
+            } catch (e) {
+                modelsFailedAt = Date.now();
+                modelSelect.options[0].textContent = 'Default model';
+                if (e.name !== 'AbortError' && creating) fail('Model list unavailable: ' + e.message);
+            }
+            modelSelect.disabled = false;
+        }
+        newForm.append(title, modelSelect, create);
+        const modelChip = node('div', 'agent-model-chip');
+        modelChip.hidden = true;
+        function agentLabel(thread) {
+            const model = thread.model ? (modelNames.get(thread.model) || thread.model) : defaultModel || 'default model';
+            return `Agent #${thread.id} · ${model} · ${thread.session_id.slice(0, 8)}`;
+        }
+        function updateModelChip() {
+            const id = threadState?.thread.model;
+            const name = id ? (modelNames.get(id) || id) : defaultModel ? `${defaultModel} (default)` : 'Default model';
+            const project = threadState?.thread.project;
+            modelChip.textContent = `Model: ${name}`;
+            if (project && window.HubProjects) modelChip.append(' · ', window.HubProjects.badge(project));
+            if (threadState) modelChip.title = `Owned by ${agentLabel(threadState.thread)}. Resume in Copilot CLI: copilot --resume=${threadState.thread.session_id}`;
+            modelChip.hidden = !threadState;
+            message.placeholder = `Message the agent (${id ? (modelNames.get(id) || id) : defaultModel || 'default model'})…`;
+        }
         const threadControls = node('div', 'agent-thread-controls');
         const state = node('span', 'agent-run-state');
         state.setAttribute('role', 'status');
@@ -166,9 +233,25 @@ const hubAgents = (() => {
         log.setAttribute('aria-label', 'Agent thread conversation and activity');
         const empty = node('p', 'agent-empty', 'Start a thread to begin.');
         const messages = node('div', 'agent-messages');
-        const activity = node('details', 'agent-activity');
-        const activitySummary = node('summary', '', 'Activity');
-        const events = node('div', 'agent-events');
+        const blocks = new Map();
+        function activityBlock(jobId) {
+            let block = blocks.get(jobId);
+            if (block) return block;
+            const el = node('details', 'agent-activity');
+            const summary = node('summary', 'thought-summary');
+            const orb = node('span', 'thought-orb');
+            orb.setAttribute('aria-hidden', 'true');
+            const chevron = node('span', 'thought-chevron', '›');
+            chevron.setAttribute('aria-hidden', 'true');
+            block = { el, title: node('span', 'thought-title', 'Thought process'), step: node('span', 'thought-step'),
+                count: node('span', 'thought-count'), events: node('div', 'agent-events'), rows: new Map() };
+            summary.append(orb, block.title, block.step, block.count, chevron);
+            summary.setAttribute('aria-live', 'polite');
+            el.append(summary, block.events);
+            el.hidden = true;
+            blocks.set(jobId, block);
+            return block;
+        }
         const older = button('Load earlier activity', async () => {
             const first = Math.min(...eventRows.keys());
             try {
@@ -177,11 +260,11 @@ const hubAgents = (() => {
                 if (id !== selected) return;
                 renderEvents(history.events);
                 older.hidden = !history.has_older_events;
+                layoutActivity(threadState?.jobs || []);
             } catch (e) { fail(e.message); }
         }, 'link-btn');
         older.hidden = true;
-        activity.append(activitySummary, older, events);
-        log.append(empty, messages, activity);
+        log.append(empty, older, messages);
         const form = node('form', 'agent-composer');
         const message = node('textarea');
         message.setAttribute('aria-label', 'Message agent');
@@ -191,7 +274,7 @@ const hubAgents = (() => {
         const send = node('button', 'btn btn-primary', 'Send');
         send.type = 'submit';
         form.append(window.hubWithEmoji ? window.hubWithEmoji(message) : message, send);
-        content.append(newForm, threadControls, log, form);
+        content.append(newForm, threadControls, modelChip, log, form);
         panel.append(error, locked, content);
         main.append(panel);
 
@@ -213,8 +296,7 @@ const hubAgents = (() => {
             authVersion++;
             authenticated = false; authKnown = true;
             locked.hidden = false; content.hidden = true;
-            messages.replaceChildren(); events.replaceChildren();
-            messageRows.clear(); eventRows.clear(); lastThread = null;
+            clearTimeline(); lastThread = null;
             threadState = null; channelState = null;
             if (wasAuthenticated) key.value = '';
             message.value = '';
@@ -257,8 +339,8 @@ const hubAgents = (() => {
             history.replaceState(null, '', `#chat/${channel.id}/thread/${selected}`);
             message.value = drafts[selected]?.text || '';
             threadState = null; lastThread = null;
-            messages.replaceChildren(); events.replaceChildren(); messageRows.clear(); eventRows.clear();
-            threadControls.hidden = true; activity.hidden = true; empty.hidden = false;
+            clearTimeline();
+            threadControls.hidden = true; modelChip.hidden = true; empty.hidden = false;
             message.readOnly = !!drafts[selected]?.nonce;
             show(true);
             revealActiveTab();
@@ -290,7 +372,7 @@ const hubAgents = (() => {
                 await api('session', 'POST', { key: key.value });
                 authVersion++;
                 key.value = ''; authenticated = true; fail(''); await refresh();
-                if (creating) title.focus();
+                if (creating) { title.focus(); loadModels(); }
             } catch (e) { fail(e.message); }
             finally { unlock.disabled = false; }
         });
@@ -298,7 +380,7 @@ const hubAgents = (() => {
             event.preventDefault();
             create.disabled = true;
             try {
-                const thread = await api(`channels/${channel.id}/threads`, 'POST', { title: title.value });
+                const thread = await api(`channels/${channel.id}/threads`, 'POST', { title: title.value, model: modelSelect.value });
                 fail(''); title.value = ''; newForm.hidden = true;
                 choose(thread.id);
             } catch (e) { fail(e.message); }
@@ -341,25 +423,69 @@ const hubAgents = (() => {
                 sending = false; updateSend(); refresh();
             }
         });
+        function clearTimeline() {
+            messages.replaceChildren(); messageRows.clear(); eventRows.clear(); blocks.clear();
+        }
         function renderEvents(items) {
             for (const item of items) {
                 if (eventRows.has(item.id)) continue;
+                const block = activityBlock(item.job);
                 const detail = node('details', 'agent-event');
                 const label = item.kind.startsWith('tool.') ? item.kind.replace('tool.execution_', 'Tool ') : item.kind;
-                const summary = node('summary', '', `${new Date(item.created * 1000).toLocaleTimeString()} · ${label}`);
+                let tool = '';
+                if (item.kind.startsWith('tool.')) { try { tool = JSON.parse(item.text).toolName || ''; } catch { /* plain text */ } }
+                const summary = node('summary', '', `${new Date(item.created * 1000).toLocaleTimeString()} · ${label}${tool ? ` · ${tool}` : ''}`);
+                detail.dataset.kind = item.kind;
+                detail.dataset.id = item.id;
+                if (tool) detail.dataset.tool = tool;
                 detail.append(summary, node('pre', '', item.text));
                 eventRows.set(item.id, detail);
-                const next = [...eventRows.keys()].filter(id => id > item.id).sort((a, b) => a - b)[0];
-                events.insertBefore(detail, next ? eventRows.get(next) : null);
+                block.rows.set(item.id, detail);
+                const next = [...block.rows.keys()].filter(id => id > item.id).sort((a, b) => a - b)[0];
+                block.events.insertBefore(detail, next ? block.rows.get(next) : null);
+            }
+        }
+        const snippet = text => { const line = String(text).replace(/\s+/g, ' ').trim(); return line.length > 90 ? line.slice(0, 89) + '…' : line; };
+        // Each turn's activity sits between its request and its reply, not at the bottom.
+        function layoutActivity(jobs) {
+            const running = new Set(jobs.filter(job => ['running', 'cancelling'].includes(job.status)).map(job => job.id));
+            const reply = new Map(), request = new Map();
+            for (const item of threadState.messages) {
+                if (item.job == null) continue;
+                (item.role === 'user' ? request : reply).set(item.job, messageRows.get(item.id));
+            }
+            for (const [jobId, block] of blocks) {
+                const isRunning = running.has(jobId);
+                const entries = [...block.rows.entries()].sort((a, b) => a[0] - b[0]);
+                block.el.hidden = entries.length === 0;
+                block.el.classList.toggle('is-working', isRunning);
+                block.title.textContent = isRunning ? 'Thinking' : 'Thought process';
+                block.count.textContent = entries.length ? `${entries.length} steps` : '';
+                block.step.textContent = '';
+                if (isRunning && entries.length) {
+                    const latest = entries.at(-1)[1];
+                    const note = [...entries].reverse().find(([, row]) => row.dataset.kind === 'assistant');
+                    const parts = [];
+                    if (note) parts.push(snippet(note[1].querySelector('pre').textContent));
+                    if (latest.dataset.kind === 'tool.execution_start') parts.push(`Using ${latest.dataset.tool || 'tool'}`);
+                    else if (!note) parts.push('Working…');
+                    block.step.textContent = parts.join(' · ');
+                }
+                const before = reply.get(jobId), after = request.get(jobId);
+                if (before) messages.insertBefore(block.el, before);
+                else if (after) messages.insertBefore(block.el, after.nextSibling);
+                else messages.append(block.el);
             }
         }
         function renderThread(data) {
             const stick = lastThread !== selected || log.scrollTop + log.clientHeight >= log.scrollHeight - 48;
             if (lastThread !== selected) {
-                messages.replaceChildren(); events.replaceChildren(); messageRows.clear(); eventRows.clear();
+                clearTimeline();
                 lastThread = selected; message.value = drafts[selected]?.text || '';
             }
             threadState = data;
+            loadModels().then(updateModelChip);
+            updateModelChip();
             if (!document.hidden) window.dispatchEvent(new CustomEvent('hub-thread-seen', { detail: data.thread.id }));
             for (const item of data.messages) {
                 if (!messageRows.has(item.id)) {
@@ -369,8 +495,9 @@ const hubAgents = (() => {
                     const text = node('div', 'msg-text');
                     if (typeof hubMarkdown === 'undefined') text.textContent = item.text;
                     else { try { text.append(hubMarkdown.render(item.text)); } catch { text.textContent = item.text; } }
-                    body.append(node('div', 'msg-author', isUser ? 'You' : 'Agent'), text);
-                    row.append(node('span', 'msg-avatar', isUser ? '🧑‍🚀' : '🤖'), body);
+                    body.append(node('div', 'msg-author', isUser ? 'You' : agentLabel(data.thread)), text);
+                    const avatar = isUser ? node('span', 'msg-avatar', '🧑‍🚀') : hubAgentIdentity.avatar(data.thread.session_id.slice(0, 8));
+                    row.append(avatar, body);
                     messages.append(row); messageRows.set(item.id, row);
                 }
                 if (item.nonce && item.nonce === drafts[selected]?.nonce) {
@@ -382,9 +509,9 @@ const hubAgents = (() => {
                 older.hidden = !data.has_older_events;
             }
             empty.hidden = data.messages.length > 0;
-            activity.hidden = eventRows.size === 0;
             const last = data.jobs.at(-1);
             const running = data.jobs.find(job => ['running', 'cancelling'].includes(job.status));
+            layoutActivity(data.jobs);
             const queued = data.jobs.filter(job => job.status === 'queued').length;
             state.textContent = data.thread.closed ? 'Thread closed' : running
                 ? (running.status === 'cancelling' ? 'Stopping…' : 'Working…') + (queued ? ` · ${queued} queued` : '')

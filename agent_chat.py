@@ -6,6 +6,8 @@ import hmac
 import json
 import os
 import re
+import subprocess
+import threading
 from pathlib import Path
 import secrets
 import sqlite3
@@ -13,8 +15,65 @@ import time
 import uuid
 
 
+SPAWN_BLOCK = re.compile(r"```spawn-json\s*(\{.*?\})\s*```", re.S)
+MAX_SPAWN_PER_TURN = 5
+MAX_CHILDREN = 20  # per Astra tree, all depths
+
+
 class AgentConflict(ValueError):
     pass
+
+
+MODEL_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$")
+MODEL_TTL = 600
+
+
+def fetch_models(executable, timeout=30):
+    """Ask the Copilot CLI (ACP) which models this account can use."""
+    process = subprocess.Popen(
+        [executable, "--acp", "--stdio", "--no-auto-update"], stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, cwd=str(Path.home()),
+        start_new_session=True,
+    )
+    timer = threading.Timer(timeout, process.kill)
+    timer.start()
+    try:
+        for ident, method, params in (
+            (1, "initialize", {"protocolVersion": 1, "clientCapabilities": {}}),
+            (2, "session/new", {"cwd": str(Path.home()), "mcpServers": []}),
+        ):
+            process.stdin.write(json.dumps({"jsonrpc": "2.0", "id": ident, "method": method, "params": params}) + "\n")
+            process.stdin.flush()
+        for line in process.stdout:
+            try:
+                reply = json.loads(line)
+            except ValueError:
+                continue
+            if reply.get("id") == 2:
+                if "error" in reply:
+                    break
+                models, seen = [], set()
+                listing = reply.get("result", {}).get("models") or {}
+                current = listing.get("currentModelId")
+                for item in listing.get("availableModels", []):
+                    ident = item.get("modelId")
+                    meta = item.get("_meta") or {}
+                    if (not isinstance(ident, str) or not MODEL_ID.match(ident) or ident in seen
+                            or meta.get("copilotEnablement", "enabled") != "enabled"):
+                        continue
+                    seen.add(ident)
+                    models.append({"id": ident, "name": str(item.get("name") or ident)[:80],
+                                   "cost": str(meta.get("copilotPriceCategory") or "").replace("_", " ")[:12],
+                                   "default": ident == current})
+                return models
+        raise RuntimeError("The Copilot CLI did not return a model list.")
+    finally:
+        timer.cancel()
+        try:
+            process.kill()
+        except ProcessLookupError:
+            pass
+        process.wait()
 
 
 STATUS_LINE = re.compile(r"^\s*TASK_STATUS:\s*(DONE|NEEDS_INPUT|IN_PROGRESS)\s*$", re.M)
@@ -33,6 +92,9 @@ class AgentStore:
         else:
             with os.fdopen(fd, "w") as stream:
                 stream.write(secrets.token_urlsafe(48) + "\n")
+        self.executable = os.environ.get("HUB_COPILOT", str(Path.home() / ".local/bin/copilot"))
+        self._models = (0.0, [])
+        self._models_lock = threading.Lock()
         self.key = self.key_path.read_text().strip()
         if len(self.key) < 32:
             raise RuntimeError("Invalid operator key; refusing to enable agent access.")
@@ -68,6 +130,14 @@ class AgentStore:
             """)
             if not any(row["name"] == "archived" for row in db.execute("PRAGMA table_info(threads)")):
                 db.execute("ALTER TABLE threads ADD COLUMN archived INTEGER NOT NULL DEFAULT 0")
+            if not any(row["name"] == "project" for row in db.execute("PRAGMA table_info(threads)")):
+                db.execute("ALTER TABLE threads ADD COLUMN project TEXT NOT NULL DEFAULT ''")
+            if not any(row["name"] == "model" for row in db.execute("PRAGMA table_info(threads)")):
+                db.execute("ALTER TABLE threads ADD COLUMN model TEXT NOT NULL DEFAULT ''")
+            if not any(row["name"] == "role" for row in db.execute("PRAGMA table_info(threads)")):
+                db.execute("ALTER TABLE threads ADD COLUMN role TEXT NOT NULL DEFAULT ''")
+            if not any(row["name"] == "parent" for row in db.execute("PRAGMA table_info(threads)")):
+                db.execute("ALTER TABLE threads ADD COLUMN parent INTEGER")
         os.chmod(self.path, 0o600)
 
     @contextmanager
@@ -216,16 +286,98 @@ class AgentStore:
                 "threads": [{**dict(row), "indicator": self._indicator(db, row)} for row in threads],
             }
 
-    def create_thread(self, channel, body):
+    def models(self):
+        with self._models_lock:
+            fetched, models = self._models
+            if models and time.time() - fetched < MODEL_TTL:
+                return models
+            try:
+                models = fetch_models(self.executable)
+            except (OSError, RuntimeError, ValueError) as error:
+                if models:
+                    return models
+                raise AgentConflict("Could not fetch the model list: " + str(error)) from error
+            self._models = (time.time(), models)
+            return models
+
+    def create_thread(self, channel, body, project=""):
         title = self.string(body, "title", 120)
+        model = body.get("model") if isinstance(body, dict) else None
+        if model in (None, "", "default"):
+            model = ""
+        elif not isinstance(model, str) or not MODEL_ID.match(model):
+            raise ValueError("Invalid model.")
+        elif model not in {item["id"] for item in self.models()}:
+            raise ValueError("That model is not available.")
         with self.transaction() as db:
             if db.execute("SELECT count(*) FROM threads WHERE channel=?", (channel,)).fetchone()[0] >= 500:
                 raise ValueError("This channel has reached its 500-thread limit.")
             cursor = db.execute(
-                "INSERT INTO threads(channel,title,session_id,created) VALUES(?,?,?,?)",
-                (channel, title, str(uuid.uuid4()), time.time()),
+                "INSERT INTO threads(channel,title,session_id,created,model,project) VALUES(?,?,?,?,?,?)",
+                (channel, title, str(uuid.uuid4()), time.time(), model, project),
             )
             return self._thread(db, cursor.lastrowid)
+
+    def attach_agent(self, thread_id, project, role=""):
+        """Tag an existing thread with a project; optionally make it the project's Astra."""
+        with self.transaction() as db:
+            self._thread(db, thread_id)
+            db.execute("UPDATE threads SET project=?, role=CASE WHEN ?<>'' THEN ? ELSE role END WHERE id=?",
+                       (project, role, role, thread_id))
+            return self._thread(db, thread_id)
+
+    def ensure_astra(self, channel, project, name):
+        """Return the project's Astra thread, creating it once."""
+        with self.transaction() as db:
+            row = db.execute("SELECT id FROM threads WHERE project=? AND role='astra' ORDER BY id LIMIT 1",
+                             (project,)).fetchone()
+            if row:
+                return {**self._thread(db, row["id"]), "created": False}
+            cursor = db.execute(
+                "INSERT INTO threads(channel,title,session_id,created,project,role) VALUES(?,?,?,?,?,'astra')",
+                (channel, f"Astra: {name}"[:120], str(uuid.uuid4()), time.time(), project))
+            return {**self._thread(db, cursor.lastrowid), "created": True}
+
+    def create_astra(self, channel, project, name):
+        with self.transaction() as db:
+            cursor = db.execute(
+                "INSERT INTO threads(channel,title,session_id,created,project,role) VALUES(?,?,?,?,?,'astra')",
+                (channel, f"Astra: {name}"[:120], str(uuid.uuid4()), time.time(), project))
+            return self._thread(db, cursor.lastrowid)
+
+    def spawn_from_report(self, db, job, response):
+        """Create worker threads from an Astra spawn-json block; workers cannot spawn."""
+        thread = self._thread(db, job["thread"])
+        match = SPAWN_BLOCK.search(response)
+        if not match or thread["role"] not in ("astra", "worker"):
+            return 0
+        try:
+            data = json.loads(match.group(1))
+        except ValueError:
+            return 0
+        agents = data.get("agents") if isinstance(data, dict) else None
+        root = thread
+        while root["parent"]:
+            root = self._thread(db, root["parent"])
+        total = len(self._descendants(db, root["id"]))
+        count = 0
+        for agent in (agents if isinstance(agents, list) else [])[:MAX_SPAWN_PER_TURN]:
+            if not isinstance(agent, dict) or not str(agent.get("brief", "")).strip():
+                continue
+            if total + count >= MAX_CHILDREN:
+                break
+            title = str(agent.get("title") or agent.get("role") or "Worker")[:100]
+            child = db.execute(
+                "INSERT INTO threads(channel,title,session_id,created,project,role,parent) VALUES(?,?,?,?,?,'worker',?)",
+                (thread["channel"], title, str(uuid.uuid4()), time.time(), thread["project"], thread["id"])).lastrowid
+            message = db.execute(
+                "INSERT INTO messages(thread,role,text,created,nonce) VALUES(?,'user',?,?,?)",
+                (child, str(agent["brief"]).strip()[:12000], time.time(), str(uuid.uuid4()))).lastrowid
+            queued = db.execute("INSERT INTO jobs(thread,message,status,created) VALUES(?,?,'queued',?)",
+                                (child, message, time.time())).lastrowid
+            db.execute("UPDATE messages SET job=? WHERE id=?", (queued, message))
+            count += 1
+        return count
 
     def thread(self, thread_id, before=None):
         with self.connect() as db:
@@ -255,14 +407,22 @@ class AgentStore:
                 self._cancel(db, "thread=?", (thread_id,), "Thread closed. Stopping pending work.")
         return {"closed": closed}
 
+    @staticmethod
+    def _descendants(db, thread_id):
+        return [row[0] for row in db.execute(
+            "WITH RECURSIVE d(id) AS (SELECT id FROM threads WHERE parent=? "
+            "UNION SELECT t.id FROM threads t JOIN d ON t.parent=d.id) SELECT id FROM d", (thread_id,))]
+
     def set_archived(self, thread_id, archived):
         if type(archived) is not bool:
             raise ValueError("archived must be true or false.")
         with self.transaction() as db:
             self._thread(db, thread_id)
-            db.execute("UPDATE threads SET archived=? WHERE id=?", (archived, thread_id))
+            ids = [thread_id] + self._descendants(db, thread_id)
+            marks = ",".join("?" * len(ids))
+            db.execute(f"UPDATE threads SET archived=? WHERE id IN ({marks})", (archived, *ids))
             if archived:
-                self._cancel(db, "thread=?", (thread_id,), "Thread archived. Stopping pending work.")
+                self._cancel(db, f"thread IN ({marks})", tuple(ids), "Thread archived. Stopping pending work.")
         return {"archived": archived}
 
     def submit(self, thread_id, body):
@@ -292,7 +452,7 @@ class AgentStore:
             db.execute("UPDATE messages SET job=? WHERE id=?", (job, message_id))
             return dict(db.execute("SELECT * FROM messages WHERE id=?", (message_id,)).fetchone())
 
-    def start_task(self, task, channel, title, text):
+    def start_task(self, task, channel, title, text, project=""):
         """Open (or reuse) the one dedicated thread for a task and queue its first request."""
         with self.transaction() as db:
             enabled = db.execute("SELECT enabled FROM channels WHERE id=?", (channel,)).fetchone()
@@ -309,8 +469,8 @@ class AgentStore:
             if db.execute("SELECT count(*) FROM threads WHERE channel=?", (channel,)).fetchone()[0] >= 500:
                 raise ValueError("This channel has reached its 500-thread limit.")
             thread_id = db.execute(
-                "INSERT INTO threads(channel,title,session_id,created) VALUES(?,?,?,?)",
-                (channel, title[:120], str(uuid.uuid4()), time.time()),
+                "INSERT INTO threads(channel,title,session_id,created,project) VALUES(?,?,?,?,?)",
+                (channel, title[:120], str(uuid.uuid4()), time.time(), project),
             ).lastrowid
             message = db.execute(
                 "INSERT INTO messages(thread,role,text,created,nonce) VALUES(?,'user',?,?,?)",
@@ -331,14 +491,14 @@ class AgentStore:
     def task_states(self):
         with self.connect() as db:
             rows = db.execute("""
-                SELECT l.task, l.thread, l.outcome, l.applied, t.channel, t.closed,
+                SELECT l.task, l.thread, l.outcome, l.applied, t.channel, t.closed, t.session_id,
                     EXISTS (SELECT 1 FROM jobs j WHERE j.thread=l.thread
                         AND j.status IN ('queued','running','cancelling')) AS active
                 FROM task_links l JOIN threads t ON t.id=l.thread
             """).fetchall()
             return {
                 row["task"]: {
-                    "thread": row["thread"], "channel": row["channel"],
+                    "thread": row["thread"], "channel": row["channel"], "agent": row["session_id"][:8],
                     "state": "working" if row["active"] else row["outcome"],
                     "pending": row["outcome"] == "done" and not row["applied"],
                 } for row in rows
@@ -353,21 +513,28 @@ class AgentStore:
                 if archived:
                     self._cancel(db, "thread=?", (link["thread"],), "Task completed. Stopping pending work.")
 
+    def last_reply(self, thread):
+        with self.connect() as db:
+            row = db.execute(
+                "SELECT text FROM messages WHERE thread=? AND role='assistant' ORDER BY id DESC LIMIT 1",
+                (thread,)).fetchone()
+            return row["text"] if row else ""
+
     def mark_applied(self, task):
         with self.connect() as db:
             db.execute("UPDATE task_links SET applied=1 WHERE task=? AND outcome='done'", (task,))
 
-    def hosting_channel(self, valid):
+    def hosting_channel(self, valid, preferred=()):
+        """First AI-enabled channel, trying the project's own channels before any other."""
         with self.connect() as db:
-            for row in db.execute("SELECT id FROM channels WHERE enabled=1 ORDER BY id"):
-                if row["id"] in valid:
-                    return row["id"]
-        return None
+            enabled = [row["id"] for row in db.execute("SELECT id FROM channels WHERE enabled=1 ORDER BY id")
+                       if row["id"] in valid]
+        return next((c for c in enabled if c in preferred), enabled[0] if enabled else None)
 
     def claim(self):
         with self.transaction() as db:
             job = db.execute("""
-                SELECT j.*, t.session_id, t.title, t.channel, m.text
+                SELECT j.*, t.session_id, t.title, t.channel, t.model, t.project, t.role, m.text
                 FROM jobs j JOIN threads t ON t.id=j.thread
                 JOIN channels c ON c.id=t.channel JOIN messages m ON m.id=j.message
                 WHERE j.status='queued' AND c.enabled=1 AND t.closed=0 AND t.archived=0
@@ -423,6 +590,10 @@ class AgentStore:
                     outcome = "working"
                 db.execute("UPDATE task_links SET outcome=?,applied=0 WHERE task=?", (outcome, link["task"]))
                 response = STATUS_LINE.sub("", response).rstrip()
+            if status == "done" and response:
+                spawned = self.spawn_from_report(db, job, response)
+                if spawned:
+                    self._event(db, job, "status", f"Astra spawned {spawned} agent(s).")
             if response:
                 response = response.replace(self.key, "[operator key redacted]")
                 if len(response) > 64000:

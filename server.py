@@ -23,6 +23,8 @@ from urllib.parse import parse_qs, urlsplit
 from urllib.request import ProxyHandler, build_opener
 
 from agent_chat import AgentConflict, AgentStore
+from projects import add_project, check_project, load_custom, project_context, registry
+from issues import IssueConflict, IssueStore, issue_request, parse_ai_report
 
 
 ROOT = Path(__file__).resolve().parent
@@ -268,6 +270,14 @@ class ManagedApp:
         self._stop_process(process)
 
 
+class ResearchRadarApp(ManagedApp):
+    def setup_commands(self):
+        return []
+
+    def start_command(self):
+        return [sys.executable, "-m", "research_radar", "serve", "--port", str(self.port)]
+
+
 class Launcher:
     def __init__(
         self,
@@ -281,6 +291,15 @@ class Launcher:
         self.prior_art = Path(prior_art)
         self.prior_art_root = Path(prior_art_root)
         self.apps = {
+            "research-radar": ResearchRadarApp(
+                ROOT,
+                "research-radar",
+                "Research Radar",
+                "Investigate scientific opportunities through source evidence, adversarial audits, and falsification gates.",
+                8776,
+                "api/health",
+                {"status": "ok", "app": "research-radar", "gpu_execution": False},
+            ),
             "localization": ManagedApp(
                 project,
                 "localization",
@@ -307,6 +326,15 @@ class Launcher:
                 8025,
                 "openapi.json",
                 {"info": {"title": "Sample4Geo Atlas", "version": "1.0.0"}},
+            ),
+            "pointmatching": PointMatchApp(
+                HOME / "pointmatch-atlas",
+                "pointmatching",
+                "PointMatching⚡",
+                "Match image points across pairs with real models and inspect the evidence.",
+                8013,
+                "api/health",
+                {"project": "PointMatch Atlas"},
             ),
             "crossview": CrossviewApp(
                 project,
@@ -443,6 +471,23 @@ class SystemdApp(ManagedApp):
                 )
 
 
+class PointMatchApp(ManagedApp):
+    def setup_commands(self):
+        return []
+
+    def start_command(self):
+        return [
+            str(self.project / ".venv/bin/python"),
+            "-m",
+            "uvicorn",
+            "atlas.app:app",
+            "--host",
+            "127.0.0.1",
+            "--port",
+            str(self.port),
+        ]
+
+
 class Sample4GeoApp(SystemdApp):
     service_name = "sample4geo-atlas.service"
 
@@ -451,7 +496,7 @@ class CrossviewApp(SystemdApp):
     service_name = "atlas-crossview.service"
 
 
-def task_request(task, lst, siblings):
+def task_request(task, lst, siblings, project=""):
     """Fixed template so every AI-complete thread starts with the same context and rules."""
     others = "\n".join(
         f"- [{'x' if item['done'] else ' '}] {item['text'][:120]}" for item in siblings if item["id"] != task["id"]
@@ -461,7 +506,7 @@ def task_request(task, lst, siblings):
 TASK
 {task['text']}
 
-CONTEXT
+{project_context(project)}CONTEXT
 - List: {lst['name'] if lst else 'Unknown'}
 - Priority: {'starred (high)' if task.get('starred') else 'normal'}
 - Other tasks in this list (context only, do not work on them):
@@ -498,13 +543,14 @@ class Workspace:
 
     # field -> (type, max length); the first field of REQUIRED is mandatory on create.
     FIELDS = {
-        "channels": {"name": (str, 60), "icon": (str, 8)},
-        "lists": {"name": (str, 100), "icon": (str, 8)},
+        "channels": {"name": (str, 60), "icon": (str, 8), "project": (str, 30)},
+        "lists": {"name": (str, 100), "icon": (str, 8), "project": (str, 30)},
         "chat": {"author": (str, 40), "text": (str, 4000), "channel": (int, 0)},
         "notes": {
             "title": (str, 200),
             "body": (str, 50000),
             "icon": (str, 8),
+            "project": (str, 30),
             "pinned": (bool, 0),
         },
         "todos": {
@@ -685,6 +731,8 @@ class Workspace:
                 raise ValueError(f"{key} must be text of at most {limit} characters.")
             elif key != "body":
                 value = value.strip()
+            if key == "project":
+                check_project(value)
             clean[key] = value
         required = self.REQUIRED[kind]
         if (not partial and not clean.get(required)) or (
@@ -867,8 +915,11 @@ class HubServer(ThreadingHTTPServer):
     def __init__(self, address, launcher, workspace=None):
         super().__init__(address, Handler)
         self.launcher = launcher
-        self.workspace = workspace or Workspace(ROOT / "data/workspace.json")
+        workspace_path = workspace.path if workspace else ROOT / "data/workspace.json"
+        load_custom(workspace_path.parent / "projects.json")
+        self.workspace = workspace or Workspace(workspace_path)
         self.agents = AgentStore(self.workspace.path.parent / "agents")
+        self.issues = IssueStore(self.workspace.path.parent / "issues.json")
         self.agent_login_lock = threading.Lock()
         self.agent_login_failures = {}
 
@@ -909,10 +960,14 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         if self._agent_route("GET"):
             return
+        if self._issues_route("GET"):
+            return
         if path == "/api/health":
             self._send(200, {"status": "ok", "app": "project-hub"})
         elif path == "/api/projects":
             self._send(200, {"projects": self.server.launcher.projects()})
+        elif path == "/api/project-registry":
+            self._send(200, {"projects": registry()})
         elif path == "/api/workspace/snapshot":
             try:
                 ai_tasks = self._sync_ai_tasks()
@@ -951,6 +1006,9 @@ class Handler(BaseHTTPRequestHandler):
                 "/agent-chat.js": (
                     ROOT / "static/agent-chat.js", "text/javascript; charset=utf-8",
                 ),
+                "/projects.js": (ROOT / "static/projects.js", "text/javascript; charset=utf-8"),
+                "/issues.js": (ROOT / "static/issues.js", "text/javascript; charset=utf-8"),
+                "/issues.css": (ROOT / "static/issues.css", "text/css; charset=utf-8"),
                 "/styles.css": (ROOT / "static/styles.css", "text/css; charset=utf-8"),
                 "/agent-chat.css": (ROOT / "static/agent-chat.css", "text/css; charset=utf-8"),
                 "/prior-art/": (
@@ -1042,7 +1100,7 @@ class Handler(BaseHTTPRequestHandler):
         """Tick tasks whose agent reported DONE; the hub server is the only workspace writer."""
         states = self.server.agents.task_states()
         for task_id, state in states.items():
-            if state["pending"]:
+            if task_id > 0 and state["pending"]:
                 try:
                     self.server.workspace.update("todos", task_id, {"done": True})
                 except ValueError:
@@ -1050,9 +1108,42 @@ class Handler(BaseHTTPRequestHandler):
                 self.server.agents.mark_applied(task_id)
         ids = {row["id"] for row in self.server.workspace.list("todos")}
         return {
-            str(task): {key: state[key] for key in ("thread", "channel", "state")}
+            str(task): {key: state[key] for key in ("thread", "channel", "state", "agent")}
             for task, state in states.items() if task in ids
         }
+
+    def _sync_ai_issues(self):
+        """Apply finished agent reports to their issues; the hub is the only issue writer."""
+        links = {}
+        issues = self.server.issues
+        for task, state in self.server.agents.task_states().items():
+            if task >= 0:
+                continue
+            number = -task
+            actor = "agent-" + state["agent"]
+            waiting = state["pending"] or (
+                state["state"] == "done" and "ai-triage" in (issues.get(number) or {}).get("labels", [])
+            )
+            if waiting:
+                fields = parse_ai_report(self.server.agents.last_reply(state["thread"]))
+                try:
+                    if fields:
+                        issues.update(number, {**fields, "actor": actor})
+                        current = issues.get(number)
+                        labels = [x for x in current["labels"] if x != "ai-triage"] + ["ai-triaged"]
+                        issues.update(number, {"labels": labels, "actor": actor})
+                    else:
+                        issues.add_comment(number, {
+                            "actor": actor, "text": self.server.agents.last_reply(state["thread"])[:10000] or "The AI finished without a report.",
+                        })
+                        labels = [x for x in issues.get(number)["labels"] if x != "ai-triage"] + ["ai-triaged"]
+                        issues.update(number, {"labels": labels, "actor": actor})
+                except (ValueError, OSError):
+                    pass
+                self.server.agents.mark_applied(task)
+            if issues.get(number):
+                links[str(number)] = {key: state[key] for key in ("thread", "channel", "state", "agent")}
+        return links
 
     def _agent_route(self, method):
         parts = urlsplit(self.path).path.strip("/").split("/")
@@ -1096,6 +1187,66 @@ class Handler(BaseHTTPRequestHandler):
             if not self._agent_authenticated():
                 self._send(401, {"error": "Unlock Agent chat with the operator key first."})
                 return True
+            if parts == ["api", "agents", "models"] and method == "GET":
+                self._send(200, {"models": store.models()})
+                return True
+            if len(parts) == 5 and parts[:3] == ["api", "agents", "projects"] and parts[4] == "astra" and method == "POST":
+                names = {row["id"]: row["name"] for row in registry()}
+                if parts[3] not in names:
+                    raise ValueError("Unknown project.")
+                channel = store.hosting_channel({row["id"] for row in self.server.workspace.list("channels")})
+                if channel is None:
+                    raise AgentConflict("Turn on AI in a channel's Agent chat first (the heart channel).")
+                thread = store.ensure_astra(channel, parts[3], names[parts[3]])
+                self._send(200, {"thread": thread["id"], "channel": thread["channel"], "created": thread["created"]})
+                return True
+            if parts == ["api", "agents", "projects"] and method == "POST":
+                body = self._json_body()
+                body = body if isinstance(body, dict) else {}
+                agent = body.get("agent") if isinstance(body.get("agent"), dict) else {}
+                channel = store.hosting_channel({row["id"] for row in self.server.workspace.list("channels")})
+                if agent.get("mode") == "existing":
+                    if not isinstance(agent.get("thread"), int):
+                        raise ValueError("Choose the existing agent thread.")
+                    store.thread(agent["thread"])
+                elif agent.get("mode") != "new":
+                    raise ValueError("Choose an existing agent or create a new one.")
+                elif channel is None:
+                    raise AgentConflict("Turn on AI in a channel's Agent chat first (the heart channel).")
+                key = add_project(body.get("name"), body.get("directory"), body.get("description", ""))
+                name = next(row["name"] for row in registry() if row["id"] == key)
+                if agent["mode"] == "existing":
+                    thread = store.attach_agent(agent["thread"], key, "astra")
+                else:
+                    thread = store.create_astra(channel, key, name)
+                self._send(201, {"project": {"id": key, "name": name}, "thread": thread["id"]})
+                return True
+            if parts == ["api", "agents", "issues", "ai-add"] and method == "POST":
+                body = self._json_body()
+                text = body.get("description") if isinstance(body, dict) else None
+                if not isinstance(text, str) or not text.strip():
+                    raise ValueError("Describe the issue first.")
+                project = check_project(body.get("project", ""))
+                channels = self.server.workspace.list("channels")
+                channel = store.hosting_channel(
+                    {row["id"] for row in channels},
+                    {row["id"] for row in channels if project and row.get("project") == project})
+                if channel is None:
+                    self._send(409, {"error": "Turn on AI in a channel's Agent chat first (the heart channel)."})
+                    return True
+                text = text.strip()
+                actor = str(body.get("actor") or "Guest")[:40]
+                issue = self.server.issues.create({
+                    "title": text.splitlines()[0][:120], "body": text[:20000],
+                    "labels": ["ai-triage"], "actor": actor, "project": project,
+                })
+                result = store.start_task(
+                    -issue["number"], channel, "✨ Issue: " + issue["title"], issue_request(
+                        issue, self.server.issues.list(),
+                        [f"{app.name}: {app.project}" for app in self.server.launcher.apps.values()],
+                        str(ROOT)), project)
+                self._send(200, {**result, "issue": issue["number"]})
+                return True
             if len(parts) < 4 or not parts[3].isdigit():
                 self._send(404, {"error": "Not found."})
                 return True
@@ -1109,14 +1260,19 @@ class Handler(BaseHTTPRequestHandler):
                 if task.get("done"):
                     self._send(400, {"error": "This task is already complete. Reopen it to use AI complete."})
                     return True
-                channel = store.hosting_channel({row["id"] for row in workspace.list("channels")})
+                lst = next((row for row in workspace.list("lists") if row["id"] == task["list"]), None)
+                project = (lst or {}).get("project", "")
+                channels = workspace.list("channels")
+                channel = store.hosting_channel(
+                    {row["id"] for row in channels},
+                    {row["id"] for row in channels if project and row.get("project") == project})
                 if channel is None:
                     self._send(409, {"error": "Turn on AI in a channel's Agent chat first (the heart channel)."})
                     return True
-                lst = next((row for row in workspace.list("lists") if row["id"] == task["list"]), None)
                 siblings = [row for row in workspace.list("todos") if row["list"] == task["list"]][:20]
                 title = "✨ Task: " + task["text"]
-                self._send(200, store.start_task(item_id, channel, title, task_request(task, lst, siblings)))
+                self._send(200, store.start_task(
+                    item_id, channel, title, task_request(task, lst, siblings, project), project))
                 return True
             if parts[2] == "channels":
                 if item_id not in {row["id"] for row in self.server.workspace.list("channels")}:
@@ -1130,7 +1286,8 @@ class Handler(BaseHTTPRequestHandler):
                     self._send(200, store.set_enabled(item_id, (body or {}).get("enabled")))
                     return True
                 if parts[4:] == ["threads"] and method == "POST":
-                    self._send(201, store.create_thread(item_id, self._json_body()))
+                    channel = next(row for row in self.server.workspace.list("channels") if row["id"] == item_id)
+                    self._send(201, store.create_thread(item_id, self._json_body(), channel.get("project", "")))
                     return True
             if parts[2] == "threads":
                 if len(parts) == 4 and method == "GET":
@@ -1158,6 +1315,78 @@ class Handler(BaseHTTPRequestHandler):
         except (OSError, sqlite3.Error):
             self._send(503, {"error": "Agent storage unavailable. Your request was not confirmed."})
         return True
+
+    def _issues_route(self, method):
+        parts = urlsplit(self.path).path.strip("/").split("/")
+        if parts[:2] != ["api", "issues"]:
+            return False
+        issues = self.server.issues
+        try:
+            self._issues_dispatch(issues, parts[2:], method)
+        except IssueConflict as error:
+            self._send(409, {"error": str(error), "current": error.current})
+        except ValueError as error:
+            self._send(400, {"error": str(error)})
+        except OSError:
+            self.log_error("Issue write failed.")
+            self._send(503, {"error": "The server could not save this change. Retry."})
+        return True
+
+    def _issues_dispatch(self, issues, rest, method):
+        number = int(rest[0]) if rest and rest[0].isdigit() else None
+        if not rest:
+            if method == "GET":
+                try:
+                    ai = self._sync_ai_issues()
+                except sqlite3.Error:
+                    ai = {}
+                self._send(200, {"issues": issues.list(), "ai": ai})
+            elif method == "POST":
+                body = self._json_body()
+                if body is None:
+                    raise ValueError("Invalid JSON.")
+                self._send(201, issues.create(body))
+            else:
+                self._send(405, {"error": "Method not allowed."})
+            return
+        if number is None or len(rest) > 3 or (len(rest) == 3 and not rest[2].isdigit()):
+            self._send(404, {"error": "Not found."})
+            return
+        if len(rest) == 1:
+            if method == "GET":
+                result = issues.get(number)
+            elif method == "PATCH":
+                body = self._json_body()
+                if body is None:
+                    raise ValueError("Invalid JSON.")
+                result = issues.update(number, body)
+            elif method == "DELETE":
+                result = {"deleted": number} if issues.delete(number) else None
+            else:
+                self._send(405, {"error": "Method not allowed."})
+                return
+            self._send(200 if result else 404, result or {"error": "Issue not found."})
+            return
+        if rest[1] != "comments":
+            self._send(404, {"error": "Not found."})
+            return
+        if len(rest) == 2 and method == "POST":
+            body = self._json_body()
+            if body is None:
+                raise ValueError("Invalid JSON.")
+            result = issues.add_comment(number, body)
+            self._send(201 if result else 404, result or {"error": "Issue not found."})
+        elif len(rest) == 3 and method == "PATCH":
+            body = self._json_body()
+            if body is None:
+                raise ValueError("Invalid JSON.")
+            result = issues.edit_comment(number, int(rest[2]), body)
+            self._send(200 if result else 404, result or {"error": "Comment not found."})
+        elif len(rest) == 3 and method == "DELETE":
+            done = issues.delete_comment(number, int(rest[2]))
+            self._send(200 if done else 404, {"deleted": int(rest[2])} if done else {"error": "Comment not found."})
+        else:
+            self._send(405, {"error": "Method not allowed."})
 
     def _workspace_route(self, method):
         parts = urlsplit(self.path).path.strip("/").split("/")
@@ -1231,12 +1460,16 @@ class Handler(BaseHTTPRequestHandler):
         if self._guard_write():
             if self._agent_route("PATCH"):
                 return
+            if self._issues_route("PATCH"):
+                return
             if not self._workspace_route("PATCH"):
                 self._send(404, {"error": "Not found."})
 
     def do_DELETE(self):
         if self._guard_write():
             if self._agent_route("DELETE"):
+                return
+            if self._issues_route("DELETE"):
                 return
             if not self._workspace_route("DELETE"):
                 self._send(404, {"error": "Not found."})
@@ -1245,6 +1478,8 @@ class Handler(BaseHTTPRequestHandler):
         if not self._guard_write():
             return
         if self._agent_route("POST"):
+            return
+        if self._issues_route("POST"):
             return
         if self._workspace_route("POST"):
             return

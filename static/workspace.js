@@ -302,10 +302,11 @@
                 const sub = el('span', 'side-sub');
                 const badge = el('span', 'badge');
                 const state = el('span', 'chat-state'); state.hidden = true;
-                content.append(title, sub);
+                const project = el('span', 'side-project'); project.hidden = true;
+                content.append(title, project, sub);
                 item.append(icon, content, state, badge);
                 li.append(item); list.append(li);
-                entry = { li, item, icon, title, sub, badge, state }; sideRows.set(id, entry);
+                entry = { li, item, icon, title, sub, badge, state, project }; sideRows.set(id, entry);
             }
             const on = String(selected[mode]) === id;
             entry.item.classList.toggle('active', on);
@@ -322,6 +323,14 @@
                 sub = tasks.length ? `${tasks.filter(task => task.done).length} of ${tasks.length} complete` : 'No tasks yet';
             } else sub = (noteStates.get(row.id)?.body ?? row.body ?? '').replace(/\s+/g, ' ').slice(0, 90) || 'Empty note';
             text(entry.sub, sub);
+            const projectId = (mode === 'notes' ? noteStates.get(row.id)?.project ?? row.project : row.project) || '';
+            if (entry.project.dataset.project !== projectId) {
+                entry.project.dataset.project = projectId;
+                entry.project.textContent = '';
+                const mark = window.HubProjects?.badge(projectId);
+                if (mark) entry.project.append(mark);
+                entry.project.hidden = !mark;
+            }
             const count = mode === 'chat' ? unread(row.id) : 0;
             entry.badge.hidden = !count;
             text(entry.badge, count);
@@ -351,9 +360,9 @@
         let [view, raw] = location.hash.slice(1).split('/');
         if (view === 'workspace') view = ['chat', 'notes', 'todos'].includes(store.get('mode', 'chat')) ? store.get('mode', 'chat') : 'chat';
         if (view === 'tasks') view = 'todos';
-        if (!['chat', 'notes', 'todos'].includes(view)) view = 'projects';
+        if (!['chat', 'notes', 'todos', 'issues'].includes(view)) view = 'projects';
         const oldMode = mode;
-        active = view !== 'projects';
+        active = view !== 'projects' && view !== 'issues';
         if (active) {
             mode = view;
             store.set('mode', mode);
@@ -363,8 +372,10 @@
             store.set('sel', selected);
         }
         document.documentElement.dataset.view = view;
-        $('tab-projects').hidden = active;
+        $('tab-projects').hidden = view !== 'projects';
         $('tab-workspace').hidden = !active;
+        $('tab-issues').hidden = view !== 'issues';
+        window.dispatchEvent(new CustomEvent('hub-view', { detail: { view, id: view === 'issues' ? raw : undefined } }));
         document.querySelectorAll('.nav-item[data-view]').forEach(node => {
             const on = node.dataset.view === view;
             node.classList.toggle('active', on);
@@ -404,6 +415,7 @@
             if (loaded) hubMotion.reveal(main);
         }
         if (row && pane) {
+            if (pane.projectSelect && document.activeElement !== pane.projectSelect) pane.projectSelect.setValue((mode === 'notes' ? stateFor(row).project : row.project) || '');
             if (mode === 'notes') updateNote(row);
             else {
                 if (document.activeElement !== pane.title && !pane.title.dataset.unsaved) pane.title.value = row.name;
@@ -432,6 +444,20 @@
         if (view === 'notes') picker.setIcon(stateFor(row).icon);
         pane.iconPicker = picker;
         const titleBox = el('div', 'pane-titlebox'); titleBox.append(picker, withEmoji(title)); head.append(titleBox);
+        const current = (view === 'notes' ? stateFor(row).project : row.project) || '';
+        const project = window.HubProjects?.select(current, async value => {
+            if (view === 'notes') { const state = stateFor(row); state.project = value; changeNote(state, state.title, state.body); return; }
+            try {
+                const latest = rows(view).find(item => item.id === row.id) || row;
+                upsert(kinds[view], await api(`${kinds[view]}/${row.id}`, 'PATCH', { project: value, revision: latest.revision }));
+                setError(`project:${row.id}`, null); renderSide();
+            } catch (error) {
+                setError(`project:${row.id}`, `Project was not saved: ${error.message}`);
+                project.setValue(((rows(view).find(item => item.id === row.id) || row).project) || '');
+                if (error.current) upsert(kinds[view], error.current);
+            }
+        }, `Project for this ${labels[view]}`);
+        if (project) { pane.projectSelect = project; head.append(project, window.HubProjects.astraButton(project)); }
         if (view !== 'notes') {
             title.addEventListener('input', () => { title.dataset.unsaved = 'true'; });
             title.addEventListener('change', async () => {
@@ -472,7 +498,7 @@
                 if (state.saving || pane?.state === state || state.baseRevision === note.revision) continue;
                 if (state.dirty) state.conflict = note;
                 else {
-                    state.title = note.title; state.body = note.body || ''; state.pinned = !!note.pinned; state.icon = note.icon || ''; state.baseRevision = note.revision;
+                    state.title = note.title; state.body = note.body || ''; state.pinned = !!note.pinned; state.icon = note.icon || ''; state.project = note.project || ''; state.baseRevision = note.revision;
                     state.remote = null;
                 }
             }
@@ -499,7 +525,7 @@
             const draft = noteDrafts[note.id];
             state = {
                 id: note.id, title: draft?.title ?? note.title, body: draft?.body ?? note.body ?? '',
-                pinned: draft?.pinned ?? !!note.pinned, icon: draft?.icon ?? note.icon ?? '',
+                pinned: draft?.pinned ?? !!note.pinned, icon: draft?.icon ?? note.icon ?? '', project: draft?.project ?? note.project ?? '',
                 baseRevision: draft?.baseRevision ?? note.revision, version: 0, dirty: !!draft,
                 saving: false, error: draft ? 'An unsaved draft was recovered from this device.' : '', conflict: null, remote: null, timer: null,
             };
@@ -509,7 +535,7 @@
         return state;
     }
     function persistNote(state) {
-        if (state.dirty) noteDrafts[state.id] = { title: state.title, body: state.body, pinned: state.pinned, icon: state.icon, baseRevision: state.baseRevision };
+        if (state.dirty) noteDrafts[state.id] = { title: state.title, body: state.body, pinned: state.pinned, icon: state.icon, project: state.project, baseRevision: state.baseRevision };
         else delete noteDrafts[state.id];
         store.set('note-drafts', noteDrafts);
     }
@@ -524,7 +550,7 @@
         clearTimeout(state.timer);
         if (!state.dirty || state.saving || state.conflict || state.deleted) return;
         if (!state.title.trim()) { state.error = 'Add a title to save this note.'; updateNoteStatus(state); return; }
-        const sent = { title: state.title, body: state.body, pinned: state.pinned, icon: state.icon, revision: state.baseRevision };
+        const sent = { title: state.title, body: state.body, pinned: state.pinned, icon: state.icon, project: state.project, revision: state.baseRevision };
         const version = state.version;
         state.saving = true; state.error = ''; updateNoteStatus(state);
         try {
@@ -532,7 +558,7 @@
             upsert('notes', saved);
             state.baseRevision = saved.revision;
             state.remote = null;
-            if (version === state.version) { state.dirty = false; state.title = saved.title; state.body = saved.body || ''; state.pinned = !!saved.pinned; state.icon = saved.icon || ''; }
+            if (version === state.version) { state.dirty = false; state.title = saved.title; state.body = saved.body || ''; state.pinned = !!saved.pinned; state.icon = saved.icon || ''; state.project = saved.project || ''; }
             persistNote(state); setError(`note:${state.id}`, null);
         } catch (error) {
             state.error = error.message;
@@ -593,7 +619,7 @@
             if (state.dirty) state.conflict = note;
             else if ([pane.body, pane.title].includes(document.activeElement)) state.remote = note;
             else {
-                state.title = note.title; state.body = note.body || ''; state.pinned = !!note.pinned; state.icon = note.icon || ''; state.baseRevision = note.revision;
+                state.title = note.title; state.body = note.body || ''; state.pinned = !!note.pinned; state.icon = note.icon || ''; state.project = note.project || ''; state.baseRevision = note.revision;
                 state.remote = null;
                 pane.title.value = state.title; pane.body.value = state.body; pane.iconPicker?.setIcon(state.icon);
                 if (!pane.rendered.hidden) markdown(pane.rendered, state.body);
@@ -627,7 +653,7 @@
     }
     function loadNote(state, latest) {
         clearTimeout(state.timer);
-        state.title = latest.title; state.body = latest.body || ''; state.pinned = !!latest.pinned; state.icon = latest.icon || ''; state.baseRevision = latest.revision;
+        state.title = latest.title; state.body = latest.body || ''; state.pinned = !!latest.pinned; state.icon = latest.icon || ''; state.project = latest.project || ''; state.baseRevision = latest.revision;
         state.dirty = false; state.conflict = null; state.remote = null; state.error = ''; state.version++;
         upsert('notes', latest); persistNote(state); setError(`note:${state.id}`, null);
         if (pane?.state === state) {
@@ -658,7 +684,7 @@
             button('Recover draft as new note', 'btn', async event => {
                 const control = event.currentTarget; control.disabled = true;
                 try {
-                    const note = await api('notes', 'POST', { title: draft.title.trim() || 'Recovered note', body: draft.body, pinned: !!draft.pinned, icon: draft.icon || '' });
+                    const note = await api('notes', 'POST', { title: draft.title.trim() || 'Recovered note', body: draft.body, pinned: !!draft.pinned, icon: draft.icon || '', project: draft.project || '' });
                     upsert('notes', note); delete noteDrafts[id]; noteStates.delete(Number(id)); store.set('note-drafts', noteDrafts);
                     setError(`note:${id}`, null); navigate('notes', note.id);
                 } catch (error) { setError(`note:${id}`, error); } finally { control.disabled = false; }
@@ -941,7 +967,11 @@
         entry.ai.textContent = link ? '✨ Retry AI' : '✨ AI complete';
         entry.aiLink.hidden = !label;
         if (label) {
-            text(entry.aiLink, `${label} →`);
+            const key = `${link.agent || ''}|${label}`;
+            if (entry.aiLink.dataset.key !== key) {
+                entry.aiLink.dataset.key = key;
+                entry.aiLink.replaceChildren(...(link.agent ? [hubAgentIdentity.avatar(link.agent, 'agent-avatar')] : []), `${label} →`);
+            }
             entry.aiLink.className = `ai-task-link ${link.state}`;
             entry.aiLink.href = `#chat/${link.channel}/thread/${link.thread}`;
             entry.aiLink.title = 'Open this task’s dedicated discussion';

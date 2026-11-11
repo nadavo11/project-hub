@@ -77,6 +77,7 @@ const urls = {
     'video-agents': `http://${location.hostname}:8000/`,
     sample4geo: `http://${location.hostname}:8025/`,
     crossview: `http://${location.hostname}:8012/`,
+    pointmatching: `http://${location.hostname}:8013/`,
 };
 const hostUrl = url => (url ? url.replace('//127.0.0.1:', `//${location.hostname}:`) : url);
 const labels = { ready: 'Running', stopped: 'On demand', starting: 'Starting', error: 'Needs attention', unavailable: 'Unavailable' };
@@ -85,6 +86,7 @@ const icons = {
     localization: ['circle:12,12,8', 'circle:12,12,3', 'M12 1v4M12 19v4M1 12h4M19 12h4'],
     'video-agents': ['M15 5H3v14h12Z', 'm15 9 6-4v14l-6-4Z', 'm7 9 4 3-4 3Z'],
     sample4geo: ['m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Z', 'M9 3v16M15 5v16', 'M3 12l6-3 6 5 6-4'],
+    pointmatching: ['circle:6,7,2.5', 'circle:18,17,2.5', 'M8 8l8 8', 'M4 17h4M16 7h4'],
     crossview: ['M2 4h8v16H2Z', 'M14 4h8v16h-8Z', 'm6 11 2-3 2 3', 'm16 13 2 3 2-3'],
 };
 const pending = new Map();

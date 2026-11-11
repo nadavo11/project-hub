@@ -5,6 +5,7 @@ A small, self-hosted workspace for you and your team: **chat channels, markdown 
 - **Chat** – channels with drafts, an outbox that survives reloads, unread badges. Agent and user messages render markdown (`**bold**`, `# headings`, lists, code, links) and math (`$E=mc^2$`, `$$\frac{a}{b}$$`).
 - **Notes** – markdown with preview, autosave, conflict detection so two people never silently overwrite each other.
 - **Tasks** – lists with progress, priority stars, undo and clear-completed.
+- **Issues** – report bugs, features, tasks and questions; triage with status, priority, assignee, labels and due dates; discuss in markdown comments; follow an activity history through to done. List and board views, search, filters and sorting. Stored in `data/issues.json`.
 - **Icons** – pick an emoji icon for any channel, note or task list, and use the ☺ button in any text field to insert emoji.
 - **Templates** – start from built-ins or save your own.
 - **Trash** – deleted items (and their messages/tasks) are recoverable.
@@ -35,9 +36,10 @@ Requirements: Python 3 (developed on 3.12), Linux with systemd for the service (
 
 | Where | What to do |
 | --- | --- |
-| Header tabs | Switch between Projects, Chat, Notes, Tasks. The trash icon opens recoverable deletions. |
+| Header tabs | Switch between Projects, Chat, Notes, Tasks, Issues. The trash icon opens recoverable deletions. |
 | Left list | Search, create (**New …**) or **Use template…**. |
 | Title bar | Click the icon square to choose or remove an icon; edit the name inline. |
+| Project badge | Pick a **Project** in the title bar of a note, task list or chat channel, or in an issue's form/sidebar. The badge shows in lists; agents started from it are told the project and run in its directory (registry: `projects.py`). |
 | Any text field | Click ☺ to insert an emoji at the cursor. |
 | Notes | Edit/Preview toggle, Pin, **Ctrl/⌘+S** to save now. Everything else autosaves. |
 

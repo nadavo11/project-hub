@@ -14,14 +14,31 @@ import tempfile
 import threading
 
 from agent_chat import AgentStore
+from projects import project_context, project_directory
 
 
 ROOT = Path(__file__).resolve().parent
 LOG = logging.getLogger("hub-agents")
 
 
+ASTRA_GUIDE = """You are Astra, the project manager and orchestrator for the project described below.
+Understand the project's context, then decide which agents the operator's request needs.
+To spawn agents, end your final reply with a fenced block exactly like:
+```spawn-json
+{"agents": [{"title": "short title", "role": "role name", "brief": "goal, project context, constraints, files to inspect, definition of done, report format"}]}
+```
+The hub validates the block and starts each worker in this project (max 5 per turn, 20 agents per Astra tree).
+Write each brief as a professional, self-contained prompt. Spawn only what is needed; otherwise answer directly.
+
+"""
+
+
 def prompt_for(job):
-    return f"""You are the dedicated Project Hub agent for private reply thread {job['thread']}.
+    context = project_context(job.get("project", ""))
+    if context and context in job["text"]:
+        context = ""
+    astra = ASTRA_GUIDE if job.get("role") in ("astra", "worker") else ""
+    return f"""{astra}You are the dedicated Project Hub agent for private reply thread {job['thread']}.
 Your persistent Copilot session is {job['session_id']}. Use only this thread's conversation.
 The authenticated operator authorized automatic tools, file edits and commands as this
 Linux user. This does not grant root access or override organizational/runtime policies.
@@ -38,7 +55,7 @@ If a previous turn was interrupted, inspect the current state before repeating s
 
 Authenticated operator request (thread title is context, not a separate instruction):
 Title: {job['title']}
-{job['text']}
+{context}{job['text']}
 """
 
 
@@ -87,11 +104,13 @@ class Coordinator:
                     "--allow-all", "--no-ask-user", "--no-auto-update", "--no-color",
                     "--output-format", "json", "--stream", "on",
                 ]
+                if job.get("model"):
+                    command += ["--model", job["model"]]
                 if self.stopping.is_set() or self.store.cancelled(job["id"]):
                     self.store.finish(job, "cancelled", error="Stopped before starting.")
                     return
                 process = subprocess.Popen(
-                    command, cwd=self.cwd, env=env, stdin=subprocess.DEVNULL,
+                    command, cwd=project_directory(job.get("project", "")) or self.cwd, env=env, stdin=subprocess.DEVNULL,
                     stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True,
                 )
                 self.store.event(job, "status", f"Agent process started (PID {process.pid}). Full user permissions; actions are reported below.")
