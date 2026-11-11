@@ -1,0 +1,50 @@
+{
+  "scope": "Diagnosis of the original three candidates before looking at iteration model outputs",
+  "evidence": ["../independent-candidate-audit.json", "../literature.json", "../independent-validation-report.md"],
+  "factual_correction": "The original audit did not establish all three exact methods were previously published. O1/O2 were awaiting evidence, O3 deferred with rejection of its broad claim. Failing the combined GO gate was not the same as proving non-novelty.",
+  "cases": [
+    {
+      "id": "O1",
+      "genuine_overlap": "Consensus, dispersion/covariance rejection, all-query accounting and common-mode inflation already appear in RIC-Loc; generic confidence fusion is anticipated in RIM.",
+      "surviving_distinction": "The exact additional predictive value of a specified footprint-dependence statistic is not settled by those sources.",
+      "evidence_gap": "No measured incremental value beyond footprint count, complete confidence fusion and common-mode baselines; original leave-cluster-out score can remain stable for a consistently wrong alias.",
+      "feasibility_gap": "No frozen posed-reference outputs, independent geographic split or matched RIC-Loc baseline demonstrated.",
+      "overconservatism": "No evidence that the actual auditor incorrectly declared the exact diagnostic established; it explicitly retained a narrow unresolved question.",
+      "correct_disposition": "Revise/test diagnostic subject to prerequisites; do not promote as novel and do not reject only because results are absent.",
+      "source_evidence_ids": ["E1", "E2", "E3", "E4"]
+    },
+    {
+      "id": "O2",
+      "genuine_overlap": "Per-pixel confidence exists in SkyReg and generic propagated camera/height uncertainty is established. Constant-height finite differences can reduce to tan(off-nadir angle).",
+      "surviving_distinction": "Reliability under an independently erroneous external DSM could differ from confidence in reconstruction-derived geometry, but a precise non-equivalent diagnostic was not specified.",
+      "evidence_gap": "No superiority beyond analytic propagation, viewing-angle/slope or existing point confidence; same-reconstruction truth risks circular validation.",
+      "feasibility_gap": "Independent map-error truth, coordinate transforms and actual public modalities had not been downloaded and checked.",
+      "overconservatism": "The existing audit labels a strong threat and insufficient specification, not proof the exact score exists. Lack of data blocks testing, not novelty.",
+      "correct_disposition": "Separate method novelty from map/truth validity; retain as a scientific question only until a distinct operational quantity is specified.",
+      "source_evidence_ids": ["E5", "E6", "E7", "E8"]
+    },
+    {
+      "id": "O3",
+      "genuine_overlap": "HF-Net covisibility grouping, RIC-Loc proposed geometry-aware reference selection, and OASIS information-based subset selection defeat broad novelty claims for diversity/support under a budget.",
+      "surviving_distinction": "A specific pre-match utility estimator with uncertain associations might differ; none was supplied.",
+      "evidence_gap": "No comparison against geographic NMS/covisibility; uncharged support probes and oracle reference crops would invalidate the claimed advantage.",
+      "feasibility_gap": "Requires a non-oracle gallery and full online cost ledger, not only paired OrthoLoC crops.",
+      "overconservatism": "Future-work anticipation is not an implemented equivalent. Broad-claim rejection is justified, but it does not prove every narrower rule unoriginal.",
+      "correct_disposition": "Keep broad claim rejected; reopen only with an explicit marginal-utility mechanism and matched-budget control.",
+      "source_evidence_ids": ["E9", "E10", "E11"]
+    }
+  ],
+  "hypotheses_about_failure": {
+    "unoriginality": "Strong broad-principle overlap in all three; exact-method identity not established in O1/O2.",
+    "narrow_space": "All three operate on existing retrieval/matching outputs through confidence, gating or selection. Descriptive concentration in post-hoc scoring/selection is visible; no causal ablation established it caused failure.",
+    "overaggressive_investigator": "Unmeasured by the original five positive controls; original candidate prose was more nuanced than a blanket rejection.",
+    "novelty_evidence_conflation": "The aggregate GO gate correctly required both. The runtime previously accepted fatal_overlap=true without a source quotation or rejection basis; corrected to disallow unsupported novelty rejection. This is a demonstrated software risk, not proof it caused the original candidate outcomes."
+  },
+  "corrections": [
+    "Keep novelty, empirical evidence, significance and feasibility as separate axes.",
+    "Require a known-source quotation for fatal overlap and fail contradictory classification/flag combinations.",
+    "Measure balanced false novelty and false rejection under explicit evidence scope.",
+    "Compare old and revised generators on the same corpus; blind reviewer to generator condition.",
+    "No threshold relaxation and no requirement to produce a survivor."
+  ]
+}

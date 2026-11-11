@@ -1,0 +1,767 @@
+{
+  "scope": {
+    "title": "From drone-to-satellite retrieval to reliable metric localization",
+    "as_of": "2026-11-09",
+    "question": "When does successful region retrieval fail to support a correct metric pose or pixel-to-map correspondence, and what evidence should trigger abstention?",
+    "boundaries": "21 domain/adjacent papers, including 20 identifier-seeded papers and PAUL discovered through a new public search; five methodology foundations are separate. UAV imagery, orthophotos, off-nadir ambiguity, geometric refinement and selective prediction are included. Worldwide photo geolocation and terrestrial localization are adjacent evidence, not interchangeable UAV benchmarks.",
+    "discovery": "Local survey inventories supplied identifiers only. Titles, authors, dates and decisive claims were checked against freshly retrieved arXiv pages/full texts. Three independent arXiv terminology searches were screened; one was noisy. References in RIM, OrthoLoC and SkyReg informed the overlap analysis. This is a bounded, not systematic or exhaustive, search.",
+    "date_policy": "year/date denote first arXiv posting, not conference publication. Metadata and latest PDFs were fetched on the access date. SkyReg full text is explicitly v1 HTML. venue is null when no proceedings/publisher record was independently checked; author-reported venues are retained only in verification.",
+    "evidence_policy": "verified means the cited source supports the attributed claim, not that an experiment was independently reproduced. Full-paper evidence means selective examination of the cited full-text location, not cover-to-cover reading. Limitations include explicitly marked investigator inferences.",
+    "blinding": "Initial literature/tension/candidate generation inspected no pilot/benchmark* file, seeded novelty-overlap benchmark, or independent auditor output. After persistence, an independent auditor's correction message was received; listed corrections were checked directly in the already cached primary texts and are explicitly attributed in audit_updates. No audit artifact or benchmark file was opened. No agents were delegated.",
+    "execution": "Literature retrieval and CPU text extraction only. No models, training, GPU experiments, paid APIs or scientific benchmark runs."
+  },
+  "papers": [
+    {
+      "id": "university1652",
+      "title": "University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization",
+      "authors": ["Zhedong Zheng", "Yunchao Wei", "Yi Yang"],
+      "year": 2020, "date": "2020-02-27", "venue": null,
+      "url": "https://arxiv.org/abs/2002.12186", "doi": null, "arxiv_id": "2002.12186",
+      "family": "building-level cross-view retrieval",
+      "task": "Retrieve a target building across synthetic drone, satellite and ground views.",
+      "datasets": ["University-1652"],
+      "relevance": "Establishes an important drone retrieval benchmark but its target identity is not a camera pose or a building-corner correspondence.",
+      "contribution": "Multi-platform building dataset and CNN retrieval baseline.",
+      "mechanism": "View-invariant descriptor learning; building identity supplies the retrieval supervision.",
+      "limitations": ["Synthetic Google Earth drone views; real-flight transfer is a different evidence requirement.", "Investigator inference: correct building retrieval alone does not establish metric pose or local feature accuracy."],
+      "evaluation": "Section 3.2 and Table 1: building-disjoint train/test identities; Recall@K and average precision, including drone-to-satellite and reverse retrieval.",
+      "evidence": [
+        {"claim": "Drone views are generated using a synthetic camera rather than collected as an unrestricted real-flight pose benchmark.", "source_url": "https://arxiv.org/pdf/2002.12186", "location": "PDF p.1, Figure 1 caption; sources/2002.12186.txt", "level": "full paper", "quote": "synthetic drone-view camera", "verified": true},
+        {"claim": "Its evaluation unit is building identity, with retrieval metrics rather than 6-DoF pose accuracy.", "source_url": "https://arxiv.org/pdf/2002.12186", "location": "PDF p.4, Table 1 and Section 3.2", "level": "full paper", "quote": "Recall@K & AP", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv citation metadata; all authors and first-posting date checked.", "read": "Abstract; pp.1,3-4 selected passages.", "venue_note": "arXiv comments report ACM Multimedia 2020; proceedings not independently fetched.", "cache": "sources/2002.12186.txt", "reproduced": false}
+    },
+    {
+      "id": "denseuav",
+      "title": "Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments",
+      "authors": ["Ming Dai", "Enhui Zheng", "Zhenhua Feng", "Jiedong Zhuang", "Wankou Yang"],
+      "year": 2022, "date": "2022-01-23", "venue": null,
+      "url": "https://arxiv.org/abs/2201.09201", "doi": null, "arxiv_id": "2201.09201",
+      "family": "real UAV self-positioning retrieval",
+      "task": "Estimate UAV location by retrieving geographically tagged satellite images.",
+      "datasets": ["DenseUAV"],
+      "relevance": "Directly relevant to the user's reduced DenseUAV motivation; that private preliminary result was not verified.",
+      "contribution": "Densely sampled low-altitude real UAV data, transformer/metric-learning baseline and distance-sensitive retrieval evaluation.",
+      "mechanism": "Vertical/down-looking UAV images and satellite descriptors are aligned through metric and mutual learning.",
+      "limitations": ["Near-nadir urban data do not establish large off-nadir performance.", "SDM@K is a distance-sensitive retrieval statistic, not a local-correspondence or 6-DoF certificate."],
+      "evaluation": "Recall@K plus SDM@K. No numerical comparison to the user's subset is possible without its split and protocol.",
+      "evidence": [
+        {"claim": "The dataset uses a down-looking UAV camera and introduces SDM@K to connect retrieval and localization.", "source_url": "https://arxiv.org/pdf/2201.09201", "location": "PDF p.2, contributions and evaluation motivation", "level": "full paper", "quote": "the UAV’s down-looking camera in real scenarios", "verified": true},
+        {"claim": "The online pipeline retrieves gallery images from descriptor similarity.", "source_url": "https://arxiv.org/pdf/2201.09201", "location": "PDF p.2, pipeline paragraph", "level": "full paper", "quote": "feature similarity", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked; original posting date retained despite later revisions.", "read": "Abstract and pp.1-2 selective full-text examination.", "cache": "sources/2201.09201.txt", "reproduced": false}
+    },
+    {
+      "id": "sample4geo",
+      "title": "Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation",
+      "authors": ["Fabian Deuser", "Konrad Habel", "Norbert Oswald"],
+      "year": 2023, "date": "2023-03-21", "venue": null,
+      "url": "https://arxiv.org/abs/2303.11851", "doi": null, "arxiv_id": "2303.11851",
+      "family": "contrastive retrieval and hard-negative mining",
+      "task": "Cross-view geographic image retrieval.",
+      "datasets": ["CVUSA", "CVACT", "University-1652", "VIGOR"],
+      "relevance": "Strong simple retrieval control; hard negatives address confusing regions but not metric geometric verification.",
+      "contribution": "Simplified shared-backbone contrastive training with geographic and dynamic visual hard negatives.",
+      "mechanism": "Symmetric InfoNCE, geographically nearby initial negatives, then embedding-neighbor dynamic similarity sampling.",
+      "limitations": ["Investigator inference: retrieval-discriminative training does not guarantee local feature equivariance.", "Geographic positives/negatives must be redefined carefully when multiple tiles overlap one query."],
+      "evaluation": "Retrieval benchmarks and same-area/cross-area settings; full-paper methodology §§3.2-3.4 examined, no fresh reproduction.",
+      "evidence": [
+        {"claim": "The method deliberately uses an off-the-shelf architecture rather than special view-specific adaptation.", "source_url": "https://arxiv.org/pdf/2303.11851", "location": "PDF p.3, Section 3.2", "level": "full paper", "quote": "off-the-shelf", "verified": true},
+        {"claim": "Hard negatives use geographic proximity and subsequently dynamic embedding similarity.", "source_url": "https://arxiv.org/pdf/2303.11851", "location": "PDF p.4, Sections 3.3-3.4", "level": "full paper", "quote": "Dynamic Similarity Sampling", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract and methodology pp.3-4.", "cache": "sources/2303.11851.txt", "reproduced": false}
+    },
+    {
+      "id": "geoclip",
+      "title": "GeoCLIP: Clip-Inspired Alignment between Locations and Images for Effective Worldwide Geo-localization",
+      "authors": ["Vicente Vivanco Cepeda", "Gaurav Kumar Nayak", "Mubarak Shah"],
+      "year": 2023, "date": "2023-09-27", "venue": null,
+      "url": "https://arxiv.org/abs/2309.16020", "doi": null, "arxiv_id": "2309.16020",
+      "family": "adjacent worldwide image-to-GPS retrieval",
+      "task": "Predict global GPS coordinates for photographs, not drone-to-satellite correspondence.",
+      "datasets": ["Im2GPS3k", "GWS15k"],
+      "relevance": "Prevents conflating the user's GeoCLIP baseline with a metric satellite matcher.",
+      "contribution": "Continuous location encoder aligned to image embeddings.",
+      "mechanism": "CLIP visual backbone, random Fourier positional encoding and multi-scale coordinate representations.",
+      "limitations": ["The examined protocol uses kilometer-scale thresholds; it does not demonstrate meter-level UAV pose.", "Paper notes feature-precomputation cost and a single Fourier scale's inability to serve all spatial scales."],
+      "evaluation": "Geodesic distance thresholds of 1, 25, 200, 750 and 2500 km are explicitly reported in §4; these are evaluation definitions, not newly measured results.",
+      "evidence": [
+        {"claim": "The evaluation is worldwide photo geolocation at kilometer-scale thresholds.", "source_url": "https://arxiv.org/pdf/2309.16020", "location": "PDF pp.6-7, evaluation protocol and Table 1", "level": "full paper", "quote": "1km, 25km, 200km, 750km", "verified": true},
+        {"claim": "The paper explicitly discusses scale and precomputation limitations.", "source_url": "https://arxiv.org/pdf/2309.16020", "location": "PDF p.10, Limitations", "level": "full paper", "quote": "precomputing the image", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; evaluation pp.6-7; limitations p.10.", "venue_note": "arXiv comments report NeurIPS 2023; proceedings not checked.", "cache": "sources/2309.16020.txt", "reproduced": false}
+    },
+    {
+      "id": "uavvisloc",
+      "title": "UAV-VisLoc: A Large-scale Dataset for UAV Visual Localization",
+      "authors": ["Wenjia Xu", "Yaxuan Yao", "Jiaqi Cao", "Zhiwei Wei", "Chunbo Liu", "Jiuniu Wang", "Mugen Peng"],
+      "year": 2024, "date": "2024-05-20", "venue": null,
+      "url": "https://arxiv.org/abs/2405.11936", "doi": null, "arxiv_id": "2405.11936",
+      "family": "real UAV-to-map dataset",
+      "task": "Locate down-looking UAV images in large orthorectified satellite maps.",
+      "datasets": ["UAV-VisLoc"],
+      "relevance": "Useful real-data falsification setting beyond small urban campuses.",
+      "contribution": "Multiple locations, drone platforms, terrain types and flight conditions with georeferenced maps and image metadata.",
+      "mechanism": "Data collection and geospatial registration; not itself a calibrated uncertainty algorithm.",
+      "limitations": ["Dataset availability does not imply per-building-corner truth or complete 6-DoF annotations.", "Ground-down imagery is not an unrestricted large-off-nadir benchmark."],
+      "evaluation": "Examined dataset/task description and metadata, not a claimed trained-method improvement.",
+      "evidence": [
+        {"claim": "The task is map localization from ground-down UAV imagery.", "source_url": "https://arxiv.org/pdf/2405.11936", "location": "PDF pp.2-3, task definition and contributions", "level": "full paper", "quote": "ground-down view", "verified": true},
+        {"claim": "The collection deliberately includes fixed-wing and higher-altitude imagery.", "source_url": "https://arxiv.org/pdf/2405.11936", "location": "PDF p.3, dataset contributions", "level": "full paper", "quote": "Fixed-wing drone images", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract and pp.2-4 selected dataset passages.", "cache": "sources/2405.11936.txt", "reproduced": false}
+    },
+    {
+      "id": "game4loc",
+      "title": "Game4Loc: A UAV Geo-Localization Benchmark from Game Data",
+      "authors": ["Yuxiang Ji", "Boyong He", "Zhuoyue Tan", "Liaoni Wu"],
+      "year": 2024, "date": "2024-09-25", "venue": null,
+      "url": "https://arxiv.org/abs/2409.16925", "doi": null, "arxiv_id": "2409.16925",
+      "family": "partial-overlap synthetic UAV retrieval",
+      "task": "Retrieve satellite regions for UAV images sampled over contiguous game-world scenes.",
+      "datasets": ["GTA-UAV"],
+      "relevance": "Direct prior art against claiming that non-centered, partially overlapping retrieval pairs are unexplored.",
+      "contribution": "Contiguous synthetic benchmark with multiple attitudes/altitudes and partial-match supervision.",
+      "mechanism": "Intersection-ratio-weighted InfoNCE for varying positive overlap.",
+      "limitations": ["Synthetic geographic world; real-data transfer is not a universal simulator-to-real guarantee.", "Overlap-weighted retrieval does not by itself calibrate metric pose correctness."],
+      "evaluation": "Same-area/cross-area settings, retrieval and distance-based evaluation; §3 dataset and §4 training examined.",
+      "evidence": [
+        {"claim": "Partial matches are supervised using their area-intersection ratio.", "source_url": "https://arxiv.org/pdf/2409.16925", "location": "PDF p.2, contributions; p.4, weighted contrastive learning", "level": "full paper", "quote": "intersection ratio", "verified": true},
+        {"claim": "The task explicitly departs from perfect one-to-one aligned pairs.", "source_url": "https://arxiv.org/pdf/2409.16925", "location": "PDF pp.1-2, task motivation", "level": "full paper", "quote": "partial matching", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; selected pp.2-4.", "venue_note": "AAAI 2025 is stated in arXiv comments and manuscript, not independently checked against proceedings.", "cache": "sources/2409.16925.txt", "reproduced": false}
+    },
+    {
+      "id": "offnadirloc",
+      "title": "OffNadirLoc: Benchmark and Framework for Challenging UAV-to-Satellite Geo-Localization under Large Off-Nadir Views",
+      "authors": ["Qian Qiao", "Wenye Liu", "Ting Liu", "Jiuhe Shu", "Peng Wang"],
+      "year": 2026, "date": "2026-07-22", "venue": null,
+      "url": "https://arxiv.org/abs/2607.19951", "doi": null, "arxiv_id": "2607.19951",
+      "family": "large-off-nadir cross-view retrieval",
+      "task": "Retrieve satellite targets from strongly oblique UAV views.",
+      "datasets": ["OffNadirLoc", "near-nadir benchmark transfers"],
+      "relevance": "Fatal prior art for a generic claim that large-off-nadir retrieval or suppressing repetitive regions is new.",
+      "contribution": "Rendered extreme-view benchmark and ONLoc's structure-aware weighting/view-coherent supervision.",
+      "mechanism": "Weight reliable local features; jointly supervise a satellite image and its multiple UAV views as a semantic group.",
+      "limitations": ["Drone images are rendered with Google Earth's 3D engine.", "Its examined protocol reports retrieval recall/AP, not metric pose or calibrated abstention.", "Do not interpret large-off-nadir retrieval success as direct corner observability."],
+      "evaluation": "§3.1 describes rendered views at 70, 75, 80, 82 and 85 degrees; §5.1 uses Recall@k/AP. These are source protocol details, not reproduced results.",
+      "evidence": [
+        {"claim": "The difficult off-nadir views are rendered with Google Earth's 3D engine.", "source_url": "https://arxiv.org/pdf/2607.19951", "location": "PDF p.3, Section 3.1", "level": "full paper", "quote": "Google Earth’s 3D engine", "verified": true},
+        {"claim": "The reported core evaluation remains retrieval-based.", "source_url": "https://arxiv.org/pdf/2607.19951", "location": "PDF p.6, Section 5.1", "level": "full paper", "quote": "Recall@k", "verified": true}
+      ],
+      "verification": {"metadata": "Actual current arXiv title/authors/date independently resolved; not trusted from seed inventory.", "read": "Abstract; selected §§3-5, pp.3-6.", "cache": "sources/2607.19951.txt", "reproduced": false}
+    },
+    {
+      "id": "rim",
+      "title": "RIM: A Retrieval-In-Matching Framework for Cross-Domain Global Visual Localization of UAVs",
+      "authors": ["Xin Li", "Siyuan Duan", "Shang Wang", "Zhimin Mao", "Bingliang Hu", "Geng Zhang"],
+      "year": 2026, "date": "2026-07-22", "venue": null,
+      "url": "https://arxiv.org/abs/2607.20116", "doi": null, "arxiv_id": "2607.20116",
+      "family": "shared retrieval/local description and rendered-reference pose",
+      "task": "Global UAV retrieval, geometric reranking and 6-DoF pose from georeferenced 3D reference views.",
+      "datasets": ["EPFL Urbanscape", "Chang'an Park"],
+      "relevance": "Closest counterexample to generic global-local feature sharing and confidence-fusion proposals.",
+      "contribution": "Frozen retrieval backbone reused for local-descriptor distillation; geometry-aware reranking followed by PnP.",
+      "mechanism": "Adapted SALAD/DINOv2 retrieval; shallow VGG detail stream; rendered 3D references with per-pixel ECEF coordinates.",
+      "limitations": ["Requires georeferenced 3D maps or a dedicated reference reconstruction; large reference storage.", "Park protocol excludes construction frames absent from the older map.", "No calibrated reject option; the manuscript explicitly proposes future confidence fusion.", "Inference speed comparisons are hardware/protocol-specific and not reproduced here."],
+      "evaluation": "Zero-shot geographic transfer; full 3D retrieval distance and pose metrics; Appendix E deliberately distinguishes solver return from pose correctness.",
+      "evidence": [
+        {"claim": "This is already a shared-foundation-backbone retrieval-plus-local-matching pipeline, not merely two independent modules.", "source_url": "https://arxiv.org/pdf/2607.20116", "location": "PDF p.6, positioning relative to GLVL", "level": "full paper", "quote": "frozen-retriever preservation, full-token reuse", "verified": true},
+        {"claim": "The current system lacks an explicit localization-confidence estimator and excludes unmapped construction cases.", "source_url": "https://arxiv.org/pdf/2607.20116", "location": "PDF p.27, Section 4.7 Limitations", "level": "full paper", "quote": "No explicit localization-confidence estimator", "verified": true},
+        {"claim": "A finite solver output can be wrong, so solver success is not a reliability certificate.", "source_url": "https://arxiv.org/pdf/2607.20116", "location": "PDF p.51, Appendix E, Figure E.1 discussion", "level": "full paper", "quote": "finite-but-wrong pattern", "verified": true},
+        {"claim": "The paper itself proposes combining retrieval margins, correspondence support, geometric statistics and temporal consistency for confidence.", "source_url": "https://arxiv.org/pdf/2607.20116", "location": "PDF p.28, Future Work", "level": "full paper", "quote": "Confidence-aware sequential integration", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; pp.2,5-6; limitations/future work pp.27-28; robustness Appendix E p.51. Remaining appendices not fully read.", "venue_note": "arXiv comments say accepted in Knowledge-Based Systems; publisher record not checked.", "cache": "sources/2607.20116.txt", "reproduced": false}
+    },
+    {
+      "id": "infogeo",
+      "title": "InfoGeo: Information-Theoretic Object-Centric Learning for Cross-View Generalizable UAV Geo-Localization",
+      "authors": ["Hongyang Zhang", "Maonan Wang", "Ziyao Wang", "Hongrui Yin", "Man-On Pun"],
+      "year": 2026, "date": "2026-05-08", "venue": null,
+      "url": "https://arxiv.org/abs/2605.07099", "doi": null, "arxiv_id": "2605.07099",
+      "family": "object-centric invariant retrieval",
+      "task": "Generalizable UAV-to-satellite retrieval under region/weather changes.",
+      "datasets": ["SUES-200", "multi-weather transfer protocols"],
+      "relevance": "A strong semantic invariance mechanism that must not be mistaken for identifiable corner correspondences.",
+      "contribution": "Object-centric structural alignment expressed through an information-bottleneck formulation.",
+      "mechanism": "Latent slots, cross-view structural relations and suppression of view-specific signals.",
+      "limitations": ["Appendix reports degradation at higher altitude from concept scalability/noisy object signals.", "Investigator inference: object slots and structural affinity do not establish dense metric correspondence."],
+      "evaluation": "Cross-view retrieval, ablations and transfer settings; only the inspected SUES-200/high-altitude and weather passages are claimed here.",
+      "evidence": [
+        {"claim": "The mechanism uses sparse latent slots to represent underlying concepts.", "source_url": "https://arxiv.org/pdf/2605.07099", "location": "PDF p.3, method overview", "level": "full paper", "quote": "sparse latent slots", "verified": true},
+        {"claim": "Its own appendix identifies object-centric scalability as an altitude-dependent limitation.", "source_url": "https://arxiv.org/pdf/2605.07099", "location": "PDF p.21, appendix preceding C.4", "level": "full paper", "quote": "intrinsic limitation of object-centric learning", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; method p.3; ablation p.8; appendix p.21.", "cache": "sources/2605.07099.txt", "reproduced": false}
+    },
+    {
+      "id": "skyreg",
+      "title": "Pixel-wise Geo-registration of Drone and Satellite Images",
+      "authors": ["Qingyang Liu", "David G Shatwell", "Parth Parag Kulkarni", "Mubarak Shah"],
+      "year": 2026, "date": "2026-08-28", "venue": null,
+      "url": "https://arxiv.org/abs/2608.28891", "doi": null, "arxiv_id": "2608.28891",
+      "family": "dense geometry-aware georegistration",
+      "task": "Assign per-pixel geodetic coordinates to drone imagery using a georeferenced satellite image.",
+      "datasets": ["SkyReg-Train", "SkyReg-Bench Urban", "SkyReg-Bench Suburban"],
+      "relevance": "Direct prior art against a purportedly new dense UAV-to-satellite georegistration task.",
+      "contribution": "Pixel-level supervision/benchmark and 3D-reconstruction-based warping.",
+      "mechanism": "Lift image pixels into shared reconstructed 3D, compose query/reference mappings, then interpolate reference GPS. Section 3.4 also predicts per-pixel confidence and uses confidence-weighted pointmap regression.",
+      "limitations": ["Accessed abstract title and v1 HTML title differ; v1 says Pixel-wise Geo-registration of Drone Images. Do not silently treat this as a publication-title match.", "Dense geodetic error is aggregated by a median within each image; this does not certify every building corner.", "Source reports robustness to occlusions; this is not proof of correct invisible-surface identification.", "No independent reproduction, dataset access check or uncertainty calibration was performed."],
+      "evaluation": "HTML §5.1 defines per-pixel Haversine error, per-image median geodetic error, median-GPS image localization and threshold recall. §5.2 compares retrieval, sparse/dense matching and geometry-aware approaches; §5.4 examines training subsets.",
+      "evidence": [
+        {"claim": "Existing work already provides dense pixel-wise geodetic supervision and a geometry-aware cross-view method.", "source_url": "https://arxiv.org/html/2608.28891v1", "location": "Introduction and §§3-4; sources/2608.28891.full.txt", "level": "full paper", "quote": "dense per-pixel latitude–longitude supervision", "verified": true},
+        {"claim": "The dense metric summarizes each image using median per-pixel error.", "source_url": "https://arxiv.org/html/2608.28891v1", "location": "Section 5.1 Evaluation Protocol", "level": "full paper", "quote": "we assign the median error as the geodetic error", "verified": true},
+        {"claim": "The authors report planar-homography breakdown in urban scenes with tall structures and strong parallax.", "source_url": "https://arxiv.org/html/2608.28891v1", "location": "Section 5.2 Results and Discussion", "level": "full paper", "quote": "planar homography assumptions often break down", "verified": true},
+        {"claim": "SkyReg already predicts pixelwise confidence and trains with confidence-weighted regression; this is a required baseline for selective anchor quality.", "source_url": "https://arxiv.org/html/2608.28891v1", "location": "Section 3.4, equations 8-9; checked after independent audit feedback", "level": "full paper", "quote": "per-pixel confidence maps", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv abstract metadata verified. HTML version/title discrepancy explicitly retained.", "read": "Full-text HTML introduction, method description, §§5.1-5.4 and conclusion selectively examined.", "access": "PDF exceeded 40 MB response budget and was discarded; v1 HTML successfully retrieved instead.", "cache": "sources/2608.28891.full.txt", "reproduced": false}
+    },
+    {
+      "id": "unifygeo",
+      "title": "A Unified Hierarchical Framework for Fine-grained Cross-view Geo-localization over Large-scale Scenarios",
+      "authors": ["Zhuo Song", "Ye Zhang", "Kunhong Li", "Longguang Wang", "Yulan Guo"],
+      "year": 2025, "date": "2025-05-12", "venue": null,
+      "url": "https://arxiv.org/abs/2505.07622", "doi": null, "arxiv_id": "2505.07622",
+      "family": "joint retrieval and metric localization",
+      "task": "Ground-to-aerial hierarchical localization with candidate reranking.",
+      "datasets": ["VIGOR"],
+      "relevance": "Direct adjacent prior art against treating coarse-to-fine joint learning as new.",
+      "contribution": "Unified multi-granularity features and task-associated reranking loss.",
+      "mechanism": "Shared network jointly trained with retrieval, hierarchical matching and reranking objectives.",
+      "limitations": ["Ground panorama/aerial evidence is not a demonstrated UAV-off-nadir guarantee.", "Improved reference selection does not establish calibrated rejection of absent-map queries."],
+      "evaluation": "Both task-isolated and task-associated settings; VIGOR same-area/cross-area metric localization.",
+      "evidence": [
+        {"claim": "Joint learning and reranking explicitly connect retrieval candidates to metric localization.", "source_url": "https://arxiv.org/pdf/2505.07622", "location": "PDF p.2, contributions; p.6, loss definitions", "level": "full paper", "quote": "re-ranking mechanism", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract, p.2 contributions, pp.5-6 mechanism/loss passages.", "cache": "sources/2505.07622.txt", "reproduced": false}
+    },
+    {
+      "id": "cahomo",
+      "title": "Fine-Grained Cross-View Geo-Localization Using a Correlation-Aware Homography Estimator",
+      "authors": ["Xiaolong Wang", "Runsen Xu", "Zuofan Cui", "Zeyu Wan", "Yu Zhang"],
+      "year": 2023, "date": "2023-08-31", "venue": null,
+      "url": "https://arxiv.org/abs/2308.16906", "doi": null, "arxiv_id": "2308.16906",
+      "family": "ground-to-satellite geometric refinement",
+      "task": "Estimate fine geographic location/orientation from a ground image and satellite crop.",
+      "datasets": ["VIGOR", "KITTI"],
+      "relevance": "Shows that robust learned homography refinement is already established adjacent prior art.",
+      "contribution": "Differentiable spherical transformation plus correlation-aware homography alignment.",
+      "mechanism": "Transform ground perspective to a bird's-eye representation, then estimate an image-plane homography.",
+      "limitations": ["Uses a geometric view transformation; an arbitrary nonplanar off-nadir UAV scene does not inherit its assumptions.", "Its cited metric accuracy is task/dataset-specific, not evidence that every facade point is observable from an orthophoto."],
+      "evaluation": "VIGOR same-area/cross-area and KITTI metric localization; this pilot does not reproduce reported gains or speed.",
+      "evidence": [
+        {"claim": "The method uses a spherical transform to support homography-based cross-view alignment.", "source_url": "https://arxiv.org/pdf/2308.16906", "location": "PDF pp.2-3, Figure 1 and Section 3.1", "level": "full paper", "quote": "Spherical Transform", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; Figure 1 and §3.1; front-view projection appendix p.14.", "cache": "sources/2308.16906.txt", "reproduced": false}
+    },
+    {
+      "id": "roma",
+      "title": "RoMa: Robust Dense Feature Matching",
+      "authors": ["Johan Edstedt", "Qiyu Sun", "Georg Bökman", "Mårten Wadenbäck", "Michael Felsberg"],
+      "year": 2023, "date": "2023-05-24", "venue": null,
+      "url": "https://arxiv.org/abs/2305.15404", "doi": null, "arxiv_id": "2305.15404",
+      "family": "dense correspondence",
+      "task": "Estimate dense image-to-image matches for geometric tasks.",
+      "datasets": ["MegaDepth", "WxBS"],
+      "relevance": "Already addresses robust coarse semantic features, fine precision and multimodal matching ambiguity.",
+      "contribution": "Foundation-model coarse features, specialized fine features, anchor-probability decoder and tailored losses.",
+      "mechanism": "Model multimodal coarse correspondences by regression-by-classification, then locally refine with robust regression.",
+      "limitations": ["General correspondence benchmark success is not a georeferenced UAV pose guarantee.", "Confidence/anchor probabilities are not automatically calibrated probabilities of geographic correctness."],
+      "evaluation": "Matching and geometry evaluations plus architecture/loss ablations; examined Fig.2 and §3 rather than rerunning benchmarks.",
+      "evidence": [
+        {"claim": "Coarse global matching must handle multiple plausible correspondence modes, while local refinement uses a different loss.", "source_url": "https://arxiv.org/pdf/2305.15404", "location": "PDF p.2, Figure 2 caption", "level": "full paper", "quote": "global matching stage needs to model multimodal distributions", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked; date is preprint year, not assumed conference year.", "read": "Abstract, Fig.2 and selected pp.2,4.", "cache": "sources/2305.15404.txt", "reproduced": false}
+    },
+    {
+      "id": "mast3r",
+      "title": "Grounding Image Matching in 3D with MASt3R",
+      "authors": ["Vincent Leroy", "Yohann Cabon", "Jérôme Revaud"],
+      "year": 2024, "date": "2024-06-14", "venue": null,
+      "url": "https://arxiv.org/abs/2406.09756", "doi": null, "arxiv_id": "2406.09756",
+      "family": "3D-grounded image matching",
+      "task": "Robust and precise image correspondences using pointmap-based geometry.",
+      "datasets": ["Map-free localization", "matching benchmarks"],
+      "relevance": "Closest adjacent prior art to fixing imprecise semantic correspondences with 3D grounding.",
+      "contribution": "Dense local descriptor head and matching loss on a DUSt3R-based representation; fast reciprocal matching.",
+      "mechanism": "Couple pointmap regression and local features; search reciprocal matches efficiently.",
+      "limitations": ["Pointmaps are not a geodetic datum by themselves.", "Repeated patterns and orthographic/perspective domain shifts remain distinct deployment tests."],
+      "evaluation": "Multiple matching/localization tasks, including Map-free localization; no UAV-specific accuracy inferred here.",
+      "evidence": [
+        {"claim": "Local descriptor matching is ill-posed for repetitive or low-texture regions, motivating geometric context.", "source_url": "https://arxiv.org/pdf/2406.09756", "location": "PDF p.2, motivation", "level": "full paper", "quote": "repetitive patterns or low-texture areas", "verified": true},
+        {"claim": "Reciprocal matching is an explicit part of the method, not a new pilot proposal.", "source_url": "https://arxiv.org/pdf/2406.09756", "location": "PDF p.2, contributions", "level": "full paper", "quote": "reciprocal matches", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract and selected pp.2-3.", "cache": "sources/2406.09756.txt", "reproduced": false}
+    },
+    {
+      "id": "vggt",
+      "title": "VGGT: Visual Geometry Grounded Transformer",
+      "authors": ["Jianyuan Wang", "Minghao Chen", "Nikita Karaev", "Andrea Vedaldi", "Christian Rupprecht", "David Novotny"],
+      "year": 2025, "date": "2025-03-14", "venue": null,
+      "url": "https://arxiv.org/abs/2503.11651", "doi": null, "arxiv_id": "2503.11651",
+      "family": "feed-forward multi-view geometry",
+      "task": "Predict camera parameters, depths, pointmaps and tracks.",
+      "datasets": ["RealEstate10K", "DTU", "ETH3D", "additional multi-view benchmarks not exhaustively audited"],
+      "relevance": "Useful geometric backbone, not an external geographic scale/coordinate anchor.",
+      "contribution": "Joint feed-forward scene geometry from one or multiple images.",
+      "mechanism": "Transformer inference of mutually related 3D outputs without requiring task-specific optimization at inference.",
+      "limitations": ["The paper notes extreme-rotation degradation and unsupported panoramic/fisheye inputs.", "Investigator inference: predicted reconstruction coordinates need georeferenced observations for metric geographic alignment.", "This pilot did not enumerate or verify every benchmark in the full experimental suite."],
+      "evaluation": "Camera estimation, dense reconstruction and tracking; no unqualified UAV/satellite precision claim.",
+      "evidence": [
+        {"claim": "The authors explicitly report rotation/input-model limitations despite broad reconstruction capability.", "source_url": "https://arxiv.org/pdf/2503.11651", "location": "PDF p.10, Limitations", "level": "full paper", "quote": "extreme input", "verified": true},
+        {"claim": "The model predicts multiple types of scene geometry.", "source_url": "https://arxiv.org/abs/2503.11651", "location": "Abstract", "level": "abstract", "quote": "camera parameters, point maps, depth maps", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract and p.10 limitations; not a full architecture audit.", "venue_note": "arXiv comments report CVPR 2025; proceedings not independently checked.", "cache": "sources/2503.11651.txt", "reproduced": false}
+    },
+    {
+      "id": "hfnet",
+      "title": "From Coarse to Fine: Robust Hierarchical Localization at Large Scale",
+      "authors": ["Paul-Edouard Sarlin", "Cesar Cadena", "Roland Siegwart", "Marcin Dymczyk"],
+      "year": 2018, "date": "2018-12-09", "venue": null,
+      "url": "https://arxiv.org/abs/1812.03506", "doi": null, "arxiv_id": "1812.03506",
+      "family": "hierarchical 2D-to-3D visual localization",
+      "task": "Retrieve candidate places, match local features to a 3D map and estimate camera pose.",
+      "datasets": ["Aachen Day-Night", "RobotCar Seasons", "CMU Seasons", "HPatches"],
+      "relevance": "Long-established prior art for global-local shared features and coarse-to-fine pose estimation.",
+      "contribution": "HF-Net's joint global/local prediction through heterogeneous multitask distillation.",
+      "mechanism": "Global retrieval narrows the map; retrieved frames are clustered by shared 3D covisibility into places, and local 2D-3D matches support PnP-RANSAC.",
+      "limitations": ["Requires a mapped localization setting; not a satellite-only solution.", "An early valid-pose stopping rule is not a demonstrated calibrated abstention policy."],
+      "evaluation": "Aachen Day-Night, RobotCar Seasons and CMU Seasons pose recall; HPatches/local-matching diagnostics. Dataset-level scores were not extracted in this bounded pass.",
+      "evidence": [
+        {"claim": "Global and local outputs in one distilled network predate recent UAV approaches.", "source_url": "https://arxiv.org/pdf/1812.03506", "location": "PDF p.2, contributions; p.3, Figure 2", "level": "full paper", "quote": "multitask distillation", "verified": true},
+        {"claim": "Geometric pose checking uses PnP within RANSAC.", "source_url": "https://arxiv.org/pdf/1812.03506", "location": "PDF p.3, hierarchical localization description", "level": "full paper", "quote": "within a RANSAC scheme", "verified": true},
+        {"claim": "Candidate frames are already grouped by 3D covisibility, a stronger overlap than generic coarse-to-fine hierarchy.", "source_url": "https://arxiv.org/pdf/1812.03506", "location": "PDF p.3, Covisibility clustering; checked after independent audit feedback", "level": "full paper", "quote": "Covisibility clustering", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; pp.2-3 contributions/pipeline.", "venue_note": "arXiv comments state CVPR 2019 camera-ready; proceedings not checked.", "cache": "sources/1812.03506.txt", "reproduced": false}
+    },
+    {
+      "id": "lightglue",
+      "title": "LightGlue: Local Feature Matching at Light Speed",
+      "authors": ["Philipp Lindenberger", "Paul-Edouard Sarlin", "Marc Pollefeys"],
+      "year": 2023, "date": "2023-06-23", "venue": null,
+      "url": "https://arxiv.org/abs/2306.13643", "doi": null, "arxiv_id": "2306.13643",
+      "family": "adaptive sparse correspondence",
+      "task": "Efficient matching of local feature sets.",
+      "datasets": ["MegaDepth"],
+      "relevance": "A strong sparse-matching baseline; adaptive compute and confidence should not be renamed as new UAV reliability contributions.",
+      "contribution": "Adaptive matching computation through confidence-guided stopping and pruning.",
+      "mechanism": "Attention-based local matching with difficulty-adaptive computation.",
+      "limitations": ["Pairwise match confidence is not calibrated geographic pose confidence.", "MegaDepth fine-tuning evidence is not evidence of arbitrary orthographic off-nadir generalization."],
+      "evaluation": "Matching accuracy, efficiency and adaptive behavior; training protocol examined at §4/p.5.",
+      "evidence": [
+        {"claim": "Inference cost adapts to pair difficulty rather than being fixed.", "source_url": "https://arxiv.org/abs/2306.13643", "location": "Abstract", "level": "abstract", "quote": "adaptive to the difficulty of the problem", "verified": true},
+        {"claim": "The training description includes MegaDepth fine-tuning.", "source_url": "https://arxiv.org/pdf/2306.13643", "location": "PDF p.5, training protocol", "level": "full paper", "quote": "fine-tuned with the MegaDepth", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; adaptive diagram p.3; training p.5. PDF diagram text is poorly ordered, so no numerical diagram claim is extracted.", "cache": "sources/2306.13643.txt", "reproduced": false}
+    },
+    {
+      "id": "vigor",
+      "title": "VIGOR: Cross-View Image Geo-localization beyond One-to-one Retrieval",
+      "authors": ["Sijie Zhu", "Taojiannan Yang", "Chen Chen"],
+      "year": 2020, "date": "2020-11-24", "venue": null,
+      "url": "https://arxiv.org/abs/2011.12172", "doi": null, "arxiv_id": "2011.12172",
+      "family": "non-centered cross-view retrieval and offset estimation",
+      "task": "Ground-image location within a pre-existing, overlapping aerial gallery.",
+      "datasets": ["VIGOR"],
+      "relevance": "Established prior art for multiple references covering a query, non-centered targets and metric evaluation.",
+      "contribution": "Breaks perfect one-to-one alignment; coarse retrieval plus within-image geographic offset calibration.",
+      "mechanism": "Positive/semi-positive geographic labeling and joint retrieval/offset prediction.",
+      "limitations": ["Terrestrial query geometry differs from UAV off-nadir geometry.", "Within-image calibration is not a universal 6-DoF estimator or open-set detector."],
+      "evaluation": "Retrieval and raw-GPS meter-level localization; same/cross-area settings.",
+      "evidence": [
+        {"claim": "The framework already predicts an offset within the retrieved reference image.", "source_url": "https://arxiv.org/pdf/2011.12172", "location": "PDF p.2, contribution paragraph", "level": "full paper", "quote": "within-image calibration", "verified": true},
+        {"claim": "The dataset distinguishes positive and semi-positive references covering a query.", "source_url": "https://arxiv.org/pdf/2011.12172", "location": "PDF p.2, dataset construction discussion", "level": "full paper", "quote": "semi-positive samples", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract and p.2 task/protocol.", "venue_note": "arXiv comments report CVPR 2021; proceedings not checked.", "cache": "sources/2011.12172.txt", "reproduced": false}
+    },
+    {
+      "id": "ricloc",
+      "title": "Reference-Induced Consensus for Selective Posed-Reference Visual Localization",
+      "authors": ["Wonseok Kang", "Jaehyun Kim", "Jeongmin Lee", "Tae-Wan Kim"],
+      "year": 2026, "date": "2026-07-06", "venue": null,
+      "url": "https://arxiv.org/abs/2607.04722", "doi": null, "arxiv_id": "2607.04722",
+      "family": "selective posed-reference localization",
+      "task": "Estimate and selectively reject a query pose using calibrated posed reference images.",
+      "datasets": ["7-Scenes", "Cambridge Landmarks", "12-Scenes", "NAVER Gangnam Station"],
+      "relevance": "Closest prior art for geometry-derived confidence, multiple reference hypotheses and abstention.",
+      "contribution": "Reference-induced pose hypotheses, robust consensus and complementary dispersion/covariance failure-ranking scores.",
+      "mechanism": "Frozen VGGT predicts local geometry; known reference poses lift hypotheses to a common map frame.",
+      "limitations": ["Requires calibrated posed references, unlike a bare satellite gallery.", "Hypotheses share a VGGT pass yet approximate covariance aggregation treats them as independent.", "Scores rank failures but are not calibrated posteriors; low-texture covariance eligibility limits coverage.", "Geometry-aware reference selection is already named as future work."],
+      "evaluation": "Failure-detection AUROC and risk-coverage, with covariance-eligible subsets distinguished from all-query coverage. Page 9 explicitly reports full-set behavior for ineligible queries separately; all-query evaluation is therefore not a new distinction.",
+      "evidence": [
+        {"claim": "Selective localization and risk-coverage are explicit contributions, not unstudied additions.", "source_url": "https://arxiv.org/pdf/2607.04722", "location": "PDF pp.2,9-10, task and evaluation", "level": "full paper", "quote": "Localization also needs rejection", "verified": true},
+        {"claim": "Shared hypotheses violate the independence approximation used by its covariance construction.", "source_url": "https://arxiv.org/pdf/2607.04722", "location": "PDF p.15, Limitations; p.20, Appendix G calibration discussion", "level": "full paper", "quote": "aggregated as if independent", "verified": true},
+        {"claim": "The authors explicitly distinguish their ranking score from calibrated uncertainty.", "source_url": "https://arxiv.org/pdf/2607.04722", "location": "PDF p.20, covariance discussion", "level": "full paper", "quote": "ranking score rather than a posterior", "verified": true},
+        {"claim": "RIC-Loc already reports ineligible-query full-set behavior separately.", "source_url": "https://arxiv.org/pdf/2607.04722", "location": "PDF p.9, Section 4.1; checked after independent audit feedback", "level": "full paper", "quote": "ineligible queries treated as least reliable or as failures", "verified": true},
+        {"claim": "Its covariance already includes common-mode scale and residual-consistency inflation; merely adding these terms cannot be a new contribution.", "source_url": "https://arxiv.org/pdf/2607.04722", "location": "PDF p.8, equations 18-20; checked after independent audit feedback", "level": "full paper", "quote": "common-mode scale term", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; pp.2,4,8-10; limitations pp.14-15; appendix p.20.", "cache": "sources/2607.04722.txt", "reproduced": false}
+    },
+    {
+      "id": "ortholoc",
+      "title": "OrthoLoC: UAV 6-DoF Localization and Calibration Using Orthographic Geodata",
+      "authors": ["Oussema Dhaouadi", "Riccardo Marin", "Johannes Meier", "Jacques Kaiser", "Daniel Cremers"],
+      "year": 2025, "date": "2025-09-22", "venue": null,
+      "url": "https://arxiv.org/abs/2509.18350", "doi": null, "arxiv_id": "2509.18350",
+      "family": "orthophoto/DSM metric UAV pose",
+      "task": "UAV 6-DoF localization and camera calibration from orthographic geodata.",
+      "datasets": ["OrthoLoC"],
+      "relevance": "Direct closest prior art for the gap between pairwise matching and metric UAV pose under orthographic/perspective shift.",
+      "contribution": "Paired UAV/geodata benchmark and Adaptive Homography Preconditioning (AdHoP).",
+      "mechanism": "Lift orthophoto matches through DSM elevations for PnP; quasi-planar homography preconditioning improves initial matching.",
+      "limitations": ["The paired protocol decouples retrieval from matching; not complete large-area search.", "AdHoP fails with completely corrupted initial matches.", "Authors identify covisibility, raster scalability and translation/focal-length ambiguity as limitations.", "Same-domain reference rasters and query truth derive from the same reconstruction, so an external-map transfer is needed before claiming robustness to independent map errors.", "Released geometric elements are transformed to a privacy-preserving local frame; local metric accuracy must not be relabeled global geodetic accuracy without a verified coordinate transform."],
+      "evaluation": "Localization/calibration with domain, resolution and covisibility analyses; source requires at least 20% covisibility, an author-stated condition rather than a universal threshold.",
+      "evidence": [
+        {"claim": "AdHoP assumes quasi-planar surfaces for homography-based preconditioning.", "source_url": "https://arxiv.org/pdf/2509.18350", "location": "PDF p.2, method overview", "level": "full paper", "quote": "assuming quasi-planar surfaces", "verified": true},
+        {"claim": "The framework needs region detection to scale to large rasters and cannot repair completely corrupted matches.", "source_url": "https://arxiv.org/pdf/2509.18350", "location": "PDF p.10, Limitations and future work", "level": "full paper", "quote": "fails when matches are completely corrupted", "verified": true},
+        {"claim": "Orthophoto correspondences are anchored in 3D using elevation data.", "source_url": "https://arxiv.org/pdf/2509.18350", "location": "PDF p.4, dataset/geodata description; p.7, pose estimation", "level": "full paper", "quote": "DSM elevations", "verified": true},
+        {"claim": "The dataset includes reconstruction-derived pointmaps/meshes and rasters, external-geodata augmentation and privacy-preserving local coordinates.", "source_url": "https://arxiv.org/pdf/2509.18350", "location": "PDF pp.4-5, Sections 3.1-3.3; checked after independent audit feedback", "level": "full paper", "quote": "coordinate system to preserve privacy", "verified": true}
+      ],
+      "verification": {"metadata": "Fresh arXiv title/authors/date checked.", "read": "Abstract; pp.2-4; selected pose details; p.10 limitations.", "venue_note": "arXiv comments report NeurIPS 2025; proceedings not checked.", "cache": "sources/2509.18350.txt", "reproduced": false}
+    },
+    {
+      "id": "paul",
+      "title": "PAUL: Uncertainty-Guided Partition and Augmentation for Robust Cross-View Geo-Localization under Noisy Correspondence",
+      "authors": ["Zheng Li", "Xueyi Zhang", "Yanming Guo", "Yuxiang Xie", "Ding Zhaoyun", "Siqi Cai", "Haizhou Li", "Mingrui Lao"],
+      "year": 2025, "date": "2025-08-27", "venue": null,
+      "url": "https://arxiv.org/abs/2508.20066", "doi": null, "arxiv_id": "2508.20066",
+      "family": "uncertainty-aware noisy-pair retrieval training",
+      "task": "Cross-view geolocalization with spatially misaligned training correspondences.",
+      "datasets": ["GTA-UAV", "UAV-VisLoc-derived dataset"],
+      "relevance": "Independently discovered prior art against a generic uncertainty-guided cross-view matching claim.",
+      "contribution": "Uncertainty-guided data partitioning, co-augmentation and evidential co-training for systematic GPS-pair misalignment.",
+      "mechanism": "Use uncertainty and loss discrepancy to recover trusted local regions from corrupted training pairs.",
+      "limitations": ["Training-label uncertainty and test-time geographic pose risk are different targets.", "Exact derived-dataset construction and noise-ratio table were not fully audited in this selective read.", "No claim is made that it provides calibrated open-set pose abstention."],
+      "evaluation": "Comparisons under multiple noisy-correspondence levels; same/cross-area protocols mentioned in full text.",
+      "evidence": [
+        {"claim": "PAUL explicitly handles systematic spatial misalignment rather than only completely mismatched image pairs.", "source_url": "https://arxiv.org/pdf/2508.20066", "location": "PDF p.2, task definition", "level": "full paper", "quote": "systematic alignment bias rather than", "verified": true},
+        {"claim": "Uncertainty-guided partitioning and augmentation are already proposed for cross-view retrieval training.", "source_url": "https://arxiv.org/abs/2508.20066", "location": "Abstract", "level": "abstract", "quote": "uncertainty-aware co-augmentation and evidential co-training", "verified": true}
+      ],
+      "verification": {"metadata": "Discovered in new arXiv search, then fresh abstract/PDF fetched; all listed authors checked.", "read": "Abstract; p.2 formulation; p.5 selected evaluation text.", "discovery": "sources/discovery-1.html and sources/discovery-3.html", "cache": "sources/2508.20066.txt", "reproduced": false}
+    }
+  ],
+  "tensions": [
+    {
+      "id": "T01", "title": "Retrieval success is not a metric-pose certificate",
+      "observation": "Building/region recall, distance-sensitive retrieval and true geographic pose accuracy answer different questions. This is a metric-task mismatch, not a contradiction between leaderboard numbers.",
+      "evidence": ["university1652: PDF p.4 Recall@K/AP and building identity", "denseuav: PDF p.2 SDM motivation", "rim: PDF p.51 solver output versus pose correctness"],
+      "paper_ids": ["university1652", "denseuav", "rim", "geoclip"],
+      "explanations": ["Correct semantic identity may permit many camera locations or correspondences.", "Gallery discretization and scene geometry introduce error not measured by identity recall."],
+      "unresolved": "How often correct retrieval masks metric failure on the user's actual DenseUAV subset is unmeasured.",
+      "directions": ["O1", "O3"]
+    },
+    {
+      "id": "T02", "title": "Positive overlap is not unique point correspondence",
+      "observation": "VIGOR and Game4Loc explicitly allow multiple/partial positives, while dense registration requires a specific spatial mapping. Therefore binary same-region labels cannot resolve every local ambiguity.",
+      "evidence": ["vigor: PDF p.2 semi-positive samples and offsets", "game4loc: PDF pp.2,4 intersection-ratio supervision", "skyreg: HTML §5.1 per-pixel geodetic evaluation"],
+      "paper_ids": ["vigor", "game4loc", "skyreg"],
+      "explanations": ["Several tiles can be correct retrieval answers.", "Only part of an oblique view may have a visible counterpart in the orthophoto."],
+      "unresolved": "Whether explicitly preserving multiple geographic hypotheses improves accepted-pose risk beyond calibrated top-1 baselines.",
+      "directions": ["O1", "O3"]
+    },
+    {
+      "id": "T03", "title": "Off-nadir identity can survive when metric observability fails",
+      "observation": "OffNadirLoc addresses extreme-view retrieval, whereas OrthoLoC and SkyReg examine different geometric outputs. Strong off-nadir recall does not establish observable facade-to-map correspondences.",
+      "evidence": ["offnadirloc: PDF pp.3,6 rendering and retrieval protocol", "ortholoc: PDF p.10 covisibility and corrupted-match limitations", "skyreg: HTML §5.2 parallax discussion"],
+      "paper_ids": ["offnadirloc", "ortholoc", "skyreg"],
+      "explanations": ["A facade can identify a building while remaining absent from the overhead view.", "Occlusion, relief and perspective produce geometric uncertainty even with correct semantic identity."],
+      "unresolved": "No matched cross-paper experiment in this pilot separates semantic recognition from surface observability.",
+      "directions": ["O2"]
+    },
+    {
+      "id": "T04", "title": "Invariance useful for retrieval can remove local precision",
+      "observation": "InfoGeo compresses view-specific clutter into object-centric structure; RoMa explicitly adds fine features to robust coarse features and treats coarse ambiguity as multimodal.",
+      "evidence": ["infogeo: PDF p.3 slots and p.21 altitude limitation", "roma: PDF p.2 Figure 2 coarse multimodality/fine refinement", "mast3r: PDF p.2 repetitive-pattern motivation"],
+      "paper_ids": ["infogeo", "roma", "mast3r"],
+      "explanations": ["View-invariant semantic similarity and spatial equivariance are not identical objectives.", "Repeated structures can remain indistinguishable after strong semantic pooling."],
+      "unresolved": "This is a mechanistic hypothesis, not proof that InfoGeo features are intrinsically unsuitable for matching.",
+      "directions": ["O2", "O3"]
+    },
+    {
+      "id": "T05", "title": "Useful homographies still have scene-dependent validity",
+      "observation": "Correlation-aware alignment and AdHoP support homographies, while SkyReg reports breakdown under tall-structure parallax. These settings are compatible, not mutually contradictory.",
+      "evidence": ["cahomo: PDF §3.1 spherical transform", "ortholoc: PDF p.2 quasi-planar preconditioning; p.10 failure with corrupted matches", "skyreg: HTML §5.2 urban parallax"],
+      "paper_ids": ["cahomo", "ortholoc", "skyreg"],
+      "explanations": ["Planar or locally quasi-planar surfaces can be well modeled; a single plane cannot represent every elevated/occluded surface.", "Improved initialization and a correct scene model solve different failure modes."],
+      "unresolved": "Whether a cheap geometry-sensitivity diagnostic detects model violation better than inlier residuals.",
+      "directions": ["O2"]
+    },
+    {
+      "id": "T06", "title": "Predicted 3D structure still needs geographic anchoring",
+      "observation": "VGGT/MASt3R supply geometry, but RIC-Loc uses known reference poses and OrthoLoC uses DSM-backed map coordinates to recover externally anchored pose.",
+      "evidence": ["vggt: abstract predicted geometry", "ricloc: PDF p.4 posed-reference map assumptions", "ortholoc: PDF pp.4,7 DSM lifting"],
+      "paper_ids": ["vggt", "mast3r", "ricloc", "ortholoc"],
+      "explanations": ["Scene-relative coordinate predictions are not a geographic datum.", "Scale, elevation and camera calibration can remain coupled."],
+      "unresolved": "How datum/DSM errors interact with matching uncertainty on the intended real deployment.",
+      "directions": ["O2"]
+    },
+    {
+      "id": "T07", "title": "Closed-gallery protocols omit the need to say no",
+      "observation": "RIM explicitly excludes unmapped construction cases and lacks calibrated rejection; overlapping-reference retrieval benchmarks generally evaluate localization when map support exists.",
+      "evidence": ["rim: PDF p.27 temporal drift and no confidence estimator; p.28 proposed confidence fusion", "game4loc: paired partial-overlap construction", "ricloc: risk-coverage methodology"],
+      "paper_ids": ["rim", "game4loc", "ricloc"],
+      "explanations": ["No valid reference is a different state from a difficult valid reference.", "Solver-compatible correspondences may fit the wrong building or obsolete map."],
+      "unresolved": "Empirical risk control under natural map absence/temporal change; removing true gallery entries is only a stress test, not realistic temporal-change validation.",
+      "directions": ["O1"]
+    },
+    {
+      "id": "T08", "title": "Failure ranking is not calibrated risk under shift",
+      "observation": "RIC-Loc is explicit that its covariance is a failure-ranking approximation; PAUL's uncertainty concerns training pairs; LightGlue's adaptivity concerns pairwise matching. None should be silently interpreted as a guaranteed UAV geographic error bound.",
+      "evidence": ["ricloc: PDF pp.15,20 approximate covariance and shared hypotheses", "paul: PDF p.2 noisy-pair formulation", "lightglue: abstract adaptivity and PDF p.5 training domain"],
+      "paper_ids": ["ricloc", "paul", "lightglue", "rim"],
+      "explanations": ["Different uncertainty targets and calibration populations.", "Geographic or acquisition shift invalidates naive exchangeability assumptions."],
+      "unresolved": "Whether geographic grouping improves empirical transfer without collapsing coverage; no distribution-free claim under arbitrary shift is justified.",
+      "directions": ["O1"]
+    },
+    {
+      "id": "T09", "title": "More candidates can repeat the same wrong evidence",
+      "observation": "RIC-Loc admits shared-pass dependence; RoMa models multimodal correspondence; repeated structures motivate MASt3R. Thus candidate count alone need not represent independent pose evidence.",
+      "evidence": ["ricloc: PDF p.15 independence approximation and reference-selection future work", "roma: PDF p.2 multimodal coarse matching", "mast3r: PDF p.2 repetitive patterns"],
+      "paper_ids": ["ricloc", "roma", "mast3r"],
+      "explanations": ["Nearby overlapping tiles may share the same wrong structure.", "Reference descriptors and predicted geometry may inherit common backbone errors."],
+      "unresolved": "A footprint-based dependence proxy may be too weak or redundant with existing dispersion/residual scores.",
+      "directions": ["O1", "O3"]
+    },
+    {
+      "id": "T10", "title": "Coarse-to-fine integration is established; useful novelty must be narrower",
+      "observation": "HF-Net, UnifyGeo and RIM already connect global retrieval with local/geometric localization, with progressively different assumptions and resource trade-offs.",
+      "evidence": ["hfnet: PDF pp.2-3 multitask distillation and PnP", "unifygeo: PDF pp.2,6 shared objectives and reranking", "rim: PDF p.6 shared-token distillation; p.28 future work"],
+      "paper_ids": ["hfnet", "unifygeo", "rim"],
+      "explanations": ["Engineering combinations can be useful without being a new scientific contribution.", "Controlled failure analysis or evidence-selection behavior is narrower than merely adding a matcher to retrieval."],
+      "unresolved": "Whether any remaining difference survives classical active localization and selective-prediction prior art searches.",
+      "directions": ["O3"]
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "O1",
+      "title": "Geographic dependence-aware abstention for retrieved UAV pose hypotheses",
+      "question": "Does treating overlapping map candidates as correlated evidence reduce confidently wrong geographic poses at useful coverage, beyond existing confidence-fusion and pose-dispersion baselines?",
+      "hypothesis": "Candidate footprint concentration and leave-one-footprint-cluster-out pose instability identify wrong-building consensus that retrieval margins and within-fit residuals miss.",
+      "contribution": "Potentially a narrowly defined evidence-dependence diagnostic plus geographically held-out selective-risk evaluation, not the invention of confidence fusion, consensus or abstention.",
+      "significance": "A finite but incorrect pose is operationally different from retrieval failure; a cheap reject decision could prevent downstream map/trajectory corruption.",
+      "status": "novelty audit", "novelty": "uncertain",
+      "prior_art": [
+        {"paper_id": "ricloc", "overlap": "Multiple hypotheses, robust consensus, covariance/dispersion scores, residual-consistency inflation, common-mode scale terms and full-set ineligible-query behavior already exist; dependence is explicitly acknowledged.", "difference": "Only map-footprint-specific residual dependence of UAV satellite candidates remains a possible difference. All-query evaluation, generic covariance inflation and common-mode scale correction are not differences; novelty remains unresolved."},
+        {"paper_id": "rim", "overlap": "Already proposes calibrated fusion of retrieval, correspondence, PnP and temporal signals.", "difference": "Only a demonstrable gain from dependence-aware grouping beyond that full feature set could remain; generic confidence fusion is rejected."},
+        {"paper_id": "paul", "overlap": "Uncertainty-aware handling of imperfect cross-view correspondences.", "difference": "PAUL handles noisy training supervision; proposed target is test-time metric failure and abstention."},
+        {"paper_id": "roma", "overlap": "Already models multimodal matching ambiguity.", "difference": "Geographic pose-risk assessment across retrieved references is distinct from pairwise coarse matching, but requires empirical verification."}
+      ],
+      "review": "awaiting independent audit",
+      "experiment": {
+        "hypothesis": "At matched accepted-query coverage, dependence-aware scores reduce large geographic errors relative to a calibrated baseline using retrieval margin, inlier count, spatial support, residual and pose dispersion.",
+        "datasets": ["Primary: small geographically separated OrthoLoC subset with geodata and camera truth, after access/license/annotation preflight.", "Transfer: UAV-VisLoc for horizontal location error only; do not pretend its metadata supplies full 6-DoF truth.", "Use existing naturally unsupported cases if available; deliberate true-tile removal is a separately labeled stress test only."],
+        "baselines": ["Retrieval-margin ranking", "Inlier count, spatial support and robust residual ranking", "Pose-hypothesis dispersion", "Logistic confidence fusion of all above", "RIC-Loc dispersion/covariance including common-mode scale and residual-consistency inflation, with its full-set handling, on compatible posed-reference data; otherwise explicitly not comparable", "Random/oracle ranking diagnostic bounds"],
+        "metrics": ["All-query risk-coverage/AURC", "Coverage at predeclared empirical 10% failure target", "Failure AUROC", "Accepted-query median and p95 horizontal error", "No-match/solver-failure fraction", "Separate absent-map and supported-map results"],
+        "config": {"days": 2, "seed": 17, "query_cap": 400, "top_k": 5, "max_side_pixels": 640, "geographic_split": "Group by non-overlapping map regions/flight sequences; no neighboring frame may cross calibration/test. Fit score parameters on one subset, choose threshold on a second, freeze before held-out geography.", "proposed_failure_thresholds_m": [5, 25], "dependence_proxy": "Group overlapping candidate footprints; compare distinct-support count and leave-one-cluster-out pose displacement. Ablate each proxy separately.", "fallback": "Use cached approved matcher outputs if present. Otherwise CPU ORB+RANSAC/PnP provides only a mechanism-screening baseline, not a RoMa/RIM replication. If sufficient independent regions or truth are unavailable, record blocked rather than inventing examples."},
+        "compute": "1-2 researcher days; CPU postprocessing of cached outputs or bounded classical matches, <=8 CPU-hours, <=16 GB RAM. No GPU execution authorized. Any learned-feature extraction requires a separately approved budget.",
+        "success": "Predeclared screening rule: >=10% relative AURC reduction versus full confidence fusion and a nonnegative clustered-bootstrap improvement interval on held-out geography, while retaining >=50% supported-query coverage. These are proposed decision thresholds, not results.",
+        "falsification": "Stop if the proxy adds no held-out ranking value, improvement vanishes at matched coverage, only impossible-map removal drives the effect, or coverage is below 50%. Calibration under arbitrary distribution shift is not claimed.",
+        "authorization": "not authorized", "status": "planned", "results": null
+      },
+      "gaps": ["Need broader classical correlated-estimator, selective-localization and group-calibration prior-art audit.", "Footprint overlap is only a proxy for error dependence.", "Natural map-change cases and all-query failures may be unavailable.", "No implementation or data-license preflight has been performed."],
+      "tension_ids": ["T01", "T02", "T07", "T08", "T09"],
+      "priority": {"rank": 1, "decision": "Best first diagnostic to audit, not a validated new method.", "basis": "Directly evidenced reliability gap; cheapest computation; high novelty risk from RIC-Loc and RIM."},
+      "venue": {"candidate": "CVPR/ECCV or robotics-localization venue only after a real technical distinction and multi-geography evidence", "readiness": "not publication-ready", "minimum_evidence": "Actual correlated-evidence failure mechanism, fair strong confidence baselines, all-query coverage, two independent real geographic transfers and reproducible failure cases.", "acceptance_probability": null}
+    },
+    {
+      "id": "O2",
+      "title": "Geometry-sensitivity gating for off-nadir pixel-to-map anchors",
+      "question": "Can sensitivity to plausible elevation and camera perturbations identify locally untrustworthy map anchors that have small image reprojection residuals?",
+      "hypothesis": "At large off-nadir angles, DSM/height sensitivity and homography-versus-3D disagreement predict tail geodetic error better than residual/inlier confidence alone.",
+      "contribution": "Potentially an observability-oriented diagnostic for which anchors should be withheld, evaluated on existing georegistration data. Not a new dense-registration task, generic 3D matcher or new benchmark.",
+      "significance": "A correct image median can hide wrong individual structure anchors; downstream metric use needs localized evidence quality.",
+      "status": "novelty audit", "novelty": "uncertain",
+      "prior_art": [
+        {"paper_id": "skyreg", "overlap": "Already supplies dense georegistration, nonplanar reconstruction, pixelwise evaluation and predicted per-pixel confidence trained by confidence-weighted regression.", "difference": "Only additional predictive value of map/height sensitivity beyond existing point-confidence and analytic uncertainty propagation could remain; dense GPS or pixel-confidence prediction are not differences."},
+        {"paper_id": "ortholoc", "overlap": "DSM-backed pose, covisibility analysis and AdHoP directly address perspective/orthographic geometry.", "difference": "Would need to show sensitivity predicts unreliability beyond AdHoP, residuals and known covisibility, rather than repackage its robustness analyses."},
+        {"paper_id": "cahomo", "overlap": "Geometry-aware image alignment with a learned homography estimator.", "difference": "Targets the validity of anchors under nonplanar scene/model uncertainty rather than improved homography estimation."},
+        {"paper_id": "mast3r", "overlap": "3D-grounded local matching with robustness/precision objectives.", "difference": "Requires geographic anchoring and a selective geodetic-error question, not simply attaching a 3D matcher."}
+      ],
+      "review": "awaiting independent audit",
+      "experiment": {
+        "hypothesis": "A perturbation-derived map sensitivity score reduces accepted-anchor p95 geodetic error beyond reprojection residual and match confidence at the same anchor coverage.",
+        "datasets": ["OrthoLoC DSM/DOP, pointmap/mesh and camera-truth subset; distinguish reconstruction-derived same-domain references from external cross-domain DOP+DSM.", "SkyReg-Bench public subset only if depth/camera/geodetic annotations and access terms are actually available; otherwise mark pixelwise transfer blocked."],
+        "baselines": ["Homography with RANSAC", "DSM-lifted PnP", "AdHoP if public implementation is usable", "Match confidence plus reprojection residual", "Analytic ray-surface height sensitivity and first-order covariance propagation", "SkyReg and MASt3R existing predicted point-confidence maps", "Cached RoMa/MASt3R/SkyReg predictions if approved and available; do not call classical matches these methods"],
+        "metrics": ["All-attempted-pixel/anchor coverage", "Per-anchor local metric median/p95 and threshold recall; geodetic error only when a verified global transform is available", "Image-level median-GPS error only for globally georeferenced data, kept separate", "Risk-coverage by off-nadir, terrain relief and covisibility", "Solver failure rate"],
+        "config": {"days": 3, "seed": 17, "query_cap": 200, "anchors_per_query": 100, "max_side_pixels": 640, "height_perturbations_m": [1, 3, 5], "method": "Keep observed matches fixed. Re-estimate or propagate map coordinates under symmetric DSM-height perturbations; rank by geodetic displacement and H/PnP disagreement. Use ground-truth pose/depth only for scoring and stratification, never for the prediction score.", "ablation": "Residual alone; sensitivity alone; combined; low-relief versus high-relief; matched anchor count. Use actual surface/visibility labels only where supplied, never infer them as truth from a model.", "split": "Tune thresholds on separate geographic sites; bootstrap at site/query level, not independent pixels.", "stop_condition": "If DSM and pixelwise truth cannot be obtained in half a day, stop as data-blocked; no synthetic truth substitution."},
+        "compute": "2-3 researcher days, <=12 CPU-hours and <=16 GB RAM for bounded geometry perturbations using cached/classical matches. No GPU run; learned outputs require separate permission if unavailable.",
+        "success": "Screening criterion: >=20% relative reduction in p95 anchor error at >=50% coverage versus the strongest residual, existing point-confidence and analytic ray/covariance baselines on held-out sites; consistent direction on relief strata and separately reported external-DSM transfer. Threshold is prospective, not observed.",
+        "falsification": "Reject if simple off-nadir/relief covariates, analytic propagation or existing point confidence explain the gain; if inaccessible ground-truth geometry is required; if no pixelwise truth exists; if gains disappear at matched coverage or on external DSM; or if the claim depends on calling local coordinates global GPS.",
+        "authorization": "not authorized", "status": "planned", "results": null
+      },
+      "gaps": ["Classical photogrammetric error propagation, observability and terrain-intersection uncertainty may already establish the mechanism.", "Pixelwise registration is not equivalent to visible shared-surface correspondence.", "DSM accuracy and ground-truth geodetic noise must bound any precision claim.", "SkyReg v1/latest-title discrepancy and data-release status require follow-up."],
+      "tension_ids": ["T03", "T04", "T05", "T06"],
+      "priority": {"rank": 2, "decision": "Conditional diagnostic; likely useful for understanding failures, high risk of classical prior art.", "basis": "Clear geometry-task mismatch but expensive annotation/access uncertainty."},
+      "venue": {"candidate": "CVPR/ICCV only with a distinct mechanism beyond standard uncertainty propagation", "readiness": "not publication-ready", "minimum_evidence": "Real dense geodetic truth, explicit visibility/map-error analysis, strong geometry baselines and transfer beyond a single rendered dataset.", "acceptance_probability": null}
+    },
+    {
+      "id": "O3",
+      "title": "Fixed-budget candidate selection by independent geometric support",
+      "question": "At the same number of expensive pair matches, does selecting geographically diverse, geometrically supported references outperform retrieval-score top-K and learned reranking?",
+      "hypothesis": "Some top-ranked candidates redundantly cover the same ambiguous structure; cheap support/conditioning proxies can allocate a fixed matching budget more effectively.",
+      "contribution": "At most a resource-controlled marginal-utility analysis and narrowly specified selector; generic retrieval-plus-matching, diversity selection and geometry-aware reranking are rejected as novelty claims.",
+      "significance": "Useful if edge localization needs a small fixed matching budget and additional similar candidates do not improve metric success.",
+      "status": "novelty audit", "novelty": "uncertain",
+      "prior_art": [
+        {"paper_id": "ricloc", "overlap": "Geometry-aware reference selection using viewpoint diversity, track support and conditioning is explicitly future work.", "difference": "No clear novelty established. Only a distinct fixed-budget satellite-footprint selection result might remain after a full audit."},
+        {"paper_id": "rim", "overlap": "Top-K matching, geometric reranking, efficient shared features and speed comparisons already exist.", "difference": "Select candidates before expensive dense matching under a strictly equal budget; not rerank using already-paid full geometry."},
+        {"paper_id": "unifygeo", "overlap": "Joint learning and dedicated reranking improve candidate references for metric localization.", "difference": "Frozen training-free selection emphasizing independent geometric support rather than a new shared model."},
+        {"paper_id": "hfnet", "overlap": "Retrieval is followed by explicit clustering of candidate frames according to shared 3D covisibility before geometric pose checking.", "difference": "Footprint-based grouping may merely approximate established covisibility grouping; a specifically distinct fixed-budget marginal-utility result is needed, not generic hierarchy or candidate clustering."}
+      ],
+      "review": "awaiting independent audit",
+      "experiment": {
+        "hypothesis": "At exactly two or five costly pair matches per query, a selector improves end-to-end metric success over top-K and simple geographic nonmaximum suppression without an oracle.",
+        "datasets": ["UAV-VisLoc for non-oracle map retrieval and horizontal position.", "OrthoLoC only if a real candidate gallery can be formed without using paired ground truth to select references; otherwise paired data cannot test this hypothesis."],
+        "baselines": ["Top-K descriptor score", "Random selection within top-20", "Geographic footprint nonmaximum suppression", "HF-Net-style covisibility grouping where the map supports it", "Cheap inlier-count ranking", "RIM/UnifyGeo style geometry reranking with every match counted in the budget", "Oracle candidate selection labeled as an unattainable bound"],
+        "metrics": ["All-query metric success at 5/25 m", "Candidate recall before matching", "Matched-pair count and measured CPU/GPU latency separately", "Failure/no-pose fraction", "Coverage at fixed error threshold", "Candidate footprint redundancy"],
+        "config": {"days": 2, "seed": 17, "query_cap": 300, "candidate_pool": 20, "match_budgets": [2, 5], "selector": "Use only retrieval score, map footprints and capped low-resolution classical support probes before allocating full matches. Charge every probe to the timing/budget ledger. Greedily add candidates with new spatial support; compare directly with simple geographic NMS.", "split": "Geographic calibration/test split; fixed hyperparameters before held-out evaluation.", "ablation": "Score only, diversity only, support only, combined. Report both correct-candidate-available conditional diagnostic and non-oracle end-to-end results.", "fallback": "If public retrieval/matching caches are absent, bounded CPU ORB descriptors/matches can only falsify the redundancy mechanism; no learned-system superiority claim."},
+        "compute": "1-2 researcher days; <=8 CPU-hours for bounded cached-output/classical-match analysis; no training and no GPU execution. Full learned model comparison needs later approval.",
+        "success": "Screening criterion: >=5 percentage-point absolute metric-success gain versus top-K at matched budget, plus positive gain over geographic NMS on held-out geography; count all selection overhead.",
+        "falsification": "Reject if geographic NMS matches performance, additional probes erase the budget benefit, oracle gallery information is needed, or gains occur only in paired-reference evaluation.",
+        "authorization": "not authorized", "status": "planned", "results": null
+      },
+      "gaps": ["Strong likely overlap with active localization, viewpoint selection and optimal experimental design not exhaustively searched.", "RIC-Loc already articulates the high-level idea.", "Dataset gallery construction and map footprint availability need verification.", "This is the weakest novelty candidate and should be dropped rather than inflated if a simple selector suffices."],
+      "tension_ids": ["T01", "T02", "T04", "T09", "T10"],
+      "priority": {"rank": 3, "decision": "Hold: likely engineering baseline, not currently a defensible research contribution.", "basis": "Cheap falsification but very high known conceptual overlap."},
+      "venue": {"candidate": "No top-tier venue recommendation at present", "readiness": "not publication-ready", "minimum_evidence": "A non-obvious selection principle with end-to-end real-data gains beyond classical diversity/conditioning baselines under a complete compute ledger.", "acceptance_probability": null}
+    }
+  ],
+  "audit_updates": [
+    {"date": "2026-11-09", "origin": "Post-persistence correction message from independent candidate auditor; audit artifacts and benchmark files were not opened.", "verification": "Corrections checked directly against existing primary-text caches, with no new HTTP requests.", "changes": ["RIC-Loc full-set evaluation and existing common-mode/residual-inflation terms remove claimed differences in O1.", "SkyReg per-pixel confidence and analytic ray/covariance propagation added as explicit O2 baselines.", "OrthoLoC same-domain reconstruction coupling, external DSM transfer and privacy-preserving local-frame constraints made explicit.", "HF-Net covisibility clustering strengthens O3 overlap and baseline requirements."], "decision": "No GO; O1 remains narrowly unresolved, O2 conditional, O3 held. This update is not part of the original blinded candidate generation."}
+  ],
+  "foundations": [
+    {
+      "id": "F1", "arxiv_id": "2409.14634",
+      "title": "Human-LLM Compound System for Scientific Ideation through Facet Recombination and Novelty Evaluation",
+      "authors": ["Marissa Radensky", "Simra Shahid", "Raymond Fok", "Pao Siangliulue", "Tom Hope", "Daniel S. Weld"],
+      "date": "2024-09-23", "url": "https://arxiv.org/abs/2409.14634",
+      "validated_insights": ["Scideator organizes purposes, mechanisms and evaluations as separately recombinable facets.", "A human-in-the-loop user study and retrieval/reranking ablations support aspects of creativity support and literature relevance, not scientific truth."],
+      "adaptation": "Represent task, mechanism and evaluation separately; force closest-prior-art comparison before recommending an experiment.",
+      "limits": ["The examined manuscript discusses top-10 retrieval constraints and potential trust/coverage limitations.", "User creativity support and novelty-classifier performance do not predict publication acceptance.", "The current manuscript is revised relative to the 2024 first-posting date."],
+      "evidence": [{"claim": "Users, not the automated novelty checker, decide which ideas and signals to pursue.", "source_url": "https://arxiv.org/pdf/2409.14634", "location": "PDF p.2, human-LLM design; pp.5,8,14 retrieve/rerank and limits", "level": "full paper", "quote": "the user decides", "verified": true}],
+      "verification": "Fresh actual title and authors verified; abstract, methods/ablation passages and retrieval limitations selectively read. sources/2409.14634.txt."
+    },
+    {
+      "id": "F2", "arxiv_id": "2409.04109",
+      "title": "Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers",
+      "authors": ["Chenglei Si", "Diyi Yang", "Tatsunori Hashimoto"],
+      "date": "2024-09-06", "url": "https://arxiv.org/abs/2409.04109",
+      "validated_insights": ["Blinded human judgments can differ from LLM self-ranking.", "The study reports novelty/feasibility trade-offs and limits of overgenerate-and-rank diversity."],
+      "adaptation": "Preserve independent disagreement and require cheap feasibility tests; never use generator self-confidence as novelty evidence.",
+      "limits": ["NLP researcher judgments are not executed CV experiments.", "Perceived novelty is subjective and does not establish scientific correctness, feasibility or acceptance."],
+      "evidence": [{"claim": "The authors caution against conclusions primarily supported by LLM evaluators.", "source_url": "https://arxiv.org/pdf/2409.04109", "location": "PDF pp.13-15, Section 7", "level": "full paper", "quote": "conclusions that are based primarily on LLM evaluators", "verified": true}],
+      "verification": "Fresh title/authors/date checked; abstract and limitations/self-evaluation sections selectively examined. sources/2409.04109.txt."
+    },
+    {
+      "id": "F3", "arxiv_id": "2506.22026",
+      "title": "Literature-Grounded Novelty Assessment of Scientific Ideas",
+      "authors": ["Simra Shahid", "Marissa Radensky", "Raymond Fok", "Pao Siangliulue", "Daniel S. Weld", "Tom Hope"],
+      "date": "2025-06-27", "url": "https://arxiv.org/abs/2506.22026",
+      "validated_insights": ["Retrieve broadly, filter by embeddings, rerank by facets, then produce source-grounded novelty reasoning.", "Ablations support facet-level retrieval/reranking within the authors' benchmark."],
+      "adaptation": "Record overlap and difference per closest paper; track query coverage, inaccessible evidence and unresolved novelty.",
+      "limits": ["Full-text §8 acknowledges top-10 context constraints.", "The same annotators supplied in-context examples and test labels; many test ideas came from the related generation system.", "Agreement with that benchmark's annotators is not exhaustive novelty verification."],
+      "evidence": [
+        {"claim": "The framework separates retrieval, filtering, facet reranking and novelty reasoning.", "source_url": "https://arxiv.org/pdf/2506.22026", "location": "PDF p.4, Figure 1", "level": "full paper", "quote": "retrieve-then-rerank", "verified": true},
+        {"claim": "The authors disclose shared annotators between in-context examples and test novelty labels.", "source_url": "https://arxiv.org/pdf/2506.22026", "location": "PDF pp.8-9, Section 8", "level": "full paper", "quote": "also classified the test ideas", "verified": true}
+      ],
+      "verification": "Fresh title/authors/date checked; method p.4, dataset p.5 and limitations pp.8-9 examined. sources/2506.22026.txt."
+    },
+    {
+      "id": "F4", "arxiv_id": "2504.08066",
+      "title": "The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search",
+      "authors": ["Yutaro Yamada", "Robert Tjarko Lange", "Cong Lu", "Shengran Hu", "Chris Lu", "Jakob Foerster", "Jeff Clune", "David Ha"],
+      "date": "2025-04-10", "url": "https://arxiv.org/abs/2504.08066",
+      "validated_insights": ["Agentic experiment-tree management and explicit experiment tracking provide reusable workflow structure.", "The report documents manuscript/experiment errors and limitations, motivating separate evidence verification."],
+      "adaptation": "Persist attempted hypotheses, failures, budgets, authorization and experiment artifacts; never infer completion from an agent narrative.",
+      "limits": ["Do not extrapolate its reported workshop case study into acceptance prediction or reliable top-tier discovery.", "The paper itself describes inaccuracies and limited consistency; its own evaluation is not independent validation of scientific reliability."],
+      "evidence": [{"claim": "The architecture couples agentic tree search to experiment management, while the report acknowledges inaccuracies.", "source_url": "https://arxiv.org/pdf/2504.08066", "location": "PDF p.2 contributions and caveats; Section 5 pp.13-14", "level": "full paper", "quote": "agentic tree search", "verified": true}],
+      "verification": "Fresh actual title/authors/date checked; abstract, p.2 contributions and Section 5 selectively examined. No publication outcome is used to score pilot candidates. sources/2504.08066.txt."
+    },
+    {
+      "id": "F5", "arxiv_id": null,
+      "title": "How we built our multi-agent research system",
+      "authors": ["Anthropic Engineering"],
+      "date": "2025-06-13", "url": "https://www.anthropic.com/research/multi-agent-research-system",
+      "validated_insights": ["The first-party engineering account describes orchestrator-worker decomposition, source attribution, persistent state, tracing, retries and bounded delegation.", "The account warns that token cost and coordination increase and that tightly dependent tasks are poor fits for parallel agents."],
+      "adaptation": "Keep durable source/evidence records, explicit ownership and stop conditions. Separate independent research outputs from verified scientific facts.",
+      "limits": ["Engineering blog, not a peer-reviewed controlled scientific-discovery evaluation.", "Internal performance/token comparisons are vendor-reported and not reproduced here.", "This literature pilot used no delegated agents or paid model APIs."],
+      "evidence": [
+        {"claim": "The account recommends deterministic recovery safeguards around agent behavior.", "source_url": "https://www.anthropic.com/research/multi-agent-research-system", "location": "Production reliability and engineering challenges; sources/anthropic-research.txt", "level": "secondary", "quote": "retry logic and regular checkpoints", "verified": true},
+        {"claim": "The account identifies substantial token-cost and coordination constraints.", "source_url": "https://www.anthropic.com/research/multi-agent-research-system", "location": "Benefits of a multi-agent system, cost paragraph", "level": "secondary", "quote": "these architectures burn through tokens fast", "verified": true}
+      ],
+      "verification": "First-party page fetched and sections on architecture, evaluation, costs and reliability selectively read. Classified secondary only because the allowed evidence-level enum has no engineering-report category."
+    }
+  ],
+  "retrieval_log": [
+    {"url":"https://arxiv.org/abs/2409.14634","query":"Initial connectivity/title probe; only first 600 bytes read, later full page cached","accessed_at":"2026-11-09","status":"partial","bytes":600,"seconds":null,"note":"Exact probe timestamp/duration not instrumented."},
+    {"url":"https://arxiv.org/abs/2002.12186","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:54.303587+00:00","status":"ok","bytes":43843,"seconds":0.352},
+    {"url":"https://arxiv.org/pdf/2002.12186","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:54.659996+00:00","status":"ok","bytes":11772032,"seconds":3.784},
+    {"url":"https://arxiv.org/abs/2201.09201","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:54.304676+00:00","status":"ok","bytes":44010,"seconds":0.315},
+    {"url":"https://arxiv.org/pdf/2201.09201","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:54.625147+00:00","status":"ok","bytes":8356341,"seconds":2.918},
+    {"url":"https://arxiv.org/abs/2303.11851","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:54.305298+00:00","status":"ok","bytes":41455,"seconds":0.32},
+    {"url":"https://arxiv.org/pdf/2303.11851","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:54.630525+00:00","status":"ok","bytes":5224019,"seconds":0.62},
+    {"url":"https://arxiv.org/abs/2309.16020","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:54.306066+00:00","status":"ok","bytes":42975,"seconds":0.326},
+    {"url":"https://arxiv.org/pdf/2309.16020","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:54.634376+00:00","status":"ok","bytes":11092102,"seconds":3.581},
+    {"url":"https://arxiv.org/abs/2405.11936","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:55.292897+00:00","status":"ok","bytes":43189,"seconds":0.282},
+    {"url":"https://arxiv.org/pdf/2405.11936","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:55.581409+00:00","status":"ok","bytes":1722119,"seconds":0.874},
+    {"url":"https://arxiv.org/abs/2409.16925","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:56.470630+00:00","status":"ok","bytes":43514,"seconds":0.279},
+    {"url":"https://arxiv.org/pdf/2409.16925","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:56.755871+00:00","status":"ok","bytes":6039232,"seconds":3.196},
+    {"url":"https://arxiv.org/abs/2607.19951","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:57.602377+00:00","status":"ok","bytes":43040,"seconds":0.372},
+    {"url":"https://arxiv.org/pdf/2607.19951","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:57.977372+00:00","status":"ok","bytes":5567023,"seconds":0.655},
+    {"url":"https://arxiv.org/abs/2607.20116","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:58.286109+00:00","status":"ok","bytes":45498,"seconds":0.255},
+    {"url":"https://arxiv.org/pdf/2607.20116","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:58.546088+00:00","status":"ok","bytes":28357524,"seconds":1.571},
+    {"url":"https://arxiv.org/abs/2605.07099","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:58.512196+00:00","status":"ok","bytes":41750,"seconds":0.254},
+    {"url":"https://arxiv.org/pdf/2605.07099","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:58.771139+00:00","status":"ok","bytes":9854864,"seconds":1.634},
+    {"url":"https://arxiv.org/abs/2608.28891","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:58.676558+00:00","status":"ok","bytes":40807,"seconds":0.277},
+    {"url":"https://arxiv.org/pdf/2608.28891","query":"Full-paper examination","accessed_at":"2026-11-09T16:37:58.957402+00:00","status":"budget_limited","bytes":40000001,"seconds":23.303,"note":"HTTP 200 PDF exceeded 40 MB response cap; consumed bytes counted, payload discarded; recovered as v1 HTML."},
+    {"url":"https://arxiv.org/abs/2505.07622","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:37:59.990983+00:00","status":"ok","bytes":41874,"seconds":0.277},
+    {"url":"https://arxiv.org/pdf/2505.07622","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:00.273540+00:00","status":"ok","bytes":1945180,"seconds":0.855},
+    {"url":"https://arxiv.org/abs/2308.16906","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:00.268138+00:00","status":"ok","bytes":41736,"seconds":0.255},
+    {"url":"https://arxiv.org/pdf/2308.16906","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:00.526482+00:00","status":"ok","bytes":7942154,"seconds":3.182},
+    {"url":"https://arxiv.org/abs/2305.15404","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:00.488481+00:00","status":"ok","bytes":43508,"seconds":0.255},
+    {"url":"https://arxiv.org/pdf/2305.15404","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:00.747221+00:00","status":"ok","bytes":13502952,"seconds":0.831},
+    {"url":"https://arxiv.org/abs/2406.09756","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:01.192936+00:00","status":"ok","bytes":41857,"seconds":0.284},
+    {"url":"https://arxiv.org/pdf/2406.09756","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:01.483993+00:00","status":"ok","bytes":19833828,"seconds":1.024},
+    {"url":"https://arxiv.org/abs/2503.11651","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:01.631911+00:00","status":"ok","bytes":40327,"seconds":0.277},
+    {"url":"https://arxiv.org/pdf/2503.11651","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:01.913286+00:00","status":"ok","bytes":3161073,"seconds":2.12},
+    {"url":"https://arxiv.org/abs/1812.03506","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:02.986000+00:00","status":"ok","bytes":41699,"seconds":0.251},
+    {"url":"https://arxiv.org/pdf/1812.03506","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:03.242544+00:00","status":"ok","bytes":8918711,"seconds":0.747},
+    {"url":"https://arxiv.org/abs/2306.13643","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:03.770658+00:00","status":"ok","bytes":40268,"seconds":0.257},
+    {"url":"https://arxiv.org/pdf/2306.13643","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:04.030529+00:00","status":"ok","bytes":15575459,"seconds":0.901},
+    {"url":"https://arxiv.org/abs/2011.12172","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:04.058782+00:00","status":"ok","bytes":43515,"seconds":0.261},
+    {"url":"https://arxiv.org/pdf/2011.12172","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:04.322367+00:00","status":"ok","bytes":3149259,"seconds":3.602},
+    {"url":"https://arxiv.org/abs/2607.04722","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:04.095321+00:00","status":"ok","bytes":41101,"seconds":0.249},
+    {"url":"https://arxiv.org/pdf/2607.04722","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:04.347035+00:00","status":"ok","bytes":2815070,"seconds":1.579},
+    {"url":"https://arxiv.org/abs/2509.18350","query":"Identifier metadata verification","accessed_at":"2026-11-09T16:38:05.259421+00:00","status":"ok","bytes":42139,"seconds":0.276},
+    {"url":"https://arxiv.org/pdf/2509.18350","query":"Full-paper examination","accessed_at":"2026-11-09T16:38:05.542827+00:00","status":"ok","bytes":36610716,"seconds":1.485},
+    {"url":"https://arxiv.org/abs/2409.14634","query":"Verify supplied foundation actual title and metadata","accessed_at":"2026-11-09T16:38:06.107707+00:00","status":"ok","bytes":43741,"seconds":0.251},
+    {"url":"https://arxiv.org/pdf/2409.14634","query":"Read foundation methods and limits","accessed_at":"2026-11-09T16:38:06.363754+00:00","status":"ok","bytes":4165567,"seconds":4.41},
+    {"url":"https://arxiv.org/abs/2409.04109","query":"Verify supplied foundation actual title and metadata","accessed_at":"2026-11-09T16:38:07.108753+00:00","status":"ok","bytes":42973,"seconds":0.25},
+    {"url":"https://arxiv.org/pdf/2409.04109","query":"Read foundation methods and limits","accessed_at":"2026-11-09T16:38:07.364529+00:00","status":"ok","bytes":942188,"seconds":0.502},
+    {"url":"https://arxiv.org/abs/2506.22026","query":"Verify supplied foundation actual title and metadata","accessed_at":"2026-11-09T16:38:07.958282+00:00","status":"ok","bytes":41005,"seconds":0.367},
+    {"url":"https://arxiv.org/pdf/2506.22026","query":"Read foundation methods and limits","accessed_at":"2026-11-09T16:38:08.331040+00:00","status":"ok","bytes":4541915,"seconds":2.08},
+    {"url":"https://arxiv.org/abs/2504.08066","query":"Verify supplied foundation actual title and metadata","accessed_at":"2026-11-09T16:38:07.991948+00:00","status":"ok","bytes":44463,"seconds":0.251},
+    {"url":"https://arxiv.org/pdf/2504.08066","query":"Read foundation methods and limits","accessed_at":"2026-11-09T16:38:08.247073+00:00","status":"ok","bytes":8923691,"seconds":2.501},
+    {"url":"https://www.anthropic.com/research/multi-agent-research-system","query":"Read supplied first-party research-system engineering account","accessed_at":"2026-11-09T16:38:22.264957+00:00","status":"ok","bytes":210738,"seconds":0.294},
+    {"url":"https://arxiv.org/html/2608.28891v1","query":"Recover full text after PDF response-size budget limit","accessed_at":"2026-11-09T16:39:47.967808+00:00","status":"ok","bytes":211074,"seconds":0.612},
+    {"url":"https://arxiv.org/search/?query=drone+satellite+uncertainty+localization&searchtype=all&abstracts=show&order=-announced_date_first&size=50","query":"drone satellite uncertainty localization","accessed_at":"2026-11-09T16:39:48.579775+00:00","status":"ok","bytes":35078,"seconds":0.514,"screening":"Four returned titles examined; PAUL selected; other hits not fully assessed."},
+    {"url":"https://arxiv.org/search/?query=cross+view+selective+localization&searchtype=all&abstracts=show&order=-announced_date_first&size=50","query":"cross view selective localization","accessed_at":"2026-11-09T16:39:49.093735+00:00","status":"ok","bytes":259804,"seconds":0.864,"screening":"Noisy broad query; first fourteen titles screened, not an exhaustive negative result."},
+    {"url":"https://arxiv.org/search/?query=drone+satellite+correspondence+benchmark&searchtype=all&abstracts=show&order=-announced_date_first&size=50","query":"drone satellite correspondence benchmark","accessed_at":"2026-11-09T16:39:49.957428+00:00","status":"ok","bytes":24807,"seconds":0.497,"screening":"Two returned titles examined; PAUL retained; day/night benchmark outside bounded focus."},
+    {"url":"https://arxiv.org/abs/2508.20066","query":"Independently discovered PAUL metadata verification","accessed_at":"2026-11-09T16:40:27.147565+00:00","status":"ok","bytes":44081,"seconds":0.386},
+    {"url":"https://arxiv.org/pdf/2508.20066","query":"Read uncertainty/noisy-correspondence closest prior art","accessed_at":"2026-11-09T16:40:27.541219+00:00","status":"ok","bytes":5208139,"seconds":2.94}
+  ],
+  "costs": {"http_requests": 56, "download_bytes": 267027628, "elapsed_seconds": 619, "api_cost_usd": null, "gpu_hours": 0, "instrumented_request_seconds_sum": 80.855, "measurement": "Snapshot elapsed from first instrumented batch request through corpus/candidate validation; report finalization not included. Includes 40,000,001 discarded PDF bytes and 600-byte initial probe. No paid API was called; CLI model billing is not available.", "raw_manifest": "sources/retrieval-log.json"},
+  "limitations": [
+    "This is one investigator's bounded literature analysis, not independent proof of scientific truth or an independent novelty audit.",
+    "All full-text readings are selective. Some datasets, appendices, code releases, licenses, exact current paper versions and publication metadata remain unchecked.",
+    "Only arXiv and the supplied Anthropic page were queried online; no exhaustive Crossref, OpenAlex, OpenReview, citation-graph or publisher search was completed.",
+    "Seed selection inherits potential bias from the local inventory, although metadata/decisive claims were verified online and PAUL was independently discovered.",
+    "The broad cross-view/selective search returned many irrelevant results; search failure or absence is never treated as novelty evidence.",
+    "DOIs and independently checked venues are null rather than guessed. Author-reported venue notes are not publisher verification.",
+    "SkyReg PDF exceeded the response-size budget; full-text v1 HTML was recovered, with a different manuscript title retained explicitly.",
+    "No numerical performance ranking across incompatible datasets is attempted; source numbers are only used where they define an evaluation protocol or stated condition.",
+    "No dataset, checkpoint or experiment was executed. Data/checkpoint availability and timing estimates in proposed experiments are assumptions requiring preflight.",
+    "The independent auditor must investigate unsearched classical uncertainty propagation, correlated consensus, active localization and selective-risk prior art. All three novelty statuses remain uncertain.",
+    "The raw cache contains full texts for local research only; reports deliberately use short supporting excerpts and links, not redistributed paper content."
+  ]
+}

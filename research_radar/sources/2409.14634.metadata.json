@@ -1,0 +1,30 @@
+{
+  "arxiv_id": "2409.14634",
+  "citation_title": [
+    "Human-LLM Compound System for Scientific Ideation through Facet Recombination and Novelty Evaluation"
+  ],
+  "citation_author": [
+    "Radensky, Marissa",
+    "Shahid, Simra",
+    "Fok, Raymond",
+    "Siangliulue, Pao",
+    "Hope, Tom",
+    "Weld, Daniel S."
+  ],
+  "citation_date": [
+    "2024/09/23"
+  ],
+  "citation_online_date": [
+    "2026/05/16"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2409.14634"
+  ],
+  "citation_arxiv_id": [
+    "2409.14634"
+  ],
+  "citation_abstract": [
+    "The scientific ideation process often involves blending facets of existing papers to create new ideas. We contribute Scideator, the first human-LLM system for facet-based scientific ideation. Starting from user-provided papers, Scideator extracts key facets -- purposes, mechanisms, and evaluations -- from these and related papers, allowing users to interactively recombine facets to synthesize ideas. Scideator is driven by three design choices: (1) human-in-the-loop facet recombination, in which users select facets from retrieved papers and the system generates ideas by finding analogies across them via the Faceted Idea Generator module; (2) distance-controlled retrieval via the Analogous Paper Facet Finder module, which surfaces papers ranging from the same topic to entirely different areas to provide a spectrum of directions; and (3) facet-based novelty verification via the Idea Novelty Checker module, a retrieve-then-rerank pipeline that helps users to evaluate idea originality using facets. In a user study with computer science researchers, Scideator provided significantly more creativity support than a baseline using the same backbone LLM without our facet-based modules, particularly in idea exploration and expressiveness. Ablations further show that the facets benefit the novelty checker: facet-based retrieve-then-rerank surfaces more relevant papers than standard retrieval and re-ranking, and a facet-grounded novelty classifier outperforms classifiers that reason over unstructured ideas and papers."
+  ],
+  "abstract": "Abstract: The scientific ideation process often involves blending facets of existing papers to create new ideas. We contribute Scideator, the first human-LLM system for facet-based scientific ideation. Starting from user-provided papers, Scideator extracts key facets -- purposes, mechanisms, and evaluations -- from these and related papers, allowing users to interactively recombine facets to synthesize ideas. Scideator is driven by three design choices: (1) human-in-the-loop facet recombination, in which users select facets from retrieved papers and the system generates ideas by finding analogies across them via the Faceted Idea Generator module; (2) distance-controlled retrieval via the Analogous Paper Facet Finder module, which surfaces papers ranging from the same topic to entirely different areas to provide a spectrum of directions; and (3) facet-based novelty verification via the Idea Novelty Checker module, a retrieve-then-rerank pipeline that helps users to evaluate idea originality using facets. In a user study with computer science researchers, Scideator provided significantly more creativity support than a baseline using the same backbone LLM without our facet-based modules, particularly in idea exploration and expressiveness. Ablations further show that the facets benefit the novelty checker: facet-based retrieve-then-rerank surfaces more relevant papers than standard retrieval and re-ranking, and a facet-grounded novelty classifier outperforms classifiers that reason over unstructured ideas and papers."
+}

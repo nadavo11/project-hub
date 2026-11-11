@@ -1,0 +1,19 @@
+{
+  "id": "mechanism-first-2026-11-10",
+  "research_question": "Can mechanism-first ideation yield an independently defensible hypothesis where the previous generic policy yielded zero?",
+  "candidate_budget": 12,
+  "generation_design": "Four fresh tool-free contexts each produce one candidate for each of the same three limitations. They see no other generator output.",
+  "model_call_cap": 8,
+  "model_call_plan": ["four independent generators", "one technical shortlist review", "three separate finalist prior-art/technical reviews"],
+  "shortlist_size": 3,
+  "source_budget": {"public_requests": 25, "response_bytes": 120000000, "new_primary_papers": 6, "literature_expansion": "Only targeted finalist prior-art searches, after all generation and shortlist freeze"},
+  "compute": {"gpu_hours": 0, "paid_external_api_calls": 0, "maximum_cpu_diagnostic_seconds": 300, "training": false},
+  "mechanism_gate": ["Exact source-grounded failure", "Specified inputs and outputs", "Operational equations or executable-level pseudocode including degeneracies", "A concrete non-equivalence argument against named existing mechanisms", "Most likely counterexample/failure", "Affordable falsification against the strongest comparator"],
+  "selection_rule": "Select the strongest three across all twelve by mechanism validity, significance and falsifiability, without a novelty claim. A finalist that fails a gate stays explicitly provisional; selection does not imply survival.",
+  "independent_survival_rule": "A significant precise mechanism, defensible distinction after targeted external search, no discovered fatal technical counterexample, and an affordable discriminating test. No substitution of absent prior art for proof of novelty.",
+  "dimensions": ["novelty", "scientific_significance", "technical_feasibility", "insufficient_evidence"],
+  "prior_baseline": {"source": "../iteration/independent-verdict.json", "audited_survivors_per_three": 0, "scope_limit": "Unmatched batch sizes and changed inputs prevent a statistical or causal improvement claim"},
+  "verdict_rule": "Remain ITERATE until opportunity-discovery improvement has experimental support; conditional hypotheses and synthetic sanity checks do not automatically justify GO.",
+  "independence_limits": "Fresh contexts, not independent model families. Selection and final judgments require source-grounded reasons; model ratings alone are not quality validation.",
+  "cost_policy": "Record all public attempts and direct CLI receipts; report enclosing assistant and delegated-agent billing as unavailable, not zero."
+}

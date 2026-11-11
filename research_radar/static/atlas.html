@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Failure Atlas · Research Radar</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/atlas.css">
+  <script src="/atlas.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#atlas-detail">Skip to case evidence</a>
+  <div class="atlas-shell">
+    <header class="atlas-header">
+      <a class="atlas-brand" href="/">⌖ <span>RESEARCH RADAR<small>FAILURE-FIRST INVESTIGATION</small></span></a>
+      <div class="actions"><a class="button subtle" href="/#validation">Research workbench</a><a class="button" href="/api/atlas/export" download="failure-atlas.json">Export cohort</a><button class="button" id="atlas-refresh">Refresh measurements</button></div>
+    </header>
+    <main class="atlas-main">
+      <div class="page-heading"><div><span class="eyebrow">EMPIRICAL FAILURE ATLAS / 01</span><h1>Where localization breaks.</h1><p>Follow the evidence from geographic retrieval to matches, geometric information and camera pose.</p></div><span class="badge" id="run-state">Reading persisted observations</span></div>
+      <div id="atlas-error" role="alert" hidden></div>
+      <div class="atlas-principle"><span>◇</span><p><strong>A match is not a measurement of truth.</strong> Inliers show model self-consistency. Pixel ground truth is unavailable; depth, calibration and metric pose are assessed separately.</p><a href="/api/atlas/protocol" target="_blank" rel="noopener">Frozen protocol ↗</a></div>
+      <section id="atlas-summary" class="atlas-summary" aria-label="Cohort measurements"></section>
+      <details class="atlas-frequency"><summary>Failure frequency by dataset and baseline</summary><div id="frequency"></div></details>
+      <section id="atlas-findings" class="atlas-findings" aria-label="Measured bottlenecks"></section>
+      <div class="atlas-workspace">
+        <aside class="atlas-browser" aria-label="Case selection">
+          <div class="atlas-filters">
+            <label for="case-search">Find a case<input id="case-search" type="search" placeholder="Scene, query or case ID"></label>
+            <label for="dataset-filter">Dataset<select id="dataset-filter" aria-label="Dataset"><option value="">All datasets</option><option>DenseUAV</option><option>AnyVisLoc</option></select></label>
+            <label for="stage-filter">Observed stopping point<select id="stage-filter" aria-label="Observed stopping point"><option value="">All outcomes</option></select></label>
+          </div>
+          <div id="case-count" class="hint" role="status"></div>
+          <div id="case-list" class="atlas-case-list"></div>
+        </aside>
+        <section id="atlas-detail" tabindex="-1" aria-live="polite">
+          <div class="empty"><h2>Loading real cases</h2><p>No synthetic demonstration data is displayed.</p></div>
+        </section>
+      </div>
+    </main>
+    <footer class="atlas-footer"><span>Generation paused · M09 paper direction stopped</span><span>CPU-only inference · Original sources retained · No point-GT claim</span></footer>
+  </div>
+</body>
+</html>

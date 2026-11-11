@@ -1,0 +1,1522 @@
+{
+  "schema": 1,
+  "created_at": "2026-11-10T07:39:54.720657+00:00",
+  "scope": "Offline archival migration of 56 literature, 11 candidate-audit, 3 independent-search and 5 seed-verification quotations; no benchmark keys read.",
+  "network_requests": 0,
+  "model_invocations": 0,
+  "gpu_jobs": 0,
+  "archive_root": "data/research-radar/archive",
+  "previous_reports": [
+    {
+      "sha256": "fa0efb689883f1cb06cd193f99014c723079a19d29f47f3e83f26d60b96bffe0",
+      "size": 65076,
+      "manifest_sha256": "60350f1c1794cc1a258fb773a06500bd75b6297b3bf5e621d2da248d265b8619"
+    }
+  ],
+  "provenance_artifacts": {
+    "literature": {
+      "sha256": "d8a5b46e8d550fcadffc8fc82db1dd386f230c43a121990ef5903083f3ba65c6",
+      "size": 102190,
+      "manifest_sha256": "aa06e58852f7ce62a7c339dd8d01e9e966c86ce0df7c26c15c4d73ae63f9c57f"
+    },
+    "retrieval": {
+      "sha256": "1fb934cd47450a8960d86db52fccb70d283f5899d9dbfd1a4f0c7175b03171ad",
+      "size": 29923,
+      "manifest_sha256": "832ff78dc8f8fd804df07933e3c07178d3d150803c573eac329923fc884c26e8"
+    },
+    "audit": {
+      "sha256": "a68ebc5013a5a2b28264f75d0c0bd6b20baf70d8a6accd969629caed55651a09",
+      "size": 35380,
+      "manifest_sha256": "5e1788e0d6f83ec49afdc53fc7600da77f095b9d3ef506ccf7959225037b99cc"
+    },
+    "candidate": {
+      "sha256": "cd7bf84d2bd68df3a2926d4955588a54afadb89bc8d03afb153ced9cd8329bfb",
+      "size": 2749,
+      "manifest_sha256": "8f60455ec0782ac3ad20f22abb3bc589aa3decd79f62c1a45cd4738dcb3da130"
+    },
+    "candidate_input": {
+      "sha256": "43418a9d93de675dbcc991579b819557f66c54f2fe2eb7fa9e7e82138d6bf6b0",
+      "size": 97430,
+      "manifest_sha256": "86ec74036ef309e759c3ac0e3e78069d2c6d5cb144609083b0d06ddfbea8261e"
+    },
+    "independent": {
+      "sha256": "f7bd539f809c6d06e7eb2eadb2c15d8cb2406e0c8636c0d39b2d601229115211",
+      "size": 2657,
+      "manifest_sha256": "e9c685934ac728dfe952b33f33e3d75bad917f50b11f053e69e50749798095e0"
+    },
+    "seed": {
+      "sha256": "05af9d33e182510cf5db891383352d7beefc4c8c4ac1fca8c841c9cab7452a1e",
+      "size": 8924,
+      "manifest_sha256": "b095aaed04bce255ab6f3006dd283e2f54778da3759e28ac953ffe493c008e11"
+    },
+    "blind": {
+      "sha256": "4a514fe8978e56c3117e66f31110dea27c77a1f0aba955d094a56fb4f8a678ca",
+      "size": 3111,
+      "manifest_sha256": "a954773dde144e2213dd85451d03db2be1ad7a46965e2106a80612d30efa1bc8"
+    },
+    "blind_log": {
+      "sha256": "9bf09693ba3978271b141fac39df016865fc2bb0b475a218693154b27615f3ef",
+      "size": 2881,
+      "manifest_sha256": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc"
+    }
+  },
+  "sources": [
+    {
+      "url": "https://arxiv.org/pdf/2002.12186",
+      "raw": {
+        "sha256": "60cba13d08ca30fadac7136dc36192030bfa8e412f3a1810408d89c145552dbf",
+        "size": 11772032,
+        "manifest_sha256": "682b03b06236603ccf51572afbe7e51544f5654cd59bfee9fbae5266568b9da8"
+      },
+      "text": {
+        "sha256": "d66b8952f37834579a521111d415916ae4e01cb4533bd8fa8e5398c2015b0174",
+        "size": 76170,
+        "manifest_sha256": "4f9020f7817885b20cb61bb2666dc3093d85d2faadc192f03fdd5d4de6b6aace"
+      },
+      "original_raw_path": "research_radar/sources/2002.12186.pdf",
+      "original_text_path": "research_radar/sources/2002.12186.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2201.09201",
+      "raw": {
+        "sha256": "9587126c9327f1a3cdd79c7e2d053bd0a60d1f57ef41c1ed86e4a7f2e109dd87",
+        "size": 8356341,
+        "manifest_sha256": "05f1ce18c5eee8e70eb6fa6a613b2e93a2c0bf3fad84dd3a226899eecd806370"
+      },
+      "text": {
+        "sha256": "61b42aea87954f0a46abe2f75f21d5d8e2b81de6325cb690f434a66524bd0a4b",
+        "size": 103860,
+        "manifest_sha256": "b73603862d055065d79ee7192468bee43974b8f74fbd9544ea6d787cdcefe1ef"
+      },
+      "original_raw_path": "research_radar/sources/2201.09201.pdf",
+      "original_text_path": "research_radar/sources/2201.09201.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2303.11851",
+      "raw": {
+        "sha256": "839fc1762d1967cee2406df8c6228b59d8c8624367f3429d860883b40ff276a5",
+        "size": 5224019,
+        "manifest_sha256": "4fca3453f04e206d28b857915c767e4fe05390f32452ae8e8d2123ec2dde266d"
+      },
+      "text": {
+        "sha256": "6debae734fd6dc12996ecae04820bf3fd873aa9a37d05f58cc57f3cca815a8fe",
+        "size": 75839,
+        "manifest_sha256": "328d32a453533722f0efdbe85d108f8b0ca11e0e06ddf275393ecc96d08df29d"
+      },
+      "original_raw_path": "research_radar/sources/2303.11851.pdf",
+      "original_text_path": "research_radar/sources/2303.11851.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2309.16020",
+      "raw": {
+        "sha256": "db8ff66320581e35d37bb9ded74cc862e987db863404481f0e031ec370c6f97a",
+        "size": 11092102,
+        "manifest_sha256": "51f75d2a188a66f8b7f0ceb99ed8b3df42ee27fe1e5a1a24312576f08e146acd"
+      },
+      "text": {
+        "sha256": "e2271ac8ae59fbf7ee58c89daeda845a9d77a5e27b94361ec02cbe390baa4233",
+        "size": 95417,
+        "manifest_sha256": "ebfc55cbedaef82c8d08a62cb16f95911cf0de1de84ba7daf1ff9c3d92e27a91"
+      },
+      "original_raw_path": "research_radar/sources/2309.16020.pdf",
+      "original_text_path": "research_radar/sources/2309.16020.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2405.11936",
+      "raw": {
+        "sha256": "612d438d57a01b94e8472f13d9f48daff223ed8b7bbec2cd5b7a5b8bf3acaae8",
+        "size": 1722119,
+        "manifest_sha256": "73f08b4f7cc0e2f4a04f3563f3be3cec9e56a47ec362cdd8b308e6786e0e3439"
+      },
+      "text": {
+        "sha256": "800bde5884d5be842ccdc10fb6ada3b0e5950b4c4d8f52c2b6dc7049859c9760",
+        "size": 21217,
+        "manifest_sha256": "c5a46ad538705bc1e9c46d17b9ec8fb5914eb1745bb2ec8ee3df5dfd6eb9f0b6"
+      },
+      "original_raw_path": "research_radar/sources/2405.11936.pdf",
+      "original_text_path": "research_radar/sources/2405.11936.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2409.16925",
+      "raw": {
+        "sha256": "468c00bfb9fd27c774d2b13a402f5cd4e2696c23d707b00e2e73432c00b66d25",
+        "size": 6039232,
+        "manifest_sha256": "3f5c802f6e5feb816da162af76ff349067c8bd3f05757263561ed4964e04b1ac"
+      },
+      "text": {
+        "sha256": "d86e82851bac6298fdefb9f7fe57124ddb91e97264ef83e5612cfc7bdb5cb918",
+        "size": 66477,
+        "manifest_sha256": "f62c10de1b0780482b7ed8147999999672e2018f7dae64b027f8156daf6b58b8"
+      },
+      "original_raw_path": "research_radar/sources/2409.16925.pdf",
+      "original_text_path": "research_radar/sources/2409.16925.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2607.19951",
+      "raw": {
+        "sha256": "52c43af265b4adf7899c19f9d94d5cf7a24731381950dae6cfa0ff09032e6d7a",
+        "size": 5567023,
+        "manifest_sha256": "e3afb0b8536738df71f0a03a67444d250702e5179dc128181e9694fffe4d3bfb"
+      },
+      "text": {
+        "sha256": "8ef8549d5c5d989b30783a0d9ed7f621644310cb1c00a5a59ac624e64b7b1048",
+        "size": 73094,
+        "manifest_sha256": "0568acbcf5373fe05682462eea2ea6cfae41f81b678603db906a2d5ffda07c27"
+      },
+      "original_raw_path": "research_radar/sources/2607.19951.pdf",
+      "original_text_path": "research_radar/sources/2607.19951.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2607.20116",
+      "raw": {
+        "sha256": "d425c507143c3c47b38a17c4f19af3a7c82cbc283ba877dda6f1f101dfdbe404",
+        "size": 28357524,
+        "manifest_sha256": "5240ee1d41bdc1584e9acd9c731d6333e449726e8c89f5a8e77e0639ceb89996"
+      },
+      "text": {
+        "sha256": "499f87fadaa489079d3034794587c3d79f4586ec311206f1517bd28614e61a99",
+        "size": 144072,
+        "manifest_sha256": "7f57309fbb97c9fce501197c170e251ef2d2323154f0d0fae8d7b6e51af19e20"
+      },
+      "original_raw_path": "research_radar/sources/2607.20116.pdf",
+      "original_text_path": "research_radar/sources/2607.20116.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2605.07099",
+      "raw": {
+        "sha256": "b3564692179025a7ef525c619d56b6d7a36d7853727b373ed0cee63c0205df16",
+        "size": 9854864,
+        "manifest_sha256": "4aec0af642ef08120bc4cbcb2757bf3c952d3c1109bb169e01b09f9dc37b513e"
+      },
+      "text": {
+        "sha256": "b1b88462f1216f89986b1b330f00e0c2cf7838c6d150b21cded2d1e4ef672c5a",
+        "size": 131473,
+        "manifest_sha256": "e72dffeef9e5adeadd90acee317d80127e25cf91a9096f63bdfb7bbced57b71e"
+      },
+      "original_raw_path": "research_radar/sources/2605.07099.pdf",
+      "original_text_path": "research_radar/sources/2605.07099.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/html/2608.28891v1",
+      "raw": {
+        "sha256": "47140eb6cefd0ca117641cfc94b6f0716eacbe7ad234cd260099fd7ccfd8c32e",
+        "size": 211074,
+        "manifest_sha256": "a6ec93304ffefea2702f7a34ee96db476945822365f6d0093628956e3683a4e6"
+      },
+      "text": {
+        "sha256": "c0422403be5cd28695c5bf88f147dac8a0f756603160d6327e78e63ee8a13c2f",
+        "size": 56041,
+        "manifest_sha256": "4cf22db7861d5bd53e5e40eb009e4a4704e98aba415a149a6e76e3ed70a79316"
+      },
+      "original_raw_path": "research_radar/sources/2608.28891.full.html",
+      "original_text_path": "research_radar/sources/2608.28891.full.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2505.07622",
+      "raw": {
+        "sha256": "4d14d4b4b25470b7394942ff50d9f2a158a8987086dbc43cac3fe1ef407c0764",
+        "size": 1945180,
+        "manifest_sha256": "403c7cfd92e927f15b6c9bba82888ac6644680b9497448fe615b5505ae2571a7"
+      },
+      "text": {
+        "sha256": "99cdea0aaf169d4001d565b104f379069f5b0050d78ba8dd4870f09dabcf6acd",
+        "size": 133229,
+        "manifest_sha256": "12bf7fbf58214109f3da89dbd52c11fa00df3296c8b42fd81ec52eb636b2a9dd"
+      },
+      "original_raw_path": "research_radar/sources/2505.07622.pdf",
+      "original_text_path": "research_radar/sources/2505.07622.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2308.16906",
+      "raw": {
+        "sha256": "e3f51790de63d17af015f010b5bcaeefb9eaeeac19a7de6e9201b0533af5936c",
+        "size": 7942154,
+        "manifest_sha256": "784efcbdfa5848821ad7e4cbed5944f56975e43b419bea724118e351754da978"
+      },
+      "text": {
+        "sha256": "d0fa2f193aefdce70171eb4be80f25618d3766823a1ad63c371fb3976465bdb4",
+        "size": 83390,
+        "manifest_sha256": "d3e6269c706e317493fc434271c090638fde0be7053690da2b272f8368ef21a5"
+      },
+      "original_raw_path": "research_radar/sources/2308.16906.pdf",
+      "original_text_path": "research_radar/sources/2308.16906.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2305.15404",
+      "raw": {
+        "sha256": "9243778869375cf98c1354ce9c6f196eee674fef12df20facb3c42539578832f",
+        "size": 13502952,
+        "manifest_sha256": "f459be019632d0d578a953d8d470eb3a092aeff8b976f175c87888a2609bb729"
+      },
+      "text": {
+        "sha256": "fe5eab298fa1c119aadc518d5714afcb8bc3ec557205e62ca53b2f9da69c1635",
+        "size": 82205,
+        "manifest_sha256": "ed9faf50df15074597a2862800d801633171bd701e477e1dff0c17632aefd72b"
+      },
+      "original_raw_path": "research_radar/sources/2305.15404.pdf",
+      "original_text_path": "research_radar/sources/2305.15404.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2406.09756",
+      "raw": {
+        "sha256": "5e205c3d67c6eea4085bed045daa4584709d76e7566c3d1f8ec46551095d7fbb",
+        "size": 19833828,
+        "manifest_sha256": "4a8892396a9fbcab51929ff179e596fdd370e6f8d43b3cde9b2424dc2bb400a9"
+      },
+      "text": {
+        "sha256": "627f62012608f55f33bbabf36bc741e6a5deec331e45d858a5d8ed8a68ed25ac",
+        "size": 123630,
+        "manifest_sha256": "389cfd655020913d64b19138e29f790500a4aa676500707d270fd22dd7a86df0"
+      },
+      "original_raw_path": "research_radar/sources/2406.09756.pdf",
+      "original_text_path": "research_radar/sources/2406.09756.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2503.11651",
+      "raw": {
+        "sha256": "5d7ab44d129172f39ef5918feb0014c4d041fd0e92f995d4dbbd7327a6e91d52",
+        "size": 3161073,
+        "manifest_sha256": "fc6efdbb2b63f0281a3c9d2209021299a7ea519bb4bdd5b6f212c98227dfa6d0"
+      },
+      "text": {
+        "sha256": "f6bb7018abbfe7493a2e99acc0dfb0b092ba44d86f0bf1de2703739120e11c24",
+        "size": 133414,
+        "manifest_sha256": "76bfe8da2a8767859694c26c008771d548adf7662d14a3b5c6103376f01c01dd"
+      },
+      "original_raw_path": "research_radar/sources/2503.11651.pdf",
+      "original_text_path": "research_radar/sources/2503.11651.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.11651",
+      "raw": {
+        "sha256": "7bac4dd140608acbf89b97d101960ce285446ec3773f2f38b2808e957aa144d1",
+        "size": 40327,
+        "manifest_sha256": "b3d9382a8b30232fa1ef7ed8d5067e64d161922ed9dd01ccb4023a3cc2e9a378"
+      },
+      "text": {
+        "sha256": "bc94f3ec6d0838d9154ffd44a49ede28a0236cb869ab0c9ad7758bfd1bfa9b70",
+        "size": 9600,
+        "manifest_sha256": "a5f34f42e57c0d318e9b371e12565ffae1201674bf5c2927c76c3792dd286dbb"
+      },
+      "original_raw_path": "research_radar/sources/2503.11651.html",
+      "original_text_path": null,
+      "generated_offline_at_archival_deposit": true,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/1812.03506",
+      "raw": {
+        "sha256": "e4ad7449b2b501a929230861d7732f15982a3f6d1da659147ade5c89fa5c7166",
+        "size": 8918711,
+        "manifest_sha256": "02d86005ccf4fef9991d60284be1531d4b97bcbfb6c199f959f6d7cb4e85a68e"
+      },
+      "text": {
+        "sha256": "69aa7be8bd0373b6781f32834201ab0e6e92c367a6b57666d02c959f13d95c4d",
+        "size": 92188,
+        "manifest_sha256": "906f98dbfc3e4152d819db6cdea2ac9434543eab06288abb14205732bcaa5702"
+      },
+      "original_raw_path": "research_radar/sources/1812.03506.pdf",
+      "original_text_path": "research_radar/sources/1812.03506.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/abs/2306.13643",
+      "raw": {
+        "sha256": "eb01a1bb7de8bdff37703a47a9da65814f246ff6fe21e8f1947ba664ac236dd4",
+        "size": 40268,
+        "manifest_sha256": "7ba1a060a5d2202a8cedac29c8cd6835b56a859e15ab4a0a3d97b896dc3710e6"
+      },
+      "text": {
+        "sha256": "70d047ab6cd19a039192d0910bbbd17d447d675a995bf197cd00cd37632553c0",
+        "size": 9557,
+        "manifest_sha256": "e5d5513c114f1bed86645b3ad1ef8594148936958a84f340081f9f40c44840fd"
+      },
+      "original_raw_path": "research_radar/sources/2306.13643.html",
+      "original_text_path": null,
+      "generated_offline_at_archival_deposit": true,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2306.13643",
+      "raw": {
+        "sha256": "2d77fcdfdc38cc4704bee343092502f819e9c7119ca4fd907ef10f2efa47891f",
+        "size": 15575459,
+        "manifest_sha256": "a121905084952b840a173c7c9ee51ce62222993854e697dacf364d86dbed1789"
+      },
+      "text": {
+        "sha256": "434f2b518bbd2d6b8533981bf5b1c0da4280eb506bb68ae231962bd893000a5d",
+        "size": 233276,
+        "manifest_sha256": "94611a90ca881be1636aabeeecd4b790ed381b0b4c7c340827e84a7cf518284e"
+      },
+      "original_raw_path": "research_radar/sources/2306.13643.pdf",
+      "original_text_path": "research_radar/sources/2306.13643.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2011.12172",
+      "raw": {
+        "sha256": "4060fdf39c98269a0b84fead8396265257a5e35ef20b7f4a9b0a9f9433fccdcb",
+        "size": 3149259,
+        "manifest_sha256": "2cd6d777e0d4de55e82cbae0b70ce7c4812b3ab64cdf7038bbb1edbf3e7a9d95"
+      },
+      "text": {
+        "sha256": "256c2c954276117f2f1095c31a70770b73ac625496b027fac084b20aaaaaa3bc",
+        "size": 63344,
+        "manifest_sha256": "ae85c85d63ffbbf2cdcaa925fc9a25cd5573f169c410cd5921b856ae3e310f0f"
+      },
+      "original_raw_path": "research_radar/sources/2011.12172.pdf",
+      "original_text_path": "research_radar/sources/2011.12172.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2607.04722",
+      "raw": {
+        "sha256": "f0cd7f8811af147b828f0a3bab76b33e5e68077b00ac44a92598d3e3150b3def",
+        "size": 2815070,
+        "manifest_sha256": "0276f7f97eaca81d8b65924c9c820804da2d208353fb79582a69e7acc713a367"
+      },
+      "text": {
+        "sha256": "7b57fe818e5bec48cc8bbb75af5600e4a666ff6ef75f32cbc3a714624ca357d5",
+        "size": 93931,
+        "manifest_sha256": "370b3db2a5dba2fec3207775c47538b8680ffcc4bada5cd168ac18082fc2b1a3"
+      },
+      "original_raw_path": "research_radar/sources/2607.04722.pdf",
+      "original_text_path": "research_radar/sources/2607.04722.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2509.18350",
+      "raw": {
+        "sha256": "11d4ff15e5290f09607ecde2afa449d60de4de3bc1dc637acebdc3cd6258db75",
+        "size": 36610716,
+        "manifest_sha256": "781a9b97efb23fd8e3f827fa35a0e4def4ae3c86874d2a570f705caacc617135"
+      },
+      "text": {
+        "sha256": "4a65c0275294e1ad997809659d734bce2ab5aa3b8daf7067273dc11b48b6a2e7",
+        "size": 144070,
+        "manifest_sha256": "36ef33bd785107a4342769362d5504ea4cae15804324b0ce2514196b16507c6b"
+      },
+      "original_raw_path": "research_radar/sources/2509.18350.pdf",
+      "original_text_path": "research_radar/sources/2509.18350.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2508.20066",
+      "raw": {
+        "sha256": "a5741a541b948b0ab399e8849ff8c8db499c4ae901a4a737dd1d7f5ab6c5d529",
+        "size": 5208139,
+        "manifest_sha256": "769cb3e303080c7a99faae88f65c122049b864695ea73a4d42ce55bffc8ed118"
+      },
+      "text": {
+        "sha256": "c2a85c283e2c9ee4c47e66c4586e20ff2aeecbef3af2d6914f263bb6d959ae43",
+        "size": 111245,
+        "manifest_sha256": "830e87f537d22b572adcfabfaa45b08fcbf498f37a46d5d94111787e81d406ef"
+      },
+      "original_raw_path": "research_radar/sources/2508.20066.pdf",
+      "original_text_path": "research_radar/sources/2508.20066.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/abs/2508.20066",
+      "raw": {
+        "sha256": "52e26462093ae5be2104e580a5595f92428f40f20c9610f4211b9321f96f6d57",
+        "size": 44081,
+        "manifest_sha256": "f22a35a42d98e4c22292d12d7b6f2835d8cb87ac7ee6aca89b154ce6ea4c8047"
+      },
+      "text": {
+        "sha256": "9f902ddebfb6a00987015690887aa7039dd239bc5f7ec2d124569269d3963a79",
+        "size": 10905,
+        "manifest_sha256": "82115e6a83b90cbd8b3bcbcd46f4b405e6f9b5201d72e88755363bee0691d178"
+      },
+      "original_raw_path": "research_radar/sources/2508.20066.html",
+      "original_text_path": null,
+      "generated_offline_at_archival_deposit": true,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2409.14634",
+      "raw": {
+        "sha256": "81c202dec4b9abff133eb0f7f085d60637996027e2d4df11dc0078f3462a10e0",
+        "size": 4165567,
+        "manifest_sha256": "52d8c4c990bf3ca8976a31a8023abde3f4feb9b2cd500c41f023a2ba7365f04f"
+      },
+      "text": {
+        "sha256": "08f6ab32bec31ee2dd8c3e614a653bb301e74a393bc8b9ec42385e20d62b358c",
+        "size": 152287,
+        "manifest_sha256": "bb1866b57dfa309c0292bea1e3728f739fb0b7e9262038f48ea39a13d15f335b"
+      },
+      "original_raw_path": "research_radar/sources/2409.14634.pdf",
+      "original_text_path": "research_radar/sources/2409.14634.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2409.04109",
+      "raw": {
+        "sha256": "fc1d14afd403c19bebb1c8ede9e74ed9aa3de0ee3a1f8656a6dcd6c7da90f79c",
+        "size": 942188,
+        "manifest_sha256": "0d988889cae755f6f60cf0aa76e4e16782b141e19f597dddac47297baaf6f5e5"
+      },
+      "text": {
+        "sha256": "558d2227a477ff42ec6820ca1f68dcd941874211a1e984fdbf0d5faa7e52e5b8",
+        "size": 268941,
+        "manifest_sha256": "890a4ff6802ac24786f79cc1a9b3f4249eeedfcd409aae2e074a7fd759c29be0"
+      },
+      "original_raw_path": "research_radar/sources/2409.04109.pdf",
+      "original_text_path": "research_radar/sources/2409.04109.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2506.22026",
+      "raw": {
+        "sha256": "b923c062676138302ceb4a3b8867db764a2039e1bcc791ac50bb5ae81f0ab9c9",
+        "size": 4541915,
+        "manifest_sha256": "a4b0f8e42834820bbbbf1510acfdfeac869c7e01c23c535c7c962ebd861a876a"
+      },
+      "text": {
+        "sha256": "14a0a0cd87546ac1317c69f897478ddf6c44da79b40a9f219533250709860d43",
+        "size": 71545,
+        "manifest_sha256": "e8ea7329105a5b15c2e8f569db810df8bb38a77fcb68468fe371e7a4e0168542"
+      },
+      "original_raw_path": "research_radar/sources/2506.22026.pdf",
+      "original_text_path": "research_radar/sources/2506.22026.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2504.08066",
+      "raw": {
+        "sha256": "53bafd3028e3f8829a3d85220e84dcf0d18934f9b75c092a60de303ff3644bd2",
+        "size": 8923691,
+        "manifest_sha256": "fd2d7bbcbac589595f58fa1521c4903c7ba9b77cb2b61bc50662997a66e52a09"
+      },
+      "text": {
+        "sha256": "54727eae5b59f90cf2b0508e506711deab035e401a2ea5f124fb4c3e3e962cac",
+        "size": 248726,
+        "manifest_sha256": "87e9f5a22d2f68a6a5645ac3860b1e3f2efe26676813c8ed8267fd5fb78539fb"
+      },
+      "original_raw_path": "research_radar/sources/2504.08066.pdf",
+      "original_text_path": "research_radar/sources/2504.08066.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://www.anthropic.com/research/multi-agent-research-system",
+      "raw": {
+        "sha256": "7d4364af962ce201bb2477a30de14deb1910596c0c8b6abf7ef230fb75f5cd29",
+        "size": 210738,
+        "manifest_sha256": "10d810816ddea798cfb19e4d58c22e77498c780de748d40f5523c853274f5d31"
+      },
+      "text": {
+        "sha256": "7e631c16a08e09818d331f81eba16455238657cd84403a141c2677261fbfc781",
+        "size": 26750,
+        "manifest_sha256": "3e4b72ad0d4cd87281248b781634f900672efe53e627a6c0f0bf488c47048d94"
+      },
+      "original_raw_path": "research_radar/sources/anthropic-research.html",
+      "original_text_path": "research_radar/sources/anthropic-research.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": false
+    },
+    {
+      "url": "https://arxiv.org/pdf/2607.04722",
+      "raw": {
+        "sha256": "f0cd7f8811af147b828f0a3bab76b33e5e68077b00ac44a92598d3e3150b3def",
+        "size": 2815070,
+        "manifest_sha256": "0276f7f97eaca81d8b65924c9c820804da2d208353fb79582a69e7acc713a367"
+      },
+      "text": {
+        "sha256": "7b57fe818e5bec48cc8bbb75af5600e4a666ff6ef75f32cbc3a714624ca357d5",
+        "size": 93931,
+        "manifest_sha256": "61b06a9312de9f726fd35225a4dea87cd90a08ebe81b0f397a3ae4d687024d25"
+      },
+      "original_raw_path": "research_radar/sources/2607.04722.pdf",
+      "original_text_path": "research_radar/pilot/sources/candidate-audit/2607.04722.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/2607.20116",
+      "raw": {
+        "sha256": "d425c507143c3c47b38a17c4f19af3a7c82cbc283ba877dda6f1f101dfdbe404",
+        "size": 28357524,
+        "manifest_sha256": "5240ee1d41bdc1584e9acd9c731d6333e449726e8c89f5a8e77e0639ceb89996"
+      },
+      "text": {
+        "sha256": "499f87fadaa489079d3034794587c3d79f4586ec311206f1517bd28614e61a99",
+        "size": 144072,
+        "manifest_sha256": "4d37c114ebac403edce58cae0ed0a767216a92ac088b1f93e1e6cde3740a0c08"
+      },
+      "original_raw_path": "research_radar/sources/2607.20116.pdf",
+      "original_text_path": "research_radar/pilot/sources/candidate-audit/2607.20116.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/html/2608.28891v1",
+      "raw": {
+        "sha256": "47140eb6cefd0ca117641cfc94b6f0716eacbe7ad234cd260099fd7ccfd8c32e",
+        "size": 211074,
+        "manifest_sha256": "a6ec93304ffefea2702f7a34ee96db476945822365f6d0093628956e3683a4e6"
+      },
+      "text": {
+        "sha256": "c0422403be5cd28695c5bf88f147dac8a0f756603160d6327e78e63ee8a13c2f",
+        "size": 56041,
+        "manifest_sha256": "e48139d178e7b845fe21a4adf4b3fd5718c27cd7230e26f67a12e6881f30886b"
+      },
+      "original_raw_path": "research_radar/sources/2608.28891.full.html",
+      "original_text_path": "research_radar/pilot/sources/candidate-audit/2608.28891.full.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/2509.18350",
+      "raw": {
+        "sha256": "11d4ff15e5290f09607ecde2afa449d60de4de3bc1dc637acebdc3cd6258db75",
+        "size": 36610716,
+        "manifest_sha256": "781a9b97efb23fd8e3f827fa35a0e4def4ae3c86874d2a570f705caacc617135"
+      },
+      "text": {
+        "sha256": "4a65c0275294e1ad997809659d734bce2ab5aa3b8daf7067273dc11b48b6a2e7",
+        "size": 144070,
+        "manifest_sha256": "5464f4aa17b7600804db0f8779eb5bf24e41489a297a11b3f3bb89aaa02237e3"
+      },
+      "original_raw_path": "research_radar/sources/2509.18350.pdf",
+      "original_text_path": "research_radar/pilot/sources/candidate-audit/2509.18350.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/1812.03506",
+      "raw": {
+        "sha256": "e4ad7449b2b501a929230861d7732f15982a3f6d1da659147ade5c89fa5c7166",
+        "size": 8918711,
+        "manifest_sha256": "02d86005ccf4fef9991d60284be1531d4b97bcbfb6c199f959f6d7cb4e85a68e"
+      },
+      "text": {
+        "sha256": "69aa7be8bd0373b6781f32834201ab0e6e92c367a6b57666d02c959f13d95c4d",
+        "size": 92188,
+        "manifest_sha256": "05382091576481ed46ff26c6e564c1d80e083560bc3fba669075360b3becbcf3"
+      },
+      "original_raw_path": "research_radar/sources/1812.03506.pdf",
+      "original_text_path": "research_radar/pilot/sources/candidate-audit/1812.03506.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/2505.07622",
+      "raw": {
+        "sha256": "4d14d4b4b25470b7394942ff50d9f2a158a8987086dbc43cac3fe1ef407c0764",
+        "size": 1945180,
+        "manifest_sha256": "403c7cfd92e927f15b6c9bba82888ac6644680b9497448fe615b5505ae2571a7"
+      },
+      "text": {
+        "sha256": "99cdea0aaf169d4001d565b104f379069f5b0050d78ba8dd4870f09dabcf6acd",
+        "size": 133229,
+        "manifest_sha256": "32df8ebc6262c42588bb7a5e114fff119facc78195edb7db2728446556caf2f2"
+      },
+      "original_raw_path": "research_radar/sources/2505.07622.pdf",
+      "original_text_path": "research_radar/pilot/sources/candidate-audit/2505.07622.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/2603.16768",
+      "raw": {
+        "sha256": "82a1138bf8004ce488d8d7ab0ab0f700f3f5292964b52140444be950b282c984",
+        "size": 656677,
+        "manifest_sha256": "db36a380e5680d09ffc7d1b56d086011effbee5f34af6c8b2f3760a80834796c"
+      },
+      "text": {
+        "sha256": "feef015917426d3f512589054fba41564cc14f97a92277697329d85e27156689",
+        "size": 73865,
+        "manifest_sha256": "1e78053204eb46d57245675be10af53adede3f53e9d73bddf6ecfda7089a4212"
+      },
+      "original_raw_path": "research_radar/pilot/sources/candidate-independent-search/2603.16768.pdf",
+      "original_text_path": "research_radar/pilot/sources/candidate-independent-search/2603.16768.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/2507.13486",
+      "raw": {
+        "sha256": "2825ed4de297f579c05fa8863dff4ff74b11a5de95deeff4162c03b015222ef5",
+        "size": 5127484,
+        "manifest_sha256": "20afa8bfbfcd28b094ad1dc5b97ce2cf4bd38ba085717a27a1005582a867c7bb"
+      },
+      "text": {
+        "sha256": "ba60dae06f2ec874d840fe7c58f8360254c9652f453797e55267e7871f659a3d",
+        "size": 94603,
+        "manifest_sha256": "c0d0151037925147ab012c5007e39222107cb1c25976cc6685525308747f657c"
+      },
+      "original_raw_path": "research_radar/pilot/sources/candidate-independent-search/2507.13486.pdf",
+      "original_text_path": "research_radar/pilot/sources/candidate-independent-search/2507.13486.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/2309.10698",
+      "raw": {
+        "sha256": "df8e079049807bff3d350b27d04909da1248677ef44816abf1fb1e9e75402c37",
+        "size": 2034300,
+        "manifest_sha256": "a2fe77583c219ce85c7c1eee6e8cda591abdc90fc4bc0541ed1ff2f811cd1107"
+      },
+      "text": {
+        "sha256": "d1bad06603c4c08a1dc678633a581527dd9ec987bb2efad01963dc166c28c958",
+        "size": 43393,
+        "manifest_sha256": "1c2e5981658daa01921f31a999b98f31d2f0ef2111d75ed813e0c24cfc402b6c"
+      },
+      "original_raw_path": "research_radar/pilot/sources/candidate-independent-search/2309.10698.pdf",
+      "original_text_path": "research_radar/pilot/sources/candidate-independent-search/2309.10698.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/2008.11646",
+      "raw": {
+        "sha256": "efab5221fefba5326f8dc0b092db32186b33c5a6c2f8d8477338dbedd77e1873",
+        "size": 8390338,
+        "manifest_sha256": "b143c277e4ed29551e80aedcf87ba7c3a794141162edb71c8a7621474017fc0a"
+      },
+      "text": {
+        "sha256": "499ce0bb55b3687e83c1ac08fba9c14bc29e60121636cf1d76fb7893df70a87d",
+        "size": 67042,
+        "manifest_sha256": "f6312a2bc7ea5f853e52e2819b3cb5f73d85119a3af07cfdb0b43a1656109950"
+      },
+      "original_raw_path": "data/research-radar/sources/seed-verification/B1.pdf",
+      "original_text_path": "data/research-radar/sources/seed-verification/B1.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+      "raw": {
+        "sha256": "0fe0f37bfacd4c2c043cf58e88895b4dd328a7054d3ca6f25bbdd8662dcb56ac",
+        "size": 3566292,
+        "manifest_sha256": "4b29be037f27adbbcd62ff155ba467c6950b93a561ef5aaf5fe52cdc6a543fc8"
+      },
+      "text": {
+        "sha256": "e81ca5b4a0ea4632dd13686d4ca15c2b60af6d8fd572fe49d9b1f8b0b5672721",
+        "size": 47718,
+        "manifest_sha256": "337f3bef1a712de1c228a8c881d3c8e83b33ed33c33c1b1cba28adc67f864b5f"
+      },
+      "original_raw_path": "data/research-radar/sources/seed-verification/B2.pdf",
+      "original_text_path": "data/research-radar/sources/seed-verification/B2.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://arxiv.org/pdf/2002.12186",
+      "raw": {
+        "sha256": "60cba13d08ca30fadac7136dc36192030bfa8e412f3a1810408d89c145552dbf",
+        "size": 11772032,
+        "manifest_sha256": "d09b12c41ac1ec3c21a9b5f4a626f9b59094103eb4f3a1d24302b9bbbc58a190"
+      },
+      "text": {
+        "sha256": "0b935151561286b49c98793d1df9e0ddd972aaa5d54921bdc8eae68de1a3b4e9",
+        "size": 58327,
+        "manifest_sha256": "12278f34a14cb1793c951a320977ac37f3f39b3d209f9c060f0b37b423eeaff8"
+      },
+      "original_raw_path": "data/research-radar/sources/seed-verification/B3.pdf",
+      "original_text_path": "data/research-radar/sources/seed-verification/B3.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf",
+      "raw": {
+        "sha256": "e2863e20d678fe02e92671406262971b037ee60d1fed9ce1ecb31cd184a1667f",
+        "size": 1545574,
+        "manifest_sha256": "6438bd38f1e2d19d1e2b7c8885dbe2071a85edcc3ce0b67e49eb1665b2ef2100"
+      },
+      "text": {
+        "sha256": "43d49f3b052bdf034757bed05a514380eda9bc43a798d21c9060f789c47d3794",
+        "size": 44954,
+        "manifest_sha256": "fbd1e7b93ad9418009caf629bd106c2f1e1e38ddf8584b0ef9bb075bd585f313"
+      },
+      "original_raw_path": "data/research-radar/sources/seed-verification/B4.pdf",
+      "original_text_path": "data/research-radar/sources/seed-verification/B4.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf",
+      "raw": {
+        "sha256": "efa6298218f6a40f90a592deb70de8861989db8c02bbb8a312b8102d26487d26",
+        "size": 7522573,
+        "manifest_sha256": "31dcc70820178f94490703f7e19911a00a5d580529dce8cdc8007f6ad0ee2251"
+      },
+      "text": {
+        "sha256": "29692d634404554b72170570a846b5fac8795552eb988c6d5425f5c673698eba",
+        "size": 53773,
+        "manifest_sha256": "9f45ecd718b0ff1dbb3554114cf6fc3b96e39050024a1cd904c8a60155709d4d"
+      },
+      "original_raw_path": "data/research-radar/sources/seed-verification/B5.pdf",
+      "original_text_path": "data/research-radar/sources/seed-verification/B5.txt",
+      "generated_offline_at_archival_deposit": false,
+      "historical_text_hash_available": true
+    }
+  ],
+  "claims": [
+    {
+      "id": "literature:university1652:0",
+      "status": "verified",
+      "manifest_sha256": "d1d6a1e996beb8184f451142ff34692e25660e2cbd41866db461af7cbebea702",
+      "source_url": "https://arxiv.org/pdf/2002.12186",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:university1652:1",
+      "status": "verified",
+      "manifest_sha256": "275ec986296859a93903e4d2b73b78d7bffbde74ff06650aacb6721bef03a990",
+      "source_url": "https://arxiv.org/pdf/2002.12186",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:denseuav:0",
+      "status": "verified",
+      "manifest_sha256": "d6c1f72dd25c71c522888db47c7e33f1450b9dc43159fa27901eafbaef4b26e9",
+      "source_url": "https://arxiv.org/pdf/2201.09201",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:denseuav:1",
+      "status": "verified",
+      "manifest_sha256": "b073727677d81d13cfb23cd6e7f5fb74062798a575cfad4ed63cdce6e00c2d21",
+      "source_url": "https://arxiv.org/pdf/2201.09201",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:sample4geo:0",
+      "status": "verified",
+      "manifest_sha256": "08b11548fd658bb79c183ef4b938eef27ec90c4378852f74e2a194272526c7b7",
+      "source_url": "https://arxiv.org/pdf/2303.11851",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:sample4geo:1",
+      "status": "verified",
+      "manifest_sha256": "734fc4c1822fb0af1e059935e0d7ee87b374afa5924356b372dc8f6e64fbd096",
+      "source_url": "https://arxiv.org/pdf/2303.11851",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:geoclip:0",
+      "status": "verified",
+      "manifest_sha256": "5989551886dad59d8de93ea7c75d4a53fa1679c9d50c76f56912a63d70dde58f",
+      "source_url": "https://arxiv.org/pdf/2309.16020",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:geoclip:1",
+      "status": "verified",
+      "manifest_sha256": "155eac11256e65e5ed2f184c8336a6bd13cdff46f38bf568fc37be5edc8b42e5",
+      "source_url": "https://arxiv.org/pdf/2309.16020",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:uavvisloc:0",
+      "status": "verified",
+      "manifest_sha256": "18929609575155ebe8e2f9f2ae6add1ccfc0390ee2c7a71fc2a2eabb2a43beb3",
+      "source_url": "https://arxiv.org/pdf/2405.11936",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:uavvisloc:1",
+      "status": "verified",
+      "manifest_sha256": "c0a180256389679cf3ed5a380aea6eabfff3295b4d181a85618dd38bfdb28d66",
+      "source_url": "https://arxiv.org/pdf/2405.11936",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:game4loc:0",
+      "status": "verified",
+      "manifest_sha256": "afd7d3fdb04f9fbe7509269a46b6c5daab529263b9cd801235dce87edfd9635d",
+      "source_url": "https://arxiv.org/pdf/2409.16925",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:game4loc:1",
+      "status": "verified",
+      "manifest_sha256": "45c44e310f1a0eb5dc1d1a00a661609ba9534fbe7ba67314a9f299fbcdf735af",
+      "source_url": "https://arxiv.org/pdf/2409.16925",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:offnadirloc:0",
+      "status": "verified",
+      "manifest_sha256": "87ef10f35539b622f060585536280e0bbc590b1f5c633a84cdb1d58ed18d7159",
+      "source_url": "https://arxiv.org/pdf/2607.19951",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:offnadirloc:1",
+      "status": "verified",
+      "manifest_sha256": "98dd85e79d1074af5e9c71c6acc51187032a945a97bab1e2e440ce9343d6e076",
+      "source_url": "https://arxiv.org/pdf/2607.19951",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:rim:0",
+      "status": "verified",
+      "manifest_sha256": "f2302d9d86810772267553047024c98b943bdd9121f6c71355dd094e59921ece",
+      "source_url": "https://arxiv.org/pdf/2607.20116",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:rim:1",
+      "status": "verified",
+      "manifest_sha256": "77307a4071a02140077de9b10b87d7f96ec66476bdafe4176e9f63115594a507",
+      "source_url": "https://arxiv.org/pdf/2607.20116",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:rim:2",
+      "status": "verified",
+      "manifest_sha256": "63e96ecff0078b0b8d3869a15bbb528f86d18cb2d291f6d29a1238a1ce6bf4b9",
+      "source_url": "https://arxiv.org/pdf/2607.20116",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:rim:3",
+      "status": "verified",
+      "manifest_sha256": "e9e4305ab50ead2b96a98ad621d7dad2fa65ff8f59e7d44b6f6c4bbbfc755971",
+      "source_url": "https://arxiv.org/pdf/2607.20116",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:infogeo:0",
+      "status": "verified",
+      "manifest_sha256": "6c55c54e3709cbfc37ca36f97617771096bc3569483238fd41156c00f03389ff",
+      "source_url": "https://arxiv.org/pdf/2605.07099",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:infogeo:1",
+      "status": "verified",
+      "manifest_sha256": "ff13b8a40ecc2004a3d8befd8b743fd36a6d42d43f61ee8bfc84120c5f266058",
+      "source_url": "https://arxiv.org/pdf/2605.07099",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:skyreg:0",
+      "status": "verified",
+      "manifest_sha256": "b0eaf1a51c46be487b1d23be7ac2c14946916acc7dd96e120a23c6165b8738c4",
+      "source_url": "https://arxiv.org/html/2608.28891v1",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:skyreg:1",
+      "status": "verified",
+      "manifest_sha256": "4969f6f7790734bc627c6e8739e39cef2e53eabd869a715670177ed803675374",
+      "source_url": "https://arxiv.org/html/2608.28891v1",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:skyreg:2",
+      "status": "verified",
+      "manifest_sha256": "93e0ff86d77881c7d713d99eea323a94b605977947b4b7a8566d966987e7604e",
+      "source_url": "https://arxiv.org/html/2608.28891v1",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:skyreg:3",
+      "status": "verified",
+      "manifest_sha256": "9c90be0e6a235c7f57e2b52228422edbf5827f73e7dbe53ae24830b0f2901291",
+      "source_url": "https://arxiv.org/html/2608.28891v1",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:unifygeo:0",
+      "status": "verified",
+      "manifest_sha256": "5b15b492ead95da60ec99cbfbfbdbd94313b1cbe43714625cdde3008e8c5a93a",
+      "source_url": "https://arxiv.org/pdf/2505.07622",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:cahomo:0",
+      "status": "verified",
+      "manifest_sha256": "5adaed59946aaa668ea70d30df453b0868a1967317d26e1450b6130f18b1a747",
+      "source_url": "https://arxiv.org/pdf/2308.16906",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:roma:0",
+      "status": "verified",
+      "manifest_sha256": "18fb3b4c8e9cb2d09c5369da816c93a277451cd9eb9cbfe14918abc982e97802",
+      "source_url": "https://arxiv.org/pdf/2305.15404",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:mast3r:0",
+      "status": "verified",
+      "manifest_sha256": "190ab00ea9d08f2984733d8b57d141401cf9db6b6f1c936a817dd1c5201f4c61",
+      "source_url": "https://arxiv.org/pdf/2406.09756",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:mast3r:1",
+      "status": "verified",
+      "manifest_sha256": "3fdf1b7207436bb47c1334244dcd6bc3e082467d924408f3ee265e6f2b2f71e4",
+      "source_url": "https://arxiv.org/pdf/2406.09756",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:vggt:0",
+      "status": "verified",
+      "manifest_sha256": "e938dee433b97df9fe92a2f840564738f2c835ae4a344598adf2a091a411a75e",
+      "source_url": "https://arxiv.org/pdf/2503.11651",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:vggt:1",
+      "status": "verified",
+      "manifest_sha256": "45786631968e7bc5d9169e115d614b369f6f5e6cb77a4912fad0dbb9840a0458",
+      "source_url": "https://arxiv.org/abs/2503.11651",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:hfnet:0",
+      "status": "verified",
+      "manifest_sha256": "a1345d3a4220c0eb97015ccba41822abede5d02299731e548fdb2055395c2574",
+      "source_url": "https://arxiv.org/pdf/1812.03506",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:hfnet:1",
+      "status": "verified",
+      "manifest_sha256": "3b188dd4ad89d90bad0bc492e4010778e6345b3a1dc1d9c452012021f8fcd5aa",
+      "source_url": "https://arxiv.org/pdf/1812.03506",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:hfnet:2",
+      "status": "verified",
+      "manifest_sha256": "78d049b7710b2f6ab671e2426829e2d549de88717ab956c1d8f4fac4ca7d8582",
+      "source_url": "https://arxiv.org/pdf/1812.03506",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:lightglue:0",
+      "status": "verified",
+      "manifest_sha256": "b52ca8c21c878cb0952e86ddbb51f444a52cf2b4ea28a9f8507e64d0f31bdfd8",
+      "source_url": "https://arxiv.org/abs/2306.13643",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:lightglue:1",
+      "status": "verified",
+      "manifest_sha256": "936e3611e8bad6f8eb48b4d6ac91e300de6d1febd6634604775d7726f5142bef",
+      "source_url": "https://arxiv.org/pdf/2306.13643",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:vigor:0",
+      "status": "verified",
+      "manifest_sha256": "e29d0ba4a1dce082796019fed3437ad17b8178151cc9cea108e06cfc5fc93759",
+      "source_url": "https://arxiv.org/pdf/2011.12172",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:vigor:1",
+      "status": "verified",
+      "manifest_sha256": "39bfdc83351cf65021b6d61fc84ae4626c23beac4d747a9c3dbd4ee739f1113f",
+      "source_url": "https://arxiv.org/pdf/2011.12172",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ricloc:0",
+      "status": "verified",
+      "manifest_sha256": "05aa2043d1785f1bfdc5f8e81dbb80e6244234d3d3a57c5814b3322fa2515eff",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ricloc:1",
+      "status": "verified",
+      "manifest_sha256": "89c499d502994c7d2cd918bedbd262dbd725b7ca258e567e27695edf241a2cda",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ricloc:2",
+      "status": "verified",
+      "manifest_sha256": "85c0f0b7f22cf201042570c1754698106fd3b174e440ce929e51c8d659ba2e21",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ricloc:3",
+      "status": "verified",
+      "manifest_sha256": "ec0a23692c401fb2f82dd33c72604562c8ad65d3b4a9c51a78f71d878b8cabff",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ricloc:4",
+      "status": "verified",
+      "manifest_sha256": "4533e29cbc3b05dfbe07f07d6ab71e440d449e163a53d1dd6288b24092242ad9",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ortholoc:0",
+      "status": "verified",
+      "manifest_sha256": "4d1014f2c4c2bd986ea4739b8a857b3569c065457562c47df3dbd3d887b6b76b",
+      "source_url": "https://arxiv.org/pdf/2509.18350",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ortholoc:1",
+      "status": "verified",
+      "manifest_sha256": "68c1d96f8db39975465bc43534f72fc732edd524ca9101d3e8b74c46547b5f20",
+      "source_url": "https://arxiv.org/pdf/2509.18350",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ortholoc:2",
+      "status": "verified",
+      "manifest_sha256": "46fdc4592a55372c0f8378abda6e5e5aa20531ce5e2e4f28940b35aa5910e6a1",
+      "source_url": "https://arxiv.org/pdf/2509.18350",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:ortholoc:3",
+      "status": "verified",
+      "manifest_sha256": "facb68023eccf478f20b8825e1b509b403785a4ebd112fa2c77a098735b023b2",
+      "source_url": "https://arxiv.org/pdf/2509.18350",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:paul:0",
+      "status": "verified",
+      "manifest_sha256": "350341fe055f852ecf6c67a541d5b5da79622c9779f957c1a6eed41ee47abdc0",
+      "source_url": "https://arxiv.org/pdf/2508.20066",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:paul:1",
+      "status": "verified",
+      "manifest_sha256": "21419a863b135a5946e0f3d7407468e048c2e1932a1b919ce3bbfc13d54f26c4",
+      "source_url": "https://arxiv.org/abs/2508.20066",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:F1:0",
+      "status": "verified",
+      "manifest_sha256": "d32376fb5c029592ceef066ad45a050e0ccdeaca5006bbddc2f6977c3cf6c08c",
+      "source_url": "https://arxiv.org/pdf/2409.14634",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:F2:0",
+      "status": "verified",
+      "manifest_sha256": "7711fe2cf4ba990c3292f94eeddfd9aa4a9273e3bfc09595b47b6de416f6316d",
+      "source_url": "https://arxiv.org/pdf/2409.04109",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:F3:0",
+      "status": "verified",
+      "manifest_sha256": "9873b47266f805a64d0bfd0363be75fbb99ed837fc87047cf9df6436b51acf57",
+      "source_url": "https://arxiv.org/pdf/2506.22026",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:F3:1",
+      "status": "verified",
+      "manifest_sha256": "8ee6afa9320e66aad9f6488485d47665cc375bbb70ccc91185cb474beffdc451",
+      "source_url": "https://arxiv.org/pdf/2506.22026",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:F4:0",
+      "status": "verified",
+      "manifest_sha256": "87d104254c440d83de95eec21a878523bffd5185a5f406caea6d6f36d82b44bf",
+      "source_url": "https://arxiv.org/pdf/2504.08066",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:F5:0",
+      "status": "verified",
+      "manifest_sha256": "cc395284bfc18e75501deb1a9a675dda8ae856ba364b1dd5fbdfc9543c92cfc2",
+      "source_url": "https://www.anthropic.com/research/multi-agent-research-system",
+      "quote_match": "exact"
+    },
+    {
+      "id": "literature:F5:1",
+      "status": "verified",
+      "manifest_sha256": "6f985591f195e0bbbe79d5bce24431771625ec03bb9dfef7d9318d78171d322e",
+      "source_url": "https://www.anthropic.com/research/multi-agent-research-system",
+      "quote_match": "exact"
+    },
+    {
+      "id": "candidate:E1",
+      "status": "verified",
+      "manifest_sha256": "7e52495b1fc0d20ac265a1d2812bb8cd7109aa1a21be4e5714e0b3c9cd9361fd",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "candidate:E2",
+      "status": "verified",
+      "manifest_sha256": "0c9333d4fc8d753420afcd3f10bbd5d50dcaea502bb9ce1caa0413de0bc21647",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "exact"
+    },
+    {
+      "id": "candidate:E3",
+      "status": "verified",
+      "manifest_sha256": "2d028577e29143e240bf9baf66effc0392d82c781d8e7faa28666ebef7b60d5a",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "candidate:E4",
+      "status": "verified",
+      "manifest_sha256": "cb081c8f7e1e4cb690bf1730fd836f26dbbfc81980fb3478c3033c5919f0f923",
+      "source_url": "https://arxiv.org/pdf/2607.20116",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "candidate:E5",
+      "status": "verified",
+      "manifest_sha256": "5492aec44f0b7d3785a9035770be2b1393b47b6d54c5c3dad5162a29ec3bd673",
+      "source_url": "https://arxiv.org/html/2608.28891v1",
+      "quote_match": "exact"
+    },
+    {
+      "id": "candidate:E6",
+      "status": "verified",
+      "manifest_sha256": "c981e027e796395064a88afca95a5094ea9bc87ef780cb64d920d725bb86b9fc",
+      "source_url": "https://arxiv.org/pdf/2509.18350",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "candidate:E7",
+      "status": "verified",
+      "manifest_sha256": "d5694405a911e0e6334312f241fb243eed5b10a109665bd4e3c85f7f0a1dfbbc",
+      "source_url": "https://arxiv.org/pdf/2509.18350",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "candidate:E8",
+      "status": "verified",
+      "manifest_sha256": "fdcb130917564e2aaa1066a826ebbcf8ab08530ecfca8b15fcc23ce58ec0c62a",
+      "source_url": "https://arxiv.org/html/2608.28891v1",
+      "quote_match": "exact"
+    },
+    {
+      "id": "candidate:E9",
+      "status": "verified",
+      "manifest_sha256": "26fca2ecad76f75c30b56f96392b2c294d4493bf8959b2847ff5c7eff3e2cee1",
+      "source_url": "https://arxiv.org/pdf/2607.04722",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "candidate:E10",
+      "status": "verified",
+      "manifest_sha256": "3cf6cefe941981f8a7545ebb0590fa6d9f55a80c29f4d797c44afba74726447f",
+      "source_url": "https://arxiv.org/pdf/1812.03506",
+      "quote_match": "exact"
+    },
+    {
+      "id": "candidate:E11",
+      "status": "verified",
+      "manifest_sha256": "83d7414b7c38ac361ad5e7ec983449c8472e9753e1cdcb386b8fac7c3efd3da8",
+      "source_url": "https://arxiv.org/pdf/2505.07622",
+      "quote_match": "exact"
+    },
+    {
+      "id": "independent:O1",
+      "status": "verified",
+      "manifest_sha256": "c6449d2c8c2672b3ebfaf19c539ea223cb0c97138bf7c3ea86b23d74ba20277c",
+      "source_url": "https://arxiv.org/pdf/2603.16768",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "independent:O2",
+      "status": "verified",
+      "manifest_sha256": "631c500047b77c2f4f76fce72c25177073e0da8c96eeafbdee7853f64368297a",
+      "source_url": "https://arxiv.org/pdf/2507.13486",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "independent:O3",
+      "status": "verified",
+      "manifest_sha256": "6a0b12d5223aad2e76c195976845bc9a78350f3e81e1ef5c81c92db6a81ce1ae",
+      "source_url": "https://arxiv.org/pdf/2309.10698",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "seed:B1",
+      "status": "verified",
+      "manifest_sha256": "3ed74bdd72c145b57c8d526f934dcb851ac539a9065154c0db8e8b4cdfe007a5",
+      "source_url": "https://arxiv.org/pdf/2008.11646",
+      "quote_match": "exact"
+    },
+    {
+      "id": "seed:B2",
+      "status": "verified",
+      "manifest_sha256": "836417e921fc079a57155c2f74c29e5e472e13f0ef8c9307093cda163feffbb0",
+      "source_url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "seed:B3",
+      "status": "verified",
+      "manifest_sha256": "5b2808b55c5de28a9fcbc3be8d9867d8a1de9b5d2f7445c4d10c1e643cc32ea4",
+      "source_url": "https://arxiv.org/pdf/2002.12186",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "seed:B4",
+      "status": "verified",
+      "manifest_sha256": "ab9e93718a6495b2ceb529a2219961c6408a2879091df383e0b08fd239b3fac6",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf",
+      "quote_match": "alphanumeric-location-only"
+    },
+    {
+      "id": "seed:B5",
+      "status": "verified",
+      "manifest_sha256": "ec26c89808c0a7dfc0c33852822aa7ba1e9cffda6b3f13e21b493d2702bac1a6",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf",
+      "quote_match": "exact"
+    }
+  ],
+  "exceptions": [],
+  "past_missing_lineage": [
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/abs/2008.11613",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/abs/2002.12186",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://openaccess.thecvf.com/content/ICCV2023/html/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.html",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://openaccess.thecvf.com/CVPR2022?day=all",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://openaccess.thecvf.com/CVPR2024?day=all",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/search/?query=Learning+Part-based+Representation+for+Cross-view+Geo-localization&searchtype=all&abstracts=show&order=-announced_date_first&size=50",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/pdf/2002.12186",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": true,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": true,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": true,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": true,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/search/?query=Each+part+matters&searchtype=title&abstracts=show&order=-announced_date_first&size=50",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/search/?query=cross-view+pose+estimation&searchtype=title&abstracts=show&order=-announced_date_first&size=50",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/pdf/2403.04172",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhu_VIGOR_Cross-View_Image_Geo-Localization_Beyond_One-to-One_Retrieval_CVPR_2021_paper.pdf",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/pdf/2008.11646",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": true,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/pdf/2312.08060",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "url": "https://arxiv.org/pdf/1809.05979",
+      "status": "original_response_unavailable",
+      "historical_sha256": null,
+      "retrieval_log_manifest": "e361d790a20a20f71ebfae3c04e049668159aec6edfc7363014dba669a165fcc",
+      "later_independent_copy_preserved": false,
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_blind_audit",
+      "status": "original_texts_unavailable",
+      "detail": "All nine PDFs had layout and reading-order text extractions, and four also had compact whitespace-normalized text. These were deleted together with their PDFs; no hashes were recorded.",
+      "manifest_sha256": "a954773dde144e2213dd85451d03db2be1ad7a46965e2106a80612d30efa1bc8",
+      "historical_lineage_restored": false
+    },
+    {
+      "phase": "original_literature_retrieval",
+      "url": "https://arxiv.org/abs/2409.14634",
+      "status": "partial",
+      "bytes_observed": 600,
+      "detail": "Exact probe timestamp/duration not instrumented.",
+      "historical_lineage_restored": false,
+      "retrieval_log_manifest": "832ff78dc8f8fd804df07933e3c07178d3d150803c573eac329923fc884c26e8"
+    },
+    {
+      "phase": "original_literature_retrieval",
+      "url": "https://arxiv.org/pdf/2608.28891",
+      "status": "budget_limited",
+      "bytes_observed": 40000001,
+      "detail": "40 MB per-response research budget exceeded",
+      "historical_lineage_restored": false,
+      "retrieval_log_manifest": "832ff78dc8f8fd804df07933e3c07178d3d150803c573eac329923fc884c26e8"
+    }
+  ],
+  "limitations": [
+    "Verified means preserved-byte integrity, raw/text linkage and an exact located quotation; it does not certify scientific truth, novelty, or semantic entailment.",
+    "Extraction is an explicit provenance attestation, not a re-extraction test.",
+    "Original reviewer location labels are retained, not independently page-validated; character offsets are mechanically verified.",
+    "Normalized historical quotation searches retain both the original asserted quote and the exact source span; normalization alone is never the verification result.",
+    "Unquoted hypotheses, interpretations and candidate verdicts are not promoted to verified claims. The full input artifacts are retained for context.",
+    "Later seed verification does not restore deleted original blind-audit responses.",
+    "Unknown retrieval timestamps remain null; archive creation time is separate."
+  ],
+  "current_claims_verified": true,
+  "verified_claim_count": 75,
+  "historical_lineage_complete": false,
+  "status": "current_quoted_evidence_preserved_with_historical_losses",
+  "immutable_report": {
+    "sha256": "9add512cca0cc0ffed5ba88cc99f0c43174a1c5438e4b6a7e96acbc9cf8b7d74",
+    "size": 53535,
+    "manifest_sha256": "0f9de0b30467c6ca53d324e78428a437919d3b7574ba434cbf38f0b4f08eb1a8"
+  }
+}

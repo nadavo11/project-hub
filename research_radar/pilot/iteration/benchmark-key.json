@@ -1,0 +1,272 @@
+{
+  "minimum_recall_per_class": 0.8,
+  "cases": [
+    {
+      "id": "C01",
+      "source_id": "S5",
+      "cutoff": "2025-12-31",
+      "idea": "Collect a dense real-UAV positioning dataset, train a siamese transformer retrieval baseline, exploit spatially neighboring matches in postprocessing, and introduce a continuous distance-sensitive SDM retrieval metric.",
+      "expected": "overlap",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Dense per-pixel 3D georegistration and evaluation versus image-level location retrieval.",
+      "later_published_target": {
+        "title": "Pixel-wise Geo-registration of Drone and Satellite Images",
+        "url": "https://arxiv.org/abs/2608.28891",
+        "date": "2026-08-28",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2608.28891.full.txt",
+        "sha256": "c0422403be5cd28695c5bf88f147dac8a0f756603160d6327e78e63ee8a13c2f",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "Pixel-wise Geo-registration of Drone Images Skip to main content Report GitHub Issue × Title: Content selection saved. Describe the issue below: Description: Submit without GitHub Submit in GitHub Why HTML? Report Issue Back to Abstract Download PDF Contents Reading mode Colour theme Abstract 1 Introduction 2 Background and Related Work 2.1 Geolocalization 2.2 Georegistration 2.3 3D Reconstruction and Multi-View Geometry 3 Method 3.1 Inputs 3.2 Feed-Forward 3D Reconstruction 3.3 Pixel-Wise Geo-Registration 3.4 Training Details 4 Dataset 4.1 Train and Test Splits 4.1.1 SkyReg-Train. 4.1.2 SkyReg-Bench. 4.2 Data Collection Details 4.2.1 Urban Scenes. 4.2.2 Landmark Scenes. 4.2.3 Suburban Scenes. 5 Benchmarking and Evaluation 5.1 Evaluation Protocol 5.2 Results and Discussion 5.3 Qualitative Results 5.4 Training Ablation 6 Conclusion References 0.A Additional Data Gathering Details 0.A.1 Urban Scenes 0.A.1.1 Ground Truth Pixel-wise GPS 0.A.1.2 Reference Satellite Images 0.A.1.3 Query Drone Images 0.A.2 Landmarks and Suburban Scenes 0.B Additional Dataset Information 0.B.1 SkyReg Urban 0.B.2 SkyReg Landmark 0.B.3 SkyReg Suburban 0.C Additional Qualitative Results License: CC BY-NC-SA 4.0 arXiv:2608.28891v1 [cs.CV] 28 Aug 2026 11institutetext: Institute of Artificial Intelligence, University of Central Florida, USA Pixel-wise Geo-registration of Drone Images Qingyang Liu* David G. Shatwell* Parth Parag Kulkarni Mubarak Shah Institute of Artificial Intelligence, University of Central Florida Abstract Cross-view geo-registration is the task of aligning a query image to a geodetically accurate reference (e.g., satellite image), so that each query pixel maps to a real-world GPS coordinate. Most existing work addresses the related problem of cross-view geo-localization, where the goal is typically to estimate the camera center using retrieval, classification, matching, or regression. Because these approaches do not provide dense supervision, they are poorly suited for learning and evaluating pixel-wise alignment. We introduce SkyReg, a geometry-aware geo-registration model that estimates the transformation between the query and reference images by explicitly modeling the 3D scene geometry. Applying this transformation to warp the query into the reference frame yields pixel-wise geo-localization, without relying on 2D point matches, and remains robust to occlusions and large viewpoint changes. To enable training and standardized evaluation, we release (i) SkyReg-Trai"
+          },
+          {
+            "location": "extracted text characters 1056:2272; PDF page 1",
+            "quote": "nal Dataset Information 0.B.1 SkyReg Urban 0.B.2 SkyReg Landmark 0.B.3 SkyReg Suburban 0.C Additional Qualitative Results License: CC BY-NC-SA 4.0 arXiv:2608.28891v1 [cs.CV] 28 Aug 2026 11institutetext: Institute of Artificial Intelligence, University of Central Florida, USA Pixel-wise Geo-registration of Drone Images Qingyang Liu* David G. Shatwell* Parth Parag Kulkarni Mubarak Shah Institute of Artificial Intelligence, University of Central Florida Abstract Cross-view geo-registration is the task of aligning a query image to a geodetically accurate reference (e.g., satellite image), so that each query pixel maps to a real-world GPS coordinate. Most existing work addresses the related problem of cross-view geo-localization, where the goal is typically to estimate the camera center using retrieval, classification, matching, or regression. Because these approaches do not provide dense supervision, they are poorly suited for learning and evaluating pixel-wise alignment. We introduce SkyReg, a geometry-aware geo-registration model that estimates the transformation between the query and reference images by explicitly modeling the 3D scene geometry. Applying this transformation to warp the query into t"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C02",
+      "source_id": "S2",
+      "cutoff": "2022-12-31",
+      "idea": "Partition cross-view feature maps into concentric square rings around the image center, pool each part, and optimize part-wise identity classification so local contextual information supports matching under rotations.",
+      "expected": "overlap",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Dynamic hard-negative selection changes the training sampling distribution, not spatial ring representation.",
+      "later_published_target": {
+        "title": "Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation",
+        "url": "https://arxiv.org/abs/2303.11851",
+        "date": "2023-03-21",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2303.11851.txt",
+        "sha256": "6debae734fd6dc12996ecae04820bf3fd873aa9a37d05f58cc57f3cca815a8fe",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "                                                       Sample4Geo: Hard Negative Sampling For Cross-View\n                                                                       Geo-Localisation\n                                                               Fabian Deuser            Konrad Habel               Norbert Oswald\n                                                                            University of the Bundeswehr Munich\n                                                                         Institute for Distributed Intelligent Systems\n                                                                                       Munich, Germany\n                                                        fabian.deuser@unibw.de, konrad.habel@unibw.de, norbert.oswald@unibw.de\narXiv:2303.11851v2 [cs.CV] 29 Aug 2023\n\n\n\n\n                                         Abstract                                                                       Geographical Distance:\n\n                                         Cross-View Geo-Localisation is still a challenging task\n                                         where additional modules, specific pre-processing or zoom-\n                                         ing strategies are necessary to determine accurate positions\n                                         of images. Since different views have different geometries,\n                                         pre-processing like polar transformation helps to merge\n                                         them. However, this results in distorted images which then\n                                         have to be rectified. Adding hard negatives to the train-\n                                         ing batch could improve the overall performance but with\n                                         the default loss functions in geo-localisation it is difficult                  Visual Similarity:\n                                         to include them. In this work, we present a simplified\n                                         but effective architecture based on contrastive learning with\n                                         symmetric InfoNCE loss that outperforms current state-of-\n                                         the-art results. Our framework consists of a narrow train-\n                                         ing pipeline that eliminates the need of using aggregation\n                                         modules, avoids further pre-processing steps and even in"
+          },
+          {
+            "location": "extracted text characters 11216:12443; PDF page 2",
+            "quote": "      street-view differs, Shi et al. [20] applied polar transforma-\n   • We propose GPS-Sampling as a task-specific sampling             tion to the satellite image. The resulting stretched image is\n     technique for hard negatives at the beginning of the            similar to the domain of the street-view image, this is still a\n     training.                                                       common pre-processing technique today. In addition, they\n                                                                     extended their network with a Spatial-Aware Feature Ag-\n   • We present Dynamic Similarity Sampling (DSS) to se-             gregation (SAFA) module to pool important features from\n     lect hard negatives during training based on the cosine         the feature maps in a learnable fashion.\n     similarity between street and satellite views.                      The polar transformation has the disadvantage that the\n                                                                     distortion injects disturbances into the image. Toker et\n   • Our framework consists of a simple training pipeline            al. [36] developed an approach that learns to remove these\n     that eliminates the n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C03",
+      "source_id": "S3",
+      "cutoff": "2022-12-31",
+      "idea": "Build a learned sparse pairwise matcher that predicts token confidence and matchability to prune confidently unmatchable keypoints and stop transformer layers early on easy image pairs, adapting both width and depth at inference.",
+      "expected": "distinct",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Adaptive computation inside pairwise matching versus hierarchical place retrieval and covisibility clustering.",
+      "later_published_target": {
+        "title": "LightGlue: Local Feature Matching at Light Speed",
+        "url": "https://arxiv.org/abs/2306.13643",
+        "date": "2023-06-23",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2306.13643.txt",
+        "sha256": "434f2b518bbd2d6b8533981bf5b1c0da4280eb506bb68ae231962bd893000a5d",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "                                                                 LightGlue: Local Feature Matching at Light Speed\n\n                                                               Philipp Lindenberger1               Paul-Edouard Sarlin1                                       Marc Pollefeys1,2\n                                                                        1                      2\n                                                                            ETH Zurich             Microsoft Mixed Reality & AI Lab\n\n\n                                                                                                                                             67\n                                                                                                                                                                                           LightGlue\n\n\n\n\n                                                                                                                Relative Pose Accuracy [%]\n                                                                  Abstract                                                                            MatchFormer\narXiv:2306.13643v1 [cs.CV] 23 Jun 2023\n\n\n\n\n                                                                                                                                                                    L=9\n                                                                                                                                                      LoFTR\n                                             We introduce LightGlue, a deep neural network that\n                                         learns to match local features across images. We revisit                                            66                           L=7               optimized\n                                         multiple design decisions of SuperGlue, the state of the art\n                                         in sparse matching, and derive simple but effective improve-                                                    SuperGlue\n                                         ments. Cumulatively, they make LightGlue more efficient – in                                        65                                                 adaptive\n                                         terms of both memory and computation, more accurate, and                                                                                    L=5\n                    "
+          },
+          {
+            "location": "extracted text characters 10441:11646; PDF page 2",
+            "quote": "          sive representations of Transformers [74] with optimal trans-\n                                                                            port [48] to solve a partial assignment problem. It learns\n                                                                            powerful priors about scene geometry and camera motion\n                                                                            and is thus robust to extreme changes and generalizes well\nFigure 2. Depth adaptivity. LigthGlue is faster at matching easy            across data domains. Inheriting the limitations of early Trans-\nimage pairs (top) than difficult ones (bottom) because it can stop at       formers, SuperGlue is hard to train and its complexity grows\nearlier layers when its predictions are confident.                          quadratically with the number of keypoints.\n                                                                               Subsequent works make it more efficient by reducing\namount of visual overlap, appearance changes, or discrimi-                  the size of the attention mechanism. They restrict it to a\nnative information. Figure 2 shows that the inference is thus        "
+          }
+        ]
+      }
+    },
+    {
+      "id": "C04",
+      "source_id": "S1",
+      "cutoff": "2020-06-30",
+      "idea": "Replace the one-to-one aligned retrieval assumption by arbitrary query locations and multiple covering aerial references; learn an offset from the retrieved tile center to the query location and evaluate localization beyond exact reference identity.",
+      "expected": "distinct",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Multiple geographically covering positives and within-reference offset regression versus building-identity retrieval.",
+      "later_published_target": {
+        "title": "VIGOR: Cross-View Image Geo-localization beyond One-to-one Retrieval",
+        "url": "https://arxiv.org/abs/2011.12172",
+        "date": "2020-11-24",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2011.12172.txt",
+        "sha256": "256c2c954276117f2f1095c31a70770b73ac625496b027fac084b20aaaaaa3bc",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "                                              VIGOR: Cross-View Image Geo-localization beyond One-to-one Retrieval\n\n                                                                         Sijie Zhu, Taojiannan Yang, Chen Chen\n                                              Department of Electrical and Computer Engineering, University of North Carolina at Charlotte\n                                                                                  {szhu3, tyang30, chen.chen}@uncc.edu\narXiv:2011.12172v2 [cs.CV] 22 Mar 2021\n\n\n\n\n                                                                   Abstract                                      in cross-view geo-localization [24, 22, 7, 17, 29, 21], which\n                                                                                                                 uses GPS-tagged aerial-view images as reference for street-\n                                             Cross-view image geo-localization aims to determine the             view queries. However, the performance may suffer from a\n                                         locations of street-view query images by matching with                  large view or appearance gap between query and reference\n                                         GPS-tagged reference images from aerial view. Recent                    images.\n                                         works have achieved surprisingly high retrieval accuracy                    Recent works [7, 17, 29] have shown that the perfor-\n                                         on city-scale datasets. However, these results rely on the              mance of cross-view image matching can be significantly\n                                         assumption that there exists a reference image exactly cen-             improved by feature aggregation and sample mining strate-\n                                         tered at the location of any query image, which is not ap-              gies. When the orientation of street-view (or ground-view)\n                                         plicable for practical scenarios. In this paper, we redefine            image is available (provided by phone-based compass),\n                                         this problem with a more realistic assumption that the query            state-of-the-art methods can achieve a top-1 retrieval accu-\n                                         image can be arbitrary in the area of interest and the refer-           racy over 80% [17], which s"
+          },
+          {
+            "location": "extracted text characters 8502:9708; PDF page 1",
+            "quote": "                            1\n\fadvantage of multiple reference images during training.              consists of aligned panoramas and aerial images with ori-\n    Beyond Retrieval: Image retrieval can only provide               entation information. It has 35, 532 image pairs for training\nimage-level localization. Since the center alignment is not          and 92, 802 pairs for testing. In a nutshell, all these datasets\nguaranteed in our dataset, after the retrieval, we further           consider one-to-one retrieval and none of them provide raw\nemploy a within-image calibration to predict the offset of           GPS data for localization evaluation in terms of meters.\nthe query location inside the retrieved image. Therefore,            Cross-view Geo-localization. Early works [10, 25, 24, 22]\nthe proposed joint-retrieval-and-calibration framework pro-          of cross-view geo-localization suffer from low retrieval ac-\nvides a coarse-to-fine localization. The whole pipeline is           curacy mainly because of the significant appearance gap be-\nend-to-end, and the inference is fast as the offset prediction       tween two views and poor metric learning techniques. With\nshares the featu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C05",
+      "source_id": "S1",
+      "cutoff": "2020-06-30",
+      "idea": "Build a cross-view benchmark using university building identities with satellite, synthetic drone and street views; train a shared identity-discriminative retrieval baseline and score building retrieval with Recall@K and AP.",
+      "expected": "overlap",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Multiple geographically covering positives and within-reference offset regression versus building-identity retrieval.",
+      "later_published_target": {
+        "title": "VIGOR: Cross-View Image Geo-localization beyond One-to-one Retrieval",
+        "url": "https://arxiv.org/abs/2011.12172",
+        "date": "2020-11-24",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2011.12172.txt",
+        "sha256": "256c2c954276117f2f1095c31a70770b73ac625496b027fac084b20aaaaaa3bc",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "                                              VIGOR: Cross-View Image Geo-localization beyond One-to-one Retrieval\n\n                                                                         Sijie Zhu, Taojiannan Yang, Chen Chen\n                                              Department of Electrical and Computer Engineering, University of North Carolina at Charlotte\n                                                                                  {szhu3, tyang30, chen.chen}@uncc.edu\narXiv:2011.12172v2 [cs.CV] 22 Mar 2021\n\n\n\n\n                                                                   Abstract                                      in cross-view geo-localization [24, 22, 7, 17, 29, 21], which\n                                                                                                                 uses GPS-tagged aerial-view images as reference for street-\n                                             Cross-view image geo-localization aims to determine the             view queries. However, the performance may suffer from a\n                                         locations of street-view query images by matching with                  large view or appearance gap between query and reference\n                                         GPS-tagged reference images from aerial view. Recent                    images.\n                                         works have achieved surprisingly high retrieval accuracy                    Recent works [7, 17, 29] have shown that the perfor-\n                                         on city-scale datasets. However, these results rely on the              mance of cross-view image matching can be significantly\n                                         assumption that there exists a reference image exactly cen-             improved by feature aggregation and sample mining strate-\n                                         tered at the location of any query image, which is not ap-              gies. When the orientation of street-view (or ground-view)\n                                         plicable for practical scenarios. In this paper, we redefine            image is available (provided by phone-based compass),\n                                         this problem with a more realistic assumption that the query            state-of-the-art methods can achieve a top-1 retrieval accu-\n                                         image can be arbitrary in the area of interest and the refer-           racy over 80% [17], which s"
+          },
+          {
+            "location": "extracted text characters 8502:9708; PDF page 1",
+            "quote": "                            1\n\fadvantage of multiple reference images during training.              consists of aligned panoramas and aerial images with ori-\n    Beyond Retrieval: Image retrieval can only provide               entation information. It has 35, 532 image pairs for training\nimage-level localization. Since the center alignment is not          and 92, 802 pairs for testing. In a nutshell, all these datasets\nguaranteed in our dataset, after the retrieval, we further           consider one-to-one retrieval and none of them provide raw\nemploy a within-image calibration to predict the offset of           GPS data for localization evaluation in terms of meters.\nthe query location inside the retrieved image. Therefore,            Cross-view Geo-localization. Early works [10, 25, 24, 22]\nthe proposed joint-retrieval-and-calibration framework pro-          of cross-view geo-localization suffer from low retrieval ac-\nvides a coarse-to-fine localization. The whole pipeline is           curacy mainly because of the significant appearance gap be-\nend-to-end, and the inference is fast as the offset prediction       tween two views and poor metric learning techniques. With\nshares the featu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C06",
+      "source_id": "S3",
+      "cutoff": "2022-12-31",
+      "idea": "Distill a single network to supply global descriptors and local features; retrieve candidate images, cluster references by co-observed 3D points, and perform local geometric localization within those places.",
+      "expected": "overlap",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Adaptive computation inside pairwise matching versus hierarchical place retrieval and covisibility clustering.",
+      "later_published_target": {
+        "title": "LightGlue: Local Feature Matching at Light Speed",
+        "url": "https://arxiv.org/abs/2306.13643",
+        "date": "2023-06-23",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2306.13643.txt",
+        "sha256": "434f2b518bbd2d6b8533981bf5b1c0da4280eb506bb68ae231962bd893000a5d",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "                                                                 LightGlue: Local Feature Matching at Light Speed\n\n                                                               Philipp Lindenberger1               Paul-Edouard Sarlin1                                       Marc Pollefeys1,2\n                                                                        1                      2\n                                                                            ETH Zurich             Microsoft Mixed Reality & AI Lab\n\n\n                                                                                                                                             67\n                                                                                                                                                                                           LightGlue\n\n\n\n\n                                                                                                                Relative Pose Accuracy [%]\n                                                                  Abstract                                                                            MatchFormer\narXiv:2306.13643v1 [cs.CV] 23 Jun 2023\n\n\n\n\n                                                                                                                                                                    L=9\n                                                                                                                                                      LoFTR\n                                             We introduce LightGlue, a deep neural network that\n                                         learns to match local features across images. We revisit                                            66                           L=7               optimized\n                                         multiple design decisions of SuperGlue, the state of the art\n                                         in sparse matching, and derive simple but effective improve-                                                    SuperGlue\n                                         ments. Cumulatively, they make LightGlue more efficient – in                                        65                                                 adaptive\n                                         terms of both memory and computation, more accurate, and                                                                                    L=5\n                    "
+          },
+          {
+            "location": "extracted text characters 10441:11646; PDF page 2",
+            "quote": "          sive representations of Transformers [74] with optimal trans-\n                                                                            port [48] to solve a partial assignment problem. It learns\n                                                                            powerful priors about scene geometry and camera motion\n                                                                            and is thus robust to extreme changes and generalizes well\nFigure 2. Depth adaptivity. LigthGlue is faster at matching easy            across data domains. Inheriting the limitations of early Trans-\nimage pairs (top) than difficult ones (bottom) because it can stop at       formers, SuperGlue is hard to train and its complexity grows\nearlier layers when its predictions are confident.                          quadratically with the number of keypoints.\n                                                                               Subsequent works make it more efficient by reducing\namount of visual overlap, appearance changes, or discrimi-                  the size of the attention mechanism. They restrict it to a\nnative information. Figure 2 shows that the inference is thus        "
+          }
+        ]
+      }
+    },
+    {
+      "id": "C07",
+      "source_id": "S2",
+      "cutoff": "2022-12-31",
+      "idea": "Use a shared off-the-shelf image encoder with symmetric contrastive training; initialize hard negatives using geographic neighbors where coordinates exist, then refresh negative batches using embedding-neighbor similarity. The contribution is the negative-selection schedule, not a feature partition.",
+      "expected": "distinct",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Dynamic hard-negative selection changes the training sampling distribution, not spatial ring representation.",
+      "later_published_target": {
+        "title": "Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation",
+        "url": "https://arxiv.org/abs/2303.11851",
+        "date": "2023-03-21",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2303.11851.txt",
+        "sha256": "6debae734fd6dc12996ecae04820bf3fd873aa9a37d05f58cc57f3cca815a8fe",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "                                                       Sample4Geo: Hard Negative Sampling For Cross-View\n                                                                       Geo-Localisation\n                                                               Fabian Deuser            Konrad Habel               Norbert Oswald\n                                                                            University of the Bundeswehr Munich\n                                                                         Institute for Distributed Intelligent Systems\n                                                                                       Munich, Germany\n                                                        fabian.deuser@unibw.de, konrad.habel@unibw.de, norbert.oswald@unibw.de\narXiv:2303.11851v2 [cs.CV] 29 Aug 2023\n\n\n\n\n                                         Abstract                                                                       Geographical Distance:\n\n                                         Cross-View Geo-Localisation is still a challenging task\n                                         where additional modules, specific pre-processing or zoom-\n                                         ing strategies are necessary to determine accurate positions\n                                         of images. Since different views have different geometries,\n                                         pre-processing like polar transformation helps to merge\n                                         them. However, this results in distorted images which then\n                                         have to be rectified. Adding hard negatives to the train-\n                                         ing batch could improve the overall performance but with\n                                         the default loss functions in geo-localisation it is difficult                  Visual Similarity:\n                                         to include them. In this work, we present a simplified\n                                         but effective architecture based on contrastive learning with\n                                         symmetric InfoNCE loss that outperforms current state-of-\n                                         the-art results. Our framework consists of a narrow train-\n                                         ing pipeline that eliminates the need of using aggregation\n                                         modules, avoids further pre-processing steps and even in"
+          },
+          {
+            "location": "extracted text characters 11216:12443; PDF page 2",
+            "quote": "      street-view differs, Shi et al. [20] applied polar transforma-\n   • We propose GPS-Sampling as a task-specific sampling             tion to the satellite image. The resulting stretched image is\n     technique for hard negatives at the beginning of the            similar to the domain of the street-view image, this is still a\n     training.                                                       common pre-processing technique today. In addition, they\n                                                                     extended their network with a Spatial-Aware Feature Ag-\n   • We present Dynamic Similarity Sampling (DSS) to se-             gregation (SAFA) module to pool important features from\n     lect hard negatives during training based on the cosine         the feature maps in a learnable fashion.\n     similarity between street and satellite views.                      The polar transformation has the disadvantage that the\n                                                                     distortion injects disturbances into the image. Toker et\n   • Our framework consists of a simple training pipeline            al. [36] developed an approach that learns to remove these\n     that eliminates the n"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C08",
+      "source_id": "S5",
+      "cutoff": "2025-12-31",
+      "idea": "Predict a geographic coordinate for every visible query pixel by aligning feed-forward 3D pointmaps from drone and satellite views; supervise and evaluate dense pixel-wise georegistration instead of only retrieving a camera location.",
+      "expected": "distinct",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Dense per-pixel 3D georegistration and evaluation versus image-level location retrieval.",
+      "later_published_target": {
+        "title": "Pixel-wise Geo-registration of Drone and Satellite Images",
+        "url": "https://arxiv.org/abs/2608.28891",
+        "date": "2026-08-28",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2608.28891.full.txt",
+        "sha256": "c0422403be5cd28695c5bf88f147dac8a0f756603160d6327e78e63ee8a13c2f",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "Pixel-wise Geo-registration of Drone Images Skip to main content Report GitHub Issue × Title: Content selection saved. Describe the issue below: Description: Submit without GitHub Submit in GitHub Why HTML? Report Issue Back to Abstract Download PDF Contents Reading mode Colour theme Abstract 1 Introduction 2 Background and Related Work 2.1 Geolocalization 2.2 Georegistration 2.3 3D Reconstruction and Multi-View Geometry 3 Method 3.1 Inputs 3.2 Feed-Forward 3D Reconstruction 3.3 Pixel-Wise Geo-Registration 3.4 Training Details 4 Dataset 4.1 Train and Test Splits 4.1.1 SkyReg-Train. 4.1.2 SkyReg-Bench. 4.2 Data Collection Details 4.2.1 Urban Scenes. 4.2.2 Landmark Scenes. 4.2.3 Suburban Scenes. 5 Benchmarking and Evaluation 5.1 Evaluation Protocol 5.2 Results and Discussion 5.3 Qualitative Results 5.4 Training Ablation 6 Conclusion References 0.A Additional Data Gathering Details 0.A.1 Urban Scenes 0.A.1.1 Ground Truth Pixel-wise GPS 0.A.1.2 Reference Satellite Images 0.A.1.3 Query Drone Images 0.A.2 Landmarks and Suburban Scenes 0.B Additional Dataset Information 0.B.1 SkyReg Urban 0.B.2 SkyReg Landmark 0.B.3 SkyReg Suburban 0.C Additional Qualitative Results License: CC BY-NC-SA 4.0 arXiv:2608.28891v1 [cs.CV] 28 Aug 2026 11institutetext: Institute of Artificial Intelligence, University of Central Florida, USA Pixel-wise Geo-registration of Drone Images Qingyang Liu* David G. Shatwell* Parth Parag Kulkarni Mubarak Shah Institute of Artificial Intelligence, University of Central Florida Abstract Cross-view geo-registration is the task of aligning a query image to a geodetically accurate reference (e.g., satellite image), so that each query pixel maps to a real-world GPS coordinate. Most existing work addresses the related problem of cross-view geo-localization, where the goal is typically to estimate the camera center using retrieval, classification, matching, or regression. Because these approaches do not provide dense supervision, they are poorly suited for learning and evaluating pixel-wise alignment. We introduce SkyReg, a geometry-aware geo-registration model that estimates the transformation between the query and reference images by explicitly modeling the 3D scene geometry. Applying this transformation to warp the query into the reference frame yields pixel-wise geo-localization, without relying on 2D point matches, and remains robust to occlusions and large viewpoint changes. To enable training and standardized evaluation, we release (i) SkyReg-Trai"
+          },
+          {
+            "location": "extracted text characters 1056:2272; PDF page 1",
+            "quote": "nal Dataset Information 0.B.1 SkyReg Urban 0.B.2 SkyReg Landmark 0.B.3 SkyReg Suburban 0.C Additional Qualitative Results License: CC BY-NC-SA 4.0 arXiv:2608.28891v1 [cs.CV] 28 Aug 2026 11institutetext: Institute of Artificial Intelligence, University of Central Florida, USA Pixel-wise Geo-registration of Drone Images Qingyang Liu* David G. Shatwell* Parth Parag Kulkarni Mubarak Shah Institute of Artificial Intelligence, University of Central Florida Abstract Cross-view geo-registration is the task of aligning a query image to a geodetically accurate reference (e.g., satellite image), so that each query pixel maps to a real-world GPS coordinate. Most existing work addresses the related problem of cross-view geo-localization, where the goal is typically to estimate the camera center using retrieval, classification, matching, or regression. Because these approaches do not provide dense supervision, they are poorly suited for learning and evaluating pixel-wise alignment. We introduce SkyReg, a geometry-aware geo-registration model that estimates the transformation between the query and reference images by explicitly modeling the 3D scene geometry. Applying this transformation to warp the query into t"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C09",
+      "source_id": "S4",
+      "cutoff": "2023-12-31",
+      "idea": "For dense pairwise matching, use frozen pretrained coarse features, classify coarse correspondences over anchors to handle multimodality, and refine them using a separately trained local feature branch and robust regression losses.",
+      "expected": "overlap",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Joint 3D pointmap and local-descriptor representation versus dense 2D coarse-classification/refinement.",
+      "later_published_target": {
+        "title": "Grounding Image Matching in 3D with MASt3R",
+        "url": "https://arxiv.org/abs/2406.09756",
+        "date": "2024-06-14",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2406.09756.txt",
+        "sha256": "627f62012608f55f33bbabf36bc741e6a5deec331e45d858a5d8ed8a68ed25ac",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "                                                                           Grounding Image Matching in 3D with MASt3R\n\n\n\n\n                                         Grounding Image Matching in 3D with MASt3R\n                                         Vincent Leroy Yohann Cabon Jerome Revaud\n                                         NAVER LABS Europe\n                                         https://github.com/naver/mast3r\narXiv:2406.09756v1 [cs.CV] 14 Jun 2024\n\n\n\n\n                                         Figure 1: Dense Correspondences. MASt3R extends DUSt3R as it predicts dense correspondences, even in\n                                         regions where camera motion significantly degrades the visual similarity. Focal length can be derived from the\n                                         predicted 3D geometry, making our approach a standalone method for camera calibration, camera pose estimation\n                                         and 3D scene reconstruction, attaining and improving the performance of the state of the art on several extremely\n                                         challenging benchmarks.\n\n                                         Abstract\n                                         Image Matching is a core component of all best-performing algorithms and pipelines in 3D vision. Yet\n                                         despite matching being fundamentally a 3D problem, intrinsically linked to camera pose and scene\n                                         geometry, it is typically treated as a 2D problem. This makes sense as the goal of matching is to establish\n                                         correspondences between 2D pixel fields, but also seems like a potentially hazardous choice. In this\n                                         work, we take a different stance and propose to cast matching as a 3D task with DUSt3R, a recent and\n                                         powerful 3D reconstruction framework based on Transformers. Based on pointmaps regression, this\n                                         method displayed impressive robustness in matching views with extreme viewpoint changes, yet with\n                                         limited accuracy. We aim here to improve the matching capabilities of such an approach while preserving\n                                         its robustness. We thus propose to augment the DUSt3R network with a new head that outputs dense\n                                         local fe"
+          },
+          {
+            "location": "extracted text characters 1892:3097; PDF page 1",
+            "quote": "                                         powerful 3D reconstruction framework based on Transformers. Based on pointmaps regression, this\n                                         method displayed impressive robustness in matching views with extreme viewpoint changes, yet with\n                                         limited accuracy. We aim here to improve the matching capabilities of such an approach while preserving\n                                         its robustness. We thus propose to augment the DUSt3R network with a new head that outputs dense\n                                         local features, trained with an additional matching loss. We further address the issue of quadratic\n                                         complexity of dense matching, which becomes prohibitively slow for downstream applications if not\n                                         carefully treated. We introduce a fast reciprocal matching scheme that not only accelerates matching\n                                         by orders of magnitude, but also comes with theoretical guarantees and, lastly, yields improved results.\n                                         Extensive experiments show that our a"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C10",
+      "source_id": "S4",
+      "cutoff": "2023-12-31",
+      "idea": "Jointly predict cross-view 3D pointmaps and discriminative dense local descriptors; use reciprocal descriptor matching together with the pointmap representation for precise matching, rather than only classifying and refining 2D correspondence coordinates.",
+      "expected": "distinct",
+      "ground_truth_scope": "Substantive mechanism relative to supplied source; not an exhaustive historical novelty label",
+      "distinct_contribution": "Joint 3D pointmap and local-descriptor representation versus dense 2D coarse-classification/refinement.",
+      "later_published_target": {
+        "title": "Grounding Image Matching in 3D with MASt3R",
+        "url": "https://arxiv.org/abs/2406.09756",
+        "date": "2024-06-14",
+        "text_path": "/home/nadavo/project-hub/research_radar/sources/2406.09756.txt",
+        "sha256": "627f62012608f55f33bbabf36bc741e6a5deec331e45d858a5d8ed8a68ed25ac",
+        "excerpts": [
+          {
+            "location": "extracted text characters 0:2500; PDF page 1",
+            "quote": "                                                                           Grounding Image Matching in 3D with MASt3R\n\n\n\n\n                                         Grounding Image Matching in 3D with MASt3R\n                                         Vincent Leroy Yohann Cabon Jerome Revaud\n                                         NAVER LABS Europe\n                                         https://github.com/naver/mast3r\narXiv:2406.09756v1 [cs.CV] 14 Jun 2024\n\n\n\n\n                                         Figure 1: Dense Correspondences. MASt3R extends DUSt3R as it predicts dense correspondences, even in\n                                         regions where camera motion significantly degrades the visual similarity. Focal length can be derived from the\n                                         predicted 3D geometry, making our approach a standalone method for camera calibration, camera pose estimation\n                                         and 3D scene reconstruction, attaining and improving the performance of the state of the art on several extremely\n                                         challenging benchmarks.\n\n                                         Abstract\n                                         Image Matching is a core component of all best-performing algorithms and pipelines in 3D vision. Yet\n                                         despite matching being fundamentally a 3D problem, intrinsically linked to camera pose and scene\n                                         geometry, it is typically treated as a 2D problem. This makes sense as the goal of matching is to establish\n                                         correspondences between 2D pixel fields, but also seems like a potentially hazardous choice. In this\n                                         work, we take a different stance and propose to cast matching as a 3D task with DUSt3R, a recent and\n                                         powerful 3D reconstruction framework based on Transformers. Based on pointmaps regression, this\n                                         method displayed impressive robustness in matching views with extreme viewpoint changes, yet with\n                                         limited accuracy. We aim here to improve the matching capabilities of such an approach while preserving\n                                         its robustness. We thus propose to augment the DUSt3R network with a new head that outputs dense\n                                         local fe"
+          },
+          {
+            "location": "extracted text characters 1892:3097; PDF page 1",
+            "quote": "                                         powerful 3D reconstruction framework based on Transformers. Based on pointmaps regression, this\n                                         method displayed impressive robustness in matching views with extreme viewpoint changes, yet with\n                                         limited accuracy. We aim here to improve the matching capabilities of such an approach while preserving\n                                         its robustness. We thus propose to augment the DUSt3R network with a new head that outputs dense\n                                         local features, trained with an additional matching loss. We further address the issue of quadratic\n                                         complexity of dense matching, which becomes prohibitively slow for downstream applications if not\n                                         carefully treated. We introduce a fast reciprocal matching scheme that not only accelerates matching\n                                         by orders of magnitude, but also comes with theoretical guarantees and, lastly, yields improved results.\n                                         Extensive experiments show that our a"
+          }
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Five paired source families, ten controls; cases are correlated and not a population accuracy estimate.",
+    "Distinct labels mean distinguishable from the assigned source, not absence of all historical prior art.",
+    "Later published work is a grounded positive control, not proof its every component was historically unprecedented.",
+    "Document version cutoffs are enforced; pretrained-model hindsight and author/idea recognition remain possible.",
+    "Source-ID and reason checks are mechanical; independent audit is needed for semantic validity."
+  ]
+}

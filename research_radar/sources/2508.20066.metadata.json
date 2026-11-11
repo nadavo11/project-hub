@@ -1,0 +1,32 @@
+{
+  "arxiv_id": "2508.20066",
+  "citation_title": [
+    "PAUL: Uncertainty-Guided Partition and Augmentation for Robust Cross-View Geo-Localization under Noisy Correspondence"
+  ],
+  "citation_author": [
+    "Li, Zheng",
+    "Zhang, Xueyi",
+    "Guo, Yanming",
+    "Xie, Yuxiang",
+    "Zhaoyun, Ding",
+    "Cai, Siqi",
+    "Li, Haizhou",
+    "Lao, Mingrui"
+  ],
+  "citation_date": [
+    "2025/08/27"
+  ],
+  "citation_online_date": [
+    "2026/03/23"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2508.20066"
+  ],
+  "citation_arxiv_id": [
+    "2508.20066"
+  ],
+  "citation_abstract": [
+    "Cross-view geo-localization is a critical task for UAV navigation, event detection, and aerial surveying, as it enables matching between drone-captured and satellite imagery. Most existing approaches embed multi-modal data into a joint feature space to maximize the similarity of paired images. However, these methods typically assume perfect alignment of image pairs during training, which rarely holds true in real-world scenarios. In practice, factors such as urban canyon effects, electromagnetic interference, and adverse weather frequently induce GPS drift, resulting in systematic alignment shifts where only partial correspondences exist between pairs. Despite its prevalence, this source of noisy correspondence has received limited attention in current research. In this paper, we formally introduce and address the Noisy Correspondence on Cross-View Geo-Localization (NC-CVGL) problem, aiming to bridge the gap between idealized benchmarks and practical applications. To this end, we propose PAUL (Partition and Augmentation by Uncertainty Learning), a novel framework that partitions and augments training data based on estimated data uncertainty through uncertainty-aware co-augmentation and evidential co-training. Specifically, PAUL selectively augments regions with high correspondence confidence and utilizes uncertainty estimation to refine feature learning, effectively suppressing noise from misaligned pairs. Distinct from traditional filtering or label correction, PAUL leverages both data uncertainty and loss discrepancy for targeted partitioning and augmentation, thus providing robust supervision for noisy samples. Comprehensive experiments validate the effectiveness of individual components in PAUL,which consistently achieves superior performance over other competitive noisy-correspondence-driven methods in various noise ratios."
+  ],
+  "abstract": "Abstract: Cross-view geo-localization is a critical task for UAV navigation, event detection, and aerial surveying, as it enables matching between drone-captured and satellite imagery. Most existing approaches embed multi-modal data into a joint feature space to maximize the similarity of paired images. However, these methods typically assume perfect alignment of image pairs during training, which rarely holds true in real-world scenarios. In practice, factors such as urban canyon effects, electromagnetic interference, and adverse weather frequently induce GPS drift, resulting in systematic alignment shifts where only partial correspondences exist between pairs. Despite its prevalence, this source of noisy correspondence has received limited attention in current research. In this paper, we formally introduce and address the Noisy Correspondence on Cross-View Geo-Localization (NC-CVGL) problem, aiming to bridge the gap between idealized benchmarks and practical applications. To this end, we propose PAUL (Partition and Augmentation by Uncertainty Learning), a novel framework that partitions and augments training data based on estimated data uncertainty through uncertainty-aware co-augmentation and evidential co-training. Specifically, PAUL selectively augments regions with high correspondence confidence and utilizes uncertainty estimation to refine feature learning, effectively suppressing noise from misaligned pairs. Distinct from traditional filtering or label correction, PAUL leverages both data uncertainty and loss discrepancy for targeted partitioning and augmentation, thus providing robust supervision for noisy samples. Comprehensive experiments validate the effectiveness of individual components in PAUL,which consistently achieves superior performance over other competitive noisy-correspondence-driven methods in various noise ratios."
+}

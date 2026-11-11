@@ -1,0 +1,732 @@
+{
+  "point_probe_reproduction": [
+    {
+      "method": "infogeo",
+      "annotation_id": "72a101b0-49b5-44dc-a302-627ac9b9ce68",
+      "query_key": "635871ade49e8d4e400c3119be20ac5f30bee036dc31542ac75beb4ce23e6d04",
+      "candidate_key": "6311c01184b482fa7fe32095e4dd2c8529d1007fc1d79086fad5fa03b71b09b5",
+      "point": [
+        0.7159722222222222,
+        0.18333333333333332
+      ],
+      "grid": [
+        32,
+        32
+      ],
+      "peak": [
+        21,
+        23
+      ],
+      "cosine": 0.8190799951553345,
+      "max_saved_score_difference": 2.384185791015625e-07,
+      "source_sha256": "ec03da411d77f40dadd604008173c70021e98296555d3da05ad281b8f4cd0fca"
+    },
+    {
+      "method": "infogeo",
+      "annotation_id": "4c51b706-5d24-4c09-a2c2-22a0a5e38fdc",
+      "query_key": "4c71899d927504c034e399106517874877fe710bed68f2aa8ae3cd09269683bb",
+      "candidate_key": "52cd4edd0097cb4dc9292fbaeefc233917f86ad6caee44a5d9c177725a248170",
+      "point": [
+        0.41805555555555557,
+        0.525
+      ],
+      "grid": [
+        32,
+        32
+      ],
+      "peak": [
+        16,
+        18
+      ],
+      "cosine": 0.8220065832138062,
+      "max_saved_score_difference": 0.0,
+      "source_sha256": "2456cf464e054822a1c04c012753913bfb0fa9ec522d390d7763f1ff476a061c"
+    },
+    {
+      "method": "infogeo",
+      "annotation_id": "2701ac1a-d560-4420-bd90-3f3eef548e43",
+      "query_key": "8e3d655cecd7b96af598457e9a8470080da27591abb51eaa07dcbbcb95b6025f",
+      "candidate_key": "14f8ddd4ffe70e90eec8a318f812002e06b164943d2ee796fb1ed13f4d2bea38",
+      "point": [
+        0.6631944444444444,
+        0.22685185185185186
+      ],
+      "grid": [
+        32,
+        32
+      ],
+      "peak": [
+        18,
+        23
+      ],
+      "cosine": 0.8256525993347168,
+      "max_saved_score_difference": 0.0,
+      "source_sha256": "27ead4c6bc7cb6f759857939fcca9ec984c41ee01ff35efc2529b571ad1d228f"
+    },
+    {
+      "method": "infogeo",
+      "annotation_id": "9b5418ce-4713-4478-b6fe-8d210ba5c634",
+      "query_key": "8e3d655cecd7b96af598457e9a8470080da27591abb51eaa07dcbbcb95b6025f",
+      "candidate_key": "14f8ddd4ffe70e90eec8a318f812002e06b164943d2ee796fb1ed13f4d2bea38",
+      "point": [
+        0.6298611111111111,
+        0.8268518518518518
+      ],
+      "grid": [
+        32,
+        32
+      ],
+      "peak": [
+        18,
+        23
+      ],
+      "cosine": 0.8229502439498901,
+      "max_saved_score_difference": 0.0,
+      "source_sha256": "27ead4c6bc7cb6f759857939fcca9ec984c41ee01ff35efc2529b571ad1d228f"
+    },
+    {
+      "method": "sample4geo",
+      "annotation_id": "72a101b0-49b5-44dc-a302-627ac9b9ce68",
+      "query_key": "16cbf9f833ee91d0386b014a15e355ce6db42546f0d2f16d579d33b1814a70fa",
+      "candidate_key": "9e3617ed43703179580172de0e47ddf4c5c589cc1fc2420aff846a24bdcefabc",
+      "point": [
+        0.7159722222222222,
+        0.18333333333333332
+      ],
+      "grid": [
+        12,
+        12
+      ],
+      "peak": [
+        8,
+        8
+      ],
+      "cosine": 0.44800055027008057,
+      "max_saved_score_difference": 5.960464477539063e-08,
+      "source_sha256": "1d62683be8a992fd29b952dace7c65c4c7404225f97b1c6c912efe850269d818"
+    },
+    {
+      "method": "sample4geo",
+      "annotation_id": "4c51b706-5d24-4c09-a2c2-22a0a5e38fdc",
+      "query_key": "4f60e3adcac9ef6067cceeba3c6ed3fcdae1fcdb8c9a5a36d7c259b042010018",
+      "candidate_key": "b3b28d62498cf054328c1f987c95b2d28f10cc77ded7735258dbab77fed2db54",
+      "point": [
+        0.41805555555555557,
+        0.525
+      ],
+      "grid": [
+        12,
+        12
+      ],
+      "peak": [
+        6,
+        5
+      ],
+      "cosine": 0.6514971256256104,
+      "max_saved_score_difference": 0.0,
+      "source_sha256": "d5506b0ffdcd1aa057efa08b78636316d8f617676f99e032e55e2d41966557ef"
+    },
+    {
+      "method": "sample4geo",
+      "annotation_id": "2701ac1a-d560-4420-bd90-3f3eef548e43",
+      "query_key": "c817cee59dc4b665850a4b1039b34281b01ce5cbe27dfc9eed59366ba3f864df",
+      "candidate_key": "9ef47dea2c4e2561e679d90ad6a964b3440830ae11eb358ef0a48981025b68ba",
+      "point": [
+        0.6631944444444444,
+        0.22685185185185186
+      ],
+      "grid": [
+        12,
+        12
+      ],
+      "peak": [
+        8,
+        3
+      ],
+      "cosine": 0.44590702652931213,
+      "max_saved_score_difference": 0.0,
+      "source_sha256": "58540eba275c143f9c712e0860382013ab7b266d3ad7abfa9c7584ec91f8d231"
+    },
+    {
+      "method": "sample4geo",
+      "annotation_id": "9b5418ce-4713-4478-b6fe-8d210ba5c634",
+      "query_key": "c817cee59dc4b665850a4b1039b34281b01ce5cbe27dfc9eed59366ba3f864df",
+      "candidate_key": "9ef47dea2c4e2561e679d90ad6a964b3440830ae11eb358ef0a48981025b68ba",
+      "point": [
+        0.6298611111111111,
+        0.8268518518518518
+      ],
+      "grid": [
+        12,
+        12
+      ],
+      "peak": [
+        8,
+        9
+      ],
+      "cosine": 0.4888688623905182,
+      "max_saved_score_difference": 0.0,
+      "source_sha256": "58540eba275c143f9c712e0860382013ab7b266d3ad7abfa9c7584ec91f8d231"
+    }
+  ],
+  "same_query_comparisons": [
+    {
+      "points": [
+        "2701ac1a-d560-4420-bd90-3f3eef548e43",
+        "9b5418ce-4713-4478-b6fe-8d210ba5c634"
+      ],
+      "method": "infogeo",
+      "descriptor_cosine": 0.9359903335571289,
+      "same_target_maximum": true
+    },
+    {
+      "points": [
+        "2701ac1a-d560-4420-bd90-3f3eef548e43",
+        "9b5418ce-4713-4478-b6fe-8d210ba5c634"
+      ],
+      "method": "sample4geo",
+      "descriptor_cosine": 0.6389613151550293,
+      "same_target_maximum": false
+    }
+  ],
+  "tracking": [
+    {
+      "sequence": "Lohmuehlenbruecke",
+      "source": "/home/nadavo/localization-models/data/orthotrack-official-test/outputs/Lohmuehlenbruecke/results.json",
+      "sha256": "7c4a852859166d55c2b33ed958aefc3d07fd739e6b9d44c160da47b2b1cc69d3",
+      "scored_frames": 1858,
+      "low_residual_high_error_frames": 293,
+      "definition": "inliers>=100, reprojection<3px, position error>5m; exploratory thresholds fixed for inspection, not a held-out test",
+      "recomputed_position_error_max_difference": 0.0,
+      "examples": [
+        {
+          "frame_id": 21,
+          "position_error": 14.034809530753465,
+          "reproj_error": 1.8414853519324461,
+          "num_inliers": 1414,
+          "success": true
+        },
+        {
+          "frame_id": 25,
+          "position_error": 13.212961084983615,
+          "reproj_error": 1.9800470545461488,
+          "num_inliers": 1521,
+          "success": true
+        },
+        {
+          "frame_id": 26,
+          "position_error": 12.464912500511815,
+          "reproj_error": 1.9853632324076342,
+          "num_inliers": 1519,
+          "success": true
+        }
+      ],
+      "initial_frames": [
+        {
+          "frame_id": 0,
+          "position_error": 3.801357756829427,
+          "reproj_error": null,
+          "num_inliers": 6125,
+          "is_keyframe": true
+        },
+        {
+          "frame_id": 1,
+          "position_error": 2.9790448676099426,
+          "reproj_error": 2.140685684369172,
+          "num_inliers": 5459,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 2,
+          "position_error": 9.537897622344198,
+          "reproj_error": 2.2422093230709668,
+          "num_inliers": 5490,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 3,
+          "position_error": 9.131305597039896,
+          "reproj_error": 2.333505623849617,
+          "num_inliers": 5545,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 4,
+          "position_error": 6.535209269766692,
+          "reproj_error": 2.317162476605591,
+          "num_inliers": 5469,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 5,
+          "position_error": 11.927428538829098,
+          "reproj_error": 2.3049064684661253,
+          "num_inliers": 5028,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 6,
+          "position_error": 6.487183304348976,
+          "reproj_error": 2.454958274931951,
+          "num_inliers": 5537,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 7,
+          "position_error": 8.969601662862443,
+          "reproj_error": 2.304129826002975,
+          "num_inliers": 4988,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 8,
+          "position_error": 7.873002927661425,
+          "reproj_error": 2.4359764403149784,
+          "num_inliers": 5380,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 9,
+          "position_error": 6.958112061860239,
+          "reproj_error": 2.438714643564908,
+          "num_inliers": 5291,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 10,
+          "position_error": 5.625194928577077,
+          "reproj_error": 2.445134505429107,
+          "num_inliers": 5350,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 11,
+          "position_error": 8.068982990419292,
+          "reproj_error": 2.4001972454737506,
+          "num_inliers": 5098,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 12,
+          "position_error": 11.180539990464602,
+          "reproj_error": 2.4001972454737506,
+          "num_inliers": 1709,
+          "is_keyframe": true
+        },
+        {
+          "frame_id": 13,
+          "position_error": 12.39217411433679,
+          "reproj_error": 1.8012510391825935,
+          "num_inliers": 1641,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 14,
+          "position_error": 11.971282208475646,
+          "reproj_error": 1.831808163503924,
+          "num_inliers": 1647,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 15,
+          "position_error": 11.236193110266514,
+          "reproj_error": 1.7997758499300067,
+          "num_inliers": 1610,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 16,
+          "position_error": 11.771932220597245,
+          "reproj_error": 1.846792373963296,
+          "num_inliers": 1641,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 17,
+          "position_error": 11.760121138802461,
+          "reproj_error": 1.843426732250872,
+          "num_inliers": 1619,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 18,
+          "position_error": 12.029076282042292,
+          "reproj_error": 1.8781092046782426,
+          "num_inliers": 1619,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 19,
+          "position_error": 11.187160782740598,
+          "reproj_error": 1.8992173900352665,
+          "num_inliers": 1598,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 20,
+          "position_error": 12.148683732805898,
+          "reproj_error": 1.9489982736515221,
+          "num_inliers": 1569,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 21,
+          "position_error": 14.034809530753465,
+          "reproj_error": 1.8414853519324461,
+          "num_inliers": 1414,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 22,
+          "position_error": 10.164178735029658,
+          "reproj_error": 1.857449891237676,
+          "num_inliers": 1477,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 23,
+          "position_error": 11.737715673569065,
+          "reproj_error": 1.9580120674226016,
+          "num_inliers": 1537,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 24,
+          "position_error": 12.37942008951226,
+          "reproj_error": 1.9958628614279899,
+          "num_inliers": 1524,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 25,
+          "position_error": 13.212961084983615,
+          "reproj_error": 1.9800470545461488,
+          "num_inliers": 1521,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 26,
+          "position_error": 12.464912500511815,
+          "reproj_error": 1.9853632324076342,
+          "num_inliers": 1519,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 27,
+          "position_error": 12.388286664403628,
+          "reproj_error": 2.021634993743797,
+          "num_inliers": 1516,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 28,
+          "position_error": 2.0478192951030234,
+          "reproj_error": 2.021634993743797,
+          "num_inliers": 1707,
+          "is_keyframe": true
+        },
+        {
+          "frame_id": 29,
+          "position_error": 2.283416008997863,
+          "reproj_error": 1.706678101494173,
+          "num_inliers": 1685,
+          "is_keyframe": false
+        }
+      ]
+    },
+    {
+      "sequence": "wienerstr",
+      "source": "/home/nadavo/localization-models/data/orthotrack-official-test/outputs/wienerstr/results.json",
+      "sha256": "af291f1021149f1279d36974e4816864baa01823dc015a80269233c4e3e9dfe6",
+      "scored_frames": 1001,
+      "low_residual_high_error_frames": 15,
+      "definition": "inliers>=100, reprojection<3px, position error>5m; exploratory thresholds fixed for inspection, not a held-out test",
+      "recomputed_position_error_max_difference": 0.0,
+      "examples": [
+        {
+          "frame_id": 686,
+          "position_error": 9.481848548179821,
+          "reproj_error": 2.876230128367798,
+          "num_inliers": 394,
+          "success": true
+        },
+        {
+          "frame_id": 783,
+          "position_error": 9.128873857859164,
+          "reproj_error": 2.6640538494148953,
+          "num_inliers": 322,
+          "success": true
+        },
+        {
+          "frame_id": 697,
+          "position_error": 7.263586901719778,
+          "reproj_error": 2.9451418282017268,
+          "num_inliers": 326,
+          "success": true
+        }
+      ],
+      "initial_frames": [
+        {
+          "frame_id": 0,
+          "position_error": 0.7637463752812151,
+          "reproj_error": null,
+          "num_inliers": 3980,
+          "is_keyframe": true
+        },
+        {
+          "frame_id": 1,
+          "position_error": 0.5399212685382264,
+          "reproj_error": 2.046013989402006,
+          "num_inliers": 3681,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 2,
+          "position_error": 0.631632188424786,
+          "reproj_error": 2.1309125102516657,
+          "num_inliers": 3783,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 3,
+          "position_error": 0.6309850838441722,
+          "reproj_error": 2.0695402635100444,
+          "num_inliers": 3706,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 4,
+          "position_error": 0.8217135274975776,
+          "reproj_error": 2.0595843015389943,
+          "num_inliers": 3681,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 5,
+          "position_error": 1.1550468962322806,
+          "reproj_error": 2.033592508302041,
+          "num_inliers": 3582,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 6,
+          "position_error": 0.9522743398134144,
+          "reproj_error": 2.1182402672813385,
+          "num_inliers": 3672,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 7,
+          "position_error": 0.7996799532981355,
+          "reproj_error": 2.1599248213032154,
+          "num_inliers": 3601,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 8,
+          "position_error": 0.9115582257587401,
+          "reproj_error": 2.1389442124136124,
+          "num_inliers": 3600,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 9,
+          "position_error": 1.1420970918250215,
+          "reproj_error": 2.2231467115256103,
+          "num_inliers": 3650,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 10,
+          "position_error": 0.35392360288309943,
+          "reproj_error": 2.1042512625542744,
+          "num_inliers": 3384,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 11,
+          "position_error": 1.4447336739860581,
+          "reproj_error": 2.149848217953417,
+          "num_inliers": 3514,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 12,
+          "position_error": 1.175216717973201,
+          "reproj_error": 2.269595002172532,
+          "num_inliers": 3555,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 13,
+          "position_error": 1.2989651768774908,
+          "reproj_error": 2.269595002172532,
+          "num_inliers": 1214,
+          "is_keyframe": true
+        },
+        {
+          "frame_id": 14,
+          "position_error": 1.271138760236829,
+          "reproj_error": 1.6831887823601577,
+          "num_inliers": 1154,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 15,
+          "position_error": 1.3604513120398327,
+          "reproj_error": 1.6920183042342847,
+          "num_inliers": 1128,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 16,
+          "position_error": 1.3380173248140315,
+          "reproj_error": 1.71425214491034,
+          "num_inliers": 1096,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 17,
+          "position_error": 1.2435858497716907,
+          "reproj_error": 1.7218307106128872,
+          "num_inliers": 1099,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 18,
+          "position_error": 1.3748718410095278,
+          "reproj_error": 1.73716720121306,
+          "num_inliers": 1098,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 19,
+          "position_error": 1.3976663665262257,
+          "reproj_error": 1.7322596709621576,
+          "num_inliers": 1079,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 20,
+          "position_error": 1.474236406779705,
+          "reproj_error": 1.7196581223725478,
+          "num_inliers": 1068,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 21,
+          "position_error": 1.4817656129581593,
+          "reproj_error": 1.753716865076605,
+          "num_inliers": 1048,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 22,
+          "position_error": 1.4428326392028192,
+          "reproj_error": 1.7473255277036872,
+          "num_inliers": 1045,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 23,
+          "position_error": 1.5263645255121736,
+          "reproj_error": 1.809723123343652,
+          "num_inliers": 1038,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 24,
+          "position_error": 1.5432090364888185,
+          "reproj_error": 1.8076771909754383,
+          "num_inliers": 1022,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 25,
+          "position_error": 1.5170611363036117,
+          "reproj_error": 1.7968192380870527,
+          "num_inliers": 997,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 26,
+          "position_error": 1.6005080355528671,
+          "reproj_error": 1.813949283749414,
+          "num_inliers": 1002,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 27,
+          "position_error": 1.6862141905960388,
+          "reproj_error": 1.837554440430097,
+          "num_inliers": 996,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 28,
+          "position_error": 1.5724903401273065,
+          "reproj_error": 1.8348021230441827,
+          "num_inliers": 988,
+          "is_keyframe": false
+        },
+        {
+          "frame_id": 29,
+          "position_error": 1.6465927116938495,
+          "reproj_error": 1.8709640835215253,
+          "num_inliers": 986,
+          "is_keyframe": false
+        }
+      ]
+    }
+  ],
+  "real_matching": {
+    "method": "Actual CPU SIFT nfeatures4000, one-way Lowe ratio0.8; nearest DSM grid lift; EPNP-RANSAC1000 iterations,4px,.999 then LM on consensus. No GT filtering.",
+    "opencv": "4.11.0",
+    "numpy": "1.26.4",
+    "rows": [
+      {
+        "domain": "samedomain",
+        "sample_id": "L34_R0057",
+        "input": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-samedomain.npz",
+        "input_sha256": "4b74fb7d1b25635f257d9638b6ebefb68f2dc6d698475295f0293324d493ca61",
+        "matches_sha256": "65bf9a9974dfb3ed60f82bf2afc11384b013271e8e247bbca42e78d6c5ca9361",
+        "query_features": 3204,
+        "reference_features": 2873,
+        "ratio_matches": 111,
+        "finite_geometry_matches": 111,
+        "geometry_consistent_within_4px": 101,
+        "gt_pixel_residual_median": 1.1654855311207655,
+        "pose_solved": true,
+        "inliers": 99,
+        "translation_error_m": 0.0864980916738116,
+        "inlier_reprojection_median_px": 0.7456532890980956
+      },
+      {
+        "domain": "crossdomain",
+        "sample_id": "L15_R0175",
+        "input": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-crossdomain.npz",
+        "input_sha256": "7e0db0a3dfad8d195fdecc6289a7438118e0487f30286cec34f0000710c0243f",
+        "matches_sha256": "199e44bc80355c6bc8a1170149a31bd234612d2d08a4eecfe2f7d840c3824036",
+        "query_features": 3745,
+        "reference_features": 4000,
+        "ratio_matches": 62,
+        "finite_geometry_matches": 62,
+        "geometry_consistent_within_4px": 1,
+        "gt_pixel_residual_median": 525.3170938003892,
+        "pose_solved": false,
+        "inliers": 0,
+        "translation_error_m": null,
+        "inlier_reprojection_median_px": null
+      }
+    ],
+    "cpu_seconds": 0.9978594379999999,
+    "gpu": false,
+    "ground_truth_limit": "Nominal reconstruction-derived poses, not independent surveyed truth; true geometry used only to score retained matches/poses."
+  },
+  "limitations": [
+    "Point annotations are agent_visual/unreviewed; no formal PCK claim",
+    "Cache-only descriptor computation, no new model inference",
+    "Tracking source metrics inspected/recomputed, not original tracker rerun",
+    "Two OrthoLoC real pairs are not a population benchmark"
+  ]
+}

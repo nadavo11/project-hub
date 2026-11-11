@@ -1,0 +1,58 @@
+[
+  {
+    "candidate_id": "M09",
+    "paper_id": "mf-bundle",
+    "known_external_publication": true,
+    "quote_matches_supplied_evidence": true,
+    "quote": "cost iso-surfaces above\nthe minimum define natural confidence regions. Locally, these regions are nested ellipsoids centred\non the cost minimum, with size and shape characterized by the dispersion matrix",
+    "limit": "Lexical integrity only; independent semantic audit still needed"
+  },
+  {
+    "candidate_id": "M09",
+    "paper_id": "independent-O2",
+    "known_external_publication": true,
+    "quote_matches_supplied_evidence": true,
+    "quote": "The uncertainty propagated from SfM captures the low-frequency, systematic errors that affect the entire model",
+    "limit": "Lexical integrity only; independent semantic audit still needed"
+  },
+  {
+    "candidate_id": "M08",
+    "paper_id": "mf-bundle",
+    "known_external_publication": true,
+    "quote_matches_supplied_evidence": true,
+    "quote": "Locally, these regions are nested ellipsoids centred\non the cost minimum, with size and shape characterized by the dispersion matrix (the inverse of the",
+    "limit": "Lexical integrity only; independent semantic audit still needed"
+  },
+  {
+    "candidate_id": "M08",
+    "paper_id": "mf-degeneracy",
+    "known_external_publication": true,
+    "quote_matches_supplied_evidence": true,
+    "quote": "We first find a number m, 0 ≤ m ≤ n,\nof eigenvalues λ1 ,..., λm that are smaller than a threshold.",
+    "limit": "Lexical integrity only; independent semantic audit still needed"
+  },
+  {
+    "candidate_id": "M06",
+    "paper_id": "mf-degeneracy",
+    "known_external_publication": true,
+    "quote_matches_supplied_evidence": true,
+    "quote": "The solution is only updated in the well-conditioned directions on line 10, leaving xp in the degenerate directions unchanged.",
+    "limit": "Lexical integrity only; independent semantic audit still needed"
+  },
+  {
+    "candidate_id": "M06",
+    "paper_id": "mf-bundle",
+    "known_external_publication": true,
+    "quote_matches_supplied_evidence": true,
+    "quote": "A MAP estimator would typically add cost terms giving certain structure or camera calibration parameters a bias towards their expected values.",
+    "limit": "Lexical integrity only; independent semantic audit still needed"
+  },
+  {
+    "candidate_id": "M06",
+    "paper_id": "mf-spectral",
+    "known_external_publication": true,
+    "quote_matches_supplied_evidence": true,
+    "quote": "information injection with the prior into the degenerate subspace containing low information",
+    "limit": "Lexical integrity only; independent semantic audit still needed"
+  }
+]

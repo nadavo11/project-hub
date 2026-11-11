@@ -1,0 +1,151 @@
+{
+  "protocol": {
+    "sha256": "c8703ce1ac04b2e09b8afcf6120b5ee1b4440ee17519fda6c47eece358836ae3",
+    "size": 2678,
+    "manifest_sha256": "92e858e708cd1267a40b0d7dc24cd19bbcec6cd4693fba73940a3dddf0a24ece"
+  },
+  "implementation": {
+    "sha256": "88f05f0f1f928cc7cac36e4cf66e9eb72757eda1b3182ebe94b3de1f589a0f02",
+    "size": 7968,
+    "manifest_sha256": "1799511a6d7f94cbe26953d0313fd25b0d42d20d60290715e3a858701679f892"
+  },
+  "results": [
+    {
+      "id": "D06",
+      "candidate_id": "M06",
+      "record_type": "experimental_observation",
+      "expected": "If residual is evaluated at theta0, the written prior-plus-update expression differs from exact MAP; if evaluated at the prior, it is the standard MAP operator.",
+      "observed": {
+        "exact_map": [
+          1.6,
+          2.0
+        ],
+        "current_residual_proposal": [
+          0.0,
+          0.0
+        ],
+        "current_residual_max_error": 2.0,
+        "prior_residual_proposal": [
+          1.6,
+          2.0
+        ],
+        "prior_residual_max_error": 0.0
+      },
+      "conclusion": "Counterexample under the conventional current-iterate residual; under a prior-centred residual the operation is standard MAP. Residual definition is missing, so this is not an unconditional invalidity verdict."
+    },
+    {
+      "id": "D08",
+      "candidate_id": "M08",
+      "record_type": "experimental_observation",
+      "expected": "Inverse Schur-complement pose information equals the corresponding full inverse block.",
+      "observed": {
+        "cases": 64,
+        "max_entry_difference": 3.3306690738754696e-16,
+        "errors": [
+          1.1102230246251565e-16,
+          2.220446049250313e-16,
+          2.220446049250313e-16,
+          1.6653345369377348e-16,
+          2.220446049250313e-16,
+          1.1102230246251565e-16,
+          2.220446049250313e-16,
+          5.551115123125783e-17,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.3877787807814457e-16,
+          1.1102230246251565e-16,
+          2.220446049250313e-16,
+          1.6653345369377348e-16,
+          1.1102230246251565e-16,
+          1.6653345369377348e-16,
+          3.3306690738754696e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          5.551115123125783e-17,
+          1.3877787807814457e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          2.220446049250313e-16,
+          8.326672684688674e-17,
+          1.6653345369377348e-16,
+          1.6653345369377348e-16,
+          2.7755575615628914e-17,
+          1.6653345369377348e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          5.551115123125783e-17,
+          1.6653345369377348e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.6653345369377348e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          2.220446049250313e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          2.220446049250313e-16,
+          1.6653345369377348e-16,
+          1.6653345369377348e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.1102230246251565e-16,
+          1.6653345369377348e-16,
+          2.220446049250313e-16,
+          1.1102230246251565e-16,
+          5.551115123125783e-17,
+          1.1102230246251565e-16,
+          2.220446049250313e-16,
+          1.1102230246251565e-16,
+          1.6653345369377348e-16,
+          2.220446049250313e-16,
+          1.942890293094024e-16,
+          1.6653345369377348e-16
+        ]
+      },
+      "conclusion": "Numerically confirms the standard block-inverse identity. No new covariance operator; no claim about real-data utility."
+    },
+    {
+      "id": "D09",
+      "candidate_id": "M09",
+      "record_type": "experimental_observation",
+      "expected": "Uniform-height mode has identical image projections after compensation, exact unit camera-centre sensitivity, and no advantage over analytic propagation.",
+      "observed": [
+        {
+          "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-crossdomain.npz",
+          "sha256": "7e0db0a3dfad8d195fdecc6289a7438118e0487f30286cec34f0000710c0243f",
+          "attempted": 48,
+          "valid": 48,
+          "invalid": 0,
+          "controlled_projections": 288,
+          "max_projection_difference_px": 1.1368683772161603e-13,
+          "max_translation_derivative_difference": 1.4210854715202004e-14
+        },
+        {
+          "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-samedomain.npz",
+          "sha256": "4b74fb7d1b25635f257d9638b6ebefb68f2dc6d698475295f0293324d493ca61",
+          "attempted": 48,
+          "valid": 44,
+          "invalid": 4,
+          "controlled_projections": 264,
+          "max_projection_difference_px": 7.105427357601002e-14,
+          "max_translation_derivative_difference": 7.105427357601002e-15
+        }
+      ],
+      "conclusion": "Uniform-height mode is exactly compensated by camera translation. No advantage over analytic sensitivity on this mode. Nonlinear/inlier-switch advantage remains untested, not disproved."
+    }
+  ],
+  "cpu_seconds": 0.112040531,
+  "wall_seconds": 0.11205963499378413,
+  "gpu_hours": 0,
+  "new_dependencies": [],
+  "matcher_or_model_execution": false,
+  "full_candidate_experiments_run": 0,
+  "experimentally_supported_hypotheses": 0,
+  "limit": "Conditional counterexample, standard algebra identity and controlled coordinate transformation only. No scientific-performance gate satisfied."
+}

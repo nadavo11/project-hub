@@ -1,0 +1,36 @@
+{
+  "scope": "Necessary-condition and identity diagnostics only, not the candidates' proposed real-data performance experiments",
+  "cpu_seconds_cap": 300,
+  "gpu": false,
+  "cases": [
+    {
+      "id": "D06",
+      "candidate": "M06",
+      "input": "Linear observation J=diag(2,1), y=(4,4), prior mean=(0,0), prior precision=I, theta0=(2,4).",
+      "interpretation": "The candidate does not define r. Test the conventional residual at theta0, and separately the residual at the prior. Do not silently repair the original.",
+      "comparator": "Exact regularized least-squares MAP (J^T J+I)^-1 (J^T y+prior_mean)",
+      "expected": "If residual is evaluated at theta0, the written prior-plus-update expression differs from exact MAP; if evaluated at the prior, it is the standard MAP operator.",
+      "threshold": "Maximum coordinate error above 1e-10 is a counterexample for the stated interpretation.",
+      "limit": "Not evidence that every interpretation or implementation of M06 fails."
+    },
+    {
+      "id": "D08",
+      "candidate": "M08",
+      "input": "64 seeded 7x7 positive-definite information matrices, A^T A+I; seed731; pose block6 and focal block1. All coordinates already normalized.",
+      "comparator": "Pose block of the inverse full information matrix",
+      "expected": "Inverse Schur-complement pose information equals the corresponding full inverse block.",
+      "threshold": "Maximum entry difference <=1e-9 in all64 cases.",
+      "limit": "Tests the established operator identity, not aerial performance, rank-deficient cases, or the proposal's ambiguous physical unit scaling."
+    },
+    {
+      "id": "D09",
+      "candidate": "M09",
+      "input": "48 fixed-grid world points from each of two already downloaded OrthoLoC samples; finite positive-depth nominal geometry only; controlled uniform world-z shifts -3,-1,-0.1,0.1,1,3 metres.",
+      "comparator": "Analytic camera translation compensation t'=t-R*(0,0,h), equivalent to camera centre shifting by h in world-z",
+      "expected": "Uniform-height mode has identical image projections after compensation, exact unit camera-centre sensitivity, and no advantage over analytic propagation.",
+      "threshold": "Maximum projection difference <=1e-6 pixels; finite pose-translation derivative error <=1e-10.",
+      "limit": "One included mode only; no matcher, PnP solver, RANSAC switch, nonlinear alternative modes, dataset-wide ranking, or real DSM error truth. Cannot reject the entire nonlinear hypothesis from this case."
+    }
+  ],
+  "acceptance": "No diagnostic outcome alone counts as experimentally supported research value or satisfies the original performance gates."
+}

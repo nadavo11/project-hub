@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "failure": "Hash navigation back to board preserved selected candidate detail; test incorrectly expected card list",
+  "application_mutation": false,
+  "fix": "Use the actual back-to-board control before counting cards"
+}

@@ -1,0 +1,108 @@
+{
+  "job_id": "job-4fef66a536a8",
+  "completed_at": "2026-11-10T07:47:21.828050+00:00",
+  "result": {
+    "cases": [
+      {
+        "id": "C01",
+        "classification": "overlap",
+        "source_ids": [
+          "S5"
+        ],
+        "reason": "The S5 abstract describes the DenseUAV dataset, a siamese/metric-learning transformer baseline, a neighbor-search post-processing strategy, and the continuum-type SDM metric. Each element of the idea matches. The idea's 'real-UAV' detail is not confirmed in the excerpts (inference: it is plausibly the same dataset).",
+        "evidence_gap": "The excerpts do not state whether the data are real flights or how the neighbor search works. The excerpts also do not show whether SDM is strictly distance-sensitive in the same way.",
+        "feasibility": "Not assessed beyond the source, which already reports a working system."
+      },
+      {
+        "id": "C02",
+        "classification": "overlap",
+        "source_ids": [
+          "S2"
+        ],
+        "reason": "LPN uses a square-ring partition of feature maps by distance from the center, average pooling per part, and per-part cross-entropy classification. It is motivated by contextual information and is claimed to scale to rotation variations. This is the same mechanism and purpose.",
+        "evidence_gap": "The excerpts give no rotation-specific results or ablations to compare against the idea's rotation claim.",
+        "feasibility": "Already implemented in the source with a ResNet-50 backbone."
+      },
+      {
+        "id": "C03",
+        "classification": "distinct",
+        "source_ids": [
+          "S3"
+        ],
+        "reason": "HF-Net is a monolithic CNN that predicts global descriptors and local features, uses hierarchical coarse-to-fine retrieval, and is made efficient by distillation. The idea is different: a transformer pairwise matcher with token confidence and matchability, keypoint pruning, and early stopping of layers for adaptive width and depth. The excerpts show no adaptive-computation mechanism of this kind.",
+        "evidence_gap": "Efficiency is a shared goal. Whether the idea beats existing efficient matchers cannot be judged from this source.",
+        "feasibility": "Plausible, but this source gives no evidence on training or accuracy trade-offs."
+      },
+      {
+        "id": "C04",
+        "classification": "distinct",
+        "source_ids": [
+          "S1"
+        ],
+        "reason": "University-1652 uses one-to-one retrieval of building identities with Recall@K and AP, and the same buildings appear across platforms. The idea relaxes this with arbitrary query locations, multiple covering references, a learned offset from the tile center, and evaluation beyond reference identity. The excerpts show no offset regression or metric localization.",
+        "evidence_gap": "The excerpts do not cover the benchmark's drone-navigation task or any finer-grained localization. This comparison therefore rests on partial evidence.",
+        "feasibility": "Needs continuous-coordinate data and multi-reference coverage, which this source does not provide."
+      },
+      {
+        "id": "C05",
+        "classification": "overlap",
+        "source_ids": [
+          "S1"
+        ],
+        "reason": "University-1652 is a benchmark of university buildings with satellite, synthetic drone and ground views. It uses an identity-classification CNN baseline and Recall@K and AP. This matches every element of the idea.",
+        "evidence_gap": "The excerpts do not detail whether the baseline's weights are shared across views.",
+        "feasibility": "Already achieved in the source."
+      },
+      {
+        "id": "C06",
+        "classification": "overlap",
+        "source_ids": [
+          "S3"
+        ],
+        "reason": "HF-Net distills one network to produce global descriptors and local features. It retrieves prior frames, clusters them by covisibility of 3D points into places, and runs local matching with PnP and RANSAC inside each place. This is the same pipeline.",
+        "evidence_gap": "The excerpts do not show whether the idea adds anything beyond this pipeline.",
+        "feasibility": "Demonstrated in the source."
+      },
+      {
+        "id": "C07",
+        "classification": "distinct",
+        "source_ids": [
+          "S2"
+        ],
+        "reason": "S2 is about square-ring feature partitioning and part-wise cross-entropy classification. The idea is a contrastive training scheme whose contribution is a hard-negative schedule that moves from geographic neighbors to embedding neighbors. The excerpts show no contrastive loss or hard-negative mining. They show only a weight-sharing satellite/drone branch.",
+        "evidence_gap": "The excerpts say nothing about negative sampling. No evidence is available on whether the schedule helps.",
+        "feasibility": "Plausible, since it needs only coordinates and a shared encoder."
+      },
+      {
+        "id": "C08",
+        "classification": "distinct",
+        "source_ids": [
+          "S5"
+        ],
+        "reason": "S5 does image-level retrieval of geo-tagged satellite tiles for UAV localization, with the SDM metric and neighbor search. The idea predicts a geographic coordinate per query pixel by aligning feed-forward 3D pointmaps from drone and satellite views, with dense pixel-wise supervision and evaluation. The excerpts contain no pointmaps or pixel-level georegistration.",
+        "evidence_gap": "This is a comparison to one source only. The excerpts do not establish how it relates to other dense-geolocation methods.",
+        "feasibility": "Needs dense pixel-level geo ground truth and a pointmap model, which this source does not supply."
+      },
+      {
+        "id": "C09",
+        "classification": "overlap",
+        "source_ids": [
+          "S4"
+        ],
+        "reason": "RoMa uses frozen DINOv2 coarse features and coarse matching by regression-by-classification, which handles multimodality. It then refines with a separate local feature branch and robust regression losses. This is the same mechanism.",
+        "evidence_gap": "The excerpts do not detail the anchor-based classification. The mapping to the idea's 'anchors' is an inference.",
+        "feasibility": "Already implemented in the source."
+      },
+      {
+        "id": "C10",
+        "classification": "distinct",
+        "source_ids": [
+          "S4"
+        ],
+        "reason": "RoMa decouples coarse classification from refinement of 2D warps. The idea adds joint cross-view 3D pointmap prediction with discriminative dense descriptors and reciprocal descriptor matching. The excerpts show no pointmaps, descriptor heads, or reciprocal matching.",
+        "evidence_gap": "The excerpts do not show whether RoMa uses any reciprocity or 3D representation elsewhere. Only some sections were supplied.",
+        "feasibility": "Plausible, but it needs 3D supervision and a pointmap model, which this source does not cover."
+      }
+    ]
+  }
+}

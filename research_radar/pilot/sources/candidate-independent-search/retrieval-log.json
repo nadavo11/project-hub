@@ -1,0 +1,74 @@
+[
+  {
+    "candidate": "O1",
+    "kind": "independent_search",
+    "query": "covariance intersection",
+    "searchtype": "title",
+    "url": "https://arxiv.org/search/?query=covariance+intersection&searchtype=title&abstracts=show&order=announced_date_first&size=50",
+    "status": 200,
+    "bytes": 118057,
+    "sha256": "25947d54648c627fe0b52fc9586616feae0dbf3e33174124db98d25583393a46",
+    "filename": "O1-search.html",
+    "seconds": 2.29
+  },
+  {
+    "candidate": "O2",
+    "kind": "independent_search",
+    "query": "photogrammetry uncertainty propagation",
+    "searchtype": "all",
+    "url": "https://arxiv.org/search/?query=photogrammetry+uncertainty+propagation&searchtype=all&abstracts=show&order=announced_date_first&size=50",
+    "status": 200,
+    "bytes": 31129,
+    "sha256": "090fdf35cdc3a1888a30c4322cd6dfe97557b4fbac2040fb738bb5f7dc36bc11",
+    "filename": "O2-search.html",
+    "seconds": 2.401
+  },
+  {
+    "candidate": "O3",
+    "kind": "independent_search",
+    "query": "view selection visual localization",
+    "searchtype": "all",
+    "url": "https://arxiv.org/search/?query=view+selection+visual+localization&searchtype=all&abstracts=show&order=announced_date_first&size=50",
+    "status": 200,
+    "bytes": 261389,
+    "sha256": "4598723562bc6ff7a57a6278a1bb5842a3276f0e60410072191ff54650317289",
+    "filename": "O3-search.html",
+    "seconds": 3.711
+  },
+  {
+    "candidate": "O1",
+    "kind": "independent_primary_fetch",
+    "url": "https://arxiv.org/pdf/2603.16768",
+    "status": 200,
+    "bytes": 656677,
+    "sha256": "82a1138bf8004ce488d8d7ab0ab0f700f3f5292964b52140444be950b282c984",
+    "filename": "2603.16768.pdf",
+    "text_filename": "2603.16768.txt",
+    "text_sha256": "feef015917426d3f512589054fba41564cc14f97a92277697329d85e27156689",
+    "seconds": 1.179
+  },
+  {
+    "candidate": "O2",
+    "kind": "independent_primary_fetch",
+    "url": "https://arxiv.org/pdf/2507.13486",
+    "status": 200,
+    "bytes": 5127484,
+    "sha256": "2825ed4de297f579c05fa8863dff4ff74b11a5de95deeff4162c03b015222ef5",
+    "filename": "2507.13486.pdf",
+    "text_filename": "2507.13486.txt",
+    "text_sha256": "ba60dae06f2ec874d840fe7c58f8360254c9652f453797e55267e7871f659a3d",
+    "seconds": 2.139
+  },
+  {
+    "candidate": "O3",
+    "kind": "independent_primary_fetch",
+    "url": "https://arxiv.org/pdf/2309.10698",
+    "status": 200,
+    "bytes": 2034300,
+    "sha256": "df8e079049807bff3d350b27d04909da1248677ef44816abf1fb1e9e75402c37",
+    "filename": "2309.10698.pdf",
+    "text_filename": "2309.10698.txt",
+    "text_sha256": "d1bad06603c4c08a1dc678633a581527dd9ec987bb2efad01963dc166c28c958",
+    "seconds": 1.769
+  }
+]

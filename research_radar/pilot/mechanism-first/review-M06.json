@@ -1,0 +1,74 @@
+{
+  "job_id": "job-41cf1e654bda",
+  "completed_at": "2026-11-10T08:33:00.116550+00:00",
+  "result": {
+    "candidate_id": "L1-C1",
+    "disposition": "revise",
+    "fatal_prior_art_overlap": false,
+    "novelty_status": "established_operator",
+    "axes": {
+      "novelty": {
+        "status": "fail",
+        "reason": "The operator is a prior-regularized Gauss-Newton/MAP step with an inverse-Hessian posterior covariance and eigen-spectrum degeneracy handling. Bundle Adjustment (mf-bundle) covers the MAP prior and dispersion matrix. Zhang et al. (mf-degeneracy) cover eigenvalue thresholding with the prediction retained in weak directions. Spectral GS-SLAM (mf-spectral) covers prior injection into low-information Hessian directions. The packet's own non_equivalence section concedes this. Applying it to OrthoLoC PnP at low covisibility adds only a new task label, not a new technical operation."
+      },
+      "scientific_significance": {
+        "status": "unresolved",
+        "reason": "A directional-under-constraint account of the low-covisibility failure is testable and would be informative. It would need to beat a covariance-trace baseline, which the packet itself says may be monotone-equivalent to the spectrum. If the two are equivalent, the result is only a restatement of standard PnP covariance."
+      },
+      "technical_feasibility": {
+        "status": "pass",
+        "reason": "The computation is 7x7 matrices on demo NPZs with finite cameras, so it is cheap. Cropping-based covisibility synthesis and a SIFT fallback are available. The full test split and cached matches are unverified, not unavailable. Two demo samples allow very few independent scenes, so the AUROC bootstrap would be dominated by within-scene crop correlation."
+      },
+      "insufficient_evidence": {
+        "status": "unresolved",
+        "reason": "There are no experiments. The ortholoc passage supplied attributes the failure to non-uniform match distribution and an underdetermined problem. That is a concentration/rank-deficiency explanation, but it is not isolated empirically and is not a Fisher-spectrum result. Whether ortholoc already reports per-direction observability is not established from the supplied text."
+      }
+    },
+    "closest_prior_art": [
+      {
+        "paper_id": "mf-degeneracy",
+        "quote": "The solution is only updated in the well-conditioned directions on line 10, leaving xp in the degenerate directions unchanged.",
+        "location": "Section III.B: solution remapping",
+        "equivalence": "Eigendecompose the Gauss-Newton Hessian, threshold the eigenvalues, update only the well-conditioned directions, and keep the prediction in the degenerate ones. This is the hard-threshold limit of M06's MAP shrinkage with tau and a prior-whitened basis.",
+        "remaining_difference": "Their setting is ego-motion with a lidar/camera threshold calibrated on scenes. M06 uses a prior-whitened threshold (1+tau), a single-image 7-parameter pose including focal length, and a DSM-lifted orthophoto geometry. No new operator results from these differences."
+      },
+      {
+        "paper_id": "mf-bundle",
+        "quote": "A MAP estimator would typically add cost terms giving certain structure or camera calibration parameters a bias towards their expected values.",
+        "location": "Section 3: MAP priors and covariance",
+        "equivalence": "The cost-function Hessian H, its inverse as the dispersion matrix, and soft pose/calibration priors added to the cost are exactly M06's H = J^T J/s^2 + Sigma_prior^-1 with posterior covariance H^-1.",
+        "remaining_difference": "Only the use of the posterior std as a failure flag at low covisibility, which is an evaluation claim, not a new estimator."
+      },
+      {
+        "paper_id": "mf-spectral",
+        "quote": "information injection with the prior into the degenerate subspace containing low information",
+        "location": "Equation 8 and prior-information gating",
+        "equivalence": "Spectral decomposition of the Hessian, with an anisotropic prior added only along the low-eigenvalue eigenvectors. This is a soft-gated version of M06's step.",
+        "remaining_difference": "The setting is Gaussian-splatting SLAM with ICP, not PnP with a DSM-lifted reference. The operator is the same."
+      }
+    ],
+    "technical_counterexamples": [
+      "Wrong-alias or DSM-biased matches give a well-conditioned Fisher matrix with large systematic error, so the flag stays quiet while the pose is wrong. Fisher information does not detect bias.",
+      "Because s is estimated from the inlier MAD, tightly clustered matches can have small MAD and a spuriously optimistic H.",
+      "The posterior covariance is Gauss-Newton-linearized at theta0. Near-degenerate geometry makes theta0 itself unreliable, so the linearization is invalid exactly where the flag matters.",
+      "With a fixed s and prior, the posterior std is a monotone function of the covariance trace, so the primary AUROC comparison can tie. The covariance-trace baseline is the strongest comparator here, and the AUROC gain threshold of 0.02 is a coarse test for it.",
+      "MAP shrinkage toward a prior of unknown quality can worsen TE. The prior-sigma rule is an unspecified free parameter that effectively tunes the result.",
+      "A planar DSM makes focal length and tz nearly exactly coupled, so those directions are flagged regardless of covisibility."
+    ],
+    "falsification_assessment": "The design includes a covisibility-matched failure-prediction test against hull-area and covariance-trace baselines, plus a fixed-prior leakage control, which is good. Its weaknesses are the correlated crops from only 2 scenes, the unspecified prior-sigma rule, and a success criterion where ties with covariance trace count as failure. Run at that level, the experiment would test only whether the standard PnP covariance predicts failure, not whether the Fisher spectrum is a new operator. Add a bias-injection control, a per-direction rather than scalar comparison, and scene-level bootstrap.",
+    "elimination_reasons": [
+      {
+        "dimension": "novelty",
+        "reason": "The estimator and its spectral readout are established in mf-bundle, mf-degeneracy and mf-spectral. The remaining contribution is an unproven application-specific evaluation.",
+        "paper_ids": [
+          "mf-bundle",
+          "mf-degeneracy",
+          "mf-spectral"
+        ]
+      }
+    ],
+    "prerequisite_status": "Available: the 2 demo NPZs, CPU SIFT or SP+LG matching, and the 7x7 computation. Unverified rather than guessed unavailable: cached matcher outputs, the full OrthoLoC test split, and the NumPy environment for the RIM weights.",
+    "experimentally_supported": false,
+    "rationale": "M06 is an established estimator, not a new operator. The only defensible residual is an empirical hypothesis: the low-covisibility failure is directional under-constraint that the posterior-std spectrum predicts beyond a covariance-trace baseline. It needs reframing as a diagnostic evaluation, not a mechanism. The test needs a bias control and more independent scenes. It has no empirical validation."
+  }
+}

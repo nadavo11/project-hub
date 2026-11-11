@@ -1,0 +1,34 @@
+{
+  "id": "runtime-smoke",
+  "title": "Actual six-role runtime smoke (not scientific opportunity validation)",
+  "campaign_id": "campaign-b9637d19b9c4",
+  "scope": "Two initial public search results, expanding to ten papers during adversarial retrieval. This is separate from the approximately twenty-paper full-paper pilot.",
+  "expected": "Public retrieval, separate role execution, structured durable outputs, real trace and cost receipts, no GPU execution.",
+  "observed": "Seven tasks completed: search, cartographer, failure investigator, generator, novelty investigator with additional retrieval, reviewer, experiment architect. Two tensions and one unverified opportunity persisted across copying the database and reopening the application store.",
+  "status": "pass for execution; scientific output not accepted",
+  "measurements": {
+    "http_requests": 3,
+    "download_bytes": 1260804,
+    "work_elapsed_seconds": 80.69,
+    "cli_requests": 6,
+    "cli_nano_aiu": 34385450000,
+    "model_input_tokens_including_cache": 191737,
+    "model_output_tokens": 6988,
+    "api_cost_usd": null,
+    "external_paid_api_cost_usd": 0,
+    "gpu_hours": 0
+  },
+  "failures": [
+    "Independent inspection of the live library found eight unrelated astronomy/physics records admitted by the original broad arXiv fallback query. This was a real topical-relevance failure, not successful literature discovery. These records are quarantined in this explicitly failed-scientific-validation smoke campaign, not the 21-paper evidence pilot.",
+    "The generated experiment proposed a geographic-neighbor warm-up on University-1652 without verifying geographic metadata availability. The independent full-paper audit of Sample4Geo Section 3.3 explicitly states this initialization was not possible for that benchmark. The smoke experiment is therefore not accepted as a feasible validated plan.",
+    "The novelty response was uncertain, and its own summary failed to use all newly retrieved competitors. A separate process plus fresh retrieval does not ensure comprehensive comparison.",
+    "Automated adapter inputs are abstracts and bounded source excerpts, not an assurance of full-paper comprehension."
+  ],
+  "remediation": [
+    "arXiv queries now conjoin individually quoted non-stopword terms rather than passing unstructured sentences.",
+    "A deterministic topical keyword screen rejects unrelated provider results and records exclusions before accepting any paper. An ATLAS-versus-cross-view localization regression fails on the original behavior and passes after the fix.",
+    "Automatically retrieved records are now task-unclassified, rather than inheriting the requested domain as if their relevance were established.",
+    "An actual browser-triggered campaign on the fixed service is a separate acceptance artifact. Lexical screening alone is not expert relevance validation."
+  ],
+  "interpretation": "Execution success is not research-quality success. These concrete failures must constrain the overall verdict and remain visible; no automatic upgrade to promising was made."
+}

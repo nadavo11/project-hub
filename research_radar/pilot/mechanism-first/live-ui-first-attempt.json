@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "failure": "Test locator selected nested summary nodes as well as the history summary; Playwright strict-mode error",
+  "application_mutation": false,
+  "fix": "Use the direct-child history summary selector; rerun the same read-only journey"
+}

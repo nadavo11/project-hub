@@ -1,0 +1,13 @@
+{
+  "campaign_id": "campaign-0919931353d1",
+  "url": "http://127.0.0.1:8776/",
+  "verdict": "ITERATE",
+  "costs": {
+    "http_requests": 93,
+    "download_bytes": 397190318,
+    "elapsed_seconds": 882.024786739,
+    "api_cost_usd": null,
+    "gpu_hours": 0,
+    "measurement": "Partial aggregate: operator web-fetch byte/time measurements and model billing are unavailable. Runtime smoke is a separately costed campaign."
+  }
+}

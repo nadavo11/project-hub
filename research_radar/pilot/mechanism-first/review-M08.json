@@ -1,0 +1,74 @@
+{
+  "job_id": "job-08377d7fcf93",
+  "completed_at": "2026-11-10T08:32:36.446896+00:00",
+  "result": {
+    "candidate_id": "L1",
+    "disposition": "revise",
+    "fatal_prior_art_overlap": false,
+    "novelty_status": "established_operator",
+    "axes": {
+      "novelty": {
+        "status": "fail",
+        "reason": "The operator is the standard Gauss-Newton/Cramér-Rao PnP covariance. It adds a focal nuisance, a MAP prior on f, Schur elimination, and lambda_min or covariance-based flagging. Bundle Adjustment (Triggs et al.) supplies all of these: inverse-Hessian dispersion, MAP priors on calibration, and Schur complement identities. Zhang & Kaess use eigenvalue-threshold degeneracy detection. The packet's own non_equivalence admits it is not a new estimator. A new task label (OrthoLoC DSM-lifted matches) does not create a technical contribution. What remains is an unproven application-level evaluation, namely whether the diagnostic replaces covisibility on OrthoLoC."
+      },
+      "scientific_significance": {
+        "status": "unresolved",
+        "reason": "A testable question remains: does per-query observability explain the covisibility<20% degradation better than inlier count or dispersion? The answer is modest because the operator is established, and the test only probes the authors' explanation (synthetic only)."
+      },
+      "technical_feasibility": {
+        "status": "pass",
+        "reason": "The computation is a 7-parameter Jacobian and a small eigenproblem, and 2000-10000 solves is cheap on CPU. The OrthoLoC demo NPZs are said to be available, with the projection sanity check passed. Real matcher outputs are unverified or absent."
+      },
+      "insufficient_evidence": {
+        "status": "fail",
+        "reason": "There is no empirical validation. The only evidence is a synthetic-only design with 2 scenes, exact projection plus Gaussian noise, and no matcher errors or DSM bias. The design therefore cannot test the stated failure mode (wrong matches or DSM bias) and cannot support claims about real performance."
+      }
+    },
+    "closest_prior_art": [
+      {
+        "paper_id": "mf-bundle",
+        "quote": "Locally, these regions are nested ellipsoids centred\non the cost minimum, with size and shape characterized by the dispersion matrix (the inverse of the",
+        "location": "Section 3; Section 6.1 (Schur complement, eqs 16-18)",
+        "equivalence": "The Gauss-Newton Hessian H=J^T J/sigma^2 plus a MAP prior diag(1/sigma_f^2) on f, with Schur elimination of f, gives I_pose=I_pp-I_pf I_ff^-1 I_fp. Its inverse equals the pose block of H^-1 (block-inverse identity, eq 17). cov_t is therefore exactly the standard BA dispersion marginal. Mathematically this is the same operator, not just a similar keyword.",
+        "remaining_difference": "The application is per-query abstention on DSM-lifted matches. Rotation rows are rescaled by scene radius, and lambda_min of the marginal information block is reported. Nothing mathematically new."
+      },
+      {
+        "paper_id": "mf-degeneracy",
+        "quote": "We first find a number m, 0 ≤ m ≤ n,\nof eigenvalues λ1 ,..., λm that are smaller than a threshold.",
+        "location": "Section III.B",
+        "equivalence": "Thresholding the smallest eigenvalue of the information matrix to detect degenerate directions is the same operator as the kappa flag. The weakest eigenvector identifies the degenerate direction.",
+        "remaining_difference": "The domain (camera PnP with a focal nuisance and a covariance-in-metres threshold) differs from their scan-matching setting. They also remap the solution in degenerate directions; this proposal only abstains."
+      }
+    ],
+    "technical_counterexamples": [
+      "lambda_min of a mixed rotation/translation/focal block is gauge- and unit-dependent. Scene-radius scaling is arbitrary, so kappa rankings can change with the scaling choice.",
+      "Covariance in metres (cov_t) is the better-scaled quantity and is closer to standard practice. The kappa-vs-cov_t comparison is the real strongest comparator, and it is not in the baselines.",
+      "The hull area × depth variance baseline is a weak proxy for the covariance. The strongest comparator is the plain analytic PnP covariance without focal marginalization (the sigma_f→0 case), and it is missing.",
+      "With exact projection plus Gaussian noise, a Gauss-Newton solve's error is nearly by construction predicted by the CRB. A high partial correlation would then be close to tautological and would not test the concentrated-support explanation against real failures.",
+      "Cropping the query changes the covisibility fraction and the match geometry together. Baseline controls cannot isolate kappa from the geometry that drives it. Partial Spearman is also fragile under collinear baselines.",
+      "The spread aliased-match case is acknowledged: kappa cannot detect bias, which is the dominant real failure mode."
+    ],
+    "falsification_assessment": "The test is falsifiable in the narrow synthetic sense, but weakly diagnostic. Success is near-guaranteed by CRB theory, and failure would mostly show noise-regime or nonlinearity issues. The thresholds (≥0.5, <0.2) are arbitrary. The test must add the analytic covariance without the focal block as a comparator, and ideally use real matcher outputs with DSM bias to bear on the authors' explanation.",
+    "elimination_reasons": [
+      {
+        "dimension": "novelty",
+        "reason": "Schur-marginalized Fisher/covariance of PnP with a focal prior and eigenvalue degeneracy flagging are established operators (BA synthesis; Zhang & Kaess). The application to OrthoLoC matches is an evaluation, not a method contribution.",
+        "paper_ids": [
+          "mf-bundle",
+          "mf-degeneracy"
+        ]
+      },
+      {
+        "dimension": "insufficient_evidence",
+        "reason": "Only synthetic exact-projection data are planned, which cannot test matcher errors or DSM bias. The strongest comparators (full analytic covariance, covariance without the focal block) are missing.",
+        "paper_ids": [
+          "ortholoc",
+          "mf-bundle"
+        ]
+      }
+    ],
+    "prerequisite_status": "Demo NPZ data and cameras are available. Cached matcher outputs, a non-oracle gallery, and independent DSM error truth are unavailable or unverified. Runtime stack (NumPy/SciPy) is unverified.",
+    "experimentally_supported": false,
+    "rationale": "This is an established covariance and degeneracy operator applied to a new setting, so it fails on novelty as a method. A narrow revision could stand as an evaluation question: compare cov_t (with and without the focal block) against covisibility and dispersion. It would need real matcher outputs and biased DSMs, and must not claim support from a synthetic CRB-consistent test."
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "protocol": {
+    "scope": "Independent adversarial novelty and reviewer critique of exactly O1, O2 and O3 from the supplied literature.json. No overall GO assessment.",
+    "blinding": "The original blind audit was preserved unchanged. No benchmark or benchmark-key files were inspected. Candidate descriptions and their cited primary-source text caches were read only after the explicit candidate-audit request.",
+    "method": "Read the actual cached primary text behind the closest threats, distinguish implemented mechanisms from future-work statements, and test each proposed distinction with counterexamples and evaluation requirements. No experiments were authorized or executed.",
+    "source_cache": "sources/candidate-audit/",
+    "source_manifest": "sources/candidate-audit/manifest.json",
+    "input_snapshot": "sources/candidate-audit/literature-input.json",
+    "input_sha256": "43418a9d93de675dbcc991579b819557f66c54f2fe2eb7fa9e7e82138d6bf6b0",
+    "original_blind_audit_sha256": "9f3479e269327854b343347004a612a6277cac2c335473a357f607a0009d6484",
+    "limitations": [
+      "The original follow-up phase independently inspected shared cached primary-source text. A subsequently authorized six-request phase independently searched and retrieved three additional papers; its evidence and costs are separated below.",
+      "The later searches are bounded and non-exhaustive. In particular, only 50 of 170 returned O3 results were screened, with substantial lexical noise. Missing search hits cannot establish novelty.",
+      "No dataset release, license, annotation package or implementation was downloaded or tested.",
+      "Primary-text snapshots are retained with verified hashes. Hashes are for extracted text, not original PDFs.",
+      "Source statements are evidence of what authors report, not independent reproduction.",
+      "The conclusions concern the submitted candidate descriptions. They do not prove that every possible narrower implementation is unoriginal."
+    ]
+  },
+  "new_decisive_findings": [
+    {
+      "id": "N1",
+      "candidate": "O1",
+      "finding": "RIC-Loc already reports full-set behavior, including ineligible queries. All-query evaluation is therefore not a sufficient novelty distinction.",
+      "evidence_ids": ["E1"],
+      "required_correction": "Replace the contrast with covariance-eligible subsets by the actual distinction: UAV map-footprint dependence under geographic shift, compared against RIC-Loc's existing full-set/fallback accounting."
+    },
+    {
+      "id": "N2",
+      "candidate": "O1",
+      "finding": "RIC-Loc does more than ignore all shared uncertainty: its covariance adds a common-mode scale term and residual-consistency inflation. It still explicitly acknowledges unmodeled inter-hypothesis dependence.",
+      "evidence_ids": ["E2", "E3"],
+      "required_correction": "Do not frame the baseline as wholly dependence-blind. Isolate remaining cross-hypothesis correlation from the already implemented common-mode treatment."
+    },
+    {
+      "id": "N3",
+      "candidate": "O2",
+      "finding": "SkyReg already predicts per-pixel confidence and trains with a confidence-weighted regression objective.",
+      "evidence_ids": ["E5"],
+      "required_correction": "Make SkyReg/MASt3R point confidence an explicit strong baseline when outputs are available. Generic pixel confidence or withholding uncertain pixels is not an adequate contribution."
+    },
+    {
+      "id": "N4",
+      "candidate": "O2",
+      "finding": "OrthoLoC explicitly supplies point maps, local meshes, camera calibration and pose; it is not merely an image-level pose-truth source. However, its same-domain geodata and geometry truth share a reconstruction source.",
+      "evidence_ids": ["E6", "E7"],
+      "required_correction": "Separate documented annotation types from unverified release accessibility. Use cross-domain geodata for map-error claims and account for reconstruction/georeferencing dependence."
+    },
+    {
+      "id": "N5",
+      "candidate": "O3",
+      "finding": "HF-Net's hierarchy already clusters prior frames by co-observed 3D structure. RIC-Loc explicitly proposes selecting references by viewpoint diversity, predicted track support and conditioning rather than fixed top-K.",
+      "evidence_ids": ["E9", "E10"],
+      "required_correction": "Strengthen overlap beyond generic hierarchical retrieval. Show a difference from covisibility grouping and articulated geometry-aware selection, not just from descriptor top-K."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "O1",
+      "title": "Geographic dependence-aware abstention for retrieved UAV pose hypotheses",
+      "novelty_assessment": "uncertain",
+      "reviewer_position": "Reject generic confidence-fusion, consensus, abstention and all-query-evaluation novelty claims. Retain only a narrowly falsifiable dependence-diagnostic question, without declaring it novel.",
+      "observed_prior_art": [
+        "RIC-Loc implements reference-induced hypotheses, robust consensus, dispersion/covariance failure ranking, held-out selection and risk-coverage; it also reports full-set behavior.",
+        "RIC-Loc already includes common-mode scale uncertainty and residual-consistency inflation, while explicitly acknowledging remaining correlation and limited eligibility.",
+        "RIM explicitly proposes calibrated fusion of retrieval margins, correspondence support/coverage, geometric statistics, PnP residuals and temporal consistency. This is future work, not an implemented calibrated RIM rejector."
+      ],
+      "evidence_ids": ["E1", "E2", "E3", "E4"],
+      "strongest_counterexample": {
+        "status": "inferred counterexample, not an observed experimental result",
+        "description": "All retrieved tiles may support the same wrong but internally consistent building alias. Leaving out one overlapping footprint cluster can leave essentially the same wrong pose. A low leave-one-cluster-out displacement does not certify correctness. Conversely, spatially diverse tiles may still share the same matcher, map bias or repeated architecture.",
+        "implication": "Footprint diversity is neither necessary nor sufficient for independent pose errors. Demonstrate that it predicts additional held-out error beyond ordinary hypothesis spread and support counts."
+      },
+      "missing_method_specification": [
+        "Define overlap, clustering and linkage. Connected components of an overlap graph can merge a long tile chain into one cluster even when endpoints barely overlap.",
+        "With top_k=5, specify behavior for one cluster, singleton clusters, no pose, no surviving hypotheses and a leave-one-cluster-out refit failure. These cannot be silently removed from evaluation.",
+        "Define whether the score changes the estimator or only rejects its fixed output. Freeze the estimator across confidence baselines to prevent accuracy changes from masquerading as better uncertainty.",
+        "Specify whether cached pose hypotheses already share features, reference content or map geometry; geographic overlap is only one possible source of dependence."
+      ],
+      "minimum_falsification_experiment": [
+        "Run matched-candidate, matched-estimator comparisons: complete confidence fusion; fusion plus effective footprint count; fusion plus the proposed leave-one-cluster-out statistic. Match model capacity and tuning budget.",
+        "Distinguish same-geography duplicate support, genuinely different valid support, systematic map bias, and a consistent wrong-place consensus. Deliberate duplication/removal is a diagnostic stress test, not the main deployment distribution.",
+        "Report the number of independent test sites and flights, not just 400 queries. Use site/flight-grouped uncertainty and predeclare one primary failure threshold.",
+        "Count solver failures and undefined scores as failures/ineligible cases in all-query accounting. State their rank policy and maximum attainable acceptance coverage.",
+        "At a fixed calibration-selected threshold, report empirical held-out risk and coverage. Do not equate an empirical 10% calibration target with a geographic-shift guarantee.",
+        "A merely nonnegative bootstrap improvement interval is too ambiguous: define the interval level and whether its lower bound must exceed zero, while separating screening thresholds from scientific significance."
+      ],
+      "surviving_claim_if_supported": "A specific, reproducible footprint-dependence statistic adds predictive value over strong shared-error and confidence-fusion baselines for a clearly defined UAV map-reference setting.",
+      "stop_rule": "Drop the method claim if footprint count alone explains the result, if the gain disappears against full fusion/common-mode baselines, or if unsupported/undefined cases are required to disappear from the denominator.",
+      "uncertainty": "The exact footprint statistic may have a useful narrow role. Neither novelty against classical correlated estimators nor a real-world gain is established."
+    },
+    {
+      "id": "O2",
+      "title": "Geometry-sensitivity gating for off-nadir pixel-to-map anchors",
+      "novelty_assessment": "uncertain",
+      "reviewer_position": "The diagnostic could be useful, but finite-difference geometry sensitivity plus thresholding is not yet a distinct method. The most serious threat is standard error propagation, compounded by existing dense point confidence.",
+      "observed_prior_art": [
+        "SkyReg implements dense point maps and confidence-weighted regression with per-pixel confidences, so a confidence baseline is already available in the method.",
+        "SkyReg's benchmark is not uniformly real UAV data: its dataset section describes Google Earth-rendered drone imagery and differing sources of depth geometry.",
+        "OrthoLoC provides real UAV queries, reconstructed point maps/meshes, and same-domain plus external cross-domain DOP/DSM. Its pairing is ground-truth-assisted to isolate localization from retrieval.",
+        "OrthoLoC already examines covisibility and geometry/calibration limitations; improved sensitivity plots alone are not a new task."
+      ],
+      "evidence_ids": ["E5", "E6", "E7", "E8"],
+      "strongest_counterexample": {
+        "status": "auditor mathematical reasoning, not a cited new result",
+        "description": "For a fixed camera ray x(t)=o+t*d intersecting a horizontal plane of height h, the horizontal derivative with respect to h is (d_x/d_z,d_y/d_z); its norm is tan(off-nadir angle). A constant-height finite-difference score can therefore reduce to a simple viewing-angle score rather than a novel learned or geometric diagnostic.",
+        "implication": "Compare against analytic ray/height sensitivity and propagated pose/height covariance, not only residuals and inlier confidence. For nonplanar terrain, test what additional information is supplied beyond local slope, incidence angle and known elevation uncertainty."
+      },
+      "missing_method_specification": [
+        "The question mentions camera perturbations, but the stated experiment specifies only height offsets. Define intrinsic/extrinsic perturbations, parameter units, correlation, and how magnitudes are obtained without ground truth.",
+        "Distinguish global elevation bias, spatially varying elevation noise, local relief/slope errors and outright wrong-surface correspondence. A uniform 1/3/5 m shift does not test all of them.",
+        "Holding matches fixed isolates propagation conditional on the matches; it cannot establish a full system's robustness when geometric changes alter correspondences, visibility or solver convergence.",
+        "Homography and PnP require comparable output coordinates and visibility conventions. Disagreement can be caused by planar-model mismatch, solver instability or wrong matches; it is not itself a calibrated probability.",
+        "Specify horizontal geodetic error versus vertical error and 3D Euclidean error. Haversine distance alone cannot validate elevation accuracy.",
+        "Keep same-reconstruction and external-geodata tests separate. Do not synthesize truth by intersecting the same perturbed DSM used by the predictor.",
+        "OrthoLoC transforms geometric elements into local coordinates for privacy; local metric evaluation is possible, but a global latitude/longitude claim requires verifying that the necessary frame transform is actually released."
+      ],
+      "minimum_falsification_experiment": [
+        "First verify released point maps, validity masks, camera data and independent cross-domain DSM access. The paper documents these modalities; actual download access remains unverified.",
+        "Use residual plus match confidence, SkyReg/MASt3R point confidence where applicable, off-nadir/local-slope covariates, analytic ray sensitivity and first-order covariance propagation as explicit baselines.",
+        "Evaluate score ranking on fixed original valid anchors. Report within-query equal-coverage results as well as pooled coverage so discarding difficult images cannot masquerade as better individual-anchor selection.",
+        "Use external DSM versus the original reconstruction-derived point truth for a separately identified real map-error test, with georeferencing/reconstruction noise acknowledged.",
+        "Test where the model is confidently wrong, not only where its assumptions predict large variance. Systematic map shifts or wrong repeated structures may have low local sensitivity.",
+        "Predeclare the primary error threshold, coverage, perturbation family and held-out geography. Pixel counts do not supply independent sample size; bootstrap sites/queries.",
+        "If only CPU classical matches are available, restrict conclusions to a sensitivity mechanism screen. Do not claim superiority to dense learned systems that were not run."
+      ],
+      "surviving_claim_if_supported": "A defined diagnostic captures a failure mode not explained by conventional propagated uncertainty, viewing geometry or existing point confidence, and improves selective metric accuracy against independent map-error truth.",
+      "stop_rule": "Drop method novelty if analytic sensitivity or basic angle/slope features match the result; block geodetic claims if truth shares the evaluated map errors or the required coordinate/visibility data are unavailable.",
+      "uncertainty": "The classical prior-art search is still incomplete. Existing evidence supports a significant novelty threat, not a definitive bibliographic proof that the exact proposed score has already appeared."
+    },
+    {
+      "id": "O3",
+      "title": "Fixed-budget candidate selection by independent geometric support",
+      "novelty_assessment": "uncertain; high-level selection principle explicitly anticipated",
+      "reviewer_position": "Maintain hold. Reject novelty of generic diversity, support-based selection, hierarchical localization or geometry-aware reranking. A fixed budget is an evaluation constraint, not by itself a new selection principle.",
+      "observed_prior_art": [
+        "RIC-Loc explicitly proposes viewpoint-diverse, track-supported, well-conditioned reference selection instead of fixed top-K. This is a direct conceptual anticipation, not evidence that the paper implemented and evaluated the proposed selector.",
+        "HF-Net already groups retrieved references by co-observed 3D structure before geometric localization.",
+        "UnifyGeo implements a learned reranking mechanism connecting retrieval and metric localization. Training-free operation is a deployment distinction, not automatic novelty."
+      ],
+      "evidence_ids": ["E9", "E10", "E11"],
+      "strongest_counterexample": {
+        "status": "inferred counterexample, not an observed benchmark result",
+        "description": "If only one small region is correct, forcing geographic diversity can spend the budget on irrelevant regions and remove useful redundant views of the correct place. Conversely, repeated observations of a correct structure can improve robustness rather than represent wasted evidence.",
+        "implication": "Useful diversity must be conditioned on correctness and observability. Demonstrate marginal geometric utility, not merely lower overlap or a larger geographic spread."
+      },
+      "missing_method_specification": [
+        "Define what new spatial support means before an expensive match is available, how support from different references is put in a shared frame, and how uncertain cheap correspondences are discounted.",
+        "Do not call a score-plus-diversity greedy rule independent geometric support without evidence that it models dependence or predicts marginal pose information.",
+        "Specify the baseline candidate pool, reference resolution and feature-cache policy. Geographic NMS and covisibility grouping should receive the same information as the proposed selector.",
+        "State whether cached learned outputs were generated for all top-20 pairs. That expense cannot disappear from a claim of online fixed-budget efficiency."
+      ],
+      "minimum_falsification_experiment": [
+        "Use a real non-oracle gallery and fixed top-20 candidate pool. OrthoLoC's paired reference crop alone cannot establish global candidate-selection gains.",
+        "Compare score-only, geographic NMS, covisibility/support grouping, simple diversity selection, support-only and combined policies with frozen localization backends.",
+        "Report fixed expensive-pair-count results and separate equal end-to-end resource results. Two full matches plus twenty cheap probes is not equivalent to two full matches without probes.",
+        "Charge probe decoding, descriptors, matching, CPU/GPU transfer, geometric solves and reference preprocessing/storage. Distinguish reusable offline map work from per-query work.",
+        "Report both candidate-available conditional diagnostics and all-query metric success, including no-pose failures. Show whether gains come from improved candidate recall or improved geometric conditioning.",
+        "Test multiple geographic regions and query geometries. A 5-point success gain over descriptor top-K is insufficient if NMS or covisibility grouping produces the same gain.",
+        "A bounded CPU ORB fallback can diagnose redundancy but cannot by itself falsify or validate the learned pipeline under its intended feature errors."
+      ],
+      "surviving_claim_if_supported": "A precisely specified pre-match utility estimator has a demonstrable advantage over standard diversity/covisibility baselines under a complete online resource ledger.",
+      "stop_rule": "Drop if a simple grouping/NMS baseline matches it, if the selection probes erase the resource advantage, or if gains require oracle reference crops or uncharged cached pair matches.",
+      "uncertainty": "Active localization and optimal-design literature were not exhaustively examined. The candidate's broad principle is already anticipated, while novelty of an unspecified narrower rule cannot be established or definitively rejected."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E1",
+      "title": "Reference-Induced Consensus for Selective Posed-Reference Visual Localization",
+      "url": "https://arxiv.org/pdf/2607.04722",
+      "cache": "sources/candidate-audit/2607.04722.txt",
+      "location": "PDF page 9, Section 4.1",
+      "quote": "full-set behavior (ineligible queries treated as least reliable or as failures) is reported separately.",
+      "status": "directly inspected primary text"
+    },
+    {
+      "id": "E2",
+      "title": "Reference-Induced Consensus for Selective Posed-Reference Visual Localization",
+      "url": "https://arxiv.org/pdf/2607.04722",
+      "cache": "sources/candidate-audit/2607.04722.txt",
+      "location": "PDF page 8, Section 3.4, Equations 18–20",
+      "quote": "and add the common-mode scale term",
+      "status": "directly inspected primary text; implemented covariance construction"
+    },
+    {
+      "id": "E3",
+      "title": "Reference-Induced Consensus for Selective Posed-Reference Visual Localization",
+      "url": "https://arxiv.org/pdf/2607.04722",
+      "cache": "sources/candidate-audit/2607.04722.txt",
+      "location": "PDF page 15, limitations",
+      "quote": "its K hypotheses share one VGGT pass yet are aggregated as if independent",
+      "status": "directly inspected author limitation"
+    },
+    {
+      "id": "E4",
+      "title": "RIM: A Retrieval-In-Matching Framework for Cross-Domain Global Visual Localization of UAVs",
+      "url": "https://arxiv.org/pdf/2607.20116",
+      "cache": "sources/candidate-audit/2607.20116.txt",
+      "location": "PDF page 28, Confidence-aware sequential integration; contrast page 27 current limitations",
+      "quote": "Fuse retrieval margins, correspondence count and spatial coverage, geometric inlier statistics, PnP reprojection residuals, and temporal consistency into a calibrated reliability estimate.",
+      "status": "directly inspected future-work proposal, not an implemented calibrated rejector"
+    },
+    {
+      "id": "E5",
+      "title": "Pixel-wise Geo-registration of Drone Images",
+      "url": "https://arxiv.org/html/2608.28891v1",
+      "cache": "sources/candidate-audit/2608.28891.full.txt",
+      "location": "Section 3.4 Training Details, Equations 7–9",
+      "quote": "We supervise the predicted point maps using the confidence-weighted regression loss introduced in DUSt3R",
+      "status": "directly inspected v1 HTML text; adjacent paragraph explicitly predicts per-pixel confidence maps"
+    },
+    {
+      "id": "E6",
+      "title": "OrthoLoC: UAV 6-DoF Localization and Calibration Using Orthographic Geodata",
+      "url": "https://arxiv.org/pdf/2509.18350",
+      "cache": "sources/candidate-audit/2509.18350.txt",
+      "location": "PDF page 4, Section 3 and Section 3.1",
+      "quote": "point maps, 3D keypoints, local meshes, and aligned 2.5D geodata rasters derived from multiple sources.",
+      "status": "directly inspected annotation description; release availability not tested"
+    },
+    {
+      "id": "E7",
+      "title": "OrthoLoC: UAV 6-DoF Localization and Calibration Using Orthographic Geodata",
+      "url": "https://arxiv.org/pdf/2509.18350",
+      "cache": "sources/candidate-audit/2509.18350.txt",
+      "location": "PDF page 5, Section 3.3; see Section 3.1 for reconstruction-derived geodata",
+      "quote": "Cross-domain samples were created by incorporating open geodata from European locations and visually verifying alignment with same-domain samples.",
+      "status": "directly inspected data construction"
+    },
+    {
+      "id": "E8",
+      "title": "Pixel-wise Geo-registration of Drone Images",
+      "url": "https://arxiv.org/html/2608.28891v1",
+      "cache": "sources/candidate-audit/2608.28891.full.txt",
+      "location": "Section 4 Dataset",
+      "quote": "Urban satellite references are orthorectified Bing Maps tiles, while the drone images are rendered from Google Earth.",
+      "status": "directly inspected dataset provenance"
+    },
+    {
+      "id": "E9",
+      "title": "Reference-Induced Consensus for Selective Posed-Reference Visual Localization",
+      "url": "https://arxiv.org/pdf/2607.04722",
+      "cache": "sources/candidate-audit/2607.04722.txt",
+      "location": "PDF page 15, limitations/future direction",
+      "quote": "predicted track support, and hypothesis conditioning rather than fixed top-K retrieval",
+      "status": "directly inspected future-work proposal; not evidence of an implemented selector"
+    },
+    {
+      "id": "E10",
+      "title": "From Coarse to Fine: Robust Hierarchical Localization at Large Scale",
+      "url": "https://arxiv.org/pdf/1812.03506",
+      "cache": "sources/candidate-audit/1812.03506.txt",
+      "location": "PDF page 3, Covisibility clustering",
+      "quote": "based on the 3D structure that they co-observe.",
+      "status": "directly inspected implemented hierarchy"
+    },
+    {
+      "id": "E11",
+      "title": "A Unified Hierarchical Framework for Fine-grained Cross-view Geo-localization over Large-scale Scenarios",
+      "url": "https://arxiv.org/pdf/2505.07622",
+      "cache": "sources/candidate-audit/2505.07622.txt",
+      "location": "PDF page 1, abstract",
+      "quote": "re-ranking",
+      "status": "directly inspected abstract and reranking passage; ground-to-aerial task, not a UAV result"
+    }
+  ],
+  "followup_costs": {
+    "new_http_requests": 6,
+    "new_download_bytes": 8229036,
+    "api_cost_usd": null,
+    "gpu_hours": 0,
+    "experiments_run": 0,
+    "subagents_used": 0,
+    "accounting": "Original shared-cache critique: zero HTTP requests. Additional independent candidate search: six requests, as separately itemized below. Original blind-audit costs remain in blind-audit.json and are not included here."
+  },
+  "independent_search": {
+    "status": "bounded search completed; candidate novelty remains unresolved",
+    "research_boundary": "All three searches and full-paper inspections were completed before reading overlap-results, seed-source-verification, runtime-smoke-observations, operator-verification-log or validation implementation for the report. No benchmark key was read.",
+    "provenance_distinction": "These are new public search responses and primary PDFs obtained directly by the independent auditor, not copied from the literature investigator. The original shared-cache analysis above remains a separate evidence phase.",
+    "source_directory": "sources/candidate-independent-search/",
+    "retrieval_log": "sources/candidate-independent-search/retrieval-log.json",
+    "retrieval_log_sha256": "f7bd539f809c6d06e7eb2eadb2c15d8cb2406e0c8636c0d39b2d601229115211",
+    "raw_evidence": "Exact returned search HTML, all three original PDF response bodies and extracted text are retained. The retrieval log maps URLs to filenames and SHA-256 values for every response and PDF text extraction.",
+    "request_policy": "One search and one full-paper request per candidate; six total HTTP GET requests; redirects disabled; no retry or further search.",
+    "searches": [
+      {
+        "candidate": "O1",
+        "query": "covariance intersection",
+        "searchtype": "title",
+        "order": "announced_date_first",
+        "url": "https://arxiv.org/search/?query=covariance+intersection&searchtype=title&abstracts=show&order=announced_date_first&size=50",
+        "returned_results": 24,
+        "screened_titles": 24,
+        "selected_arxiv_id": "2603.16768",
+        "selection_reason": "Directly addresses multiple sources of partially known correlation; more mechanistically relevant to dependence-aware fusion than an unrelated generic confidence paper.",
+        "other_retained_lead": {
+          "title": "Decentralized State Estimation via a Hybrid of Consensus and Covariance intersection",
+          "url": "https://arxiv.org/abs/1603.00955",
+          "access_level": "abstract in retained search response only",
+          "observed": "The 2016 abstract applies covariance intersection to priors that might become correlated. Its full paper was not fetched and no detailed theorem claim is made."
+        }
+      },
+      {
+        "candidate": "O2",
+        "query": "photogrammetry uncertainty propagation",
+        "searchtype": "all",
+        "order": "announced_date_first",
+        "url": "https://arxiv.org/search/?query=photogrammetry+uncertainty+propagation&searchtype=all&abstracts=show&order=announced_date_first&size=50",
+        "returned_results": 3,
+        "screened_titles": 3,
+        "selected_arxiv_id": "2507.13486",
+        "selection_reason": "Direct UAV/aerial per-point uncertainty propagation paper covering camera and stereo errors and anchor-point cross-covariance."
+      },
+      {
+        "candidate": "O3",
+        "query": "view selection visual localization",
+        "searchtype": "all",
+        "order": "announced_date_first",
+        "url": "https://arxiv.org/search/?query=view+selection+visual+localization&searchtype=all&abstracts=show&order=announced_date_first&size=50",
+        "returned_results": 170,
+        "screened_titles": 50,
+        "selected_arxiv_id": "2309.10698",
+        "selection_reason": "A primary optimal-design formulation for fixed-budget geometric sensor subset selection, stronger as a mechanism threat than generic coverage optimization.",
+        "other_retained_lead": {
+          "title": "Automatic Coverage Selection for Surface-Based Visual Localization",
+          "url": "https://arxiv.org/abs/1906.11419",
+          "access_level": "abstract in retained search response only",
+          "observed": "The abstract studies visual sensor coverage versus localization and compute. It is not evidence of retrieved-reference selection."
+        }
+      }
+    ],
+    "primary_findings": [
+      {
+        "candidate": "O1",
+        "title": "Overlapping Covariance Intersection: Fusion with Partial Structural Knowledge of Correlation from Multiple Sources",
+        "url": "https://arxiv.org/pdf/2603.16768",
+        "first_posting_year": 2026,
+        "inspected_version": "2603.16768v2, 1 October 2026, printed on PDF",
+        "filename": "2603.16768.pdf",
+        "sha256": "82a1138bf8004ce488d8d7ab0ab0f700f3f5292964b52140444be950b282c984",
+        "evidence_location": "Section I.B, PDF page 3, CI variants; Section II, PDF page 4, Equation 4 and linear fusion formulation.",
+        "quote": "linear fusion law that provides an unbiased estimator",
+        "observed": "OCI explicitly models partially known correlation from multiple information sources and optimizes a conservative linear fusion construction. Its formulation assumes known linear measurement matrices, zero-mean errors and structured covariance information.",
+        "mechanism_threat": "Treating overlapping evidence sources as correlated and using partial dependence information is not a new principle. O1 needs a particular usable diagnostic beyond existing correlated-estimate treatments.",
+        "non_equivalence": "Map-footprint overlap does not automatically supply OCI's covariance bounds or zero-mean assumptions. A common wrong-building alias is a biased error, and this paper does not establish UAV abstention performance. The O1 leave-one-footprint-out statistic is not proven identical to OCI.",
+        "verdict_update": "Stronger independently retrieved prior-art threat; O1 remains uncertain, not established novel or conclusively identical."
+      },
+      {
+        "candidate": "O2",
+        "title": "Uncertainty Quantification Framework for Aerial and UAV Photogrammetry through Error Propagation",
+        "url": "https://arxiv.org/pdf/2507.13486",
+        "first_posting_year": 2025,
+        "inspected_version": "Current PDF fetched; search response reports revised submission 29 April 2026. No arXiv version marker was found in the extracted PDF text; do not infer a version number.",
+        "filename": "2507.13486.pdf",
+        "sha256": "2825ed4de297f579c05fa8863dff4ff74b11a5de95deeff4162c03b015222ef5",
+        "evidence_location": "Section 2.3, PDF page 5; Figure 2 and uncertainty propagation/anchor covariance, PDF page 6, Equations 1–2.",
+        "quote": "The uncertainty propagated from SfM captures the low-frequency, systematic errors that affect the entire model",
+        "observed": "The paper propagates camera/SfM and disparity/MVS uncertainty into per-point covariance, differentiates model-wide from local geometric errors, and describes full covariance including cross-covariances for sparsely sampled anchor points.",
+        "mechanism_threat": "Per-anchor uncertainty obtained from camera/measurement error propagation has direct prior art. A perturbation score must be compared against analytic/full-covariance propagation, not merely image residuals.",
+        "non_equivalence": "Its task reconstructs photogrammetric point clouds, not selective drone-to-map anchor validity under erroneous external DSMs. It does not by itself establish the proposed abstention policy or its claimed geodetic gains.",
+        "verdict_update": "O2's generic uncertainty-propagation claim is substantially weakened. A distinct external-map-error diagnostic remains unresolved and untested."
+      },
+      {
+        "candidate": "O3",
+        "title": "OASIS: Optimal Arrangements for Sensing in SLAM",
+        "url": "https://arxiv.org/pdf/2309.10698",
+        "first_posting_year": 2023,
+        "inspected_version": "2309.10698v2, 21 March 2024, printed on PDF",
+        "filename": "2309.10698.pdf",
+        "sha256": "df8e079049807bff3d350b27d04909da1248677ef44816abf1fb1e9e75402c37",
+        "evidence_location": "Abstract and Figure 1, PDF page 1; Sections II and III.B, PDF pages 2–3.",
+        "quote": "We assume that each of these is sampled independently from a known sensor model",
+        "observed": "OASIS formulates sensor arrangement as budgeted subset selection under an E-optimal Fisher-information objective, using greedy selection and convex-relaxation verification. It explicitly assumes independent measurements and recognizable landmarks.",
+        "mechanism_threat": "Selecting a fixed number of geometric information sources by conditioning/information utility is established optimal-design practice, rather than a new principle supplied by a matching budget.",
+        "non_equivalence": "Selecting physical sensor mountings is not selecting satellite reference images with uncertain associations. The independence and known-model assumptions do not automatically hold for O3. No exact retrieved-reference selector was established by this bounded search.",
+        "verdict_update": "Maintain hold. Broad conditioning-aware fixed-budget selection is not defensible novelty; a particular pre-match utility model would need a narrower distinction and empirical evidence."
+      }
+    ],
+    "failures_and_limits": [
+      "All six requests returned HTTP 200; no network retries or paid services were used.",
+      "ArXiv lexical search was noisy: O1 included an unrelated covariant-membrane paper, and O3 included many unrelated astronomy, re-identification and visualization papers. These were excluded.",
+      "O3 screening covered only the first 50 of 170 matches, ordered by announcement date; the remaining 120 were not retrieved.",
+      "One PDF extraction emitted a font-type mismatch warning; extraction completed. Exact PDFs are retained, so text extraction is not the sole evidence artifact.",
+      "These are targeted threats, not a systematic classical-literature review. Historical foundational references mentioned inside the papers were not separately fetched.",
+      "The new PDFs and search pages are contemporary retrievals. They do not establish a model-blinded historical novelty assessment or leakage-free retrospective.",
+      "Partial search remains uncertainty. No candidate was promoted to novel because a more exact match was not found."
+    ],
+    "costs": {
+      "http_requests": 6,
+      "download_bytes": 8229036,
+      "elapsed_seconds": 90.831,
+      "elapsed_scope": "Wall time from first independent search request through evidence/accounting freeze; excludes subsequent JSON/report composition.",
+      "api_cost_usd": null,
+      "gpu_hours": 0
+    }
+  }
+}

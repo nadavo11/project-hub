@@ -1,0 +1,378 @@
+{
+  "audit": "Independent scientific audit of the nine unselected mechanism-first proposals",
+  "date": "2026-11-10",
+  "scope": {
+    "selected_ids_unchanged": ["M09", "M08", "M06"],
+    "screened_ids": ["M01", "M02", "M03", "M04", "M05", "M07", "M10", "M11", "M12"],
+    "deep_sample_ids": ["M02", "M11", "M12"],
+    "sample_selection": "Fixed before this audit: one per limitation, with previously identified possible reviewer overreach. Purposive, not a random sample of screening errors.",
+    "read_only_except_reports": true,
+    "network_requests": 0,
+    "model_spawns": 0,
+    "gpu_or_training": false,
+    "parent_experimental_outputs_inspected": false,
+    "new_work": "Read archived definitions, decisions and primary passages; independently derived formal checks and ran dependency-free scalar/exact-rational checks. No localization, retrieval, matcher or candidate-performance experiment.",
+    "decision_semantics": {
+      "retain": "Keep the stated scientific role, not certify the frozen experiment or novelty.",
+      "revise": "Keep the question only through an explicitly new version; no retrospective credit to the original.",
+      "reject": "Do not advance the frozen standalone proposal; not a claim that its entire scientific topic is worthless."
+    }
+  },
+  "summary": {
+    "conclusion": "The shortlist was not established as scientifically optimal. Genuine specification and feasibility defects coexist with premature dismissal of testable questions. Correcting screening errors does not validate any proposal or justify replacing the frozen finalists retrospectively.",
+    "decisions": {"retain": 1, "revise": 7, "reject": 1},
+    "best_complement_to_M09": "M11-v2: distinguish pose bias absorbed by fitting from residual-visible mismatch; separate the universal constant-height gauge before evaluating nonconstant height modes.",
+    "best_alternative_explanation_control_for_real_matches": "M02-v2: test support concentration against incorrect correspondences and map mismatch, controlling count and residual. It is an inexpensive established proxy, not a novel method.",
+    "M12_role": "Potential falsifiable hubness diagnostic for retrieval only. It is not a direct explanation for a fixed image-pair PnP failure without a demonstrated retrieval or descriptor-assignment link.",
+    "novelty": "No valuable novelty established. Internal duplicates are not publications. Missing experiments and unknown causes are not evidence of nonnovelty.",
+    "critical_new_primary_observation": "OrthoLoC Table 6 reports SP+LG ME 2.5/2.5 px but RPE 3.4/9.0 px for DOP/DOP+DSM shift. Thus equal matching error is not even equal reported reprojection error. This further limits the blanket claim that image residuals did not reveal the aggregate degradation.",
+    "citations": ["C", "S", "A", "O-L2"]
+  },
+  "sources": {
+    "C": {
+      "path": "research_radar/pilot/mechanism-first/candidates.json",
+      "locator": "Array objects identified by id",
+      "type": "Frozen internal hypotheses, not external publications"
+    },
+    "S": {
+      "path": "research_radar/pilot/mechanism-first/shortlist.json",
+      "locator": "result.screening by id; result.selection_rationale; result.shortlist_ids",
+      "type": "Original screening decision"
+    },
+    "A": {
+      "path": "research_radar/pilot/mechanism-first/independent-validation-report.md",
+      "locator": "Original grounding remains conditional; Screening and reviewer errors, items 1, 2, 9, 10; Finalist adjudication M09",
+      "type": "Prior audit used as an allegation source, not independent primary confirmation"
+    },
+    "O-L1": {
+      "path": "research_radar/pilot/sources/candidate-audit/2509.18350.txt",
+      "locator": "Section C.7, lines 1978-1983 and 2046-2053; section C.4, passage immediately before C.5",
+      "title": "OrthoLoC",
+      "verified_quote": "by cropping the reference raster",
+      "supports": "Published low-covisibility degradation and authors' spatial-concentration explanation; the reported experiment itself uses reference cropping, not natural-overlap-only observations.",
+      "does_not_support": "A universal 20% threshold, isolated causality, or measured M02 performance"
+    },
+    "O-L2": {
+      "path": "research_radar/pilot/sources/candidate-audit/2509.18350.txt",
+      "locator": "Table 6, lines 1840-1854; Table 3, lines 1129-1134; section A.5, lines 1098-1116",
+      "title": "OrthoLoC",
+      "verified_values": {
+        "SP_LG_DOP_vs_DOP_DSM_ME_px": [2.5, 2.5],
+        "SP_LG_DOP_vs_DOP_DSM_TE_m": [0.42, 1.07],
+        "SP_LG_DOP_vs_DOP_DSM_RPE_px": [3.4, 9.0],
+        "SP_LG_DOP_vs_DOP_DSM_recall_1m_1deg_percent": [71.3, 42.3],
+        "DOP_test_in_out_counts": [17, 496],
+        "DOP_DSM_test_in_out_counts": [17, 423]
+      },
+      "supports": "Aggregate degradation under a different domain configuration; localization holds intrinsics fixed.",
+      "does_not_support": "Identical pointwise matches, equal reprojection residuals, paired causal isolation, or known true external-DSM error"
+    },
+    "ON": {
+      "path": "research_radar/sources/2607.19951.txt",
+      "locator": "Table 4 and section 5.5, lines 501-543; rendering lines 183-188; evaluation around line 393",
+      "title": "OffNadirLoc / ONLoc",
+      "verified_values": {"baseline_R1_percent": 62.29, "full_model_R1_percent": 72.64},
+      "supports": "27.36% derived residual miss fraction in a rendered cross-view patch-retrieval benchmark.",
+      "does_not_support": "A measured partition into spread, alias, azimuth-shift or hubness causes; metric pose-error claims"
+    },
+    "O2": {
+      "path": "research_radar/pilot/sources/candidate-independent-search/2507.13486.txt",
+      "locator": "Section 3.1, equation 1, lines 455-515; systematic-error passage lines 494-498",
+      "title": "Uncertainty Quantification Framework for Aerial and UAV Photogrammetry through Error Propagation",
+      "verified_quote": "low-frequency, systematic errors that affect the entire",
+      "supports": "Established covariance/error propagation, including model-wide systematic uncertainty.",
+      "does_not_support": "Exact publication of M11's external-DSM bias-to-residual gain or proof of its practical value"
+    },
+    "O3": {
+      "path": "research_radar/pilot/sources/candidate-independent-search/2309.10698.txt",
+      "locator": "Section III.D, lines 394-420",
+      "title": "OASIS sensor arrangement / E-optimality study",
+      "verified_quote": "requires maximizing λ1 (I), the minimum eigenvalue of I.",
+      "supports": "Established minimum-information-eigenvalue conditioning in sensor arrangement.",
+      "does_not_support": "Equality between M02's image-coordinate covariance and a full pose Fisher matrix, or exact publication of its gating rule"
+    },
+    "BA": {
+      "path": "data/research-radar/mechanism-first-sources/bundle.txt",
+      "locator": "Section 3 near line 329; section 6.1 near line 1309, equations 16-18",
+      "title": "Bundle Adjustment — A Modern Synthesis",
+      "supports": "Established local covariance, priors and block elimination.",
+      "verification_scope": "Quoted retained primary passages checked through external-prior-art.json and the independent report; no whole-paper replication"
+    }
+  },
+  "all_nine_screening": [
+    {
+      "id": "M01",
+      "limitation": "L2",
+      "decision": "retain",
+      "retained_role": "Analytic propagation comparator, not a new method or an approved frozen performance protocol",
+      "original_reason": "Self-declared first-order propagation; synthetic Jacobian test judged unable to establish real cause.",
+      "axes": {
+        "novelty": "Established operator; do not promote as an invention. Exact task transfer is not fully surveyed.",
+        "scientific_significance": "Necessary analytic control for M09; a failed prediction can expose linearization or error-model limits.",
+        "technical_specification": "For fixed geometry and fixed sigma_h the predicted RMS is fixed across iid draws: correlation with realized per-draw shifts may be undefined. Evaluate empirical second moments or vary held-out geometry instead; constant-height gauge is not restricted to flat scenes.",
+        "feasibility": "Small fixed-inlier Jacobian/solve computations are plausible on CPU; proposed full performance study not executed here.",
+        "available_evidence": "Primary sources establish aggregate degradation and propagation, not DSM causality or performance."
+      },
+      "audit_reason": "Not selecting a redundant method claim is reasonable. Dismissing synthetic checks as unfalsifiable or scientifically empty is too strong; they can reject an approximation but cannot identify real error causes.",
+      "new_version_if_tested": "M01-v2-control: fixed-inlier analytic response on exactly M09's declared modes and amplitude model; compare predicted and measured moments or paired responses, not a constant RMS against random realization magnitudes.",
+      "citations": ["C:M01", "S:M01", "O-L2", "O2"]
+    },
+    {
+      "id": "M02",
+      "limitation": "L1",
+      "decision": "revise",
+      "original_reason": "Ad hoc scalar, incorrect normalization and pre-PnP use of pose; no demonstrated incremental information.",
+      "axes": {
+        "novelty": "Established support/conditioning proxy; exact operator equivalence to OASIS not shown.",
+        "scientific_significance": "Useful cheap competing explanation/control: support extent versus incorrect matches or map mismatch.",
+        "technical_specification": "Normalization, claimed [0,1] range, unavailable pre-PnP depth/pose and optional covariance inflation need explicit changes.",
+        "feasibility": "Coordinate covariance is cheap once matches exist; new real-match generalization evidence still needed.",
+        "available_evidence": "L1 failure is published, concentration remains the authors' explanation. No empirical support for this score."
+      },
+      "audit_reason": "Specification objections are valid. Lack of demonstrated gain is a test target, not a reason to reject the hypothesis; the screener also incorrectly contrasts cropping with purported natural-only source evidence.",
+      "new_version_if_tested": "M02-v2, specified in deep_sample",
+      "citations": ["C:M02", "S:M02", "O-L1", "O3"]
+    },
+    {
+      "id": "M03",
+      "limitation": "L3",
+      "decision": "revise",
+      "original_reason": "Unknown cause, unsupported alpha=0.5 derivation, unavailable benchmark/weights and oracle groups.",
+      "axes": {
+        "novelty": "Centroid pooling/margin analysis is established; this record does not resolve novelty of the exact diagnostic.",
+        "scientific_significance": "Spread versus centroid/gallery margin is a legitimate falsifiable residual-error question.",
+        "technical_specification": "1-cos is not a metric satisfying the invoked triangle inequality. Mean group spread does not bound each view's error. s/m is undefined at zero and poorly ordered across negative margins; oracle truth is used in the diagnostic as well as intervention.",
+        "feasibility": "Original ONLoc claim requires appropriate embeddings and labels; availability was not established by the screening record, not proved impossible globally.",
+        "available_evidence": "Only aggregate ONLoc ablations; no residual cause partition."
+      },
+      "audit_reason": "Reject the claimed theorem, not the existence of an untested cause. The screener mentions a random-group control not actually listed in M03; that control appears in M04.",
+      "new_version_if_tested": "M03-v2: abandon the universal 0.5 boundary; separately report per-view signed cosine margins and group spread, with fixed evaluation strata and leave-one-view-out oracle centroids. Add a matched random-group intervention; do not represent it as deployable performance.",
+      "citations": ["C:M03", "C:M04", "S:M03", "ON"]
+    },
+    {
+      "id": "M04",
+      "limitation": "L3",
+      "decision": "revise",
+      "original_reason": "Unknown cause, cross-modality score and unavailable ONLoc assets; hypothesis-test-only significance.",
+      "axes": {
+        "novelty": "Multi-view averaging is not a new retrieval operation; diagnostic novelty unresolved.",
+        "scientific_significance": "Oracle pooling plus a random-group control can reveal recoverability, even if it cannot isolate a unique cause.",
+        "technical_specification": "A/B/C can overlap with no tie rule; cross-modality similarity scales need calibration. Pooling can suppress noise or average aliasing as well as view spread; it does not uniquely isolate spread. Training loss near zero is an unverified extra allegation.",
+        "feasibility": "Conditional on the relevant descriptors/group labels; another frozen model changes the target claim.",
+        "available_evidence": "Published ablations only, no measured A/B/C counts or intervention."
+      },
+      "audit_reason": "Calling an unknown cause or 'hypothesis test only' an evidence failure improperly excludes discovery. Original causal language nevertheless exceeds what the intervention identifies.",
+      "new_version_if_tested": "M04-v2: allow multi-label associations, report oracle pooling as recoverability, use leave-one-view-out means and size/angle-matched random groups; drop the claim that gain uniquely identifies spread.",
+      "citations": ["C:M04", "S:M04", "ON"]
+    },
+    {
+      "id": "M05",
+      "limitation": "L2",
+      "decision": "revise",
+      "original_reason": "Linearized equivalence to propagation; alleged vector covariance inconsistency; synthetic-only test.",
+      "axes": {
+        "novelty": "Finite-difference propagation is established; no new operator claimed.",
+        "scientific_significance": "Mode-specific and held-out-family controls can tell whether M09's finite response is nonlinear or merely the analytic response.",
+        "technical_specification": "S sigma_z^2 S^T is valid for one scalar mode and vector S. Multiple families need a matrix Jacobian and coefficient covariance. A mixed metres/degrees norm and R threshold are unspecified; actual source accuracy must not be assumed.",
+        "feasibility": "CPU finite re-solves are plausible; real DSM truth remains outside the demonstrated evidence.",
+        "available_evidence": "Aggregate domain contrast, not an intervention; no executed test in this audit."
+      },
+      "audit_reason": "Low novelty justifies not advancing as a novel method, not removing its control role. The review's outer-product objection is too broad.",
+      "new_version_if_tested": "M05-v2-control: fixed-inlier, symmetric amplitude sweeps with J_mode in R^(6xK), explicit coefficient covariance and camera-centre metres/rotation radians reported separately; compare identical analytic and finite modes.",
+      "citations": ["C:M05", "S:M05", "O-L2", "O2"]
+    },
+    {
+      "id": "M07",
+      "limitation": "L1",
+      "decision": "reject",
+      "original_reason": "Established E-optimality with inconsistent physical scaling and translation conversion; weak synthetic comparison.",
+      "axes": {
+        "novelty": "Weak-direction information eigenvalues are established. Internal M06/M08 overlap is portfolio redundancy, not prior publication.",
+        "scientific_significance": "The observability question remains useful, but this standalone frozen statistic adds no justified interpretation over matched covariance controls.",
+        "technical_specification": "Parameter ordering/scaling is ambiguous; a smallest eigenvalue of a mixed pose/focal block cannot alone be converted to metres without eigenvector projection and coordinate transformation. Its equal-count counterexample then adds points to one set.",
+        "feasibility": "Small matrices are feasible; invalid physical units are a specification defect rather than computational infeasibility.",
+        "available_evidence": "No empirical gain or valid separating example; OASIS supports the existing eigenvalue principle only."
+      },
+      "audit_reason": "Reject the frozen standalone claim on concrete technical grounds. Synthetic tests are not automatically guaranteed successes, so that screening argument is not needed.",
+      "new_version_if_tested": "No M07 replacement proposed in this audit. Preserve the underlying support question in M02-v2 and explicitly dimensioned covariance controls; do not silently repair M07.",
+      "citations": ["C:M07", "S:M07", "O-L1", "O3", "BA"]
+    },
+    {
+      "id": "M10",
+      "limitation": "L3",
+      "decision": "revise",
+      "original_reason": "Invented causes, unavailable re-rendering and a proxy unable to explain ONLoc residuals.",
+      "axes": {
+        "novelty": "No new retrieval operation claimed; exact azimuth intervention novelty unresolved by archived evidence.",
+        "scientific_significance": "Rotating error displacement versus a fixed alias is a falsifiable alternative explanation, not invalid merely because proposed.",
+        "technical_specification": "Removing the top-1 tile reveals rank-2 recoverability, not alias causation. Re-rendering also changes occlusion and visible content; rotating displacement is evidence of view dependence, not unique projective-offset identification.",
+        "feasibility": "Original re-render intervention cannot be executed under this offline audit. Dataset/render access remains unverified, not globally impossible.",
+        "available_evidence": "No multi-azimuth matched-location intervention; proxy results would be about a different system."
+      },
+      "audit_reason": "Deferral of the original experiment is justified; rejecting the question because its explanations are hypotheses is not.",
+      "new_version_if_tested": "M10-v2-deferred: use verified matched-location multi-azimuth observations if available, label changes of visibility as competing explanations, use permuted azimuth and matched gallery controls; describe proxy validation separately from any ONLoc claim.",
+      "citations": ["C:M10", "S:M10", "ON"]
+    },
+    {
+      "id": "M11",
+      "limitation": "L2",
+      "decision": "revise",
+      "original_reason": "Alleged contradiction between per-point Jacobian and DCT restriction; accepted N<=6 zero-projector claim; synthetic test deemed tautological.",
+      "axes": {
+        "novelty": "Propagation and bias analysis are established; exact gain novelty unresolved, not certified by failure to find an exact paper.",
+        "scientific_significance": "Best complement to M09: separate absorbed bias from visible residual, while recognizing that a pure global-height gauge supplies no discriminating failure score.",
+        "technical_specification": "DCT restriction is valid; sample-count degeneracy is false. Constant DCT mode generally makes the unrestricted gain infinite. Mixed pose units, normalization, zero denominators and evaluation of a supplied error realization require explicit handling.",
+        "feasibility": "Low-rank Jacobian calculations are CPU-feasible in principle; no current pose or data assets inspected beyond archived documentation.",
+        "available_evidence": "Formal identifiability statements, aggregate domain contrast and propagation prior art; no empirical validation of M11."
+      },
+      "audit_reason": "The review contains two mathematical errors, but correcting them does not rescue the frozen gain. Nonlinear agreement is testable; passing a matched linear simulation cannot identify the real error source.",
+      "new_version_if_tested": "M11-v2, specified in deep_sample",
+      "citations": ["C:M11", "S:M11", "A", "O-L2", "O2"]
+    },
+    {
+      "id": "M12",
+      "limitation": "L3",
+      "decision": "revise",
+      "original_reason": "Known CSLS/hubness, allegedly inconsistent diagnostics, unknown cause and unavailable descriptors.",
+      "axes": {
+        "novelty": "CSLS/hubness correction is known and explicitly conceded. No archived primary CSLS paper found in the searched source-text directories; no fabricated exact prior-art citation supplied.",
+        "scientific_significance": "Whether hubness explains these particular misses is testable independently of whether CSLS is novel.",
+        "technical_specification": "Omitting the query-only CSLS term preserves fixed-query gallery ranking. A threshold and pool policy are missing; top-decile gallery share is not a 10% query-exposure null. Uniform occurrence counts do not imply constant CSLS neighborhood means.",
+        "feasibility": "Correction is cheap given descriptors; extracting missing target-model descriptors is outside the present audit.",
+        "available_evidence": "Only aggregate ONLoc recall and proposed diagnostic; no hub concentration or CSLS effect observed."
+      },
+      "audit_reason": "Different rank-level and tile-level quantities are not intrinsically inconsistent. Transduction must be declared, not automatically equated with label leakage. Known mechanism and unknown cause are separate questions.",
+      "new_version_if_tested": "M12-v2, specified in deep_sample",
+      "citations": ["C:M12", "S:M12", "A", "ON"]
+    }
+  ],
+  "deep_sample": {
+    "M02": {
+      "formal_checks": [
+        {
+          "claim": "Half-diagonal-normalized uniform image covariance equals 1/12 and S lies in [0,1].",
+          "verdict": "false",
+          "derivation": "For width W, height H, d=sqrt(W^2+H^2), x=(u-c)/(d/2), C_uniform=diag(W^2,H^2)/(3*(W^2+H^2)). A square gives eigenvalues 1/6, not 1/12. At constant depth original S=sqrt(2) even for uniform support; equal corner masses give sqrt(6). The depth factor can increase it further.",
+          "numeric_check": {"uniform_square_S": 1.4142135623730951, "square_corner_S": 2.449489742783178},
+          "interpretation": "This is a normalization/range defect, not proof that the ordering is useless. A constant positive factor leaves within-resolution AUROC unchanged and cancels in a quantile gate and S0/S ratio."
+        },
+        {
+          "claim": "Depth-adjusted score is available before PnP from the stated inputs.",
+          "verdict": "not_specified",
+          "derivation": "r3 and full camera-frame depth r3*P+t_z require a pose and full lifted 3D coordinates; r3*P alone is not origin-invariant depth. Original inputs provide heights and focal length but not the needed complete construction."
+        },
+        {
+          "claim": "No demonstrated gain beyond hull area/trace means no scientific significance.",
+          "verdict": "premature",
+          "derivation": "diag(a,a) and diag(2a-epsilon,epsilon) have the same trace and different minimum eigenvalues. This establishes nonidentity to trace, not predictive improvement over hull area or full covariance."
+        }
+      ],
+      "explicit_new_version": {
+        "id": "M02-v2",
+        "change_from_original": "Remove depth factor, covariance inflation and [0,1] claim. Use a geometry-only baseline, not a repaired original success.",
+        "score": "Set normalized coordinates to ((u-c_x)/W,(v-c_y)/H); use nonnegative fixed weights with positive sum; S2=sqrt(12*lambda_min(C_weighted)). Report effective sample count separately; abstain for insufficient or invalid input.",
+        "claim": "At matched count/noise, concentrated correct support predicts increased pose instability; incorrect matches or map mismatch may instead produce large errors with broad support.",
+        "discriminating_comparison": "Compare count, residual, confidence, hull area, trace, full pose covariance and M09 height sensitivity. Use count-matched support subsets of fixed query/map cases; record match correctness when evaluable, and separately compare real matcher failures. Do not equate crop count with independent scenes.",
+        "falsification": "No held-out incremental predictive benefit or no paired spread-versus-concentration effect weakens this proxy/operational hypothesis. It does not logically disprove every effect of geometric concentration.",
+        "inference_limit": "Requires new measurements; current report contains none. Reference cropping is already part of OrthoLoC C.7, while masking a query is still a different intervention."
+      },
+      "citations": ["C:M02", "S:M02", "O-L1", "O3"]
+    },
+    "M11": {
+      "formal_checks": [
+        {
+          "claim": "N<=6 implies P_perp=0.",
+          "verdict": "false",
+          "derivation": "For J in R^(2N x 6), rank(P_perp)=2N-rank(J). P_perp=0 requires full row rank, possible only when 2N<=6 and not guaranteed even then. At N=4, rank(P_perp)>=2.",
+          "executed_exact_counterexample": {
+            "points": [[1, 0, 4], [0, 1, 5], [-1, -1, 6], [2, -1, 7]],
+            "camera": "R=I, t=0, f=1, principal point zero; local rotation and translation parameters",
+            "J_shape": [8, 6],
+            "rank_J": 6,
+            "trace_P_perp": 2,
+            "P_perp_squared_equals_P_perp": true,
+            "P_perp_times_J_equals_zero": true,
+            "arithmetic": "Python standard-library fractions, exact rational Gaussian elimination"
+          }
+        },
+        {
+          "claim": "DCT restriction contradicts a per-point 6xN sensitivity.",
+          "verdict": "false",
+          "derivation": "For B in R^(N x K), dz=B*a. Then db=-J^+*J_z*B*a and residual=P_perp*J_z*B*a. The per-point 6xN sensitivity composes normally into a 6xK mode sensitivity. Basis rank/normalization at sampled locations must still be checked."
+        },
+        {
+          "claim": "Infinite gain is only a flat-nadir degeneracy.",
+          "verdict": "false",
+          "derivation": "For any scene/view, P_i'=P_i+h*e_z and t'=t-R*h*e_z give identical camera coordinates. Camera centre C=-R^T*t shifts by h*e_z. Therefore the constant-height mode has zero residual and nonzero metre bias under a full-rank fixed-intrinsics pose fit. A DCT basis including DC generally makes gamma infinite regardless of low overlap.",
+          "interpretation": "A real identifiability limit, but a universal gauge cannot rank scene failures. With rank deficiency, priors or fixed pose coordinates the chosen solution/penalty changes and must be specified."
+        },
+        {
+          "claim": "High simulated correlation is a tautology.",
+          "verdict": "overstated",
+          "derivation": "Agreement within the identical first-order model is an identity check. Re-solving nonlinear PnP at finite amplitude, especially with held-out error fields, can disagree. Neither agreement nor disagreement alone identifies real DSM error. Supplying injected dz to the bias predictor tests conditional response, not blind error prediction."
+        }
+      ],
+      "explicit_new_version": {
+        "id": "M11-v2",
+        "change_from_original": "Correct sample-count condition; retain DCT composition; separate DC gauge; replace a potentially infinite mixed-unit gain with metre-bias and pixel-visibility reports plus a bounded conditional response.",
+        "definition": "Fix a pose convention and frozen inliers. For nonconstant normalized modes B, compute A=-D_C*J^+*J_z*B and V=P_perp*J_z*B; D_C maps pose increments to camera-centre displacement in metres. If using measurement weights, whiten residuals and both Jacobians consistently.",
+        "bound": "Report max ||A*a|| subject to RMS(B*a)<=h and ||V*a||/sqrt(2N)<=epsilon, with h and epsilon fixed before evaluation. Report all exact null directions explicitly; do not hide them with an unexplained denominator floor. DC response is a separate h-metre gauge control.",
+        "discriminating_comparison": "At equal height RMS compare modes with similar pose response but different residual visibility, and finite solves against the same analytic response. Test fixed-inlier and inlier-switch regimes separately. Horizontal map offsets, incorrect correspondences and concentrated-support controls are alternative explanations, not presumed height errors.",
+        "falsification": "If finite residual/bias decompositions do not follow the predicted visibility ordering over the prespecified small-amplitude regime, reject that approximation. If only DC succeeds, the study demonstrates a gauge, not a useful failure predictor. No real-error attribution without independent or paired error evidence.",
+        "novelty_claim": "None established; an explicitly revised diagnostic/control."
+      },
+      "citations": ["C:M11", "S:M11", "A", "O-L2", "O2"]
+    },
+    "M12": {
+      "formal_checks": [
+        {
+          "claim": "Omitting query-neighborhood term invalidates CSLS ranking.",
+          "verdict": "false_for_fixed_query_gallery_ranking",
+          "derivation": "CSLS(q,g)=2*cos(q,g)-r_q(q)-r_g(g). r_q(q) is constant in g, so argmax_g is unchanged when it is omitted. This does not justify using the shortened score for cross-query thresholds or reverse rankings.",
+          "scalar_check": {
+            "cosines": [0.8, 0.7, 0.3],
+            "r_g": [0.6, 0.1, 0.2],
+            "r_q": 0.75,
+            "shortened_scores": [1.0, 1.3, 0.4],
+            "full_scores": [0.25, 0.55, -0.35],
+            "both_rankings": ["g2", "g1", "g3"],
+            "scope": "Algebra illustration, not observed descriptors"
+          }
+        },
+        {
+          "claim": "Uniform N_k implies CSLS equals cosine ranking.",
+          "verdict": "not_implied",
+          "derivation": "N_k counts membership, whereas r_g averages similarities. Equal counts do not imply equal means. Constant r_g is sufficient for unchanged gallery ranking; uniform occurrence counts are not that condition."
+        },
+        {
+          "claim": "Top-10% hub tiles have a 10% miss-exposure null.",
+          "verdict": "false",
+          "derivation": "Gallery fraction is not query exposure. If those tiles receive 80% of all top-1 assignments and each assignment has the same 20% miss probability, 80% of misses also land there with no excess conditional error risk. Raw 25% miss concentration does not establish hub-specific failure.",
+          "additional_confounders": ["Unequal true-location frequency", "Multiple views per location", "Angle mix", "Gallery coverage", "Self-inclusion in reverse-neighbor statistics"]
+        },
+        {
+          "claim": "A=log(reverse rank) plus a tile cutoff is inherently inconsistent or transduction is automatically leakage.",
+          "verdict": "not_established",
+          "derivation": "They are compatible observables but the 'A is large' cutoff and joint decision rule are missing. Unlabeled test-pool use is a transductive assumption; label leakage is a separate issue."
+        }
+      ],
+      "explicit_new_version": {
+        "id": "M12-v2",
+        "change_from_original": "Keep known CSLS as a diagnostic intervention, declare query-pool access, specify A or drop it, and replace the 10% gallery null with exposure-conditioned error analysis.",
+        "design": "Use a fixed unlabeled reference query pool with leave-location-out/cross-fitted evaluation when possible; report a separate transductive arm if all test queries are used. Fix k and the threshold/rank tie policy before evaluation. Match location/angle multiplicity.",
+        "controls": "Compare cosine, true r_g correction and permuted tile corrections with the same marginal penalty distribution. Measure conditional miss risk among top-1 assignments to hubs versus non-hubs and paired R@1 change; bootstrap by location, not views.",
+        "falsification": "No exposure-adjusted excess miss risk and no benefit above a matched penalty control would fail to support the operational hubness explanation. A CSLS gain alone is not unique identification of repetitive texture as the cause; a null gain alone does not disprove every hubness mechanism.",
+        "inference_limit": "ONLoc-specific claims require its target descriptors/benchmark; another dataset/model is a distinct hypothesis test. No direct M09/PnP relevance has been demonstrated."
+      },
+      "citations": ["C:M12", "S:M12", "A", "ON"]
+    }
+  },
+  "limits": [
+    "Sample was selected purposively, so the frequency of deep-sample errors is not an unbiased screening-error rate.",
+    "No exhaustive novelty search; no network and no new primary publications obtained.",
+    "No candidate performance, current local asset availability or real-match cause inferred from these formal checks.",
+    "Existing archive passages were read directly; a full archive hash audit was not repeated.",
+    "The first scalar-check command used an absent 'python' executable; the same dependency-free check succeeded using python3. No installation or code file was created.",
+    "Only the two requested selection-audit artifacts were written; original proposals and shortlist remain unchanged."
+  ]
+}

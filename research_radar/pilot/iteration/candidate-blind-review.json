@@ -1,0 +1,212 @@
+{
+  "job_id": "job-f51b32cadadc",
+  "completed_at": "2026-11-10T07:49:53.762521+00:00",
+  "result": {
+    "assessments": [
+      {
+        "id": "R01",
+        "novelty": "uncertain",
+        "prior_art": [
+          {
+            "paper_id": "ortholoc",
+            "overlap": "Provides both the quasi-planar homography (AdHoP) and the DSM-lifted PnP that the score compares.",
+            "difference": "AdHoP is used only as preconditioning. No disagreement-based validity score is reported.",
+            "source_location": "PDF p.2 method overview; p.4 and p.7 DSM elevations"
+          },
+          {
+            "paper_id": "skyreg",
+            "overlap": "Reports planar-homography breakdown with tall structures and parallax. It also predicts per-pixel confidence.",
+            "difference": "Its confidence is learned from pixel supervision. The proposed score is training-free.",
+            "source_location": "§5.2; §3.4 eq. 8-9"
+          },
+          {
+            "paper_id": "independent-O2",
+            "overlap": "Analytic per-point covariance propagation is a direct comparator.",
+            "difference": "It targets photogrammetric reconstruction, not selective anchor validity.",
+            "source_location": "Section 2.3, PDF p.5-6"
+          }
+        ],
+        "significance": "Moderate. Detecting scene-model violation under off-nadir and tall-structure geometry matters for safe anchor selection.",
+        "empirical_support": "None. Matches and a matcher environment are unverified, and truth is not independently certified.",
+        "feasibility": "CPU-cheap if cached matches exist. Results are local-frame only. The OrthoLoC license is non-commercial. Same-reconstruction references may hide external-map errors.",
+        "mechanism_family": "geometry-or-identifiability",
+        "fatal_objection": "none. Main risk: the disagreement may reduce to relief or height, or to residuals, so the score adds nothing. The plan includes a relief-only control.",
+        "survives_scientific_audit": true,
+        "experiment_ready": false,
+        "reason": "The question is clear and the contribution is distinguishable: disagreement between two estimators on the same matches as a validity test. The baselines are strong. The prerequisites report gives no verified matcher or cached matches, so the plan is not ready.",
+        "minimal_falsification": "Compute homography and DSM-PnP poses from cached matches. Compare disagreement AUROC against inlier residual, analytic covariance trace and a height-only baseline. Reject if the gain is below 0.02 AUROC or if height alone explains it.",
+        "next_action": "test"
+      },
+      {
+        "id": "R02",
+        "novelty": "overlap",
+        "prior_art": [
+          {
+            "paper_id": "ricloc",
+            "overlap": "Names geometry-aware reference selection as future work and already has risk-coverage evaluation.",
+            "difference": "The candidate would be an attempt at that future work, so there is little room for a distinct claim.",
+            "source_location": "PDF pp.2,9-10; Limitations"
+          },
+          {
+            "paper_id": "hfnet",
+            "overlap": "Clusters candidates by covisibility before PnP-RANSAC.",
+            "difference": "The candidate groups by footprint, with no 3D map.",
+            "source_location": "PDF p.3 Covisibility clustering"
+          },
+          {
+            "paper_id": "independent-O3",
+            "overlap": "Budgeted subset selection by an information objective.",
+            "difference": "Sensor mounts under independence assumptions, not retrieved references.",
+            "source_location": "Abstract; Sections II-III.B"
+          }
+        ],
+        "significance": "Low to moderate. Reference choice under a matcher budget is useful but is largely a diversity-reranking variant.",
+        "empirical_support": "None. No non-oracle gallery exists.",
+        "feasibility": "Marginal. RIM weights exist, but there is no non-oracle gallery, no verified runtime, and GPL terms apply.",
+        "mechanism_family": "acquisition-or-system-design",
+        "fatal_objection": "A greedy footprint-diversity selector is classical MMR or diversity reranking. Without a defined objective it likely selects the same candidates as top-K, and the candidate itself disclaims novelty. Footprints from a bare gallery may not be available either.",
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "reason": "There is no precise technical contribution beyond a generic diversity term, the question is weak, and the gallery is unverified.",
+        "minimal_falsification": "Compare set overlap and risk against top-K on cached candidates. Stop if overlap with top-K is at least 0.9.",
+        "next_action": "reject"
+      },
+      {
+        "id": "R03",
+        "novelty": "overlap",
+        "prior_art": [
+          {
+            "paper_id": "ortholoc",
+            "overlap": "Both fits exist in the pipeline, and it reports failure on corrupted matches.",
+            "difference": "It does not use their disagreement as a score.",
+            "source_location": "PDF p.2, p.7, p.10"
+          },
+          {
+            "paper_id": "skyreg",
+            "overlap": "Reports planar breakdown and predicts per-pixel confidence.",
+            "difference": "Training-free operation on matches.",
+            "source_location": "§5.2; §3.4"
+          },
+          {
+            "paper_id": "independent-O2",
+            "overlap": "Analytic uncertainty comparator.",
+            "difference": "Model-validity signal rather than propagated covariance.",
+            "source_location": "Section 2.3"
+          }
+        ],
+        "significance": "Moderate, but identical to R01.",
+        "empirical_support": "None.",
+        "feasibility": "Same as R01. CPU, with cached matches required and local-frame results only.",
+        "mechanism_family": "geometry-or-identifiability",
+        "fatal_objection": "Duplicate of R01: same score, data and baselines. It is the weaker version, with no relief-only control and no analytic-covariance comparator required.",
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "reason": "Redundant with R01. Keeping both would double-count one idea.",
+        "minimal_falsification": "Merge into R01. Stop if the AUROC gain over inlier ratio is below 0.02.",
+        "next_action": "reject"
+      },
+      {
+        "id": "R04",
+        "novelty": "uncertain",
+        "prior_art": [
+          {
+            "paper_id": "ricloc",
+            "overlap": "Already provides dispersion and covariance failure-ranking scores and risk-coverage evaluation. It also treats shared hypotheses as independent and has common-mode terms.",
+            "difference": "It needs posed references and does not test absent-map queries.",
+            "source_location": "PDF pp.8-9, 15, 20"
+          },
+          {
+            "paper_id": "independent-O1",
+            "overlap": "Partially known correlation among overlapping sources.",
+            "difference": "The candidate makes no OCI-equivalent claim. A shared wrong alias is a biased error.",
+            "source_location": "Section I.B; Section II eq. 4"
+          },
+          {
+            "paper_id": "rim",
+            "overlap": "No calibrated reject option, and finite-but-wrong solver outputs.",
+            "difference": "Evaluates absent-map rejection with a diagnostic rather than a fusion model.",
+            "source_location": "PDF p.27, p.51"
+          }
+        ],
+        "significance": "Moderate to high. Rejecting queries whose true reference is absent is an important safety case.",
+        "empirical_support": "None.",
+        "feasibility": "Retrieval-only data, so cheap in principle. It needs a footprint and candidate-list pipeline for DenseUAV or UAV-VisLoc. The UAV-VisLoc license is unverified.",
+        "mechanism_family": "posthoc-score-or-selection",
+        "fatal_objection": "The statistic is under-specified. After removing candidates that overlap the top hypothesis, what remains may carry little signal. It may also be redundant with a top-1 margin or dispersion. Spearman above 0.9 with dispersion would kill it.",
+        "survives_scientific_audit": true,
+        "experiment_ready": false,
+        "reason": "The question is specific, the baselines are fair, and the falsification gates are concrete. The statistic needs a precise definition first. Footprints and candidate lists are not verified, which is why the experiment is not ready.",
+        "minimal_falsification": "Use a retrieval-only pilot with the true tile removed. Compare AUROC against top-1 margin, undiscounted agreement and dispersion, with an overlap threshold chosen on a held-out geographic split. Stop if the gain is below 0.01 or the CI includes 0.",
+        "next_action": "revise"
+      },
+      {
+        "id": "R05",
+        "novelty": "uncertain",
+        "prior_art": [
+          {
+            "paper_id": "ricloc",
+            "overlap": "Dispersion and covariance ranking, risk-coverage, and a common-mode scale term. It also acknowledges the independence violation.",
+            "difference": "The signal is leave-one-footprint-out pose shift over geographically overlapping references, evaluated as an increment over a combined baseline.",
+            "source_location": "PDF p.8 eq. 18-20; p.9; p.15; p.20"
+          },
+          {
+            "paper_id": "independent-O1",
+            "overlap": "Treats overlapping sources as correlated.",
+            "difference": "Explicit disclaimer: an empirical ranking feature, not a fusion law.",
+            "source_location": "Section I.B; Section II"
+          },
+          {
+            "paper_id": "rim",
+            "overlap": "No reject option, and finite-but-wrong outputs.",
+            "difference": "Tests one narrow signal.",
+            "source_location": "PDF p.27, p.51, p.28"
+          }
+        ],
+        "significance": "Moderate. The common-wrong-alias failure mode is real, and the incremental-over-logistic-baseline design is rigorous.",
+        "empirical_support": "None. The RIC-Loc environment is blocked and the repository has no license.",
+        "feasibility": "The fallback uses stored OrthoLoC or RIM outputs, which are cheap, but footprint overlap there may not mimic the intended setting.",
+        "mechanism_family": "posthoc-score-or-selection",
+        "fatal_objection": "Leave-one-out pose shift is standard jackknife or influence diagnostics. It is expensive when it needs recomputation. Footprint overlap may not track error dependence. The incremental gain may vanish once dispersion is included.",
+        "survives_scientific_audit": true,
+        "experiment_ready": false,
+        "reason": "The question is specific, the baseline is the strongest available, and falsification is preregistered. It is eligible to investigate. The main prerequisites are unresolved.",
+        "minimal_falsification": "Fit logistic regression on residual, inlier-count and dispersion, with and without the shift feature, using scene-grouped CV. Reject if the gain is below 0.01 AUROC or the CI includes 0 on the stress split.",
+        "next_action": "test"
+      },
+      {
+        "id": "R06",
+        "novelty": "uncertain",
+        "prior_art": [
+          {
+            "paper_id": "infogeo",
+            "overlap": "Appendix reports altitude degradation attributed to object-centric limits.",
+            "difference": "It has no dense spatial discriminability measurement against matcher features.",
+            "source_location": "PDF p.21"
+          },
+          {
+            "paper_id": "rim",
+            "overlap": "Reuses a frozen retrieval backbone for local descriptors, which implies the reuse is viable.",
+            "difference": "Pipeline paper, not a diagnostic of when reuse fails.",
+            "source_location": "PDF p.6"
+          },
+          {
+            "paper_id": "roma",
+            "overlap": "Equivariant dense matcher comparator.",
+            "difference": "It is a baseline here.",
+            "source_location": "Fig. 2, §3"
+          }
+        ],
+        "significance": "Low to moderate. It is a measurement study, and the answer is largely expected.",
+        "empirical_support": "None.",
+        "feasibility": "Checkpoints and altitude-stratified data are unverified.",
+        "mechanism_family": "representation-or-training",
+        "fatal_objection": "The comparison is confounded. Retrieval models and matchers differ in architecture, resolution and training data, so a gap cannot be attributed to invariance supervision. Within-tile pixel neighbor accuracy is also a weak proxy for locality. RIM's success shows retrieval features can support local matching. The retrieval feature has no ground-truth within-tile pixel correspondence in the described data.",
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "reason": "There is no controlled isolation of the invariance objective. The proxy does not support the causal claim.",
+        "minimal_falsification": "Train matched backbones with and without the retrieval objective on the same data. Measure local matching accuracy by altitude. Reject if the gap is under 3 points.",
+        "next_action": "revise"
+      }
+    ]
+  }
+}

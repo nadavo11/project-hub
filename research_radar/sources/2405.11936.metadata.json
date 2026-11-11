@@ -1,0 +1,31 @@
+{
+  "arxiv_id": "2405.11936",
+  "citation_title": [
+    "UAV-VisLoc: A Large-scale Dataset for UAV Visual Localization"
+  ],
+  "citation_author": [
+    "Xu, Wenjia",
+    "Yao, Yaxuan",
+    "Cao, Jiaqi",
+    "Wei, Zhiwei",
+    "Liu, Chunbo",
+    "Wang, Jiuniu",
+    "Peng, Mugen"
+  ],
+  "citation_date": [
+    "2024/05/20"
+  ],
+  "citation_online_date": [
+    "2024/05/20"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2405.11936"
+  ],
+  "citation_arxiv_id": [
+    "2405.11936"
+  ],
+  "citation_abstract": [
+    "The application of unmanned aerial vehicles (UAV) has been widely extended recently. It is crucial to ensure accurate latitude and longitude coordinates for UAVs, especially when the global navigation satellite systems (GNSS) are disrupted and unreliable. Existing visual localization methods achieve autonomous visual localization without error accumulation by matching the ground-down view image of UAV with the ortho satellite maps. However, collecting UAV ground-down view images across diverse locations is costly, leading to a scarcity of large-scale datasets for real-world scenarios. Existing datasets for UAV visual localization are often limited to small geographic areas or are focused only on urban regions with distinct textures. To address this, we define the UAV visual localization task by determining the UAV's real position coordinates on a large-scale satellite map based on the captured ground-down view. In this paper, we present a large-scale dataset, UAV-VisLoc, to facilitate the UAV visual localization task. This dataset comprises images from diverse drones across 11 locations in China, capturing a range of topographical features. The dataset features images from fixed-wing drones and multi-terrain drones, captured at different altitudes and orientations. Our dataset includes 6,742 drone images and 11 satellite maps, with metadata such as latitude, longitude, altitude, and capture date. Our dataset is tailored to support both the training and testing of models by providing a diverse and extensive data."
+  ],
+  "abstract": "Abstract: The application of unmanned aerial vehicles (UAV) has been widely extended recently. It is crucial to ensure accurate latitude and longitude coordinates for UAVs, especially when the global navigation satellite systems (GNSS) are disrupted and unreliable. Existing visual localization methods achieve autonomous visual localization without error accumulation by matching the ground-down view image of UAV with the ortho satellite maps. However, collecting UAV ground-down view images across diverse locations is costly, leading to a scarcity of large-scale datasets for real-world scenarios. Existing datasets for UAV visual localization are often limited to small geographic areas or are focused only on urban regions with distinct textures. To address this, we define the UAV visual localization task by determining the UAV's real position coordinates on a large-scale satellite map based on the captured ground-down view. In this paper, we present a large-scale dataset, UAV-VisLoc, to facilitate the UAV visual localization task. This dataset comprises images from diverse drones across 11 locations in China, capturing a range of topographical features. The dataset features images from fixed-wing drones and multi-terrain drones, captured at different altitudes and orientations. Our dataset includes 6,742 drone images and 11 satellite maps, with metadata such as latitude, longitude, altitude, and capture date. Our dataset is tailored to support both the training and testing of models by providing a diverse and extensive data."
+}

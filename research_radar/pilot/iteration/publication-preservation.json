@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "frozen_artifacts_verified": 36,
+  "live_publication_receipt": {
+    "sha256": "daddd1b06e2ddeaaad4436f6b5cac3c9641abfbbadca35ec881aaea25116d01d",
+    "size": 389,
+    "manifest_sha256": "8345276c229b312556e6a5467244c5381d86eae2d66e3ccbb8366fba8e9e67a2"
+  }
+}

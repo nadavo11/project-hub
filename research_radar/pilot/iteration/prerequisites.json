@@ -1,0 +1,674 @@
+{
+  "id": "iterate-prerequisites",
+  "verdict": "PARTIAL",
+  "sources": [
+    {
+      "url": "https://arxiv.org/pdf/2002.12186v1",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/2002.12186v1.pdf",
+      "source": {
+        "sha256": "b6fa8f5147db48aa874780e2c53c486a8d813772ffea02c3a8b9a60af45340e5",
+        "size": 7830249,
+        "manifest_sha256": "5720c4b96119d4cac80e9b5834984c667600a6e672daefe6771f7188606a88fd"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "193f101a9fe0e5b32585f0b1e1180b046f75b48b4f85bd8cddd1af1c2fa346a4",
+        "size": 55581,
+        "manifest_sha256": "20f0764dbac5e0795562d48c86571bea7c2e938cff41a57a27fad89b7d79c0d7"
+      }
+    },
+    {
+      "url": "https://arxiv.org/pdf/2008.11646v1",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/2008.11646v1.pdf",
+      "source": {
+        "sha256": "aeb2014d474123847cc4ad99eb2f6c2929f53dc3c9e51dec7df9abb9d96f9e27",
+        "size": 6125919,
+        "manifest_sha256": "cc8fdde41252b0c5744f8e7a091bf3a90bd8b6ec036ff7148c59c72924042dbd"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "5953c4c94322cd20012d3fd5f83dc30fe93a942c201dfd9ca1b83425d4d2de25",
+        "size": 52865,
+        "manifest_sha256": "3e014fb56cb447c083636ad2d8c8372c6a72538199e834a01f4e3d83f3c55142"
+      }
+    },
+    {
+      "url": "https://arxiv.org/pdf/1812.03506v1",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/1812.03506v1.pdf",
+      "source": {
+        "sha256": "8020d19cbfa41df377fad1b9b425208344c951a21892a2b51480ac5efd54ae1e",
+        "size": 9628820,
+        "manifest_sha256": "523a57e3d2e876b8bdbba6ddc76a5c8288ed4ad38ebe3e7294b180b42eb31f17"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "f79e58b2ac9345240c35b62e3dac326e1c445991f1921de1d6ab9b88a612f772",
+        "size": 61508,
+        "manifest_sha256": "afa4d592e419f154dbc0ce1dcb8417de8d3d66134a8a2529c4e8d5d7e4dc2b88"
+      }
+    },
+    {
+      "url": "https://arxiv.org/pdf/2305.15404v1",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/2305.15404v1.pdf",
+      "source": {
+        "sha256": "0ee82ca34a257abaa8a1fbd9899bccb8e0e704b672001f55ddf9919e335624ec",
+        "size": 5029212,
+        "manifest_sha256": "925a67a3fc15220bb2b8c57749654fecb8e29162e3aa0ebaa545f2e1226ebdfa"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "6a97a233e6dcc8849dffebf27d723e5b05e7f64e28ac0c04bfdb71ae21dfda01",
+        "size": 48997,
+        "manifest_sha256": "de62bd366c66fb81ecb8f03d70c62d2276103be414b19abfd817ea629616283b"
+      }
+    },
+    {
+      "url": "https://arxiv.org/pdf/2201.09201v1",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/2201.09201v1.pdf",
+      "source": {
+        "sha256": "0917241ae01e219aa92cd8026a818d0f57fb351242309995566cecd34e6cbd70",
+        "size": 16971352,
+        "manifest_sha256": "011fb4f311b06e1e9ad78de3ddd8e15d1b13c996ed5e77e674242691f15caeef"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "36224e69bc85676e86e1755207d4fb54427b1a8e5fd9f1a4b13c2872d850ea92",
+        "size": 56955,
+        "manifest_sha256": "15553f712ca6bbd6b2441f512f1239469741eb2fcbea386590a539c434101a0f"
+      }
+    },
+    {
+      "url": "https://deepscenario.github.io/OrthoLoC",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-project.html",
+      "source": {
+        "sha256": "ad82bcf8ce1321d219a21e21469194aab14f669db1f85c6390f8bb6a97233b09",
+        "size": 39321,
+        "manifest_sha256": "cd4fff42d3c5fdde002e28b9ca9fc799c2962147e721eebc26359de952b08c69"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://api.github.com/repos/IntelliSensing/UAV-VisLoc/contents/README.md",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/uavvisloc-readme.json",
+      "source": {
+        "sha256": "f7105d5c34233c0e40f6945e2080a75d10d8e47ccd1a0a1e4a15553cb4df7666",
+        "size": 10771,
+        "manifest_sha256": "f0e041a682dcee293d46ee7837f45035e334026b34f60eaada4a04ab6149e878"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "419e3008ff6c8d2dff13a42f3599d7f30b8f11e03d10b3f6d5dd983ea1310dcc",
+        "size": 7222,
+        "manifest_sha256": "46d6f16a9d8e375fc389e37660c084885ee041aaf66ca71f9b252a88d539da01"
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/SNU-DLLAB/ric_loc/contents/README.md",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ricloc-readme.json",
+      "source": {
+        "sha256": "08c7886ff5ca882e0757c83d613f7649053099ccea34f939c75dd1d45ecd344b",
+        "size": 9777,
+        "manifest_sha256": "cc2905150ed27489a1e68c6314b1bbaeca579d94b88db901a40d4d870dacf5d0"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "73d0df0761772446ab85d33ebf32d58f40df786e5477cca6eddaba667f680f66",
+        "size": 6542,
+        "manifest_sha256": "033873ce77f0ad690446617d989310848702cf90bf6b6cefe69a53b9d085d0a3"
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/curious-energy/RIM/contents/README.md",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/rim-readme.json",
+      "source": {
+        "sha256": "bf9980d1edeb1a4db8d61e2318d9b392b24282fb9d1cbb7103acfd060f9404cc",
+        "size": 11106,
+        "manifest_sha256": "d41c30cec72e66689a9c4306422d0f78802578dea5056a365cea9345566d1a97"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "30653aeb8602b1b32a4dde525402721b7f2d7d65208eb74b5054dc1da23ed218",
+        "size": 7501,
+        "manifest_sha256": "d9756fdcfff2ff2d62049377b44edf718cc64209f170ec16209e1f500617bed2"
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/deepscenario/OrthoLoC/contents/README.md",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-readme.json",
+      "source": {
+        "sha256": "2564a20dd3e18f9721898c99da668fdfbf8d9f88084b16e0c87b79a6a04582a3",
+        "size": 27682,
+        "manifest_sha256": "ced04e8b082c9c1d0523c4a8208e977970639ec5ef50232ada2b0d4988162303"
+      },
+      "verified": true,
+      "text": {
+        "sha256": "6c279e7eb6296f9579efe5ccd13aac80d0329c6748905dc9ec755f1153a2a6e1",
+        "size": 19518,
+        "manifest_sha256": "27d0ca176063f4a549269f3ae107e515fa178edc60849b7f2c2384579b9bc59c"
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/deepscenario/OrthoLoC/git/trees/main?recursive=1",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-tree.json",
+      "source": {
+        "sha256": "466b83e841779791f3439f75ce0b09cdbae7cf8f987eb0040fa6257914950393",
+        "size": 14711,
+        "manifest_sha256": "e4983bc99c1a33ffc74ec58e1077dedb155a87987db4c3352e1df152309c2d7f"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://api.github.com/repos/SNU-DLLAB/ric_loc/git/trees/main?recursive=1",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ricloc-tree.json",
+      "source": {
+        "sha256": "09a84be2dde6bbb28463e6ab95620404a6af59cf018e275f0381401ad1233608",
+        "size": 9900,
+        "manifest_sha256": "2e76d63eef5eec60087239006b062098f3c5aca89de86617d6e48c90268354e3"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://api.github.com/repos/curious-energy/RIM/git/trees/main?recursive=1",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/rim-tree.json",
+      "source": {
+        "sha256": "97cd3d7bde7840cea42af774fbd7ff1dc5bd6006dd3dc724e51560811222c672",
+        "size": 18789,
+        "manifest_sha256": "bf55dfea85db656d2aa50e69326c6585792a7161f1f1534024451928404f61b7"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/deepscenario/OrthoLoC/6923e9fd184dc57f393d88cfe1bca7ba2abbe1c5/ortholoc/assets/demo/samples/urban_residential_xDOPDSM.npz",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-crossdomain.npz",
+      "source": {
+        "sha256": "7e0db0a3dfad8d195fdecc6289a7438118e0487f30286cec34f0000710c0243f",
+        "size": 22369731,
+        "manifest_sha256": "69d4b86cc814d2cd454ae9e9716912d112bf80da7a2f87ca16da230901f81522"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/deepscenario/OrthoLoC/6923e9fd184dc57f393d88cfe1bca7ba2abbe1c5/ortholoc/assets/demo/samples/highway_rural.npz",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-samedomain.npz",
+      "source": {
+        "sha256": "4b74fb7d1b25635f257d9638b6ebefb68f2dc6d698475295f0293324d493ca61",
+        "size": 15461847,
+        "manifest_sha256": "8fa2711915ed838db17c87148e6579e4c248ef4922ae35368ff2bdb214dc2b30"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/deepscenario/OrthoLoC/6923e9fd184dc57f393d88cfe1bca7ba2abbe1c5/LICENSE",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-license.txt",
+      "source": {
+        "sha256": "9e502ba75fd0fd30cea5497b438a4bc12f07f02bc932a7a6041fd6a18b8f46a0",
+        "size": 20848,
+        "manifest_sha256": "09f17448ac67498eb5f5f2fade42aa5700fad393533be2def63a4798390fb2a8"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/deepscenario/OrthoLoC/6923e9fd184dc57f393d88cfe1bca7ba2abbe1c5/ortholoc/dataset/OrthoLoC.py",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-dataloader.py",
+      "source": {
+        "sha256": "697e428381e7902b1f6ce497c59f8117973cef52538ead77b7344b147e27c664",
+        "size": 25306,
+        "manifest_sha256": "5c0147d4380f27e5be61e495c572d1765ce562b210e23729d060d479fd1fee81"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/curious-energy/RIM/79f31392d1438e1bfa682d2a93d79bd79aff8bed/weights/manifest.json",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/rim-weights-manifest.json",
+      "source": {
+        "sha256": "10bda9dd6cb4a1e6efd10c27330601f60d7f1edc9c76da2db7b4ebfae4151659",
+        "size": 503,
+        "manifest_sha256": "7aab965bdd6933fb017476ecc8bda65f52158f270598e66769c7e3a8fff03b06"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/curious-energy/RIM/79f31392d1438e1bfa682d2a93d79bd79aff8bed/weights/rim_global_retriever.pth",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/rim-global-retriever.pth",
+      "source": {
+        "sha256": "5659d463bacdb1206603437c3867fa3f6cac323429ab7cafd7f7be7c75654b30",
+        "size": 5650318,
+        "manifest_sha256": "dbe54d461dff1cb61a87486f5b97c5d49336850544cd4b12b10f1e120d451792"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/curious-energy/RIM/79f31392d1438e1bfa682d2a93d79bd79aff8bed/scripts/evaluate/rerank_pnp.py",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/rim-evaluation.py",
+      "source": {
+        "sha256": "e25fc5e613ccce9834c1da6bd13e756a8f49b93fb05fddcf519335aadeb8e0d1",
+        "size": 22019,
+        "manifest_sha256": "bce0e0fd13c9fc94e3cbb34391d6077cd3e95d54c707721dcca568e052ba2eac"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/curious-energy/RIM/79f31392d1438e1bfa682d2a93d79bd79aff8bed/weights/rim_decoder_distill.pth",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/rim-decoder.pth",
+      "source": {
+        "sha256": "31ca9bbb554faca4439d7a427da78a2f163511abe0c53aa9ab8e5e138426130d",
+        "size": 22506335,
+        "manifest_sha256": "131ef61c5b0d8e770e1f86b9b004d4d3013b2ff6f9923fbe99693df40b723965"
+      },
+      "verified": true
+    },
+    {
+      "url": "https://cvg.cit.tum.de/webshare/g/papers/Dhaouadi/OrthoLoC/full/test_outPlace/",
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-heldout-index.html",
+      "source": {
+        "sha256": "973fe4265e366c884c44fd1f2f215d5f6bb21d5c69b8bec51286afc8a448972d",
+        "size": 301820,
+        "manifest_sha256": "3758849b22cfea2be1154d2af6cf406e4127d440a67bb16506574b4df580ef17"
+      },
+      "verified": true
+    }
+  ],
+  "samples": [
+    {
+      "file": "ortholoc-crossdomain.npz",
+      "sha256": "7e0db0a3dfad8d195fdecc6289a7438118e0487f30286cec34f0000710c0243f",
+      "arrays": {
+        "sample_id.npy": {
+          "descr": "<U9",
+          "fortran_order": false,
+          "shape": []
+        },
+        "image_query.npy": {
+          "descr": "|u1",
+          "fortran_order": false,
+          "shape": [
+            768,
+            1024,
+            3
+          ]
+        },
+        "point_map.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            768,
+            1024,
+            3
+          ]
+        },
+        "image_dop.npy": {
+          "descr": "|u1",
+          "fortran_order": false,
+          "shape": [
+            1024,
+            1024,
+            3
+          ]
+        },
+        "dsm.npy": {
+          "descr": "<f8",
+          "fortran_order": false,
+          "shape": [
+            1024,
+            1024,
+            3
+          ]
+        },
+        "scale.npy": {
+          "descr": "<f2",
+          "fortran_order": false,
+          "shape": [
+            2
+          ]
+        },
+        "extrinsics.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            3,
+            4
+          ]
+        },
+        "intrinsics.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "keypoints.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            29133,
+            3
+          ]
+        },
+        "vertices.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            18390,
+            3
+          ]
+        },
+        "faces.npy": {
+          "descr": "<i4",
+          "fortran_order": false,
+          "shape": [
+            34976,
+            3
+          ]
+        },
+        "extrinsics_refined.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            3,
+            4
+          ]
+        }
+      },
+      "calibration": {
+        "scale.npy": {
+          "values": [
+            0.1815185546875,
+            -0.1815185546875
+          ],
+          "finite": true
+        },
+        "extrinsics.npy": {
+          "values": [
+            0.10554596781730652,
+            -0.9943499565124512,
+            0.011325448751449585,
+            -10.356325149536133,
+            -0.9026838541030884,
+            -0.10058131814002991,
+            -0.4183841347694397,
+            -22.606689453125,
+            0.4171593487262726,
+            0.03393545746803284,
+            -0.9081995487213135,
+            101.86456298828125
+          ],
+          "finite": true
+        },
+        "intrinsics.npy": {
+          "values": [
+            772.4036254882812,
+            0.0,
+            516.1470947265625,
+            0.0,
+            772.4036254882812,
+            385.53125,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "finite": true
+        },
+        "extrinsics_refined.npy": {
+          "values": [
+            0.1055259183049202,
+            -0.9943523406982422,
+            0.011302027851343155,
+            -10.349663734436035,
+            -0.9027368426322937,
+            -0.10055741667747498,
+            -0.41827550530433655,
+            -22.61385154724121,
+            0.41704970598220825,
+            0.03393615037202835,
+            -0.9082499146461487,
+            101.86054992675781
+          ],
+          "finite": true
+        }
+      },
+      "required_arrays_present": true,
+      "calibration_finite": true,
+      "limitations": "Header and calibration-value inspection only; no scientific algorithm or pixel ground-truth validation."
+    },
+    {
+      "file": "ortholoc-samedomain.npz",
+      "sha256": "4b74fb7d1b25635f257d9638b6ebefb68f2dc6d698475295f0293324d493ca61",
+      "arrays": {
+        "sample_id.npy": {
+          "descr": "<U9",
+          "fortran_order": false,
+          "shape": []
+        },
+        "image_query.npy": {
+          "descr": "|u1",
+          "fortran_order": false,
+          "shape": [
+            767,
+            1024,
+            3
+          ]
+        },
+        "point_map.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            767,
+            1024,
+            3
+          ]
+        },
+        "image_dop.npy": {
+          "descr": "|u1",
+          "fortran_order": false,
+          "shape": [
+            1024,
+            1024,
+            3
+          ]
+        },
+        "dsm.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            1024,
+            1024,
+            3
+          ]
+        },
+        "scale.npy": {
+          "descr": "<f2",
+          "fortran_order": false,
+          "shape": [
+            2
+          ]
+        },
+        "extrinsics.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            3,
+            4
+          ]
+        },
+        "intrinsics.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            3,
+            3
+          ]
+        },
+        "keypoints.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            27500,
+            3
+          ]
+        },
+        "vertices.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            14120,
+            3
+          ]
+        },
+        "faces.npy": {
+          "descr": "<i4",
+          "fortran_order": false,
+          "shape": [
+            27430,
+            3
+          ]
+        },
+        "extrinsics_refined.npy": {
+          "descr": "<f4",
+          "fortran_order": false,
+          "shape": [
+            3,
+            4
+          ]
+        }
+      },
+      "calibration": {
+        "scale.npy": {
+          "values": [
+            0.1651611328125,
+            -0.1651611328125
+          ],
+          "finite": true
+        },
+        "extrinsics.npy": {
+          "values": [
+            -0.12027207762002945,
+            -0.9927396774291992,
+            0.0015847289469093084,
+            7.0558061599731445,
+            -0.9927369356155396,
+            0.12027599662542343,
+            0.0026661837473511696,
+            22.308311462402344,
+            -0.0028374313842505217,
+            -0.0012525514466688037,
+            -0.9999951720237732,
+            96.74598693847656
+          ],
+          "finite": true
+        },
+        "intrinsics.npy": {
+          "values": [
+            727.5702514648438,
+            0.0,
+            519.9697875976562,
+            0.0,
+            727.5702514648438,
+            379.14013671875,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "finite": true
+        },
+        "extrinsics_refined.npy": {
+          "values": [
+            -0.12025576084852219,
+            -0.9927417039871216,
+            0.0015704480465501547,
+            7.070951461791992,
+            -0.9927380084991455,
+            0.12025999277830124,
+            0.0029614269733428955,
+            22.294015884399414,
+            -0.003128794254735112,
+            -0.0012029148638248444,
+            -0.9999943971633911,
+            96.73368072509766
+          ],
+          "finite": true
+        }
+      },
+      "required_arrays_present": true,
+      "calibration_finite": true,
+      "limitations": "Header and calibration-value inspection only; no scientific algorithm or pixel ground-truth validation."
+    }
+  ],
+  "weights": [
+    {
+      "file": "rim-global-retriever.pth",
+      "declared": {
+        "filename": "rim_global_retriever.pth",
+        "role": "global retriever",
+        "bytes": 5650318,
+        "sha256": "5659d463bacdb1206603437c3867fa3f6cac323429ab7cafd7f7be7c75654b30"
+      },
+      "sha256": "5659d463bacdb1206603437c3867fa3f6cac323429ab7cafd7f7be7c75654b30",
+      "verified": true,
+      "executed": false
+    },
+    {
+      "file": "rim-decoder.pth",
+      "declared": {
+        "filename": "rim_decoder_distill.pth",
+        "role": "distilled local decoder",
+        "bytes": 22506335,
+        "sha256": "31ca9bbb554faca4439d7a427da78a2f163511abe0c53aa9ab8e5e138426130d"
+      },
+      "sha256": "31ca9bbb554faca4439d7a427da78a2f163511abe0c53aa9ab8e5e138426130d",
+      "verified": true,
+      "executed": false
+    }
+  ],
+  "heldout_index": {
+    "listed_files": 1415,
+    "distinct_location_ids": [
+      "L08",
+      "L50",
+      "L51"
+    ],
+    "sample_files": [
+      "L08_R0000.npz",
+      "L08_R0001.npz",
+      "L08_R0002.npz",
+      "L08_R0003.npz",
+      "L08_R0004.npz"
+    ],
+    "all_files_downloaded": false
+  },
+  "code": {
+    "OrthoLoC": "6923e9fd184dc57f393d88cfe1bca7ba2abbe1c5",
+    "RIM": "79f31392d1438e1bfa682d2a93d79bd79aff8bed",
+    "RIC-Loc": "e5487cfe9e67d2e1a55adfe85bf75f725e285a23",
+    "inspected": [
+      "OrthoLoC data loader",
+      "RIM PnP evaluation source",
+      "three README protocols",
+      "repository file inventories"
+    ],
+    "external_code_executed": false
+  },
+  "licensing": {
+    "OrthoLoC": "CC BY-NC-SA 4.0: actual LICENSE response preserved",
+    "RIM": "GPL-3.0-only stated in README and weight manifest; third-party terms remain separate",
+    "RIC-Loc": "No license file found in inspected repository tree; usage permission not resolved",
+    "UAV-VisLoc": "Download links exist, but 2.04 GB sample and data license not verified within bound"
+  },
+  "candidate_readiness": {
+    "O1": "Still blocked for matched full-baseline comparison: no RIC-Loc cached hypotheses, VGGT/MegaLoc environment or license resolved.",
+    "O2": "Real same-domain and cross-domain arrays and finite calibration confirmed. Local-coordinate CPU geometry diagnostic can now be specified. No full matcher/environment, independently certified truth or global coordinate transform verified.",
+    "O3": "Actual RIM released weights and evaluation source confirmed. Non-oracle retrieval gallery, all external checkpoints, and full online runtime remain unverified."
+  },
+  "failures_or_gaps": [
+    "NumPy is not installed in the current Python environment; safe standard-library headers/calibration checks used instead.",
+    "No published pipeline executed, no cold-start timing or 1-3-day end-to-end feasibility established.",
+    "Paired demo crops cannot establish a non-oracle retrieval result or statistically independent geographic performance.",
+    "No checkpoint was unpickled or executed. Downloadable weights are not proof of runnable inference.",
+    "Dataset privacy-local coordinates cannot be relabeled as global geodetic truth."
+  ],
+  "public_requests": 22,
+  "download_bytes": 112086336,
+  "elapsed_seconds": 42.485,
+  "gpu_hours": 0,
+  "paid_external_api_calls": 0
+}

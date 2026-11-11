@@ -1,0 +1,175 @@
+{
+  "job_id": "job-4593ec601fa7",
+  "completed_at": "2026-11-10T07:48:49.937221+00:00",
+  "result": {
+    "opportunities": [
+      {
+        "id": "G1",
+        "title": "Footprint-dependence-corrected acceptance risk for abstention under map absence",
+        "question": "When the true reference tile is removed from the gallery, does discounting retrieved candidates by their footprint overlap (a leave-one-footprint-out agreement statistic) predict wrong-building acceptance better than dispersion or residual scores?",
+        "hypothesis": "Inference: overlapping retrieved tiles often share the same wrong structure, so raw candidate agreement overstates evidence. Leave-one-footprint-out agreement, computed after removing candidates that overlap the top hypothesis footprint, should separate absent-map accepts from true accepts better than agreement computed over all candidates.",
+        "contribution": "Test whether an overlap-discounted agreement statistic improves AUROC and risk-coverage for rejecting queries with no valid reference. It is an empirical diagnostic, not a calibrated posterior or a covariance-fusion law.",
+        "mechanism_family": "Observability and evaluation redesign: dependence-aware selective prediction under map absence",
+        "prior_art": [
+          {
+            "paper_id": "ricloc",
+            "overlap": "Already reports selective localization, risk-coverage, dispersion and covariance failure-ranking scores. Its covariance treats shared hypotheses as independent, and common-mode and residual inflation terms already exist.",
+            "difference": "RIC-Loc requires posed references and does not test absent-map queries. The proposal uses only satellite-footprint overlap and a leave-one-footprint-out statistic. This distinction is untested and may be redundant with dispersion."
+          },
+          {
+            "paper_id": "independent-O1",
+            "overlap": "OCI models partially known correlation among overlapping sources.",
+            "difference": "OCI assumes known linear matrices and zero-mean errors. A shared wrong-building alias is a biased error, and the proposed statistic makes no claim to be an OCI-equivalent estimator."
+          },
+          {
+            "paper_id": "rim",
+            "overlap": "Names confidence fusion as future work and shows that a finite solver output can be wrong.",
+            "difference": "The proposal evaluates map-absence rejection with simulated gallery removal, not a new fusion model."
+          }
+        ],
+        "novelty_basis": "Inference only: the strongest surviving distinction is the supervision and evaluation target, which is rejection of map-absent queries using footprint-overlap discounting. Missing prior art in the supplied sources is not proof of novelty.",
+        "evidence_gaps": [
+          "No cached RIC-Loc hypotheses or environment are available.",
+          "Gallery removal is only a stress test, not natural temporal change.",
+          "Overlap discounting may be redundant with dispersion."
+        ],
+        "feasibility": "Feasible on CPU if descriptors, footprints and per-query candidate lists can be obtained for a DenseUAV or UAV-VisLoc subset. Otherwise the pilot is blocked.",
+        "experiment": {
+          "hypothesis": "Overlap-discounted agreement has higher AUROC than undiscounted agreement for detecting absent-map accepts.",
+          "datasets": [
+            "DenseUAV or UAV-VisLoc subset with footprints (user subset split required)",
+            "Two variants per query: true tile present and true tile removed"
+          ],
+          "baselines": [
+            "Top-1 similarity margin",
+            "Undiscounted top-K agreement",
+            "Dispersion of candidate positions (RIC-Loc-style proxy)",
+            "Random"
+          ],
+          "metrics": [
+            "AUROC for absent-versus-present detection",
+            "Risk-coverage AUC for wrong accepts",
+            "Coverage at 5% accepted wrong-building rate",
+            "Bootstrap CI over queries"
+          ],
+          "config": "Fixed K=10, a single overlap threshold chosen on a held-out geographic split, and a calibration split disjoint from the test split.",
+          "success": "AUROC at least 0.03 above the best baseline, with a paired-bootstrap 95% CI excluding 0, and coverage at 5% risk at least 5 points higher.",
+          "falsification": "Stop if the AUROC gain is below 0.01 or the CI includes 0 on the held-out geographic split, or if the statistic correlates with dispersion at Spearman rho above 0.9 with no incremental gain.",
+          "compute": "About 2-6 CPU hours for score computation and bootstraps, not measured."
+        }
+      },
+      {
+        "id": "G2",
+        "title": "Parallax-sensitivity of planar alignment as a per-anchor validity test, benchmarked against analytic propagation",
+        "question": "Does disagreement between DSM-lifted and planar-homography alignment predict anchor error under tall-structure parallax better than inlier residuals?",
+        "hypothesis": "Inference: where a single plane is invalid (tall structures, off-nadir), the shift between the homography solution and the DSM-lifted solution grows with relief and tracks true local error better than residual or inlier count. The score should therefore flag invalid anchors without full covariance propagation.",
+        "contribution": "A cheap two-model disagreement score per anchor region, tested for ranking anchor errors, with the analytic uncertainty-propagation comparator included.",
+        "mechanism_family": "Geometric model-misspecification diagnostic (scientific question: model validity, not matcher confidence)",
+        "prior_art": [
+          {
+            "paper_id": "ortholoc",
+            "overlap": "Implements both the quasi-planar homography (AdHoP) and the DSM-lifted PnP.",
+            "difference": "It uses homography only as preconditioning and reports no disagreement-based validity score. Its same-reconstruction references and local-frame coordinates limit what can be claimed about external-map errors."
+          },
+          {
+            "paper_id": "skyreg",
+            "overlap": "Reports homography breakdown under parallax and predicts per-pixel confidence with confidence-weighted regression.",
+            "difference": "Its confidence is learned and trained on pixel supervision, while the proposed score comes from a geometric model comparison. SkyReg's confidence must be a baseline."
+          },
+          {
+            "paper_id": "independent-O2",
+            "overlap": "Propagates uncertainty analytically into per-point covariance, including cross-covariances for anchors.",
+            "difference": "It targets photogrammetric reconstruction. The proposal tests selective anchor validity under map-model violation. Analytic propagation is the required comparator."
+          }
+        ],
+        "novelty_basis": "Inference: the distinction is the supervision signal, which is two-model geometric disagreement validated against local error. This is not a claim of global novelty.",
+        "evidence_gaps": [
+          "No full matcher or environment is verified.",
+          "Truth is not independently certified.",
+          "Metric accuracy applies only in the local frame, with no verified global transform.",
+          "Same-domain arrays may hide external-map errors."
+        ],
+        "feasibility": "Feasible on CPU using cached or precomputed matches from the OrthoLoC arrays, with local-frame errors only.",
+        "experiment": {
+          "hypothesis": "Homography-versus-DSM disagreement ranks anchor error better than inlier residual.",
+          "datasets": [
+            "OrthoLoC same-domain and cross-domain arrays (local frame)"
+          ],
+          "baselines": [
+            "Inlier residual",
+            "Inlier count",
+            "Analytic propagated covariance trace",
+            "SkyReg-style confidence if available",
+            "Random"
+          ],
+          "metrics": [
+            "Spearman rho with local anchor error",
+            "AUROC for error above a fixed threshold",
+            "Risk-coverage"
+          ],
+          "config": "Fixed RANSAC seeds, a relief-binned analysis, and a threshold set on a calibration split.",
+          "success": "Spearman rho at least 0.1 above the best residual or count baseline and AUROC at least 0.03 above it, with the CI excluding 0.",
+          "falsification": "Stop if the gain over residuals is below 0.02 AUROC, or if the score is no better than relief or height alone.",
+          "compute": "About 4-10 CPU hours, not measured."
+        }
+      },
+      {
+        "id": "G3",
+        "title": "Does retrieval-invariant supervision erase spatial equivariance? A matched-descriptor diagnostic",
+        "question": "Do retrieval-discriminative embeddings lose within-tile spatial information that local matching needs, and does this loss grow with altitude and off-nadir angle?",
+        "hypothesis": "Inference: view-invariant objectives (object slots, hard-negative InfoNCE) compress spatial layout, so dense descriptor spatial self-similarity is lower and repeated-structure confusion higher than for equivariant descriptors. The gap should widen with altitude.",
+        "contribution": "A diagnostic study: frozen retrieval descriptors and dense matcher features are compared on the same pairs for spatial discriminability, with the result stratified by altitude. This changes the scientific question from a new score to measuring where invariance destroys locality.",
+        "mechanism_family": "Representation analysis (observability of local precision in retrieval features)",
+        "prior_art": [
+          {
+            "paper_id": "infogeo",
+            "overlap": "Its own appendix reports altitude degradation and attributes it to object-centric limits.",
+            "difference": "It does not measure dense spatial discriminability against matcher features."
+          },
+          {
+            "paper_id": "sample4geo",
+            "overlap": "Shows off-the-shelf contrastive retrieval with hard negatives.",
+            "difference": "It makes no locality claim. Hard negatives are a training variable here."
+          },
+          {
+            "paper_id": "roma",
+            "overlap": "Combines robust coarse features with specialized fine features and models multimodal matches.",
+            "difference": "RoMa is the equivariant comparator, not the subject of the proposal."
+          },
+          {
+            "paper_id": "rim",
+            "overlap": "Frozen retrieval backbone reused for local-descriptor distillation.",
+            "difference": "RIM builds a pipeline, while this study asks when such reuse fails. RIM already makes the reuse engineering claim."
+          }
+        ],
+        "novelty_basis": "Inference: the contribution is a controlled measurement, not a method. It may reproduce known intuitions and does not establish global novelty.",
+        "evidence_gaps": [
+          "Retrieval checkpoints and a non-oracle gallery are unverified.",
+          "The altitude and angle subset split is unknown.",
+          "Spatial discriminability is a proxy, not pose accuracy."
+        ],
+        "feasibility": "Feasible only with already-available small checkpoints and about 500-2000 pairs. Otherwise blocked.",
+        "experiment": {
+          "hypothesis": "Retrieval-trained dense features have lower within-tile spatial discriminability than matcher features, and the gap widens with altitude.",
+          "datasets": [
+            "Altitude-stratified pairs from the user's subset (UAV-VisLoc or SUES-200-style)"
+          ],
+          "baselines": [
+            "Matcher-feature spatial discriminability",
+            "Random-feature control",
+            "Raw pixel or SIFT descriptor control"
+          ],
+          "metrics": [
+            "Top-1 pixel-neighbor retrieval accuracy within a tile",
+            "Repeated-structure confusion rate",
+            "Slope of the gap against altitude with CI"
+          ],
+          "config": "Frozen features, a fixed 500-pair stratified sample, and no training.",
+          "success": "Gap at least 10 points of top-1 neighbor accuracy, with a positive altitude slope whose CI excludes 0.",
+          "falsification": "Stop if the gap is under 3 points or the slope CI includes 0 in two altitude strata.",
+          "compute": "About 3-8 CPU hours on small models, not measured."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "protocol": {
+    "blinding": "Investigated only the five supplied anonymized descriptions and public primary sources. Did not read other pilot files, other agents, literature-agent outputs, or session history. No subagents were used. Candidate source names recalled by the investigator were treated as leads, not evidence, and verified against retrieved papers.",
+    "approach": "Adversarial mechanism matching, followed by full-paper inspection of decisive sections. Independently assembled the tensions after investigating the five cases. Classifications concern the supplied mechanisms, not legal patent novelty or any unprovided implementation.",
+    "evidence_cutoff": "2026-11-09",
+    "page_convention": "PDF page means one-based physical page of the fetched PDF, including its first page. Section and figure identifiers are preferred where available.",
+    "accounting": "17 actual HTTP GET requests, with redirects disabled; none redirected. Bytes are response-body bytes measured with len(response.content), not TLS/wire overhead. Elapsed seconds measure wall time from the first retrieval script to the evidence/accounting freeze, excluding subsequent JSON composition and validation. No paid API was called; api_cost_usd is null because no billing measurement is available.",
+    "limitations": [
+      "Bounded, targeted search; this is not an exhaustive systematic review. No classification relies on missing search results.",
+      "The first recalled LPN arXiv identifier, 2008.11613, was wrong: it returned Reproducible Pruning System on Dynamic Natural Plants for Field Agricultural Robots. That source was excluded. The correct paper was subsequently identified through a cited title and an arXiv title search.",
+      "The first LPN query, Learning Part-based Representation for Cross-view Geo-localization, returned other papers rather than the target. It was not used as evidence that the target did not exist.",
+      "The broad cross-view pose estimation title search also returned unrelated human/object-pose papers. Only relevant retrieved full papers were used for the tensions.",
+      "Initial local execution failed because python was unavailable; python3 worked. The optional bs4 parser was unavailable after five successful downloads; those pages were parsed locally with the standard library instead. These were tool/parsing failures, not HTTP failures, and did not trigger repeat downloads.",
+      "All 17 network requests returned HTTP 200. No HTTP failure, paywall, or inaccessible decisive paper occurred.",
+      "Full PDFs were obtained and relevant method, benchmark, and limitation sections inspected; experiments, source code, supplemental material, and dataset licenses were not reproduced or audited.",
+      "Some geometric evidence is from ground-to-satellite rather than drone-to-satellite research. Transfer to drone imagery is explicitly labeled inference, not an observed drone result.",
+      "ArXiv PDFs were fetched at their current public versions, not date-pinned versions. LPN has a 2020 first preprint and a later TCSVT publication; the inspected PDF is a 2021 revision."
+    ]
+  },
+  "cases": [
+    {
+      "id": "B1",
+      "idea": "For drone/satellite place recognition, divide a backbone feature map into concentric square-ring parts, pool each part separately, and enforce identity learning per part so surrounding geographic context improves matching across views.",
+      "classification": "already established",
+      "papers": [
+        {
+          "title": "Each Part Matters: Local Patterns Facilitate Cross-view Geo-localization",
+          "url": "https://arxiv.org/abs/2008.11646",
+          "year": 2020,
+          "mechanism_overlap": "Local Pattern Network (LPN) partitions backbone feature maps into square rings, average-pools each part, predicts a geographic identity for each part, and minimizes the summed part-wise cross-entropy losses. Satellite and drone branches share weights. Concatenated part descriptors are used for retrieval, explicitly exploiting surrounding context.",
+          "evidence_location": "Section III, especially Figure 3 and its caption, PDF page 4; partition and classifier discussion on PDF pages 4–5; abstract for contextual motivation.",
+          "quote": "The network is optimized by minimizing the sum of the cross-entropy losses over all parts.",
+          "access_level": "full paper; https://arxiv.org/pdf/2008.11646"
+        }
+      ],
+      "observed": "Every substantive component of B1 is explicitly present in LPN, including the square-ring geometry and separate part supervision. This is not merely a broad resemblance to part-based representation learning.",
+      "limitations": [
+        "The 2020 year denotes first arXiv publication, not the later journal issue.",
+        "The paper describes robustness to rotation; square rings should not be interpreted as a mathematical guarantee of invariance to arbitrary rotation.",
+        "A genuinely different off-center geometry, supervision objective, or evaluated deployment regime would need its own claim; none is specified here."
+      ]
+    },
+    {
+      "id": "B2",
+      "idea": "Replace global random negatives in cross-view geographic image contrastive learning with a curriculum using geographic-neighbor hard negatives and dynamically selected feature-similarity hard negatives, retaining a simple shared image encoder.",
+      "classification": "already established",
+      "papers": [
+        {
+          "title": "Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation",
+          "url": "https://openaccess.thecvf.com/content/ICCV2023/html/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.html",
+          "year": 2023,
+          "mechanism_overlap": "A weight-shared ConvNeXt encoder with mean pooling and symmetric InfoNCE uses geographic near-neighbor negatives early in training, then Dynamic Similarity Sampling from current embedding cosine similarities. The paper explicitly replaces the former sampler with the latter after initial epochs.",
+          "evidence_location": "Sections 3.1–3.4; PDF page 4, particularly Section 3.3 Near Neighbour Sampling Based on GPS and Section 3.4 Dynamic Similarity Sampling.",
+          "quote": "After a certain amount of epochs, GPS-based sampling is replaced by our Dynamic Similarity Sampling (DSS).",
+          "access_level": "full paper; https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf"
+        }
+      ],
+      "observed": "The proposed sampler curriculum and simple shared encoder are established together, not assembled retrospectively from different papers. DSS periodically refreshes neighbor distances and mixes the closest samples with randomly selected samples from the top-neighbor set.",
+      "limitations": [
+        "The full paper explicitly says GPS-neighbor initialization is not possible for University-1652, where it instead starts with shuffling. It would be inaccurate to claim the complete GPS-to-DSS schedule was demonstrated on that drone benchmark.",
+        "A new way to obtain valid geographic neighborhoods for a drone dataset could be a separate contribution, but would not make this generic training schedule novel."
+      ]
+    },
+    {
+      "id": "B3",
+      "idea": "Build a drone-view localization benchmark connecting university buildings across satellite, drone, and ground photographs, evaluating drone-to-satellite target localization and satellite-to-drone navigation via image retrieval.",
+      "classification": "already established",
+      "papers": [
+        {
+          "title": "University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization",
+          "url": "https://arxiv.org/abs/2002.12186",
+          "year": 2020,
+          "mechanism_overlap": "University-1652 connects 1,652 buildings from 72 universities across satellite, simulated drone, and ground views. Its two named retrieval tasks are drone-view target localization and drone navigation in the reverse query direction. The protocol uses Recall@K and average precision.",
+          "evidence_location": "Abstract and Figure 1, PDF page 1; Section 3.1 Dataset Description, PDF page 3; Section 3.2 Evaluation Protocol and Tables 1–2, PDF page 4.",
+          "quote": "In this paper, we collect satellite-view images, drone-view images with the simulated drone cameras, and ground-view images for every location.",
+          "access_level": "full paper; https://arxiv.org/pdf/2002.12186"
+        }
+      ],
+      "observed": "The buildings, platforms, two query directions, and retrieval interpretation match the benchmark's defining construction. The publication is ACM Multimedia 2020, not ECCV.",
+      "limitations": [
+        "Its main drone data are Google Earth renderings, not an all-real drone-photo collection. The paper also evaluates some real drone imagery, but that does not make the main benchmark real.",
+        "An explicitly all-real, pose-calibrated, temporal or operational benchmark could differ materially; the generic three-view university-building retrieval design remains established.",
+        "The word navigation denotes a retrieval task here, not demonstrated closed-loop flight control."
+      ]
+    },
+    {
+      "id": "B4",
+      "idea": "Use a transformer-based cross-view geolocalizer that avoids explicit polar transformation and uses attention to select informative regions for a second non-uniform image sampling stage.",
+      "classification": "already established",
+      "papers": [
+        {
+          "title": "TransGeo: Transformer Is All You Need for Cross-View Image Geo-Localization",
+          "url": "https://openaccess.thecvf.com/content/CVPR2022/html/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.html",
+          "year": 2022,
+          "mechanism_overlap": "TransGeo uses a pure transformer without polar transformation and a two-stage attend-and-zoom-in procedure. Attention selects aerial-image patches for non-uniform cropping; computation saved by dropping patches is allocated to higher-resolution informative regions.",
+          "evidence_location": "Abstract, PDF page 1; Figure 1, PDF page 3; Section 3.3 and Figure 2, PDF page 4; Table 4 and Section 4.5 ablations.",
+          "quote": "We further leverage the flexibility of transformer input and propose an attention-guided non-uniform cropping method",
+          "access_level": "full paper; https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf"
+        }
+      ],
+      "observed": "The claimed architecture, absence of polar preprocessing, attention criterion, and second-stage non-uniform selection all coincide with TransGeo. Replacing the term cropping with sampling does not supply a mechanism difference.",
+      "limitations": [
+        "TransGeo evaluates street-to-aerial CVUSA and VIGOR, not a drone-specific adaptation in the inspected paper.",
+        "The attention-driven patch selection is not itself a separately learned parameterized selector; the authors identify this limitation.",
+        "A drone application or a differentiable selector would require a narrower novelty claim and additional prior-art checks."
+      ]
+    },
+    {
+      "id": "B5",
+      "idea": "For robust dense two-view correspondence, use frozen pretrained visual foundation features for coarse matching with an anchor-based classification/regression formulation, then refine at finer resolution using a separate feature pyramid.",
+      "classification": "already established",
+      "papers": [
+        {
+          "title": "RoMa: Robust Dense Feature Matching",
+          "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.html",
+          "year": 2024,
+          "mechanism_overlap": "RoMa freezes DINOv2 for coarse features, decouples the fine encoder and uses VGG19 fine features, predicts a multimodal distribution over spatial classification anchors with a transformer decoder, and performs subsequent robust-regression refinement.",
+          "evidence_location": "Section 3.2, PDF page 4; Section 3.3 Regression-by-Classification and Equation 8, PDF page 5; Section 3.4 losses, PDF pages 5–6; abstract.",
+          "quote": "We keep the DINOv2 encoder frozen throughout training.",
+          "access_level": "full paper; https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf"
+        }
+      ],
+      "observed": "The same paper contains the complete recipe. Section 3.3 specifies 64 by 64 classification anchors covering the image grid. This directly rejects novelty of the generic frozen-foundation coarse/independent-fine matching formulation.",
+      "limitations": [
+        "The paper establishes general dense matching, not guaranteed success for oblique drone-to-satellite imagery.",
+        "Anchor-based coarse classification and fine robust regression are distinct stages; the overlap should not be misdescribed as a single joint anchor classification-and-offset head.",
+        "A genuinely new cross-domain training objective or geometric treatment would require a narrower proposal."
+      ]
+    }
+  ],
+  "independent_tensions": [
+    {
+      "id": "T1",
+      "tension": "Correct image retrieval versus correct metric position within that image",
+      "status": "mixed: observed distinction; inferred drone evaluation requirement",
+      "observed": "University-1652 evaluates ranked building retrieval. VIGOR explicitly adds within-image offset calibration and meter-based evaluation, demonstrating that retrieval and metric localization are separate outputs.",
+      "inferred": "A drone system can retrieve the correct building while retaining an unacceptable position error. Evaluate end-to-end meter error and conditional refinement error in addition to Recall@K/AP.",
+      "sources": [
+        {
+          "title": "University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization",
+          "url": "https://arxiv.org/pdf/2002.12186",
+          "evidence_location": "Section 3.2 and Table 1, PDF page 4",
+          "quote": "Recall@K is sensitive to the position of the first matched image",
+          "access_level": "full paper"
+        },
+        {
+          "title": "VIGOR: Cross-View Image Geo-localization beyond One-to-one Retrieval",
+          "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhu_VIGOR_Cross-View_Image_Geo-Localization_Beyond_One-to-One_Retrieval_CVPR_2021_paper.pdf",
+          "evidence_location": "Introduction, PDF page 2; abstract for meter-based evaluation",
+          "quote": "we further employ a within-image calibration to predict the offset of the query location inside the retrieved image.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "VIGOR is street-to-aerial. The magnitude of this gap for any particular drone dataset is unmeasured here; no conversion from recall to meters is justified."
+    },
+    {
+      "id": "T2",
+      "tension": "Localizing a visible target versus localizing the drone camera",
+      "status": "mixed: directly documented task distinction; inferred benchmark implications",
+      "observed": "An earlier UAV pose paper explicitly distinguishes scene localization from camera localization and combines the two. Its synthetic data vary camera position, height, heading, and tilt while fixing roll.",
+      "inferred": "A building geo-tag cannot by itself determine the camera's position or attitude when the camera is oblique or displaced. A retrieval-plus-refinement proposal must specify whether it estimates the target point, camera center, 3-DoF pose, or a richer pose.",
+      "sources": [
+        {
+          "title": "UAV Pose Estimation using Cross-view Geolocalization with Satellite Imagery",
+          "url": "https://arxiv.org/pdf/1809.05979",
+          "evidence_location": "Introduction, PDF page 1; dataset construction, PDF page 2",
+          "quote": "focus on localizing the scene depicted in the image and not the camera.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "The cited UAV study uses simulated imagery and constrained roll/pitch. It does not settle unconstrained real-flight 6-DoF localization."
+    },
+    {
+      "id": "T3",
+      "tension": "Rotation-tolerant retrieval descriptors versus orientation-observable pose features",
+      "status": "mixed: source properties observed; incompatibility risk inferred",
+      "observed": "LPN deliberately uses square-ring pooling for robustness to rotation. The UAV pose paper reports orientation estimation as a limitation even when scene localization improves trajectories.",
+      "inferred": "Pooling that helps recognize a place despite heading changes may discard angular information needed to estimate heading. A global descriptor and a spatial pose feature need not be the same representation.",
+      "sources": [
+        {
+          "title": "Each Part Matters: Local Patterns Facilitate Cross-view Geo-localization",
+          "url": "https://arxiv.org/pdf/2008.11646",
+          "evidence_location": "Abstract, PDF page 1; square-ring pooling in Figure 3, PDF page 4",
+          "quote": "good scalability to rotation variations",
+          "access_level": "full paper"
+        },
+        {
+          "title": "UAV Pose Estimation using Cross-view Geolocalization with Satellite Imagery",
+          "url": "https://arxiv.org/pdf/1809.05979",
+          "evidence_location": "Conclusion, PDF page 6",
+          "quote": "relatively poor performance in estimating orientation",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "No inspected experiment directly measures LPN heading information or proves it cannot support orientation estimation. This is a falsifiable representation hypothesis, not a demonstrated failure."
+    },
+    {
+      "id": "T4",
+      "tension": "Context-rich concentric partitions versus off-center and scale-variable drone targets",
+      "status": "observed in drone retrieval; metric-refinement implications inferred",
+      "observed": "SDPL directly criticizes position/scale sensitivity of feature partitions and introduces multiple shifted partition centers. It evaluates University-1652 and SUES-200, making off-center robustness itself established prior art rather than an untouched extension of LPN.",
+      "inferred": "A refinement stage should not assume that contextual rings are registered to the same physical center in both views. Stress tests should vary target displacement and scale independently from identity.",
+      "sources": [
+        {
+          "title": "SDPL: Shifting-Dense Partition Learning for UAV-View Geo-Localization",
+          "url": "https://arxiv.org/pdf/2403.04172",
+          "evidence_location": "Introduction, PDF page 2; Section III dense partition and shifting-fusion design",
+          "quote": "DPS is based on the imperfect assumption that the target is located in the central region.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "The paper supports retrieval robustness under its tested perturbations; this does not demonstrate accurate continuous pose recovery or arbitrary real-flight off-center coverage."
+    },
+    {
+      "id": "T5",
+      "tension": "Hard-negative pressure versus valid multiple positives and overlapping geography",
+      "status": "observed training issue; extension to geometric overlap inferred",
+      "observed": "Sample4Geo uses a custom sampler for University-1652 because its one-to-many/many-to-one positives otherwise become InfoNCE negatives.",
+      "inferred": "Aggressive geographic hard mining must distinguish truly different places from other views or partially overlapping tiles of the same place. Negatives helpful for building classification may be inappropriate for correspondence training.",
+      "sources": [
+        {
+          "title": "Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation",
+          "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+          "evidence_location": "Section 4.2, PDF page 6",
+          "quote": "without a sampling strategy positive examples would be treated as negatives too.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "The demonstrated issue concerns known same-class positives. The frequency and impact of unlabeled partial-overlap positives in drone collections were not measured in this audit."
+    },
+    {
+      "id": "T6",
+      "tension": "Robust semantic coarse matching versus fine spatial localizability",
+      "status": "observed in dense matching; drone-domain transfer inferred",
+      "observed": "RoMa's ablations motivate decoupling coarse and fine encoders: frozen DINOv2 supports robust coarse matching, while specialized VGG19 features support finer localization. The authors explicitly articulate the tension.",
+      "inferred": "A retrieval foundation encoder should not be assumed sufficient for subpixel or metric refinement. Separate feature scales and separate objectives already have strong precedent, so merely combining them is a weak novelty claim.",
+      "sources": [
+        {
+          "title": "RoMa: Robust Dense Feature Matching",
+          "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf",
+          "evidence_location": "Section 3.2, PDF pages 4–5; Tables 1–2",
+          "quote": "there is an inherent tension between fine localizability and coarse robustness.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "The observed ablation is not a drone-to-satellite ablation. General dense matching may fail under cross-view occlusion, domain shift, or insufficient shared visible surfaces."
+    },
+    {
+      "id": "T7",
+      "tension": "Large-area retrieval efficiency versus candidate coverage and expensive pose-aware reranking",
+      "status": "observed architecture trade-off; recall ceiling inferred",
+      "observed": "C-BEV first retrieves vector-embedding candidates and then compares BEV maps only for those candidates because the second stage is more expensive. Retrieval plus pose-aware reranking is therefore already established.",
+      "inferred": "Increasing candidate count may recover missed places but increases geometric computation. A refiner restricted to retrieved candidates cannot repair a missing correct candidate; report both candidate recall and end-to-end latency/error.",
+      "sources": [
+        {
+          "title": "C-BEV: Contrastive Bird's Eye View Training for Cross-View Image Retrieval and 3-DoF Pose Estimation",
+          "url": "https://arxiv.org/pdf/2312.08060",
+          "evidence_location": "Section 3.2, PDF page 4; Figure 1, PDF page 1",
+          "quote": "we apply the second stage to a set of candidates retrieved using the first stage rather than the entire dataset.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "The candidate-count/latency/accuracy frontier depends on the dataset, hardware and index. No drone-specific frontier was measured here."
+    },
+    {
+      "id": "T8",
+      "tension": "Avoiding metric pose labels versus retaining geometric and sensor assumptions",
+      "status": "observed supervision and representation choices; drone limitation inferred",
+      "observed": "C-BEV learns 3-DoF pose through contrastive image pairings without explicit metric pose supervision, but its aerial BEV has a known resolution and its ground input is a panorama.",
+      "inferred": "A claim of pose learning without pose labels is already challenged by C-BEV. It should not be conflated with no calibration, no image pairing, or applicability to arbitrary drone height/pitch. Those assumptions need an explicit inventory.",
+      "sources": [
+        {
+          "title": "C-BEV: Contrastive Bird's Eye View Training for Cross-View Image Retrieval and 3-DoF Pose Estimation",
+          "url": "https://arxiv.org/pdf/2312.08060",
+          "evidence_location": "Abstract, PDF page 1; Section 3.4 BEV encoder, PDF page 4",
+          "quote": "In the aerial domain, the image is already given in BEV with a known resolution",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "This does not show that explicit pose supervision is unnecessary for unconstrained UAV 6-DoF estimation. Sensor assumptions and label availability must be evaluated separately."
+    },
+    {
+      "id": "T9",
+      "tension": "Controlled synthetic retrieval benchmarks versus real-flight geometric reliability",
+      "status": "observed data construction; deployment gap inferred",
+      "observed": "University-1652 uses simulated drone cameras for its main data; the earlier UAV pose study also builds a simulated UAV dataset. University-1652 separately includes a real-image generalization evaluation.",
+      "inferred": "Success on these protocols cannot by itself establish robustness to real sensor calibration error, motion blur, appearance changes, or flight geometry. A claimed operational metric-localization contribution needs actual real-flight error evidence.",
+      "sources": [
+        {
+          "title": "University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization",
+          "url": "https://arxiv.org/pdf/2002.12186",
+          "evidence_location": "Figure 1 caption, PDF page 1",
+          "quote": "we use the synthetic drone-view camera to simulate the real drone flight.",
+          "access_level": "full paper"
+        },
+        {
+          "title": "UAV Pose Estimation using Cross-view Geolocalization with Satellite Imagery",
+          "url": "https://arxiv.org/pdf/1809.05979",
+          "evidence_location": "Abstract, PDF page 1",
+          "quote": "We build a dataset of simulated UAV images and satellite imagery to train and test our networks.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "Synthetic data do not imply inevitable failure on real flights. The specific corruptions listed are proposed deployment tests, not measured failures of these papers."
+    },
+    {
+      "id": "T10",
+      "tension": "Attention-selected retrieval patches versus spatial coverage needed for geometric verification",
+      "status": "observed patch selection; geometric conflict inferred",
+      "observed": "TransGeo drops patches using attention and reallocates computation to selected higher-resolution regions. Its conclusion notes that the selection uses an attention map rather than a learned parameterized selector.",
+      "inferred": "Regions discriminative for place identity need not provide well-distributed, repeatable correspondences for a stable geometric estimate. A retrieval-conditioned crop may save compute while harming geometric coverage; compare spatial inlier coverage and pose conditioning, not only recall.",
+      "sources": [
+        {
+          "title": "TransGeo: Transformer Is All You Need for Cross-View Image Geo-Localization",
+          "url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf",
+          "evidence_location": "Section 3.3 and Figure 2, PDF page 4; limitations, PDF page 8",
+          "quote": "the patch selection simply uses the attention map which is not learnable with parameters.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "The inspected paper does not run downstream geometric verification. The proposed conflict is a testable hypothesis and could be absent when attention retains sufficient geometry."
+    },
+    {
+      "id": "T11",
+      "tension": "GPS-assisted training curricula versus datasets without usable geographic neighbor metadata",
+      "status": "observed applicability limitation; evaluation recommendation inferred",
+      "observed": "Sample4Geo's geographic initializer is unavailable for University-1652, so the authors use shuffling there before feature-based sampling.",
+      "inferred": "A GPS-denied inference claim does not exclude GPS-assisted training, but it should disclose that distinction. Drone experiments should isolate benefits from geographic metadata, feature mining, and architecture, and should not attribute a GPS-based curriculum to a dataset where it was not run.",
+      "sources": [
+        {
+          "title": "Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation",
+          "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+          "evidence_location": "Section 3.3, PDF page 4",
+          "quote": "For the University-1652 dataset this initialisation is not possible, therefore a simple shuffling is used.",
+          "access_level": "full paper"
+        }
+      ],
+      "uncertainty": "This is a property of the paper's training setup, not proof that geographic metadata could never be reconstructed for University-1652 or collected for another drone benchmark."
+    }
+  ],
+  "retrieval_log": [
+    {"url": "https://arxiv.org/abs/2008.11613", "status": 200, "bytes": 41813, "seconds": 0.499},
+    {"url": "https://arxiv.org/abs/2002.12186", "status": 200, "bytes": 43843, "seconds": 0.275},
+    {"url": "https://openaccess.thecvf.com/content/ICCV2023/html/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.html", "status": 200, "bytes": 6382, "seconds": 0.674},
+    {"url": "https://openaccess.thecvf.com/CVPR2022?day=all", "status": 200, "bytes": 5411665, "seconds": 1.326},
+    {"url": "https://openaccess.thecvf.com/CVPR2024?day=all", "status": 200, "bytes": 7471679, "seconds": 1.371},
+    {"url": "https://arxiv.org/search/?query=Learning+Part-based+Representation+for+Cross-view+Geo-localization&searchtype=all&abstracts=show&order=-announced_date_first&size=50", "status": 200, "bytes": 26143, "seconds": 0.546},
+    {"url": "https://arxiv.org/pdf/2002.12186", "status": 200, "bytes": 11772032, "seconds": 0.855},
+    {"url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf", "status": 200, "bytes": 3566292, "seconds": 2.528},
+    {"url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf", "status": 200, "bytes": 1545574, "seconds": 1.909},
+    {"url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf", "status": 200, "bytes": 7522573, "seconds": 4.881},
+    {"url": "https://arxiv.org/search/?query=Each+part+matters&searchtype=title&abstracts=show&order=-announced_date_first&size=50", "status": 200, "bytes": 19553, "seconds": 0.459},
+    {"url": "https://arxiv.org/search/?query=cross-view+pose+estimation&searchtype=title&abstracts=show&order=-announced_date_first&size=50", "status": 200, "bytes": 88585, "seconds": 0.623},
+    {"url": "https://arxiv.org/pdf/2403.04172", "status": 200, "bytes": 22780931, "seconds": 14.213},
+    {"url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhu_VIGOR_Cross-View_Image_Geo-Localization_Beyond_One-to-One_Retrieval_CVPR_2021_paper.pdf", "status": 200, "bytes": 4082224, "seconds": 2.686},
+    {"url": "https://arxiv.org/pdf/2008.11646", "status": 200, "bytes": 8390338, "seconds": 3.168},
+    {"url": "https://arxiv.org/pdf/2312.08060", "status": 200, "bytes": 8154567, "seconds": 3.56},
+    {"url": "https://arxiv.org/pdf/1809.05979", "status": 200, "bytes": 8212651, "seconds": 4.258}
+  ],
+  "costs": {
+    "http_requests": 17,
+    "download_bytes": 89136845,
+    "elapsed_seconds": 161.146,
+    "api_cost_usd": null,
+    "gpu_hours": 0
+  }
+}

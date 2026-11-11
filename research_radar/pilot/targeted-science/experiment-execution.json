@@ -1,0 +1,9 @@
+{
+  "completed_trials": 120,
+  "cpu_seconds": 2.575070102,
+  "wall_seconds": 2.579126937998808,
+  "gpu": false,
+  "training": false,
+  "full_solver_probe_attempts": 4080,
+  "scope": "Actual real-image correspondences; controlled synthetic map corruption; one solvable scene. Failed cross-domain baseline remains excluded explicitly."
+}

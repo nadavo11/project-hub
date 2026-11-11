@@ -1,0 +1,8 @@
+# Retain primary documents locally for verification, not republication.
+sources/*.pdf
+sources/*.txt
+sources/*.html
+pilot/sources/**/*.pdf
+pilot/sources/**/*.txt
+pilot/sources/**/*.html
+.ui-*/

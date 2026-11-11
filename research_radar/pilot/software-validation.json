@@ -1,0 +1,37 @@
+{
+  "id": "software-acceptance",
+  "title": "Real backend and isolated browser regression execution",
+  "at": "2026-11-09T17:15:03.728391+00:00",
+  "passed": true,
+  "command": [
+    "/usr/bin/python3",
+    "-m",
+    "unittest",
+    "-v",
+    "research_radar.test_core",
+    "research_radar.test_validation",
+    "research_radar.test_ui",
+    "test_server",
+    "test_agents"
+  ],
+  "returncode": 0,
+  "test_executions": 109,
+  "skipped": 0,
+  "elapsed_seconds": 35.07248683999933,
+  "log": "pilot/software-tests.log",
+  "cases": [
+    {
+      "id": "software-regressions",
+      "title": "Persistence, controls, recovery, provenance, isolation, browser and Hub regressions",
+      "expected": "All selected tests pass, including the eight real-server browser tests, with no skipped browser tests",
+      "observed": "109 test executions; exit 0; no skipped tests",
+      "passed": true,
+      "evidence": "Exact test names and results in software-tests.log; behavioral expectations are executable in test_core.py, test_validation.py and test_ui.py."
+    }
+  ],
+  "limitations": [
+    "Scientific records in automated browser tests are explicitly synthetic fixtures; real research is evaluated in separate artifacts.",
+    "HTTPTests also executes inherited store tests, so execution count is not a count of independent scientific or behavioral claims.",
+    "Ruff and Node executables were unavailable. No repository linter/build is configured for this stdlib/static application; Python compile checks and actual Playwright JavaScript/CSP execution were used instead."
+  ]
+}

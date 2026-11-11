@@ -1,0 +1,62 @@
+{
+  "expected": "Research records and job history survive a clean service restart unchanged",
+  "before": [
+    {
+      "campaign_id": "campaign-0919931353d1",
+      "status": "paused",
+      "sha256": "8254841dd774d9fbe9ae108dd826f8bf9d35fc7063e829b7fc2a117f92127b85",
+      "counts": {
+        "papers": 24,
+        "tensions": 10,
+        "opportunities": 3,
+        "validations": 4,
+        "decisions": 0,
+        "jobs": 0
+      }
+    },
+    {
+      "campaign_id": "campaign-0dcdb4a15629",
+      "status": "completed",
+      "sha256": "358b89375a9e4b50a4d055938072c46b9119ba3c7b77230da12c3fc68532f8eb",
+      "counts": {
+        "papers": 8,
+        "tensions": 3,
+        "opportunities": 1,
+        "validations": 0,
+        "decisions": 0,
+        "jobs": 11
+      }
+    },
+    {
+      "campaign_id": "campaign-b9637d19b9c4",
+      "status": "paused",
+      "sha256": "d58c39ee8a8ae532c0749cb0b3bb143a6f0023c32cd6010b0e07ccaeeee69b96",
+      "counts": {
+        "papers": 10,
+        "tensions": 2,
+        "opportunities": 1,
+        "validations": 1,
+        "decisions": 1,
+        "jobs": 7
+      }
+    }
+  ],
+  "passed": true,
+  "after": [
+    {
+      "campaign_id": "campaign-0919931353d1",
+      "sha256": "8254841dd774d9fbe9ae108dd826f8bf9d35fc7063e829b7fc2a117f92127b85",
+      "unchanged": true
+    },
+    {
+      "campaign_id": "campaign-0dcdb4a15629",
+      "sha256": "358b89375a9e4b50a4d055938072c46b9119ba3c7b77230da12c3fc68532f8eb",
+      "unchanged": true
+    },
+    {
+      "campaign_id": "campaign-b9637d19b9c4",
+      "sha256": "d58c39ee8a8ae532c0749cb0b3bb143a6f0023c32cd6010b0e07ccaeeee69b96",
+      "unchanged": true
+    }
+  ]
+}

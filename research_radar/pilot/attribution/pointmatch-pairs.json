@@ -1,0 +1,158 @@
+[
+  {
+    "id": "custom-2c4f776405584f52",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-2c4f776405584f52/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-2c4f776405584f52/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-23913b68b69b45b0",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-23913b68b69b45b0/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-23913b68b69b45b0/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-eb23810c9fc04f11",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-eb23810c9fc04f11/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-eb23810c9fc04f11/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-eaf2deb569354793",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-eaf2deb569354793/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-eaf2deb569354793/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-0440e343c6374fee",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-0440e343c6374fee/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-0440e343c6374fee/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-f9ea7f15ad4e4fc0",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-f9ea7f15ad4e4fc0/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-f9ea7f15ad4e4fc0/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-5dbff15891ca46b7",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-5dbff15891ca46b7/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-5dbff15891ca46b7/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-8c41648abd0c4a7c",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-8c41648abd0c4a7c/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-8c41648abd0c4a7c/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-a307f9047db6418b",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-a307f9047db6418b/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-a307f9047db6418b/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-af44fefd3d274ce7",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-af44fefd3d274ce7/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-af44fefd3d274ce7/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-cf274b4c70594158",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-cf274b4c70594158/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-cf274b4c70594158/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  },
+  {
+    "id": "custom-52af723d0b4c44ce",
+    "dataset": "custom",
+    "image0": "/home/nadavo/pointmatch-atlas/data/uploads/custom-52af723d0b4c44ce/0.png",
+    "image1": "/home/nadavo/pointmatch-atlas/data/uploads/custom-52af723d0b4c44ce/1.png",
+    "split": "user-supplied",
+    "scene": "",
+    "ground_truth": {},
+    "metadata": {
+      "annotation_status": "unannotated",
+      "exif_orientation_applied": true
+    }
+  }
+]

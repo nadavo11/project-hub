@@ -1,0 +1,44 @@
+{
+  "method": "Actual CPU SIFT nfeatures4000, one-way Lowe ratio0.8; nearest DSM grid lift; EPNP-RANSAC1000 iterations,4px,.999 then LM on consensus. No GT filtering.",
+  "opencv": "4.11.0",
+  "numpy": "1.26.4",
+  "rows": [
+    {
+      "domain": "samedomain",
+      "sample_id": "L34_R0057",
+      "input": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-samedomain.npz",
+      "input_sha256": "4b74fb7d1b25635f257d9638b6ebefb68f2dc6d698475295f0293324d493ca61",
+      "matches_sha256": "65bf9a9974dfb3ed60f82bf2afc11384b013271e8e247bbca42e78d6c5ca9361",
+      "query_features": 3204,
+      "reference_features": 2873,
+      "ratio_matches": 111,
+      "finite_geometry_matches": 111,
+      "geometry_consistent_within_4px": 101,
+      "gt_pixel_residual_median": 1.1654855311207655,
+      "pose_solved": true,
+      "inliers": 99,
+      "translation_error_m": 0.0864980916738116,
+      "inlier_reprojection_median_px": 0.7456532890980956
+    },
+    {
+      "domain": "crossdomain",
+      "sample_id": "L15_R0175",
+      "input": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-crossdomain.npz",
+      "input_sha256": "7e0db0a3dfad8d195fdecc6289a7438118e0487f30286cec34f0000710c0243f",
+      "matches_sha256": "199e44bc80355c6bc8a1170149a31bd234612d2d08a4eecfe2f7d840c3824036",
+      "query_features": 3745,
+      "reference_features": 4000,
+      "ratio_matches": 62,
+      "finite_geometry_matches": 62,
+      "geometry_consistent_within_4px": 1,
+      "gt_pixel_residual_median": 525.3170938003892,
+      "pose_solved": false,
+      "inliers": 0,
+      "translation_error_m": null,
+      "inlier_reprojection_median_px": null
+    }
+  ],
+  "cpu_seconds": 0.9978594379999999,
+  "gpu": false,
+  "ground_truth_limit": "Nominal reconstruction-derived poses, not independent surveyed truth; true geometry used only to score retained matches/poses."
+}

@@ -1,0 +1,41 @@
+{
+  "modules_in_default_python": {
+    "numpy": false,
+    "scipy": false,
+    "cv2": false,
+    "torch": false
+  },
+  "sample_integrity": [
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-crossdomain.npz",
+      "sha256": "7e0db0a3dfad8d195fdecc6289a7438118e0487f30286cec34f0000710c0243f",
+      "attempted": 48,
+      "valid": 48,
+      "invalid": 0,
+      "controlled_projections": 288,
+      "max_projection_difference_px": 1.1368683772161603e-13,
+      "max_translation_derivative_difference": 1.4210854715202004e-14
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-samedomain.npz",
+      "sha256": "4b74fb7d1b25635f257d9638b6ebefb68f2dc6d698475295f0293324d493ca61",
+      "attempted": 48,
+      "valid": 44,
+      "invalid": 4,
+      "controlled_projections": 264,
+      "max_projection_difference_px": 7.105427357601002e-14,
+      "max_translation_derivative_difference": 7.105427357601002e-15
+    }
+  ],
+  "available": "Two preserved OrthoLoC numeric sample packages and cameras, safe numeric reader, published method descriptions",
+  "not_established": [
+    "Real matcher outputs",
+    "Working released matcher/model environment",
+    "Pose/focal prior uncertainty distribution",
+    "Independent external DSM error truth",
+    "Full non-oracle retrieval benchmark and ONLoc weights",
+    "<50ms PnP solve claim",
+    "All eight specific M09 perturbation modes; polynomial list names only six through degree2"
+  ],
+  "scope": "No new dataset/weight downloads or external code execution; existing samples inspected numerically. Unverified is not globally unavailable."
+}

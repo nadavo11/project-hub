@@ -1,0 +1,87 @@
+{
+  "at": "2026-11-09T17:17:52.849840+00:00",
+  "campaigns": [
+    {
+      "id": "campaign-0919931353d1",
+      "name": "Drone-to-satellite reliability | bounded evidence pilot",
+      "costs": {
+        "http_requests": 93,
+        "download_bytes": 397190318,
+        "elapsed_seconds": 882.02,
+        "api_cost_usd": null,
+        "external_api_cost_usd": 0,
+        "gpu_hours": 0,
+        "cli_requests": null,
+        "cli_nano_aiu": null,
+        "model_input_tokens": null,
+        "model_output_tokens": null,
+        "measurement_notes": [
+          "Partial aggregate: operator web-fetch byte/time measurements and model billing are unavailable. Runtime smoke is a separately costed campaign."
+        ],
+        "incomplete_measurement_records": 0,
+        "note": "Elapsed work time, not wall-clock campaign time. CLI credits are recorded when available; USD conversion is unavailable."
+      },
+      "cli_process_starts": 0,
+      "usage_receipts": 0
+    },
+    {
+      "id": "campaign-b9637d19b9c4",
+      "name": "FAILED relevance smoke | retained execution evidence",
+      "costs": {
+        "http_requests": 3,
+        "download_bytes": 1260804,
+        "elapsed_seconds": 80.69,
+        "api_cost_usd": null,
+        "external_api_cost_usd": 0,
+        "gpu_hours": 0,
+        "cli_requests": 6,
+        "cli_nano_aiu": 34385450000,
+        "model_input_tokens": 191737,
+        "model_output_tokens": 6988,
+        "measurement_notes": [],
+        "incomplete_measurement_records": 0,
+        "note": "Elapsed work time, not wall-clock campaign time. CLI credits are recorded when available; USD conversion is unavailable."
+      },
+      "cli_process_starts": 6,
+      "usage_receipts": 6
+    },
+    {
+      "id": "campaign-0dcdb4a15629",
+      "name": "Live UI acceptance | bounded real run",
+      "costs": {
+        "http_requests": 7,
+        "download_bytes": 370147,
+        "elapsed_seconds": 119.32,
+        "api_cost_usd": null,
+        "external_api_cost_usd": 0,
+        "gpu_hours": 0,
+        "cli_requests": 8,
+        "cli_nano_aiu": 55609430000,
+        "model_input_tokens": 276347,
+        "model_output_tokens": 11167,
+        "measurement_notes": [],
+        "incomplete_measurement_records": 0,
+        "note": "Elapsed work time, not wall-clock campaign time. CLI credits are recorded when available; USD conversion is unavailable."
+      },
+      "cli_process_starts": 8,
+      "usage_receipts": 8
+    }
+  ],
+  "public_request_operations": 103,
+  "measured_download_bytes_lower_bound": 398821269,
+  "recorded_work_seconds_partial": 1082.03,
+  "recorded_cli_requests": 14,
+  "recorded_cli_nano_aiu": 89994880000,
+  "recorded_model_input_tokens_including_cache": 468084,
+  "recorded_model_output_tokens": 18155,
+  "paid_external_api_calls": 0,
+  "gpu_hours": 0,
+  "total_usd": null,
+  "limitations": [
+    "This is not a complete monetary bill. Coordinating/research/UI agent billing is not exposed here.",
+    "Nine operator web-fetch/search operations have known counts but unavailable byte/time measurements; tool-internal redirects are not separately measurable.",
+    "Work durations combine separately measured research and runtime intervals, not a single non-overlapping wall-clock campaign duration.",
+    "A terminated CLI process may not emit a usage receipt; issued process count and observed receipt count are shown separately.",
+    "Software fixture tests use loopback and no public model/API. Their CPU time is in software-validation.json, not this public research ledger."
+  ]
+}

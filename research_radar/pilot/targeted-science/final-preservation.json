@@ -1,0 +1,536 @@
+{
+  "passed": true,
+  "artifacts": [
+    {
+      "path": "/home/nadavo/localization-models/data/orthotrack-official-test/outputs/Lohmuehlenbruecke/results.json",
+      "sha256": "7c4a852859166d55c2b33ed958aefc3d07fd739e6b9d44c160da47b2b1cc69d3",
+      "bytes": 1929327,
+      "reference": {
+        "sha256": "7c4a852859166d55c2b33ed958aefc3d07fd739e6b9d44c160da47b2b1cc69d3",
+        "size": 1929327,
+        "manifest_sha256": "5ac0b41858e3d75ae61eee033de354cfc19ddd076cf095c13fd2ea33e7fd7c6d"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/orthotrack-official-test/outputs/wienerstr/results.json",
+      "sha256": "af291f1021149f1279d36974e4816864baa01823dc015a80269233c4e3e9dfe6",
+      "bytes": 1039486,
+      "reference": {
+        "sha256": "af291f1021149f1279d36974e4816864baa01823dc015a80269233c4e3e9dfe6",
+        "size": 1039486,
+        "manifest_sha256": "2d4a8d67379061af1e0f6bfffeb30027c3751b7d470a8d9fa560cee6d8937e21"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/validation/crossview/denseuav-48-review/point-identity-infogeo-job.json",
+      "sha256": "5d8db9d36a4a1e7a250a2261129c42b64ccce161ae18420f733a905176bddfa0",
+      "bytes": 68298,
+      "reference": {
+        "sha256": "5d8db9d36a4a1e7a250a2261129c42b64ccce161ae18420f733a905176bddfa0",
+        "size": 68298,
+        "manifest_sha256": "97d9bf047a1fbed9f9f04339ecc2b38437116230e41ca3238dfb73c121376611"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/validation/crossview/denseuav-48-review/provisional-point-probes.json",
+      "sha256": "ac856692655d1b90db762a10e01394c6f24e91ecc98341343b4293ce8c88ef5e",
+      "bytes": 442253,
+      "reference": {
+        "sha256": "ac856692655d1b90db762a10e01394c6f24e91ecc98341343b4293ce8c88ef5e",
+        "size": 442253,
+        "manifest_sha256": "09fcea64380cd9b21766db2db820edccf42d26410ea645a002a92bf9debc39fc"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/validation/crossview/denseuav-48-review/provisional-point-report.md",
+      "sha256": "98956d818db1bb0037f94fe5604f19eaa31e06a3fefc0aeba808910c4b25a73e",
+      "bytes": 2053,
+      "reference": {
+        "sha256": "98956d818db1bb0037f94fe5604f19eaa31e06a3fefc0aeba808910c4b25a73e",
+        "size": 2053,
+        "manifest_sha256": "78726452202634e1b053c3263d2553c889118b4eef2c41cf5579f0f9caa7a2ff"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/validation/crossview/denseuav-48-review/report.json",
+      "sha256": "1987f6bdd5ff5c2916fcbbf7761393efd24786d1cc4862c99b25826c1d7be136",
+      "bytes": 25012,
+      "reference": {
+        "sha256": "1987f6bdd5ff5c2916fcbbf7761393efd24786d1cc4862c99b25826c1d7be136",
+        "size": 25012,
+        "manifest_sha256": "074232d933d94d7113f2e47fa4d1d6911e8e1f72dd26bdb2b79a950a0184d591"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/14f8ddd4ffe70e90eec8a318f812002e06b164943d2ee796fb1ed13f4d2bea38/features.npz",
+      "sha256": "c6358bbad7a473add8896673188ac39cc94ae24f3d5417b4f8ff428f16f4d433",
+      "bytes": 2914346,
+      "reference": {
+        "sha256": "c6358bbad7a473add8896673188ac39cc94ae24f3d5417b4f8ff428f16f4d433",
+        "size": 2914346,
+        "manifest_sha256": "9eadba28c1fc9ebd92d35ca1e7a480ee4de1ad761763fd7544970d3ca6e62558"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/16cbf9f833ee91d0386b014a15e355ce6db42546f0d2f16d579d33b1814a70fa/features.npz",
+      "sha256": "1d62683be8a992fd29b952dace7c65c4c7404225f97b1c6c912efe850269d818",
+      "bytes": 548485,
+      "reference": {
+        "sha256": "1d62683be8a992fd29b952dace7c65c4c7404225f97b1c6c912efe850269d818",
+        "size": 548485,
+        "manifest_sha256": "b26966f8fc2ee2dc03500eeea0e435e1b0b308853b11f3cb0a0f1a4cb97db88b"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/4c71899d927504c034e399106517874877fe710bed68f2aa8ae3cd09269683bb/features.npz",
+      "sha256": "2456cf464e054822a1c04c012753913bfb0fa9ec522d390d7763f1ff476a061c",
+      "bytes": 2911649,
+      "reference": {
+        "sha256": "2456cf464e054822a1c04c012753913bfb0fa9ec522d390d7763f1ff476a061c",
+        "size": 2911649,
+        "manifest_sha256": "8e333fb39018a1bfd4af9110f037282e993dce1a360682146b319af9b88f7488"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/4f60e3adcac9ef6067cceeba3c6ed3fcdae1fcdb8c9a5a36d7c259b042010018/features.npz",
+      "sha256": "d5506b0ffdcd1aa057efa08b78636316d8f617676f99e032e55e2d41966557ef",
+      "bytes": 549056,
+      "reference": {
+        "sha256": "d5506b0ffdcd1aa057efa08b78636316d8f617676f99e032e55e2d41966557ef",
+        "size": 549056,
+        "manifest_sha256": "0c93c7d20170041f2f790959848e431bf241da64d5c158844e927d14f058a24a"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/52cd4edd0097cb4dc9292fbaeefc233917f86ad6caee44a5d9c177725a248170/features.npz",
+      "sha256": "e26438fa321c6b24e552b5246fac82a5cbee6c55d8e44335217181ab8873ec51",
+      "bytes": 2911874,
+      "reference": {
+        "sha256": "e26438fa321c6b24e552b5246fac82a5cbee6c55d8e44335217181ab8873ec51",
+        "size": 2911874,
+        "manifest_sha256": "a407127372419a93e6cd4a8db40db5ccba21873ff516c06cf589ae0093c7cd8d"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/6311c01184b482fa7fe32095e4dd2c8529d1007fc1d79086fad5fa03b71b09b5/features.npz",
+      "sha256": "a2dc35a9c1bfbcc9bc036218b97159083cf3a1e73e8700df04141961d7a95a7e",
+      "bytes": 2910837,
+      "reference": {
+        "sha256": "a2dc35a9c1bfbcc9bc036218b97159083cf3a1e73e8700df04141961d7a95a7e",
+        "size": 2910837,
+        "manifest_sha256": "6da3091791b13f120ff12f506258b96355001240c06423b7f9bf2aa72f60d278"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/635871ade49e8d4e400c3119be20ac5f30bee036dc31542ac75beb4ce23e6d04/features.npz",
+      "sha256": "ec03da411d77f40dadd604008173c70021e98296555d3da05ad281b8f4cd0fca",
+      "bytes": 2911586,
+      "reference": {
+        "sha256": "ec03da411d77f40dadd604008173c70021e98296555d3da05ad281b8f4cd0fca",
+        "size": 2911586,
+        "manifest_sha256": "d595bc634b0168ff1d026f6a661bff9c5d156e797d0859e7a99c0a1690b56586"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/8e3d655cecd7b96af598457e9a8470080da27591abb51eaa07dcbbcb95b6025f/features.npz",
+      "sha256": "27ead4c6bc7cb6f759857939fcca9ec984c41ee01ff35efc2529b571ad1d228f",
+      "bytes": 2912537,
+      "reference": {
+        "sha256": "27ead4c6bc7cb6f759857939fcca9ec984c41ee01ff35efc2529b571ad1d228f",
+        "size": 2912537,
+        "manifest_sha256": "06dacaa4d38565c1ce0387d60ea6dec93ef142ddf7f9b27b15e23e66e80ce31b"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/9e3617ed43703179580172de0e47ddf4c5c589cc1fc2420aff846a24bdcefabc/features.npz",
+      "sha256": "8eb1a10e44e603fd5969a65c280bea59609775162809461570574b9af675c51d",
+      "bytes": 548529,
+      "reference": {
+        "sha256": "8eb1a10e44e603fd5969a65c280bea59609775162809461570574b9af675c51d",
+        "size": 548529,
+        "manifest_sha256": "b385f8d2f3145404f8919a109ede976695c507ec66e0acf15da345e5de9a0fe3"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/9ef47dea2c4e2561e679d90ad6a964b3440830ae11eb358ef0a48981025b68ba/features.npz",
+      "sha256": "b470354aa7d19e6cb4831367c4e7b87276c26e6ced170b687907b8d6783ad58c",
+      "bytes": 549152,
+      "reference": {
+        "sha256": "b470354aa7d19e6cb4831367c4e7b87276c26e6ced170b687907b8d6783ad58c",
+        "size": 549152,
+        "manifest_sha256": "05cc79cc4724fbd3a1236e67b67ad4ccd05635e8efa5db34cf58ccb830de6f10"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/b3b28d62498cf054328c1f987c95b2d28f10cc77ded7735258dbab77fed2db54/features.npz",
+      "sha256": "26768f44dbb9ebfc8fe18eebc8a729610519a4cd06963df28c1b0cc8969efd92",
+      "bytes": 549201,
+      "reference": {
+        "sha256": "26768f44dbb9ebfc8fe18eebc8a729610519a4cd06963df28c1b0cc8969efd92",
+        "size": 549201,
+        "manifest_sha256": "40e5064e6125a19b2fdab3c4d29620cb4c8c8bd776aeb92a90e0adab19b5c2f8"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/data/workbench/crossview/cache/c817cee59dc4b665850a4b1039b34281b01ce5cbe27dfc9eed59366ba3f864df/features.npz",
+      "sha256": "58540eba275c143f9c712e0860382013ab7b266d3ad7abfa9c7584ec91f8d231",
+      "bytes": 548738,
+      "reference": {
+        "sha256": "58540eba275c143f9c712e0860382013ab7b266d3ad7abfa9c7584ec91f8d231",
+        "size": 548738,
+        "manifest_sha256": "0913993e439010f086f019056f74ed33c94cac5c086c9b725f0953d706e45d6b"
+      }
+    },
+    {
+      "path": "/home/nadavo/localization-models/drone_loc/crossview_engine.py",
+      "sha256": "66630212cec1c85514dbc472d27b5bba0e9739deeb0f7b5be3327cfee6769e01",
+      "bytes": 31290,
+      "reference": {
+        "sha256": "66630212cec1c85514dbc472d27b5bba0e9739deeb0f7b5be3327cfee6769e01",
+        "size": 31290,
+        "manifest_sha256": "bf5165f60fa174cb501c13f0b37dc17c53a76155fe3b727d888086ad5db55833"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-crossdomain.npz",
+      "sha256": "7e0db0a3dfad8d195fdecc6289a7438118e0487f30286cec34f0000710c0243f",
+      "bytes": 22369731,
+      "reference": {
+        "sha256": "7e0db0a3dfad8d195fdecc6289a7438118e0487f30286cec34f0000710c0243f",
+        "size": 22369731,
+        "manifest_sha256": "00d95369daa4df95bb4904eb3fef493d38f085126043cacfb22da4cc4327faec"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/iteration-sources/ortholoc-samedomain.npz",
+      "sha256": "4b74fb7d1b25635f257d9638b6ebefb68f2dc6d698475295f0293324d493ca61",
+      "bytes": 15461847,
+      "reference": {
+        "sha256": "4b74fb7d1b25635f257d9638b6ebefb68f2dc6d698475295f0293324d493ca61",
+        "size": 15461847,
+        "manifest_sha256": "ce1577c2699dbf3962094433a490569f550bcc0ecf4398e1cdd774b5746cde3e"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/epropnp-search.json",
+      "sha256": "ace07b1540555083121526a428a83d75e81d0db3ff225423bc06d55bdca0eaec",
+      "bytes": 64328,
+      "reference": {
+        "sha256": "ace07b1540555083121526a428a83d75e81d0db3ff225423bc06d55bdca0eaec",
+        "size": 64328,
+        "manifest_sha256": "c52d852f41383697057f9551a6700f53ce5d738a8634907efc8afd164c38123b"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/epropnp.pdf",
+      "sha256": "33e7624b9166599ab87715654b76d9a528cf3292d2ac16f2e84aefebee172bd3",
+      "bytes": 5906520,
+      "reference": {
+        "sha256": "33e7624b9166599ab87715654b76d9a528cf3292d2ac16f2e84aefebee172bd3",
+        "size": 5906520,
+        "manifest_sha256": "e908f003e50ff3e4df8ac3eb0a565e3e30e50d3def05c42dd3e391e5695b62c7"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/epropnp.txt",
+      "sha256": "00616a6ff00c8f1ca9d2e283db111ebc4f87150864efd195db7e3050973b011e",
+      "bytes": 74520,
+      "reference": {
+        "sha256": "00616a6ff00c8f1ca9d2e283db111ebc4f87150864efd195db7e3050973b011e",
+        "size": 74520,
+        "manifest_sha256": "2637780a21fb1e04468daabd3cf65445e409fe42c24e66d2f3eb1c2d9bf6f095"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/gum-monte-carlo.pdf",
+      "sha256": "6d8548af875df112dfc5cf14eb974f5544341f4a31cbbdfc19fc5ed155d8fa20",
+      "bytes": 1489478,
+      "reference": {
+        "sha256": "6d8548af875df112dfc5cf14eb974f5544341f4a31cbbdfc19fc5ed155d8fa20",
+        "size": 1489478,
+        "manifest_sha256": "fb4b166e9f69239d3abe29cf49522dc1032df0c64367b7081f653b8380bfacb9"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/gum-monte-carlo.txt",
+      "sha256": "7805e755b7e0fb076a370fcca976d4c70c58477381f99befcbaac2cfc72ae53e",
+      "bytes": 245909,
+      "reference": {
+        "sha256": "7805e755b7e0fb076a370fcca976d4c70c58477381f99befcbaac2cfc72ae53e",
+        "size": 245909,
+        "manifest_sha256": "c438d0f873f1b1f72fbd2477b42ef232e6e66b1f41ae2de4e076b97f1a191bf5"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/nonlinear.json",
+      "sha256": "3c1d5054395186c0187f241c61b935e88236be50f0a25c97dded512b3cca2692",
+      "bytes": 102078,
+      "reference": {
+        "sha256": "3c1d5054395186c0187f241c61b935e88236be50f0a25c97dded512b3cca2692",
+        "size": 102078,
+        "manifest_sha256": "7afd4608efcef0ff2ea2b0d58745bc109585444cd59cc63f23e20e97da71f685"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/pnp.json",
+      "sha256": "5b4409fbafd2d881c7403e0a01f55121c10ae9a38b350c09f85bc2882d423fb9",
+      "bytes": 118637,
+      "reference": {
+        "sha256": "5b4409fbafd2d881c7403e0a01f55121c10ae9a38b350c09f85bc2882d423fb9",
+        "size": 118637,
+        "manifest_sha256": "6bb65df9e52a4e11e330bafdbdd3e6439a292f75507cc885dacf076fc5cee90d"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/requests.jsonl",
+      "sha256": "27b4b01b5d462d0d6ca88a084ca14b8fe48f9618128b1d90c0571ef6ab80d827",
+      "bytes": 12050,
+      "reference": {
+        "sha256": "27b4b01b5d462d0d6ca88a084ca14b8fe48f9618128b1d90c0571ef6ab80d827",
+        "size": 12050,
+        "manifest_sha256": "99942eac33cb47b44594adcc896e1cad75bfa59485b5f450277bf5d5dbfbc0a9"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/uncertainty-pnp.pdf",
+      "sha256": "18672f8e668a67aed6ebef1ae55a00cda3c53675e2df54cbe81ad9822bb53dde",
+      "bytes": 3992988,
+      "reference": {
+        "sha256": "18672f8e668a67aed6ebef1ae55a00cda3c53675e2df54cbe81ad9822bb53dde",
+        "size": 3992988,
+        "manifest_sha256": "58658ec22f8c6255d710fa968d78dae9272fd62cde9682d69a03aed902352b23"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/targeted-science-sources/uncertainty-pnp.txt",
+      "sha256": "b64c862f1c5a4f558d652b249f8cdd72b371c127fe54010379ae6e187ef33d8e",
+      "bytes": 46347,
+      "reference": {
+        "sha256": "b64c862f1c5a4f558d652b249f8cdd72b371c127fe54010379ae6e187ef33d8e",
+        "size": 46347,
+        "manifest_sha256": "da63b581c60c61daace4a5785cf27861417b20e4f9ef16dc6196b65136045db7"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/mechanism-first/candidates.json",
+      "sha256": "73708dc39af71d6eff439689ca476a91b9dae30e84f6fb74d413b334ccda1dd4",
+      "bytes": 66069,
+      "reference": {
+        "sha256": "73708dc39af71d6eff439689ca476a91b9dae30e84f6fb74d413b334ccda1dd4",
+        "size": 66069,
+        "manifest_sha256": "1e00a9d35602727a33bdc5cc0414f93472c9fbdefe3851496053e4cfb5b55903"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/actual-failure-inspection.json",
+      "sha256": "7d2501b50c2505dfa98c186784208b11e13e4d38024fec0129e87292cbae28d7",
+      "bytes": 22331,
+      "reference": {
+        "sha256": "7d2501b50c2505dfa98c186784208b11e13e4d38024fec0129e87292cbae28d7",
+        "size": 22331,
+        "manifest_sha256": "4df67e6d82fc0f53bd69b41d816bb7a33620cc29a58f3086eba18204020fb30e"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/closest-prior-art.json",
+      "sha256": "9a59063ae154ff490d6183ce9890e0af09706c31060ba6c139ed5d7302d2cc75",
+      "bytes": 4993,
+      "reference": {
+        "sha256": "9a59063ae154ff490d6183ce9890e0af09706c31060ba6c139ed5d7302d2cc75",
+        "size": 4993,
+        "manifest_sha256": "9a02b92d966e79f0b5e91428ce8039822fd8c9ebe8135df3bafc11b7e3363cfc"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/cost-and-integrity.json",
+      "sha256": "22dfe068e8a334fb49518c5a27772a697bbee49bc9268bbc57917b0115887c8c",
+      "bytes": 804,
+      "reference": {
+        "sha256": "22dfe068e8a334fb49518c5a27772a697bbee49bc9268bbc57917b0115887c8c",
+        "size": 804,
+        "manifest_sha256": "f4d30016768d77fe4fbd88bef0125c11d9f2fba6f7dee225a0cbe257da0c3719"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/derivative-checks.json",
+      "sha256": "7b23e8b001f00f02f175d95d1faf208ca3f8016f15f99b0f9a503ac5fe6b9f8b",
+      "bytes": 635,
+      "reference": {
+        "sha256": "7b23e8b001f00f02f175d95d1faf208ca3f8016f15f99b0f9a503ac5fe6b9f8b",
+        "size": 635,
+        "manifest_sha256": "ebed5876a4d86e8948a7ba85743a6fcea0fb5b2fc2e56165702b663234db545f"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/exact-retrieval-check.json",
+      "sha256": "4a520d80eb305c05c604f47e67832865b340241a28bb7e25c8f4667a898e5b58",
+      "bytes": 1027,
+      "reference": {
+        "sha256": "4a520d80eb305c05c604f47e67832865b340241a28bb7e25c8f4667a898e5b58",
+        "size": 1027,
+        "manifest_sha256": "cdc9c8480999f28f828ac74123b43fbe3795ce76da11f56f8b013c9ea8fe9a45"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/execution-failures.json",
+      "sha256": "61f80d9a4692f96e8e8ef4a97dfc91722c746f1e7d752dd1ffffba8fae83b6a2",
+      "bytes": 396,
+      "reference": {
+        "sha256": "61f80d9a4692f96e8e8ef4a97dfc91722c746f1e7d752dd1ffffba8fae83b6a2",
+        "size": 396,
+        "manifest_sha256": "adc70025ecdef4a8e42d3e9902b9aa4eeba74f29f7af96e737ee894ec4248210"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/experiment-analysis.json",
+      "sha256": "c5c2789b975aba96eba8e75384673bba2fdcd1c48e6939d9b85f55521d4a7d60",
+      "bytes": 4023,
+      "reference": {
+        "sha256": "c5c2789b975aba96eba8e75384673bba2fdcd1c48e6939d9b85f55521d4a7d60",
+        "size": 4023,
+        "manifest_sha256": "c199847a5d167c849679b3ea514e6969514b9cb50027abe0dbae07990870646a"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/experiment-execution.json",
+      "sha256": "a1d75bae1edf1e604707986dbec72e2b7e2ac6c88f44e1b80d58000f8389b50f",
+      "bytes": 336,
+      "reference": {
+        "sha256": "a1d75bae1edf1e604707986dbec72e2b7e2ac6c88f44e1b80d58000f8389b50f",
+        "size": 336,
+        "manifest_sha256": "32e081da543e0290e431ec58a52bac77e128eae1e5e629adc92f431e824ded0f"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/experiment-freeze.json",
+      "sha256": "8a58bc47fec4cc67b5e8169567a07736e0a491f308952fef7148e6bbbb54d87d",
+      "bytes": 338,
+      "reference": {
+        "sha256": "8a58bc47fec4cc67b5e8169567a07736e0a491f308952fef7148e6bbbb54d87d",
+        "size": 338,
+        "manifest_sha256": "b0e7770c0bc745d75ecfa1380bdeb692f2ee53edaec44d41ca433f866ba2fe7c"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/experiment-rows.jsonl",
+      "sha256": "321d6d4c0e1ac1e4262caa929286fe13bfff159aab903aea49596a8bdcd15669",
+      "bytes": 83098,
+      "reference": {
+        "sha256": "321d6d4c0e1ac1e4262caa929286fe13bfff159aab903aea49596a8bdcd15669",
+        "size": 83098,
+        "manifest_sha256": "4dbe3cc89300fd2ffd933f6d7aeda737e0af3e505aa92bc7344d409ce8fd34bf"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/independent-evaluation.json",
+      "sha256": "3123f43d9d2f263da3198674b4ad38aadcf7bb4ffcddf4f46a7019c0ec2be445",
+      "bytes": 8108,
+      "reference": {
+        "sha256": "3123f43d9d2f263da3198674b4ad38aadcf7bb4ffcddf4f46a7019c0ec2be445",
+        "size": 8108,
+        "manifest_sha256": "ca4bb4627d9effcd31b81e4b4e12f1bce94d6476925e766135bcb113c767275f"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/independent-evaluation.md",
+      "sha256": "61cef4e21b63b290fda50d1cba3df814aaa79fb1544c32f764b5232b7eed2d55",
+      "bytes": 6877,
+      "reference": {
+        "sha256": "61cef4e21b63b290fda50d1cba3df814aaa79fb1544c32f764b5232b7eed2d55",
+        "size": 6877,
+        "manifest_sha256": "495360b6c59e15795fe765c41cc6cc68b98d126d179a6095746016324885a634"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/m09-v2-protocol.json",
+      "sha256": "ef050359f41fa8ea12c9bc8ff88714a6901c7531a60e2910e1618c7e778f20c9",
+      "bytes": 7313,
+      "reference": {
+        "sha256": "ef050359f41fa8ea12c9bc8ff88714a6901c7531a60e2910e1618c7e778f20c9",
+        "size": 7313,
+        "manifest_sha256": "3c84bab92766d657899d5213badd64f4c59d0ec4f7f54aca137315372dca18b8"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/matches-crossdomain.npz",
+      "sha256": "199e44bc80355c6bc8a1170149a31bd234612d2d08a4eecfe2f7d840c3824036",
+      "bytes": 4037,
+      "reference": {
+        "sha256": "199e44bc80355c6bc8a1170149a31bd234612d2d08a4eecfe2f7d840c3824036",
+        "size": 4037,
+        "manifest_sha256": "4bc867f8b57ff8767308d342bc0fc7a8662fefd97a4b3864551a8b597423d4a3"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/matches-samedomain.npz",
+      "sha256": "65bf9a9974dfb3ed60f82bf2afc11384b013271e8e247bbca42e78d6c5ca9361",
+      "bytes": 5329,
+      "reference": {
+        "sha256": "65bf9a9974dfb3ed60f82bf2afc11384b013271e8e247bbca42e78d6c5ca9361",
+        "size": 5329,
+        "manifest_sha256": "efaba0c2d50b4ec6c4db95a9b73dbf18dec29874e9aaaaa92f3e3a73832e2993"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/real-matching.json",
+      "sha256": "7edef5c5b244714bc659d2afbb3fd963966e7ea7e8fdbfb5c3694759bae62c7b",
+      "bytes": 1897,
+      "reference": {
+        "sha256": "7edef5c5b244714bc659d2afbb3fd963966e7ea7e8fdbfb5c3694759bae62c7b",
+        "size": 1897,
+        "manifest_sha256": "4f00e94309ea615fbb33741560be1e903f1bcab333b4a0e0e54c1e332c425fb1"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/scientific-report.md",
+      "sha256": "a814ceb54395ddc2aaf5806cbeee5b83946e06bc7398c29d52f0af72594183f3",
+      "bytes": 5958,
+      "reference": {
+        "sha256": "a814ceb54395ddc2aaf5806cbeee5b83946e06bc7398c29d52f0af72594183f3",
+        "size": 5958,
+        "manifest_sha256": "ab9dbe1fd40ee2f1be1c0c24ada067c9db831a459f028bd5c8517bfc1f917031"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/selection-audit.json",
+      "sha256": "0fed473e65adfcc4bce7acbf1d202444b5fb6c2bbaf7beae0b46a3c99a8e4a12",
+      "bytes": 32793,
+      "reference": {
+        "sha256": "0fed473e65adfcc4bce7acbf1d202444b5fb6c2bbaf7beae0b46a3c99a8e4a12",
+        "size": 32793,
+        "manifest_sha256": "372886e36f2fe6e0a83a7b59bc247b28fa783814260da5bca81f8956af49f2ff"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/targeted-science/selection-audit.md",
+      "sha256": "fc2e69001fcffa8810229e2ada5c0c1087e52d17d448b7bef4fb765827a1d058",
+      "bytes": 20013,
+      "reference": {
+        "sha256": "fc2e69001fcffa8810229e2ada5c0c1087e52d17d448b7bef4fb765827a1d058",
+        "size": 20013,
+        "manifest_sha256": "779c8dd5277b2259f1d42739020a48b5331f1b724366a1697d8cb89f863c4f70"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/targeted_analysis.py",
+      "sha256": "f7e9dd67e29816b212fb3b628b64fb063122c2cd7ccf67b62c7b3162847d5522",
+      "bytes": 3673,
+      "reference": {
+        "sha256": "f7e9dd67e29816b212fb3b628b64fb063122c2cd7ccf67b62c7b3162847d5522",
+        "size": 3673,
+        "manifest_sha256": "297e462a0cdb0f7d0442a33d6288def420813c16dc984444a4335e71e1bb1c33"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/targeted_science.py",
+      "sha256": "d58eabe49437718c2da382adbbd8b2e91602326ab49d5d87466de79aaff37a67",
+      "bytes": 14751,
+      "reference": {
+        "sha256": "d58eabe49437718c2da382adbbd8b2e91602326ab49d5d87466de79aaff37a67",
+        "size": 14751,
+        "manifest_sha256": "1d1a68364c6047b9382ecaeb2df26d2304e7df6ea9d9e759b358cec3648b6909"
+      }
+    }
+  ],
+  "scope": "Local-only preservation of original hypotheses, actual input pairs, retained feature arrays and source logs, frozen executed code/protocol, every trial and failed preflight, primary-source acquisitions, independent audits and final scientific report. Integrity is not proof of scientific support."
+}

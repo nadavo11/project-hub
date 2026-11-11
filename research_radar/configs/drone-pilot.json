@@ -1,0 +1,16 @@
+{
+  "queries": [
+    "drone satellite geo localization dense correspondence",
+    "UAV satellite cross view geo localization uncertainty"
+  ],
+  "question": "When does successful region retrieval fail to support reliable metric localization?",
+  "max_papers": 20,
+  "max_requests": 40,
+  "time_budget_seconds": 1800,
+  "agent_timeout_seconds": 240,
+  "api_budget_usd": 0,
+  "compute_budget_hours": 0,
+  "search_depth": 1,
+  "agent_enabled": true,
+  "venues": ["CVPR", "ICCV", "ECCV"]
+}

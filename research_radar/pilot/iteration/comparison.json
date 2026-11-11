@@ -1,0 +1,67 @@
+{
+  "policies": {
+    "baseline": {
+      "benchmark": {
+        "counts": {
+          "true_positive": 5,
+          "true_negative": 5,
+          "false_positive": 0,
+          "false_negative": 0,
+          "abstained": 0
+        },
+        "overlap_recall": 1.0,
+        "distinct_recall": 1.0,
+        "balanced_accuracy": 1.0,
+        "coverage": 1.0,
+        "passed": true
+      },
+      "generated": 3,
+      "raw_reviewer_survival_votes": 1,
+      "raw_reviewer_families": [
+        "acquisition-or-system-design",
+        "geometry-or-identifiability",
+        "posthoc-score-or-selection"
+      ],
+      "distinct_and_experiment_ready": 0,
+      "candidate_ids": [
+        "R02",
+        "R03",
+        "R05"
+      ]
+    },
+    "revised": {
+      "benchmark": {
+        "counts": {
+          "true_positive": 5,
+          "true_negative": 5,
+          "false_positive": 0,
+          "false_negative": 0,
+          "abstained": 0
+        },
+        "overlap_recall": 1.0,
+        "distinct_recall": 1.0,
+        "balanced_accuracy": 1.0,
+        "coverage": 1.0,
+        "passed": true
+      },
+      "generated": 3,
+      "raw_reviewer_survival_votes": 2,
+      "raw_reviewer_families": [
+        "geometry-or-identifiability",
+        "posthoc-score-or-selection",
+        "representation-or-training"
+      ],
+      "distinct_and_experiment_ready": 0,
+      "candidate_ids": [
+        "R01",
+        "R04",
+        "R06"
+      ]
+    }
+  },
+  "interpretation": "Raw survival votes are inconsistent with some explanations and are NOT validated survivors. Independent adjudication is authoritative.",
+  "observed_review_failure": "R03 was called overlapping because it duplicates generated R01, which is not published prior art. R04 was marked surviving despite an underspecified statistic.",
+  "post_measurement_change": "Production prompt now explicitly separates within-campaign duplication from prior art. No retest or effectiveness claim for that added clarification.",
+  "historical_baseline": "Original pilot: five overlapping controls only, no false-rejection estimate, zero validated opportunities. Baseline here is a fresh old-policy rerun on identical inputs, not retroactively the original run.",
+  "scope": "Single paired-policy run; no causal improvement inference or paper acceptance prediction."
+}

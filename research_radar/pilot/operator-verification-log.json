@@ -1,0 +1,28 @@
+{
+  "scope": "Independent operator-side source-identity checks, before reading blind investigator output",
+  "date": "2026-11-09",
+  "requests": [
+    {"url":"https://arxiv.org/abs/2107.14068","observed":"On Charon's Far-Ultraviolet Surface Reflectance","result":"Rejected: unrelated to provisional LPN citation"},
+    {"url":"https://arxiv.org/abs/2303.11845","observed":"Frobenius algebras associated with the alpha-induction for equivariantly braided tensor categories","result":"Rejected: unrelated to provisional Sample4Geo citation"},
+    {"url":"https://arxiv.org/abs/2002.12186","observed":"University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization","result":"Identity and three-view/two-task abstract verified; ACM Multimedia 2020"},
+    {"url":"https://arxiv.org/abs/2204.00097","observed":"TransGeo: Transformer Is All You Need for Cross-view Image Geo-localization","result":"Identity and no-polar-transform/attention-guided non-uniform cropping abstract verified"},
+    {"url":"https://arxiv.org/abs/2305.15404","observed":"RoMa: Robust Dense Feature Matching","result":"Identity and frozen DINOv2/coarse anchors/fine refinement abstract verified"},
+    {"provider":"OpenAlex","query":"Each Part Matters Local Patterns Facilitate Cross-view Geo-localization","observed":"Exact title and DOI 10.1109/tcsvt.2021.3061265","result":"Identity verified; corrected key before reading auditor output"},
+    {"provider":"OpenAlex","query":"Sample4Geo Hard Negative Sampling For Cross-View Geo-Localisation","observed":"HTTP 429 Too Many Requests","result":"Explicit failure; reused previously successful real runtime source response to verify DOI 10.1109/iccv51070.2023.01545"},
+    {"url":"https://arxiv.org/abs/2011.14506","observed":"On Grothendieck ring of the sequence of walled Brauer algebras","result":"Rejected: another incorrect provisional LPN locator; never accepted as evidence"},
+    {"url":"https://openaccess.thecvf.com/content/ICCV2023/html/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.html","observed":"Web-fetch extraction returned proceedings boilerplate only","result":"Inconclusive rendering; not used as mechanism verification"}
+  ],
+  "costs": {
+    "http_requests": 9,
+    "download_bytes": null,
+    "elapsed_seconds": null,
+    "api_cost_usd": null,
+    "gpu_hours": 0
+  },
+  "limitations": [
+    "Tool page reads do not expose full response-byte measurements; counts are known but byte/time totals are incomplete.",
+    "Provisional model-memory bibliographic identifiers failed three times. No such identifier was retained as accepted evidence. This failure must remain in the final report.",
+    "Correct title/identifier is necessary but insufficient for a scientific mechanism claim; full-paper mechanism verification is separate.",
+    "Official CLI/Claude documentation reads are implementation work, excluded from research-request totals."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "arxiv_id": "2505.07622",
+  "citation_title": [
+    "A Unified Hierarchical Framework for Fine-grained Cross-view Geo-localization over Large-scale Scenarios"
+  ],
+  "citation_author": [
+    "Song, Zhuo",
+    "Zhang, Ye",
+    "Li, Kunhong",
+    "Wang, Longguang",
+    "Guo, Yulan"
+  ],
+  "citation_date": [
+    "2025/05/12"
+  ],
+  "citation_online_date": [
+    "2026/09/16"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2505.07622"
+  ],
+  "citation_arxiv_id": [
+    "2505.07622"
+  ],
+  "citation_abstract": [
+    "Cross-view geo-localization is a promising solution for large-scale localization problems, requiring the sequential execution of retrieval and metric localization tasks to achieve fine?grained predictions. However, existing methods typically focus on designing standalone models for these two tasks, resulting in inefficient collaboration and increased training overhead. In this paper, we propose UnifyGeo, a novel unified hierarchical geo-localization framework that integrates retrieval and metric localization tasks into a single network. Specifically, we first em?ploy a unified learning strategy to jointly learn multi-granularity representations, establishing task associations between retrieval and metric localization. Subsequently, we design a re-ranking mechanism guided by a dedicated loss function, which enhances geo-localization performance by improving both retrieval accuracy and metric localization references. Extensive experiments demonstrate that UnifyGeo significantly outperforms state-of-the?art methods in both task-isolated and task-associated settings. On the challenging VIGOR benchmark, UnifyGeo achieves 39.64% and 25.58% 1-meter-level localization recall under same-area and cross-area evaluations, respectively, demonstrating strong fine?grained localization capability in large-scale scenarios. Code will be available at https://github.com/chord-sz/UnifyGeo."
+  ],
+  "abstract": "Abstract: Cross-view geo-localization is a promising solution for large-scale localization problems, requiring the sequential execution of retrieval and metric localization tasks to achieve fine?grained predictions. However, existing methods typically focus on designing standalone models for these two tasks, resulting in inefficient collaboration and increased training overhead. In this paper, we propose UnifyGeo, a novel unified hierarchical geo-localization framework that integrates retrieval and metric localization tasks into a single network. Specifically, we first em?ploy a unified learning strategy to jointly learn multi-granularity representations, establishing task associations between retrieval and metric localization. Subsequently, we design a re-ranking mechanism guided by a dedicated loss function, which enhances geo-localization performance by improving both retrieval accuracy and metric localization references. Extensive experiments demonstrate that UnifyGeo significantly outperforms state-of-the?art methods in both task-isolated and task-associated settings. On the challenging VIGOR benchmark, UnifyGeo achieves 39.64% and 25.58% 1-meter-level localization recall under same-area and cross-area evaluations, respectively, demonstrating strong fine?grained localization capability in large-scale scenarios. Code will be available at this https URL ."
+}

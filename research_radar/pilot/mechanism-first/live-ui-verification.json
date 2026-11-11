@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "url": "http://127.0.0.1:8776/?campaign=campaign-16abc539e9ed#validation",
+  "actual_campaign_data": true,
+  "hypotheses": 12,
+  "filter_counts_including_history": {
+    "novelty": 8,
+    "scientific_significance": 7,
+    "technical_feasibility": 8,
+    "insufficient_evidence": 5
+  },
+  "cases": [
+    "All twelve original hypotheses visible",
+    "Four actual reason filters match stored classifications",
+    "Independent adjudication visible in elimination history",
+    "Prior-art navigation opens preserved external-source evidence",
+    "Experimental observation explicitly distinguishes diagnostic from planned performance experiment",
+    "Independent ITERATE verdict visible",
+    "Reload preserves all papers, hypotheses, validations and decisions"
+  ],
+  "javascript_errors": [],
+  "records_unchanged": true,
+  "record_sha256": "03bd9604b7f32680c0dbc8c5c06a602ac1a83c8e6747c84d53d540ed9909bb2d",
+  "screenshots": [
+    "/home/nadavo/.copilot/session-state/bb127eac-8838-4a02-b1a0-518ea8a471d4/files/radar-mechanism-final-board.png",
+    "/home/nadavo/.copilot/session-state/bb127eac-8838-4a02-b1a0-518ea8a471d4/files/radar-mechanism-final-validation.png"
+  ]
+}

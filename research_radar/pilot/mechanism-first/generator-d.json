@@ -1,0 +1,216 @@
+{
+  "job_id": "job-7517e671849e",
+  "completed_at": "2026-11-10T08:23:43.937068+00:00",
+  "result": {
+    "candidates": [
+      {
+        "local_id": "L1",
+        "limitation_id": "L1",
+        "title": "Support-Extent Gated Pose via Weighted Spatial Covariance Eigen-Ratio of Inlier Matches",
+        "exact_failure": "Below about 20% covisibility, GIM+DKM with AdHoP shows sharp translation and rotation error increases (authors' report, not reproduced). The authors attribute this to concentrated matches, but that cause was not isolated.",
+        "mechanism": {
+          "inputs": [
+            "Inlier 2D query pixel coordinates u_i (px), available from any matcher+RANSAC output",
+            "Per-inlier DSM-lifted heights z_i (m) and the nominal focal length f (px)",
+            "Match confidences w_i in [0,1]"
+          ],
+          "outputs": [
+            "Scalar support-extent index S (unitless, in [0,1])",
+            "Binary accept/reject flag",
+            "Optionally a 3x3 translation covariance inflation factor (unitless)"
+          ],
+          "operations": [
+            "1. Normalize coordinates: x_i = (u_i - c) / (0.5*diag), where c is the image center.",
+            "2. Compute the weighted centroid mu = sum(w_i x_i) / sum(w_i). Compute the weighted 2x2 covariance C = sum(w_i (x_i-mu)(x_i-mu)^T) / sum(w_i).",
+            "3. Compute the tilt-aware depth spread: sigma_z = weighted std of (r3·P_i) over inliers, divided by the mean depth.",
+            "4. S = sqrt(lambda_min(C)) * (1 + sigma_z) / sqrt(lambda_max_uniform). Here lambda_max_uniform is the eigenvalue of the covariance of a uniform distribution over the image, which is 1/12 in the unit square, so the denominator is a constant.",
+            "5. Reject if S < tau. Otherwise, inflate the translation covariance by (S0/S)^2.",
+            "6. The decision is made after the matcher and before PnP. It does not alter matching or run a second pose estimator."
+          ],
+          "parameters": [
+            "tau is fixed at the 20th percentile of S on a calibration split of OrthoLoC. S0 is the median S on that split. Both are tuned only on a split disjoint from evaluation, split by scene."
+          ],
+          "degenerate_cases": [
+            "Fewer than 4 inliers: S = 0 and the query is rejected.",
+            "Collinear inliers: lambda_min = 0 and the query is rejected.",
+            "Constant depth: sigma_z = 0 and S reduces to the pure 2D spread."
+          ],
+          "non_equivalence": "Covariance-trace and bounding-box spread measures are scale-dominated by the long axis. Take two match sets with the same total inlier count and the same 2D variance trace: set A is isotropic over a disc, and set B lies along a thin strip. S separates A from B because it uses lambda_min, whereas trace or inlier count cannot. Against an inlier-count gate, S also differs when a large number of inliers is concentrated in a small patch. This reduces to an established conditioning measure, namely the smallest eigenvalue of a point-spread (information-like) matrix. It is therefore a cheap predictor to test, not a new principle."
+        },
+        "prior_art": [
+          {
+            "paper_id": "independent-O3",
+            "already_solves": "Selects geometric sources by conditioning/E-optimal Fisher information, the same family as using lambda_min.",
+            "does_not_solve": "It selects sensor arrangements, not post-hoc gating of matcher inliers. Whether it covers this exact use is uncertain."
+          },
+          {
+            "paper_id": "ortholoc",
+            "already_solves": "Reports the covisibility failure and applies AdHoP, which promotes spatially diverse matches.",
+            "does_not_solve": "It supplies no per-query predictor of failure from the match distribution. It requires at least 20% covisibility as a stated condition."
+          }
+        ],
+        "most_likely_failure": "Error at low covisibility may come from wrong matches or DSM mismatch rather than concentration. S would then not predict error better than inlier count or reprojection residual.",
+        "significance": "If S predicts failure, it gives a nearly free reject signal and tests the authors' unisolated causal explanation. If it does not, the concentration explanation is weakened.",
+        "falsification": {
+          "data": "The two OrthoLoC demo NPZs plus, if obtainable within budget, the public OrthoLoC test sets. Run SP+LG or a CPU-feasible matcher, using synthetic matches only where matcher outputs are unavailable. Build a controlled experiment by cropping queries to 10-40% covisibility by masking image regions. This crop-based set is separate from the authors' natural covisibility data.",
+          "baselines": [
+            "Inlier count",
+            "Mean reprojection residual",
+            "Covisibility fraction (oracle)",
+            "Trace of the 2D spatial covariance",
+            "Convex-hull area of inliers"
+          ],
+          "primary_metric": "AUROC for predicting TE>1m or RE>1deg, in the low-covisibility stratum only.",
+          "success": "AUROC of S at least 0.05 above the best baseline, with a 95% bootstrap CI excluding 0, on at least 200 held-out queries.",
+          "failure": "AUROC gain below 0.02, or S inferior to inlier count. In either case, drop the concentration-based predictor.",
+          "cpu_budget": "About 1-2 days. PnP and the S computation take under 1 s per query. Matching on CPU takes about 2-5 s per pair at 200-500 queries.",
+          "leakage_controls": [
+            "Calibrate tau and S0 on scenes disjoint from evaluation scenes.",
+            "Do not use ground-truth pose to compute S.",
+            "Use covisibility only as a stratifier and an oracle baseline."
+          ],
+          "unavailable_inputs": [
+            "Cached matcher outputs",
+            "GIM+DKM weights, if not available on CPU",
+            "Full OrthoLoC test set, if not downloaded"
+          ]
+        }
+      },
+      {
+        "local_id": "L2",
+        "limitation_id": "L2",
+        "title": "Leave-One-Height-Mode-Out PnP Instability: Sensitivity of Pose to Elevation Perturbation Direction",
+        "exact_failure": "SP+LG matching error is 2.5 px under both the DOP and DOP+DSM shifts, yet TE rises from 0.42 to 1.07 m and 1m-1° recall falls from 71.3% to 42.3% (authors' report, not reproduced). Image residual therefore does not reveal elevation error.",
+        "mechanism": {
+          "inputs": [
+            "Inlier matches (u_i, X_i,y_i) in px and orthophoto metres, with DSM heights z_i (m)",
+            "Camera intrinsics K (px), available from the nominal camera",
+            "DSM raster, plus its local roughness (m)"
+          ],
+          "outputs": [
+            "Per-query pose sensitivity s (m per m of DSM perturbation)",
+            "A reject flag"
+          ],
+          "operations": [
+            "1. Fit pose T* by PnP-RANSAC on the lifted points.",
+            "2. Build K = 8 smooth height perturbation fields dz_k. These are low-order modes: a bias, two tilt modes, and quadratic terms over the footprint, each scaled to 1 m RMS.",
+            "3. For each k, re-solve PnP (warm-started from T*) with z_i + dz_k(x_i,y_i) and record the camera-center shift t_k (m).",
+            "4. s = max_k |t_k|. Equivalent to a finite-difference Jacobian of camera center with respect to the mode coefficients, taking the max-norm.",
+            "5. Reject if s exceeds the threshold tau_s. The perturbation modes are fixed in advance."
+          ],
+          "parameters": [
+            "K = 8 modes and the 1 m RMS amplitude are fixed a priori.",
+            "tau_s is set at a calibration-split quantile."
+          ],
+          "degenerate_cases": [
+            "Fewer than 6 inliers: s = infinity and the query is rejected.",
+            "Flat DSM and a nadir camera: s is dominated by the bias mode, which is a pure height-translation coupling (a known focal-length/height ambiguity)."
+          ],
+          "non_equivalence": "This reduces to the analytic Jacobian sensitivity (standard first-order error propagation) of PnP with respect to elevation. At first order it is identical to analytic propagation, and its advantage can only come from nonlinearity, RANSAC, or finite-difference effects. A separating counterexample is a scene where the inlier set switches at the perturbation. Finite re-solving then captures the change in the inlier set, which the linearized covariance cannot. If no such cases occur, the method is equivalent and should be reported as such."
+        },
+        "prior_art": [
+          {
+            "paper_id": "independent-O2",
+            "already_solves": "Propagates camera/measurement errors into per-point covariance, including cross-covariance.",
+            "does_not_solve": "It does not target selective abstention under external DSM errors. Its first-order analytic form is the comparator."
+          },
+          {
+            "paper_id": "ricloc",
+            "already_solves": "Consensus dispersion and covariance failure-ranking scores.",
+            "does_not_solve": "It requires posed references and does not perturb elevation fields."
+          }
+        ],
+        "most_likely_failure": "The first-order analytic Jacobian matches s within noise, so the method is redundant. Alternatively, the real error comes from horizontal DOP misregistration rather than height error.",
+        "significance": "A cheap test of whether elevation sensitivity explains the unmodeled pose degradation that image residuals miss.",
+        "falsification": {
+          "data": "Two OrthoLoC demo NPZs, extended synthetically. Perturb DSM with known smooth plus building-scale errors, making the injected error ground truth known and reported as synthetic. Use the same-domain data for matches.",
+          "baselines": [
+            "Analytic first-order Jacobian covariance",
+            "Mean reprojection residual",
+            "Inlier count"
+          ],
+          "primary_metric": "Spearman correlation between s and actual TE under injected DSM errors, and AUROC for TE>1m.",
+          "success": "Spearman at least 0.15 above the analytic Jacobian and the 95% CI excludes 0, on at least 300 perturbation trials.",
+          "failure": "Difference from the analytic Jacobian below 0.03. In that case, report equivalence and stop.",
+          "cpu_budget": "About 1 day. Each query needs 8 PnP solves at under 50 ms, so thousands of trials fit.",
+          "leakage_controls": [
+            "Perturbation fields used for scoring are drawn independently of the injected-error fields.",
+            "Calibrate thresholds on separate scenes."
+          ],
+          "unavailable_inputs": [
+            "Independently certified external-DSM error truth",
+            "Cached matcher outputs",
+            "Real external-DSM validation"
+          ]
+        }
+      },
+      {
+        "local_id": "L3",
+        "limitation_id": "L3",
+        "title": "Retrieval Top-K Reciprocal-Rank Asymmetry as a Test of 'Aliased Satellite Tiles' Miss Cause",
+        "exact_failure": "After VCLS and SACW, Recall@1 is 72.64% on OffNadirLoc, leaving 27.36% top-1 misses (authors' aggregate report, not reproduced). The cause is unknown.",
+        "mechanism": {
+          "inputs": [
+            "Query descriptors q (unit-norm, dimension d) for each UAV view",
+            "Satellite gallery descriptors g_j (unit-norm)",
+            "Group structure: the M views sharing one location, available at test time only if the group is known"
+          ],
+          "outputs": [
+            "Per-query reciprocal-rank asymmetry A (rank units)",
+            "A falsifiable partition of misses into 'alias' misses and 'other' misses"
+          ],
+          "operations": [
+            "1. For a query q, take its top-1 retrieved tile j*.",
+            "2. Compute the reverse rank r = rank of q among the gallery-tile-j* neighbors, using all query descriptors in the test set as the pool.",
+            "3. A = log(r).",
+            "4. Hypothesis H: the misses are dominated by hub tiles, meaning tiles with high hubness (k-occurrence) such as repetitive textures.",
+            "5. Test: compute the k-occurrence N_k(j) for each tile, and predict a miss if N_k(j*) is above the 90th percentile and A is large.",
+            "6. Apply a hubness correction (CSLS: 2cos(q,g) - r_g, where r_g is the mean cosine to the tile's k nearest queries). Recompute Recall@1."
+          ],
+          "parameters": [
+            "k = 10 and the 90th-percentile cutoff are fixed a priori. CSLS has no tuned parameter other than k."
+          ],
+          "degenerate_cases": [
+            "Test pool smaller than k: skip the correction.",
+            "Uniform hubness: CSLS equals plain cosine ranking, so Recall@1 is unchanged."
+          ],
+          "non_equivalence": "This reduces to CSLS/hubness reduction, which is established. The separating counterexample is a gallery where misses are caused by genuine view-specific appearance divergence rather than hub tiles: there N_k is uniform, CSLS leaves recall unchanged, and H is falsified. This tests H; it is not a new correction operation."
+        },
+        "prior_art": [
+          {
+            "paper_id": "offnadirloc",
+            "already_solves": "Spatial weighting and group-coherent supervision to suppress repetitive textures.",
+            "does_not_solve": "It does not report a hubness analysis, and the cause of the remaining misses is unestablished. Whether others have analyzed this is uncertain."
+          },
+          {
+            "paper_id": "sample4geo",
+            "already_solves": "Hard negative sampling via embedding neighbors during training.",
+            "does_not_solve": "It is a training-time method, not a test-time hubness diagnostic."
+          }
+        ],
+        "most_likely_failure": "The miss rate is not concentrated on hub tiles. CSLS gives under 0.5 points of Recall@1 and H is falsified.",
+        "significance": "Separates a cheap, testable cause (hub tiles) from other explanations, so effort is not misdirected.",
+        "falsification": {
+          "data": "OffNadirLoc descriptors, which require a pretrained DINOv2 plus ONLoc model run on CPU; the benchmark may not be available. Fallback: use any public cross-view set with a frozen DINOv2 baseline, clearly labeled as a different dataset.",
+          "baselines": [
+            "Plain cosine ranking",
+            "Random tile-level miss predictor matching the same flag rate"
+          ],
+          "primary_metric": "Recall@1 delta from CSLS, and the fraction of misses above the hubness percentile cutoff relative to the 10% base rate.",
+          "success": "CSLS gains at least 1.5 Recall@1 points with a bootstrap CI excluding 0, and at least 25% of misses land on the top-10% hub tiles.",
+          "failure": "Gain under 0.5 points, or under 15% of misses on hub tiles. Then reject H.",
+          "cpu_budget": "1-2 days. Embedding extraction for a few thousand images with DINOv2-B on CPU takes hours; CSLS itself is seconds.",
+          "leakage_controls": [
+            "Compute hubness using only test queries, with no labels.",
+            "Fix k before seeing results."
+          ],
+          "unavailable_inputs": [
+            "OffNadirLoc benchmark and trained ONLoc weights",
+            "Cached descriptors",
+            "Group labels at test time, if unknown"
+          ]
+        }
+      }
+    ]
+  }
+}

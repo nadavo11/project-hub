@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "live_radar_record": "pointmatch-attribution-v1",
+  "pointmatch_links": 12,
+  "cross_application_handoff": true,
+  "annotations_unavailable_disclosed": true,
+  "campaign_paused": true,
+  "m09_stopped": true,
+  "post_requests_started": 0,
+  "page_errors": []
+}

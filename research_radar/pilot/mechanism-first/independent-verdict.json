@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "audit_id": "mechanism-first-2026-11-10-final-independent",
+  "verdict": "ITERATE",
+  "summary": "Twelve frozen proposals produced three provisional finalists. None meets the mechanism/specification and discriminating-test gates as written: M06 has an ambiguous MAP update and established operator overlap, M08 has established Schur-covariance overlap and a reversed test direction, and M09 leaves its eight modes and separating inlier-switch protocol incomplete. These are not blanket rejections of their application-level diagnostic questions. No candidate performance experiment ran, and no scientific quality or diversity improvement over the previous audited 0/3 is established.",
+  "defensible_as_written": 0,
+  "experimentally_supported": 0,
+  "audited_finalists": 3,
+  "generated_candidates": 12,
+  "count_scope": "0/3 externally audited frozen finalists, not 0/12 externally adjudicated candidates. Missing performance experiments alone are not the reason for the as-written count.",
+  "report": "research_radar/pilot/mechanism-first/independent-validation-report.md",
+  "frozen_shortlist": ["M09", "M08", "M06"],
+  "retrospective_reselection_or_candidate_repairs": false,
+  "finalist_dispositions": [
+    {
+      "id": "M09",
+      "status": "revise_incomplete_separating_mechanism",
+      "defensible_as_written": false,
+      "experimentally_supported": false,
+      "novelty_status": "unresolved_beyond_established_linear_limit",
+      "fatal_overlap_of_all_application_questions": false,
+      "axes": {
+        "novelty": "unresolved",
+        "scientific_significance": "plausible_diagnostic_value_unmeasured",
+        "technical_feasibility": "specification_incomplete_runtime_unverified",
+        "insufficient_evidence": "performance_gate_not_tested"
+      },
+      "elimination_reasons": [
+        {
+          "dimension": "novelty",
+          "reason": "The fixed-inlier differentiable limit is ordinary input sensitivity. Neither inverse-Hessian dispersion in mf-bundle, systematic SfM error propagation in independent-O2, nor pose-to-image Monte Carlo in mf-metrology establishes exact prior publication of perturbed-DSM PnP-RANSAC re-solving. Novelty is unresolved, not disproved; absent exact prior art is not positive novelty evidence.",
+          "paper_ids": ["mf-bundle", "independent-O2", "mf-metrology"],
+          "blocking_as_written": false
+        },
+        {
+          "dimension": "scientific_significance",
+          "reason": "Sensitivity could be a useful diagnostic, but the equal rounded matching error and different pose errors in OrthoLoC Table 6 do not establish that elevation error is the cause or that image residuals generally conceal it. The domain populations can differ. The diagnostic measures response to hypothetical perturbations, not the actual DSM error distribution or a calibrated risk bound.",
+          "paper_ids": ["ortholoc"],
+          "blocking_as_written": true
+        },
+        {
+          "dimension": "technical_feasibility",
+          "reason": "Eight fixed modes are promised, but bias, two tilts and the three quadratic monomials specify only six. The candidate does not define whether each re-solve reruns RANSAC, its seeds/thresholds, or how inlier switching is separated from solver randomness. These omissions concern its sole proposed advantage over analytic propagation. Under-50ms solves and a runnable matcher stack are not measured.",
+          "paper_ids": [],
+          "artifact_refs": ["candidates.json:M09", "prerequisite-status.json"],
+          "blocking_as_written": true
+        },
+        {
+          "dimension": "insufficient_evidence",
+          "reason": "D09 verifies only a uniform-height coordinate identity on 92 valid points. It does not execute PnP, RANSAC, nonlinear modes, failure ranking or the required >=0.15 Spearman advantage. Two source scenes and synthetic perturbations cannot independently establish external-DSM performance; the 0.03-to-0.15 decision interval remains unspecified.",
+          "paper_ids": ["ortholoc"],
+          "artifact_refs": ["diagnostic-results.json:D09", "candidates.json:M09.falsification"],
+          "blocking_as_written": true
+        }
+      ],
+      "retained_value": "An explicitly bounded test of whether finite perturbation/re-solving detects nonlinear or inlier-switch sensitivity beyond analytic derivatives on the same mode basis. Such a future revision receives no credit in this frozen batch."
+    },
+    {
+      "id": "M08",
+      "status": "revise_established_operator_and_test_definition",
+      "defensible_as_written": false,
+      "experimentally_supported": false,
+      "novelty_status": "established_schur_marginal_covariance",
+      "fatal_overlap_of_all_application_questions": false,
+      "axes": {
+        "novelty": "established_operator_no_distinction_shown",
+        "scientific_significance": "diagnostic_question_open",
+        "technical_feasibility": "algebra_valid_specification_defective",
+        "insufficient_evidence": "performance_gate_not_tested"
+      },
+      "elimination_reasons": [
+        {
+          "dimension": "novelty",
+          "reason": "For nonsingular information, (I_pp-I_pf I_ff^-1 I_fp)^-1 equals the pose block of I^-1. This is the block inverse in mf-bundle Section 6.1, equations 16-18, combined with its Section 3 inverse-Hessian dispersion and calibration priors. Eigenvalue degeneracy flagging also appears in mf-degeneracy. These support established-operation overlap, not fatal overlap of every OrthoLoC evaluation question.",
+          "paper_ids": ["mf-bundle", "mf-degeneracy"],
+          "artifact_refs": ["diagnostic-results.json:D08"],
+          "blocking_as_written": true
+        },
+        {
+          "dimension": "scientific_significance",
+          "reason": "Whether focal uncertainty and directional information add useful failure prediction beyond overlap remains testable. The frozen baselines omit equivalent full joint covariance and the known-focal covariance ablation. Beating hull area and inlier count would not establish a distinctive contribution; correlation alone would not isolate the authors' concentration explanation.",
+          "paper_ids": ["ortholoc", "mf-bundle"],
+          "blocking_as_written": true
+        },
+        {
+          "dimension": "technical_feasibility",
+          "reason": "The success gate asks for positive partial Spearman >=0.5 between log minimum information and log translation error, although its hypothesis predicts lower information with higher error. No negation, inverse or absolute value is specified. Also, scaling only rotation rows does not specify a symmetric coordinate transformation, and a six-dimensional pose eigenvector cannot directly report a focal component without a recovery rule.",
+          "paper_ids": ["mf-bundle"],
+          "artifact_refs": ["candidates.json:M08.mechanism", "candidates.json:M08.falsification"],
+          "blocking_as_written": true
+        },
+        {
+          "dimension": "insufficient_evidence",
+          "reason": "D08's 64 SPD identities are not PnP trials and do not test physical scaling, singular geometry, biased matches or the proposed >=2000-trial correlation. No candidate performance run exists. Gaussian exact-projection simulations would test a narrow model, not by themselves determine the cause of the reported real-image degradation.",
+          "paper_ids": ["ortholoc"],
+          "artifact_refs": ["diagnostic-protocol.json:D08", "diagnostic-results.json:D08"],
+          "blocking_as_written": true
+        }
+      ],
+      "retained_value": "A covariance diagnostic evaluation, including an explicit focal-uncertainty ablation, may be useful. Established algebra does not settle that empirical question."
+    },
+    {
+      "id": "M06",
+      "status": "revise_established_operator_and_ambiguous_map_update",
+      "defensible_as_written": false,
+      "experimentally_supported": false,
+      "novelty_status": "established_map_covariance_and_spectral_degeneracy",
+      "fatal_overlap_of_all_application_questions": false,
+      "axes": {
+        "novelty": "established_operator_no_distinction_shown",
+        "scientific_significance": "directional_diagnostic_value_unmeasured",
+        "technical_feasibility": "update_and_prior_specification_incomplete",
+        "insufficient_evidence": "performance_gate_not_tested"
+      },
+      "elimination_reasons": [
+        {
+          "dimension": "novelty",
+          "reason": "MAP calibration/pose priors and inverse-Hessian dispersion are established in mf-bundle. mf-degeneracy retains prediction in weak eigendirections; mf-spectral injects prior information in low-information directions. These are close established mechanisms, not exact identity of every gating rule: M06 adds a full prior, while the latter two use directional remapping/gating.",
+          "paper_ids": ["mf-bundle", "mf-degeneracy", "mf-spectral"],
+          "blocking_as_written": true
+        },
+        {
+          "dimension": "scientific_significance",
+          "reason": "Directional failure prediction could add information beyond a scalar covariance trace. No general trace-monotonicity theorem makes this question vacuous. However, the candidate lacks a matched full-covariance/directional baseline, and predictive success or failure alone would not prove or refute concentration as the cause of low-overlap degradation.",
+          "paper_ids": ["ortholoc", "mf-bundle"],
+          "blocking_as_written": true
+        },
+        {
+          "dimension": "technical_feasibility",
+          "reason": "The update theta_prior+H^-1 J^T r does not define the residual evaluation point or consistently state noise weighting and the prior correction. D06 disproves the conventional current-iterate interpretation; the prior-centred linear unit-noise interpretation is standard MAP. Prior means/uncertainties and their deployment availability are unspecified; using benchmark truth as a prior would violate the scoring-only restriction.",
+          "paper_ids": ["mf-bundle"],
+          "artifact_refs": ["candidates.json:M06", "diagnostic-results.json:D06", "prerequisite-status.json"],
+          "blocking_as_written": true
+        },
+        {
+          "dimension": "insufficient_evidence",
+          "reason": "No matching, MAP pose-performance, AUROC, bootstrap or prior-quality experiment ran. D06 is a conditional two-coordinate counterexample only. Many crops from two scenes are not many independent scenes, and a well-conditioned biased match set remains a possible failure case rather than a measured dominant cause.",
+          "paper_ids": ["ortholoc"],
+          "artifact_refs": ["diagnostic-results.json:D06", "candidates.json:M06.falsification"],
+          "blocking_as_written": true
+        }
+      ],
+      "retained_value": "A fixed-prior, directional observability evaluation against matched covariance baselines is a legitimate possible study, not a validated new estimator."
+    }
+  ],
+  "diagnostics": {
+    "implementation_sha256": "88f05f0f1f928cc7cac36e4cf66e9eb72757eda1b3182ebe94b3de1f589a0f02",
+    "implementation_reviewed": true,
+    "independent_full_candidate_reruns": 0,
+    "full_candidate_experiments_run": 0,
+    "D06": {
+      "expected": "Current-iterate residual interpretation differs from MAP; prior-centred linear interpretation equals MAP.",
+      "observed_exact_map": [1.6, 2.0],
+      "observed_current_residual_result": [0.0, 0.0],
+      "observed_max_error": 2.0,
+      "observed_prior_centred_max_error": 0.0,
+      "interpretation": "Expected conditional counterexample confirmed in retained execution, not unconditional invalidity."
+    },
+    "D08": {
+      "expected": "Inverse Schur block equals corresponding full inverse block within 1e-9.",
+      "cases": 64,
+      "maximum_entry_difference": 3.3306690738754696e-16,
+      "interpretation": "All recorded SPD identity cases pass; no performance advantage measured."
+    },
+    "D09": {
+      "expected": "Uniform-height shift compensated by translation preserves projections within 1e-6 pixels and derivative within 1e-10.",
+      "attempted_points": 96,
+      "valid_points": 92,
+      "invalid_points_excluded": 4,
+      "controlled_projections": 552,
+      "maximum_projection_difference_px": 1.1368683772161603e-13,
+      "maximum_translation_derivative_difference": 1.4210854715202004e-14,
+      "interpretation": "Expected identity passes on valid points. The four invalid points are data exclusions, not candidate failures. No PnP, RANSAC or nonlinear advantage was tested."
+    }
+  },
+  "review_errors": [
+    {
+      "id": "RE01",
+      "stage": "screening",
+      "affected": ["M03", "M04", "M10", "M12"],
+      "error": "Unknown residual L3 cause treated as a reason to reject a falsifiable hypothesis.",
+      "correction": "Unknown cause permits hypothesis testing; it forbids presenting the hypothesized cause as already observed. Oracle/proxy limitations and specification defects must be assessed separately."
+    },
+    {
+      "id": "RE02",
+      "stage": "screening",
+      "affected": ["M03", "M04", "M10", "M12"],
+      "error": "Unverified assets called unavailable.",
+      "correction": "No acquisition failure establishes global unavailability. Default Python is missing numpy/scipy/cv2/torch, independently checked here; installation impossibility is not established."
+    },
+    {
+      "id": "RE03",
+      "stage": "screening",
+      "affected": ["M09"],
+      "error": "Selection rationale says all three novelty-fail while M09's own axis is unresolved.",
+      "correction": "Retain M09 novelty as unresolved beyond its standard linear limit; missing matcher outputs are an evidence/readiness issue, not a novelty refutation."
+    },
+    {
+      "id": "RE04",
+      "stage": "screening_and_candidate_framing",
+      "affected": ["M02", "M06", "M07", "M08"],
+      "error": "Reported <20% regime and focal/translation discussion promoted to a universal cutoff, implemented rejection rule, or isolated causal result.",
+      "correction": "OrthoLoC reports degradation and an explanation. No universal mathematical boundary, explicit 20%-gate implementation, or isolated focal-tz cause is established by these passages."
+    },
+    {
+      "id": "RE05",
+      "stage": "final_review",
+      "affected": ["M06"],
+      "error": "Posterior directional standard deviation asserted monotonic in covariance trace.",
+      "correction": "Equal trace does not determine the spectrum: diag(9,1) and diag(5,5) both have trace 10 but different maximum directional standard deviations. Full covariance equivalence does not imply scalar-trace equivalence."
+    },
+    {
+      "id": "RE06",
+      "stage": "final_review",
+      "affected": ["M06", "M08", "M09"],
+      "error": "SIFT/CPU matching availability or cheap solve throughput asserted without runtime evidence.",
+      "correction": "cv2, numpy, scipy and torch are absent in the checked default Python. Numeric samples are available; runnable matching and solve latency are not established. This is not a permanent infeasibility finding."
+    },
+    {
+      "id": "RE07",
+      "stage": "final_review",
+      "affected": ["M08"],
+      "error": "Bias called the dominant real failure mode and synthetic success characterized as near-guaranteed.",
+      "correction": "No measured cause partition establishes dominance. Correctly specified local Fisher models motivate a prediction, but finite-sample nonlinear trial success is not guaranteed. Synthetic tests have limited scope, not zero potential information."
+    },
+    {
+      "id": "RE08",
+      "stage": "final_review_and_candidate_framing",
+      "affected": ["M09"],
+      "error": "Aggregate Table 6 contrast used to imply a causal elevation-error explanation or residual blindness.",
+      "correction": "Different domain populations and equal rounded aggregate matching errors do not isolate elevation changes, hold matches fixed, or establish a per-query residual mechanism."
+    },
+    {
+      "id": "RE09",
+      "stage": "screening",
+      "affected": ["M11"],
+      "error": "Reviewer accepts the statement N<=6 implies P_perp=0.",
+      "correction": "J_pose is 2N by 6; for N=4, range rank is at most 6 in an 8-dimensional residual space, so its orthogonal complement cannot be zero. Restricting perturbations to DCT modes also does not by itself contradict a per-point Jacobian."
+    },
+    {
+      "id": "RE10",
+      "stage": "screening",
+      "affected": ["M12"],
+      "error": "Different diagnostic scores are called a CSLS inconsistency without a precise operator argument.",
+      "correction": "For fixed query ranking, the omitted query-neighborhood CSLS term is constant across gallery candidates. The actual unresolved issue is the undefined 'A is large' threshold and transductive protocol, not necessarily incorrect gallery ranking."
+    },
+    {
+      "id": "RE11",
+      "stage": "screening_and_final_review",
+      "affected": ["M08"],
+      "error": "Reviewers miss the sign inconsistency in the frozen success metric.",
+      "correction": "Minimum information should decrease as error increases under the stated hypothesis; a positive log-kappa/log-error success threshold tests the opposite direction. Do not silently negate the frozen statistic."
+    },
+    {
+      "id": "RE12",
+      "stage": "final_review",
+      "affected": ["M09"],
+      "error": "The inherited independent-O2 quotation is located on PDF page 5 in the review packet.",
+      "correction": "The exact normalized quotation is present in the preserved primary text at newline 494, PDF page order 6. This is a locator error, not a fabricated quotation."
+    }
+  ],
+  "review_error_count": 12,
+  "review_error_count_definition": "Twelve grouped issues, not independent samples or an error-rate estimate. These corrections do not alter the frozen shortlist.",
+  "portfolio": {
+    "limitation_counts": {"L1": 4, "L2": 4, "L3": 4},
+    "broad_groups": [
+      {"family": "support_geometry_and_observability", "ids": ["M02", "M06", "M07", "M08"]},
+      {"family": "height_sensitivity_and_residual_visibility", "ids": ["M01", "M05", "M09", "M11"]},
+      {"family": "retrieval_residual_diagnosis", "ids": ["M03", "M04", "M10", "M12"]}
+    ],
+    "finer_L3_distinctions": {
+      "centroid_spread_intervention": ["M03", "M04"],
+      "azimuth_displacement_intervention": ["M10"],
+      "hubness_and_CSLS": ["M12"]
+    },
+    "interpretation": "Three broad families, or five if the three distinct L3 operations are separated. Taxonomy-dependent descriptive counts, not twelve independent mechanisms. Finalists cover two broad groups, with M06 and M08 strongly related. Internal overlap is only a portfolio issue, never evidence of prior publication.",
+    "unselected_candidates": "Read for diversity and screening audit; not independently externally adjudicated or retrospectively promoted."
+  },
+  "before_after": {
+    "previous_source": "../iteration/independent-verdict.json",
+    "previous_audited_baseline": {"candidate_count": 3, "defensible_as_written": 0, "experimentally_supported": 0},
+    "previous_audited_revised_arm": {"candidate_count": 3, "defensible_as_written": 0, "experimentally_supported": 0},
+    "current": {"generated": 12, "selected": 3, "defensible_as_written": 0, "experimentally_supported": 0, "raw_finalist_reviewer_revise_votes": 3},
+    "quality_improvement_established": false,
+    "diversity_improvement_established": false,
+    "causal_or_statistical_comparison_valid": false,
+    "reason": "The generation count, evidence, selection process, review contexts and operation taxonomy differ. Prior 0/3 versus current selected 0/3 is descriptive only; three 'revise' votes are not three validated survivors. Current detail and provenance do not substitute for measured discovery quality."
+  },
+  "source_verification": {
+    "review_quotes_verified_against_preserved_primary_text": 7,
+    "review_quotes_total": 7,
+    "new_primary_pdfs_reextracted_byte_identically": 4,
+    "prior_O2_pdf_reextracted_byte_identically": true,
+    "linked_manifests_verified_in_final_stage": 20,
+    "manifest_scope": "Seven new primary claim manifests with their eight raw/text parents, corrected L1 claim with its two parents, and two diagnostic protocol/implementation manifests. Initial three limitation claims were separately checked in grounding-audit.json.",
+    "all_eight_prompt_hashes_match_freezes": true,
+    "generation_input_and_protocol_hashes_match_freeze": true,
+    "shortlist_selection_matches_screening_hash": true,
+    "all_ten_request_file_hashes_match_log": true,
+    "two_diagnostic_sample_hashes_match": true,
+    "semantic_limit": "Lexical and byte integrity do not establish scientific truth, causal attribution, general novelty, or complete operator equivalence."
+  },
+  "costs": {
+    "scope": "Current mechanism-first campaign ledger; earlier campaigns excluded.",
+    "direct_cli_calls": 8,
+    "direct_cli_call_cap": 8,
+    "role_counts": {"generation": 4, "screening": 1, "finalist_review": 3},
+    "direct_receipt_totalNanoAiu": 102646680000,
+    "direct_receipt_totalPremiumRequestCost": 8,
+    "direct_receipt_totalApiDurationMs": 279951,
+    "public_requests": 10,
+    "public_request_cap": 25,
+    "response_bytes": 9226121,
+    "response_byte_cap": 120000000,
+    "failed_requests": 0,
+    "new_primary_papers": 4,
+    "new_primary_cap": 6,
+    "cpu_diagnostic_seconds": 0.112040531,
+    "cpu_diagnostic_cap_seconds": 300,
+    "gpu_hours": 0,
+    "paid_external_api_calls_as_recorded": 0,
+    "total_dollar_cost": null,
+    "enclosing_coordinator_and_auditor_billing": "Unavailable, not zero.",
+    "interpretation": "All recorded campaign caps respected. Public-service quota headers and raw CLI usage units are not a complete dollar invoice. Source extraction and audit overhead are not included in the candidate-diagnostic CPU receipt."
+  },
+  "engineering_receipts": {
+    "operating_url": "http://127.0.0.1:8776/?campaign=campaign-16abc539e9ed#validation",
+    "software": {
+      "receipt": "final-checks/software-validation.json",
+      "test_executions": 137,
+      "skipped": 0,
+      "passed": true,
+      "audit_check": "Read the receipt and software-tests.log summary: Ran 137 tests; OK. Not rerun by this auditor."
+    },
+    "source_chains": {
+      "receipt": "source-verification.json",
+      "reported_verified_manifest_roots": 29,
+      "passed": true,
+      "limit": "Coordinator's broader integrity receipt, distinct from this auditor's 20-manifest final-stage check. Does not make the old L1 quotation supporting evidence."
+    },
+    "restart": {
+      "receipts": ["restart-before.json", "restart-verification.json"],
+      "raw_records": 166,
+      "before_after_sha256": "2dc4a26fa8e800397ae2f97f4bdb6d610a3ede0766d6b6a66cb37cb4e1fbe5bd",
+      "http_status": 200,
+      "internal_hypotheses": 12,
+      "external_publications": 23,
+      "types_verified": true,
+      "audit_check": "Read both receipts; count, campaign ID and digest agree. Live restart was performed by the coordinator, not replayed by this auditor."
+    },
+    "post_publication_ui_journey": "Planned by coordinator; no completion receipt reviewed at this audit cutoff.",
+    "scientific_eligibility_implied": false
+  },
+  "methodology_limits": [
+    "No network requests, additional model calls, subagents, new primary acquisition, model execution or GPU training by this final audit.",
+    "Four fresh generator contexts and three fresh finalist contexts do not constitute independent model families or human replication.",
+    "Only the frozen three finalists received targeted external adjudication; no alternate shortlist was invented.",
+    "The bounded search can establish particular overlap but cannot certify global novelty or absence of prior work.",
+    "L1's original incorrect quotation and generator inputs remain preserved; its correction arrived after generation and before screening, not before ideation.",
+    "OrthoLoC reconstruction-derived poses and maps are not independent external-map error truth; domain populations differ.",
+    "OffNadirLoc views are Google Earth renderings and Recall@1 uses patch basemap/IoU correctness; residual failure causes remain unknown.",
+    "Controlled identities/counterexamples and numerical sample consistency are not full method experiments or discovery-quality experiments.",
+    "No missing module or unattempted asset acquisition is treated as proof of permanent unavailability.",
+    "Final engineering receipts and the test-log summary were inspected: 137 passing executions, zero skips; coordinator reports 29 source-chain roots and 166 byte-identical persisted records across restart. No engineering test or live restart was rerun by this auditor, and no post-publication UI journey receipt was yet reviewed. These checks do not change scientific eligibility."
+  ],
+  "raw_artifact_sha256": {
+    "candidates.json": "73708dc39af71d6eff439689ca476a91b9dae30e84f6fb74d413b334ccda1dd4",
+    "shortlist.json": "a77fd07ca66eb26a84a4966d61a39460c39ba47e24225358819e168fe9563f8d",
+    "shortlist-selection.json": "60440993808f4dc4b0340fcbebd399b1daad54295f71c4eda4c35135187c16c7",
+    "external-prior-art.json": "5a48b82263c2864c5881d61cbf29f3024c4dcb61abb5495837259c25796cca88",
+    "diagnostic-protocol.json": "c8703ce1ac04b2e09b8afcf6120b5ee1b4440ee17519fda6c47eece358836ae3",
+    "diagnostic-results.json": "c16e3b0c9be3560858ceb4f4387fabce12984fdd83b03e54b2f540b5d4d21b41",
+    "prerequisite-status.json": "d10556bc5e08b2913f9ad622c92314c421ef212db3da46e78e1a01965d73da7b",
+    "cost-ledger.json": "aa0cbf12bc070de1686b81304abb64922f5300a409072f5474ebeb88c9605ba1",
+    "review-M06.json": "13cde00b26c42b40cbfb459aab500a7c5770cb7199ea604939d0f98ef30b49d8",
+    "review-M08.json": "4914f3a36ac21dc3162c4ce14f82b6c922aebbd37774ed4ca50bae19506c39bc",
+    "review-M09.json": "01440d48354bf38a610f4519574c30a1d4554d849fb56da5e1b5fd543b3b86bf"
+  }
+}

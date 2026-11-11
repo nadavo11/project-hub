@@ -1,0 +1,330 @@
+{
+  "at": "2026-11-10T08:04:27.521254+00:00",
+  "passed": true,
+  "artifacts": [
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-baseline-prompt.txt",
+      "sha256": "9fbe270f477e47dbcf842fa8a27cadc92dd5312f0d249b6aabac6ae344334206",
+      "reference": {
+        "sha256": "9fbe270f477e47dbcf842fa8a27cadc92dd5312f0d249b6aabac6ae344334206",
+        "size": 50294,
+        "manifest_sha256": "1ec29975221ddbc57341c362b509f5472bc6b152b05e1f2602a6da3e49ea82cb"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-baseline-scores.json",
+      "sha256": "71f9697c050b39665e4f2d0e07b4a625dedc205e4bc099b41ad6b228f946a5f7",
+      "reference": {
+        "sha256": "71f9697c050b39665e4f2d0e07b4a625dedc205e4bc099b41ad6b228f946a5f7",
+        "size": 9451,
+        "manifest_sha256": "1a9252a2c81e657af50281bc599a5344b34e72854968a7e9d4ec37b8cf5d7fed"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-baseline.json",
+      "sha256": "a2366ba01ad3cf3b55d5e238969e7fff7d81e04b753f6d541b9d24946b59a7b9",
+      "reference": {
+        "sha256": "a2366ba01ad3cf3b55d5e238969e7fff7d81e04b753f6d541b9d24946b59a7b9",
+        "size": 7012,
+        "manifest_sha256": "9797dd5880da0c3278d5cb993181d19971455d4d70a0213855799a02ce899ec5"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-freeze.json",
+      "sha256": "6db331e7135da25e4aa5a4ca2db8366d5d4b39dfab4c39576ae431258b2d3b72",
+      "reference": {
+        "sha256": "6db331e7135da25e4aa5a4ca2db8366d5d4b39dfab4c39576ae431258b2d3b72",
+        "size": 239,
+        "manifest_sha256": "33f50891f67b36fa2177c17f9fd8f1f110090049dba9d6e5e6252199b9a0cc0e"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-ground-truth-audit.json",
+      "sha256": "ce7613d62efa64f344209c6d6d7fb7e285ac569b980e470345a8d77c8f0735e3",
+      "reference": {
+        "sha256": "ce7613d62efa64f344209c6d6d7fb7e285ac569b980e470345a8d77c8f0735e3",
+        "size": 33830,
+        "manifest_sha256": "4988e9f357ad5c0f39002cf9cd305a4b4b8e8402a6b7b42fcf54413736e7c5c1"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-input.json",
+      "sha256": "f6da64c8ad023342a388d3a76b95cf9b0f0ceac13917b3f7ae8f10013de972a2",
+      "reference": {
+        "sha256": "f6da64c8ad023342a388d3a76b95cf9b0f0ceac13917b3f7ae8f10013de972a2",
+        "size": 50265,
+        "manifest_sha256": "136e9d8c41ec90de63c890b39fa0331c79f94c837e03fd3069168065eaf4b81b"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-key.json",
+      "sha256": "404aec86a4236fe9ad7c600887a878e1f0f34d3a24690fa5c3235eca40439699",
+      "reference": {
+        "sha256": "404aec86a4236fe9ad7c600887a878e1f0f34d3a24690fa5c3235eca40439699",
+        "size": 50938,
+        "manifest_sha256": "e9f89b5a3d22a90e965c2b2a8fc2e1fc936fd797f36c77165da5034406cd42c6"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-revised-prompt.txt",
+      "sha256": "b9bbc23dc307100c154038e20d4f4645ebf8eccc5efda849596315a2686fcf1e",
+      "reference": {
+        "sha256": "b9bbc23dc307100c154038e20d4f4645ebf8eccc5efda849596315a2686fcf1e",
+        "size": 51096,
+        "manifest_sha256": "ebb8227467be236bafbd1a3f6fa89535d039bb4c548d65634b9eed3114018e1a"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-revised-scores.json",
+      "sha256": "676f18435047fd92eda1b240b6b4926bd0617df93ca09c71cd37d4283e8dbcbb",
+      "reference": {
+        "sha256": "676f18435047fd92eda1b240b6b4926bd0617df93ca09c71cd37d4283e8dbcbb",
+        "size": 10308,
+        "manifest_sha256": "2a103602150e19677e83a9a5e9a64ba991d23c8ab56d8ec72050479c5009ac11"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/benchmark-revised.json",
+      "sha256": "39fe1b0699662425dee9aa707fbd13ad7f1e2b27e7f89ca33691200b0e4f3e83",
+      "reference": {
+        "sha256": "39fe1b0699662425dee9aa707fbd13ad7f1e2b27e7f89ca33691200b0e4f3e83",
+        "size": 7869,
+        "manifest_sha256": "2d81cc7a482ab533d1ed5e3b3be410bc9255e1fbbc66e55b411475c22f052b2f"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/campaign.json",
+      "sha256": "1577ef833962ea622b3c895ed79dc79333d5b332d3813f0e3b1f83f1f8c6e4b6",
+      "reference": {
+        "sha256": "1577ef833962ea622b3c895ed79dc79333d5b332d3813f0e3b1f83f1f8c6e4b6",
+        "size": 88,
+        "manifest_sha256": "7ecfdbf137a76edd842129b9565fb8ba374690dfbe1d152438fb44eb12e958fc"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/candidate-blind-review.json",
+      "sha256": "9a65ea09dde49a68ca03496e1fa7c24dc317e9c2aeb351077d51ecf58fbd7a5f",
+      "reference": {
+        "sha256": "9a65ea09dde49a68ca03496e1fa7c24dc317e9c2aeb351077d51ecf58fbd7a5f",
+        "size": 13398,
+        "manifest_sha256": "ebdc14f21efce491ab75321bb37c2bc15275819d24c77c7c7eff949d038ee858"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/candidate-diagnosis.json",
+      "sha256": "9fa78933012f10dc000e6519e125c96b37cbd6b9a6b264e663cebbb7d8ae6b98",
+      "reference": {
+        "sha256": "9fa78933012f10dc000e6519e125c96b37cbd6b9a6b264e663cebbb7d8ae6b98",
+        "size": 5186,
+        "manifest_sha256": "44f56dfa15febc1497390fc164c3569801746962e8cc2171011671817e42ae64"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/comparison.json",
+      "sha256": "fd3d2bd8b9c62d22d2402e3faf6f4e68933224c20ddb4a13c5666705697295e1",
+      "reference": {
+        "sha256": "fd3d2bd8b9c62d22d2402e3faf6f4e68933224c20ddb4a13c5666705697295e1",
+        "size": 2324,
+        "manifest_sha256": "3e22225522f0dedebaeda2a5d1165db7284abf23985ac46c2ac39fcc7399aef8"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/cost-ledger.json",
+      "sha256": "f08f0338174203c4f6710d6d12333dd7c6a503d613b586ddcf23de2e30b9fb2d",
+      "reference": {
+        "sha256": "f08f0338174203c4f6710d6d12333dd7c6a503d613b586ddcf23de2e30b9fb2d",
+        "size": 1010,
+        "manifest_sha256": "4f2940e62973aeef65b5935513070d02406cf72545da348eeb307cab99be2220"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/generation-baseline-prompt.txt",
+      "sha256": "afc2d8e5e721e94a34e9dc984a92e9cb9467a816e808158fcb398f6f33932385",
+      "reference": {
+        "sha256": "afc2d8e5e721e94a34e9dc984a92e9cb9467a816e808158fcb398f6f33932385",
+        "size": 46776,
+        "manifest_sha256": "0fa9886c7f652bcace3585efb4023177f88628fe65b6b332e42bb24d5aed4f2b"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/generation-baseline.json",
+      "sha256": "465399795ca8fcf9ce42c62adc1db4b88b064985bcc324c1f5ecb1c95d24cc84",
+      "reference": {
+        "sha256": "465399795ca8fcf9ce42c62adc1db4b88b064985bcc324c1f5ecb1c95d24cc84",
+        "size": 13544,
+        "manifest_sha256": "223a718da9097157cf939842b613c0a1425088eba1db48a2fc94de57dc91253a"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/generation-revised-prompt.txt",
+      "sha256": "e7bad736ef9606ecf246ac4a9ff944867fdf5dd32c8a66ca946ca4462684c713",
+      "reference": {
+        "sha256": "e7bad736ef9606ecf246ac4a9ff944867fdf5dd32c8a66ca946ca4462684c713",
+        "size": 47553,
+        "manifest_sha256": "98884cd6f2579dd03d01d28a92a27617c1a5f6aa3b41b1618c2ae5e48940411b"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/generation-revised.json",
+      "sha256": "faa5d7d4976400ec3f947ac970ba0497df77298fe335d47035ad34d8907f3534",
+      "reference": {
+        "sha256": "faa5d7d4976400ec3f947ac970ba0497df77298fe335d47035ad34d8907f3534",
+        "size": 12536,
+        "manifest_sha256": "59d5418e30ecc938de1b72162ef6780efe074a6638475151159849590b651c81"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/geometry-preflight.json",
+      "sha256": "563d9b282329d8fca64f06438fe03a6d86262050e10f7a24a72449677983484e",
+      "reference": {
+        "sha256": "563d9b282329d8fca64f06438fe03a6d86262050e10f7a24a72449677983484e",
+        "size": 8558,
+        "manifest_sha256": "a375f1c5855c62562277094bb0c2ae5f6b0161bfd1144e3d238ef6ddb9a9d615"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/independent-validation-report.md",
+      "sha256": "f373f1ecc2a77bf7a1ea9a72a8331a0688a8aa45dd1b5880a602f4d16b419b56",
+      "reference": {
+        "sha256": "f373f1ecc2a77bf7a1ea9a72a8331a0688a8aa45dd1b5880a602f4d16b419b56",
+        "size": 28779,
+        "manifest_sha256": "b2cabd179ae5b9737436637e31db3b710e7df5fd7d86d3d5c5f3383bc0031511"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/independent-verdict.json",
+      "sha256": "8262d087dff14f5e155ec4adb2efe851e88c0992c059004d45485acedb33db88",
+      "reference": {
+        "sha256": "8262d087dff14f5e155ec4adb2efe851e88c0992c059004d45485acedb33db88",
+        "size": 34479,
+        "manifest_sha256": "5a5a85a09fcd0f034a50486e587b87c53446e4452a5d0f6bc2486d87d29d6f93"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/input-preservation.json",
+      "sha256": "7755ecef8f99b42112e494daa6542614c722b35412a402e0284373c163b69af6",
+      "reference": {
+        "sha256": "7755ecef8f99b42112e494daa6542614c722b35412a402e0284373c163b69af6",
+        "size": 7252,
+        "manifest_sha256": "98303b84cdd0f5f5c53884b52ada024f38ebae800c790833bf3673fbc70e309f"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/prerequisites.json",
+      "sha256": "0d7ad19be2c202909018024f0efd4fa26ab5e14fce4e99779f0be11adb7d8abd",
+      "reference": {
+        "sha256": "0d7ad19be2c202909018024f0efd4fa26ab5e14fce4e99779f0be11adb7d8abd",
+        "size": 23245,
+        "manifest_sha256": "61e3ed879092b6a49b7be9276ad6b7c3db235690a46e37f94f27c380d652d613"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/prompt-freeze.json",
+      "sha256": "ed37a2c9eba9f7eec7c3183e8ae38f7e045f51c4fbc5e4e194151e922b31ab19",
+      "reference": {
+        "sha256": "ed37a2c9eba9f7eec7c3183e8ae38f7e045f51c4fbc5e4e194151e922b31ab19",
+        "size": 415,
+        "manifest_sha256": "49c17d8bbc07bae244a693e65c866b6bb86217928c4ea905a190c272324641f1"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/protocol.json",
+      "sha256": "5cdbaf4ebe8136526a0a7fe8f3f5ab87d4621428778fbdc702a3b31310288396",
+      "reference": {
+        "sha256": "5cdbaf4ebe8136526a0a7fe8f3f5ab87d4621428778fbdc702a3b31310288396",
+        "size": 1842,
+        "manifest_sha256": "d0bccb19db082ec9b70b1b7046be4a6867b74814385fe0789d87ddac7a0dc8bb"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/published.json",
+      "sha256": "dda211c1dbb58f8c5433a4327a4fa93d3fcae2402ee918c2986a572a7244a7ec",
+      "reference": {
+        "sha256": "dda211c1dbb58f8c5433a4327a4fa93d3fcae2402ee918c2986a572a7244a7ec",
+        "size": 146,
+        "manifest_sha256": "d32340dbade858c57bb411c1ecfd86c00177becb1314ee7c589b447ed2f53b01"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/restart-before.json",
+      "sha256": "52953db790dcefc16a7e4286438f23a4642ca23ecfd4e7b799692f1d1b6e292b",
+      "reference": {
+        "sha256": "52953db790dcefc16a7e4286438f23a4642ca23ecfd4e7b799692f1d1b6e292b",
+        "size": 383,
+        "manifest_sha256": "8ef07242590f01d07c5894e8bde9bbc1064eeacb57859f043796d8f92f6ab45c"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/restart-verification.json",
+      "sha256": "8d829386dd98718913bb87fcdd4f0443c7ea017bbf684da194da69a5833620e0",
+      "reference": {
+        "sha256": "8d829386dd98718913bb87fcdd4f0443c7ea017bbf684da194da69a5833620e0",
+        "size": 1026,
+        "manifest_sha256": "00d2777e0d46bfe8c0ddd68ccd7bd5166d3625b667c1280647201901836f229c"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/review-blinding-key.json",
+      "sha256": "3dfe05675240faf86579c3ab14ef108ca2961a264aab5f038f1c8a3a9dc3a77a",
+      "reference": {
+        "sha256": "3dfe05675240faf86579c3ab14ef108ca2961a264aab5f038f1c8a3a9dc3a77a",
+        "size": 456,
+        "manifest_sha256": "3e3d8c536a744d2d3ea572c0681c35edb42242a79ca588bf9fe755dd1ced9f7f"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/review-freeze.json",
+      "sha256": "c032933ffc704524ef7e77095437b4990ea6f39244edd6496d430890e0df07f4",
+      "reference": {
+        "sha256": "c032933ffc704524ef7e77095437b4990ea6f39244edd6496d430890e0df07f4",
+        "size": 141,
+        "manifest_sha256": "311c67f61fa6d9afc2700cf7ddb67925a324ab4da198044603f5733773f9bd28"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/review-instructions.txt",
+      "sha256": "d6f8241a0043eb3190244c12e8bb45247f88194ff4d7032b67601b3076f78fe6",
+      "reference": {
+        "sha256": "d6f8241a0043eb3190244c12e8bb45247f88194ff4d7032b67601b3076f78fe6",
+        "size": 2686,
+        "manifest_sha256": "afaaef1728b65f9188a99a2060b46da8373d113adc6d505cae7ea390fabfcc60"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/review-prompt.txt",
+      "sha256": "314bb8add9b74e23324bb8bf1f1a73fd7c1965ecb7caafef6cf2a3c8f1f0b06c",
+      "reference": {
+        "sha256": "314bb8add9b74e23324bb8bf1f1a73fd7c1965ecb7caafef6cf2a3c8f1f0b06c",
+        "size": 61792,
+        "manifest_sha256": "b884c3508cb9e2e82905dde7bd37b17dc9bbb44dc3a9776d5f5e2d16fd795178"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/software-tests.log",
+      "sha256": "967cbe3dfff9bd5fb82c42f01410d633189e9228fc9f4b16c3ab189ddc7141d7",
+      "reference": {
+        "sha256": "967cbe3dfff9bd5fb82c42f01410d633189e9228fc9f4b16c3ab189ddc7141d7",
+        "size": 18154,
+        "manifest_sha256": "eabe72de3a27dff173182c63309585d3f672efe06c15e9e99faaf69148dc1385"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/software-validation.json",
+      "sha256": "971cc31e892b765301c37c40ac592cb237e0804bdcc109289ab8191d319039c6",
+      "reference": {
+        "sha256": "971cc31e892b765301c37c40ac592cb237e0804bdcc109289ab8191d319039c6",
+        "size": 1667,
+        "manifest_sha256": "5401c934d49e5da7b130b49364316e9f14036b7df76bed4176a8c04558793b4c"
+      }
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/iteration/source-preservation.json",
+      "sha256": "5ea6613dd427d085a5095c7520600051cd029375b25a783af0a398b82eeb1776",
+      "reference": {
+        "sha256": "5ea6613dd427d085a5095c7520600051cd029375b25a783af0a398b82eeb1776",
+        "size": 65305,
+        "manifest_sha256": "80c964f44b69c64e496f6e4540a73393776d915bce2a4f02f9291a2543624a3b"
+      }
+    }
+  ]
+}

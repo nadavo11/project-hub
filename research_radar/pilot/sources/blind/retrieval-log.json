@@ -1,0 +1,104 @@
+[
+  {
+    "url": "https://arxiv.org/abs/2008.11613",
+    "status": 200,
+    "bytes": 41813,
+    "seconds": 0.499
+  },
+  {
+    "url": "https://arxiv.org/abs/2002.12186",
+    "status": 200,
+    "bytes": 43843,
+    "seconds": 0.275
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/ICCV2023/html/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.html",
+    "status": 200,
+    "bytes": 6382,
+    "seconds": 0.674
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2022?day=all",
+    "status": 200,
+    "bytes": 5411665,
+    "seconds": 1.326
+  },
+  {
+    "url": "https://openaccess.thecvf.com/CVPR2024?day=all",
+    "status": 200,
+    "bytes": 7471679,
+    "seconds": 1.371
+  },
+  {
+    "url": "https://arxiv.org/search/?query=Learning+Part-based+Representation+for+Cross-view+Geo-localization&searchtype=all&abstracts=show&order=-announced_date_first&size=50",
+    "status": 200,
+    "bytes": 26143,
+    "seconds": 0.546
+  },
+  {
+    "url": "https://arxiv.org/pdf/2002.12186",
+    "status": 200,
+    "bytes": 11772032,
+    "seconds": 0.855
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+    "status": 200,
+    "bytes": 3566292,
+    "seconds": 2.528
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf",
+    "status": 200,
+    "bytes": 1545574,
+    "seconds": 1.909
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf",
+    "status": 200,
+    "bytes": 7522573,
+    "seconds": 4.881
+  },
+  {
+    "url": "https://arxiv.org/search/?query=Each+part+matters&searchtype=title&abstracts=show&order=-announced_date_first&size=50",
+    "status": 200,
+    "bytes": 19553,
+    "seconds": 0.459
+  },
+  {
+    "url": "https://arxiv.org/search/?query=cross-view+pose+estimation&searchtype=title&abstracts=show&order=-announced_date_first&size=50",
+    "status": 200,
+    "bytes": 88585,
+    "seconds": 0.623
+  },
+  {
+    "url": "https://arxiv.org/pdf/2403.04172",
+    "status": 200,
+    "bytes": 22780931,
+    "seconds": 14.213
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhu_VIGOR_Cross-View_Image_Geo-Localization_Beyond_One-to-One_Retrieval_CVPR_2021_paper.pdf",
+    "status": 200,
+    "bytes": 4082224,
+    "seconds": 2.686
+  },
+  {
+    "url": "https://arxiv.org/pdf/2008.11646",
+    "status": 200,
+    "bytes": 8390338,
+    "seconds": 3.168
+  },
+  {
+    "url": "https://arxiv.org/pdf/2312.08060",
+    "status": 200,
+    "bytes": 8154567,
+    "seconds": 3.56
+  },
+  {
+    "url": "https://arxiv.org/pdf/1809.05979",
+    "status": 200,
+    "bytes": 8212651,
+    "seconds": 4.258
+  }
+]

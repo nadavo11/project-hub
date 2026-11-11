@@ -1,0 +1,1014 @@
+{
+  "files": [
+    {
+      "path": "/home/nadavo/.copilot/session-state/bb127eac-8838-4a02-b1a0-518ea8a471d4/files/pose-rejection-opencv411.md",
+      "sha256": "5e3d019ad4014bbebe27adb267dcfdb0740235f8aed925aabe405a888a11a454",
+      "size": 7559,
+      "manifest_sha256": "8c99e891c342a73595e94476d82f30110d8a5a91c7bc9565a7a88ca1d3350d00"
+    },
+    {
+      "path": "/home/nadavo/.copilot/session-state/bb127eac-8838-4a02-b1a0-518ea8a471d4/files/pose-rejection-usac411.md",
+      "sha256": "381b211fa3e81f0e94e557ee7cdeb74988d6b154fffa6d9d19a8ee036d50514b",
+      "size": 12474,
+      "manifest_sha256": "8693ab7e2c63f12d5b029ecda237df22cd5e89d58bb47d214b38affdcddb44fb"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/atlas/campaigns/radar_attribution.py",
+      "sha256": "59c164ade3ba0b854b1d821fdf0945b7d58c53f62b27cdd2611b741e43a9ffad",
+      "size": 27658,
+      "manifest_sha256": "5a0d5b004f564819af8fc3eb5e312ef72864a3dfc91d13302af66964e561fdd5"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-0440e343c6374fee/0.png",
+      "sha256": "bc5c1f354c4e7551a0a06c72928894d31b2747484bd039c8bedc92b56df7ccf2",
+      "size": 962290,
+      "manifest_sha256": "af151b27fe01d3fa8e8d6f19ebcd1f07fc885e511a3561db05803e8a1968ca70"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-0440e343c6374fee/1.png",
+      "sha256": "f19f7d1cdf998156ca38dfff1533d7d05a46226e151e505ed209aa578ef0efc2",
+      "size": 283105,
+      "manifest_sha256": "92c5e5ae1bfe33cd8e214046cad13cde675403d96d1594395c33e49ea1743847"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-23913b68b69b45b0/0.png",
+      "sha256": "79118cc59b7632b4c4d4b4b1e3d9fda743198c90880795cb463ce9304b9f3275",
+      "size": 1517254,
+      "manifest_sha256": "91ecaa74166da92eefc5fcbc10cf1f00d9167027678464011c079dc2c8d39dba"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-23913b68b69b45b0/1.png",
+      "sha256": "1cc2a57e77cb6ca21110d2e20a73ecca5e34ee446ed5fa613c5d5fa4ac397d8a",
+      "size": 261520,
+      "manifest_sha256": "87032707269443d9ac07494260a058d38211bcc4ce4a072781400f0ced6bfa52"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-2c4f776405584f52/0.png",
+      "sha256": "5fbd77c685756dc29b3ae2f05f41393b96d40937be65ddf6929ba26c586c0ce7",
+      "size": 2699767,
+      "manifest_sha256": "ab857ee26e8862f93a86914fe103aa863b5b79fde8df6f2c01880c6c1c5353a5"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-2c4f776405584f52/1.png",
+      "sha256": "03b99e470bf30c892d2c97e8d62e8718ba066eceb2b5ee0aef87ecef59c92dc3",
+      "size": 236022,
+      "manifest_sha256": "644b642228b74897b808a53d3cfa651d148cc0ae179e0e5e92d3555d8c88130d"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-52af723d0b4c44ce/0.png",
+      "sha256": "0306eb37ee014c4847b9eb5ace5138cb37d3078f4d5263c10f25fcd13a392640",
+      "size": 1334137,
+      "manifest_sha256": "3721363883f445c2e200e85fa37a81d3791948b0fe54a209c6fd9a5c3e7c3703"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-52af723d0b4c44ce/1.png",
+      "sha256": "2533122fa9479fed0677f07e7bdc6426b004d38bc66d1e16c3c3d8a3b4a56371",
+      "size": 224128,
+      "manifest_sha256": "c64f097f4eba8ab51b54d0c8a68637b2ad174165ba2873e065007988b6d64556"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-5dbff15891ca46b7/0.png",
+      "sha256": "a5376fe86455fba7ef70e307c450e6e6cdc436ecd8ee819b35ec8a8cdf1a4458",
+      "size": 2870030,
+      "manifest_sha256": "d2d7bb0411e54a48e9d85c2541479492143ee11532bdc7d5bb6e7f162613ced9"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-5dbff15891ca46b7/1.png",
+      "sha256": "7bb3ae18a8a739e9619aa17e88d537d759fb5e992e14b3e46d847e715ebaed50",
+      "size": 268738,
+      "manifest_sha256": "3923f8af34482e4059373256174dd51b70bfdf181f8403093021680725416bbc"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-8c41648abd0c4a7c/0.png",
+      "sha256": "ac871370223962467b4d2f229c1a3448f89632b8e42f6d43a847d3ef4a9dc3e3",
+      "size": 1508583,
+      "manifest_sha256": "3e4bc67bf60fc89c622674a3585d03fc9610ddcb3af53cbc256565f49882b3b1"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-8c41648abd0c4a7c/1.png",
+      "sha256": "df6d17c69ae092b9c89f100604acab0dbec1bdda19a742c875b0cae58f0fe3ba",
+      "size": 1062902,
+      "manifest_sha256": "ff55e8deb8b38808b448eaaf1dde66eb22d259243b2beffde1cdeb5f939e16a3"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-a307f9047db6418b/0.png",
+      "sha256": "7b2e0c7e458da91bb602373ab002705f0fad89e7a5f2b3f7f517dbe04629d2a2",
+      "size": 2591839,
+      "manifest_sha256": "b3cf402a2918e85fa61e4d26ebe3ab954aff1fe22ca8e8e43545df1eccce3b81"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-a307f9047db6418b/1.png",
+      "sha256": "98189a0d625b22a7e49fb0ff9e6f263a62c435527ef5302bc681089cfe36d324",
+      "size": 1094213,
+      "manifest_sha256": "03ceafcaee77b7e2da065e52929760f8cd0e49d90d9c54d3e5712820f23c7a56"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-af44fefd3d274ce7/0.png",
+      "sha256": "a063155161bf8ccf5a82fc1069134c4ebabb5acf30e5ec5e050a06ff390de28c",
+      "size": 1408684,
+      "manifest_sha256": "bb11559b023be06528580eed5be5428c3467114285aa37533b7e88614f39790b"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-af44fefd3d274ce7/1.png",
+      "sha256": "67290111d7743da7ccdbb0a8b2244dc1b515303ccf23cd38ceff6ef93f087f94",
+      "size": 65037,
+      "manifest_sha256": "932adfec2d0c8f8dc11a4ad9e75c0d11b86d15b741371691eaee01ab032af759"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-cf274b4c70594158/0.png",
+      "sha256": "e61df880d3be56ff560879cee96a6eb95a8c9881e2eb8939d63f5533e877396e",
+      "size": 1724621,
+      "manifest_sha256": "fb3200489d7e9ae24d1200d567c40ddbc537f368d236e8a1ee845140d378d055"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-cf274b4c70594158/1.png",
+      "sha256": "3242a26588ad2bba82567b17c7b7114d8644326a0e41c0a77dd0288f1cec67dd",
+      "size": 240208,
+      "manifest_sha256": "2c0dbb2d5cd58c945fd417c7150ef038c59c03fcf24fe0ffbbaa6fe76afcfc72"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-eaf2deb569354793/0.png",
+      "sha256": "19ca88f8c6f6760053c54a3f344e7a3e57341d251c26a5324e15cc90c20adb2e",
+      "size": 954701,
+      "manifest_sha256": "4b28e89898a7b76fb477c185970abf687e5539762c2689a3caefd749ea4a1281"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-eaf2deb569354793/1.png",
+      "sha256": "874a2c47c3b21f5c91b6fa2a560564427dc03f8fdf688f81d5276fe51d9cafd6",
+      "size": 251427,
+      "manifest_sha256": "b33ef0941e9d8aab1f0844e7024f3ea277c906635d87f4133c46009aa314b124"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-eb23810c9fc04f11/0.png",
+      "sha256": "7b8a97bbc0341909e97fb0947d35cf3c60ada3ea5a9aecf1c92a35c0f0083f12",
+      "size": 1008365,
+      "manifest_sha256": "836fbc6bcc7b8c48b9237bc6c613311406ddea8607eca758e0a263bfb1b44466"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-eb23810c9fc04f11/1.png",
+      "sha256": "2d746de50d7399528f696dcc0b0ff5f12200366673944c46cc2ee7fcb4bc6afe",
+      "size": 265651,
+      "manifest_sha256": "0da0f61cafbf2854b24995277cb054fc0bdac58961bd737c9934a84f2d9591c5"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-f9ea7f15ad4e4fc0/0.png",
+      "sha256": "17a5ed7a33d48ca2b11740e4ebc5891adbbc68bc133438d6f824ae213cf7dc3e",
+      "size": 2532637,
+      "manifest_sha256": "4b41b6407c4e789b8d477da463da502c4a39cb281f8ffb12cebe57fe11c4311d"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/data/uploads/custom-f9ea7f15ad4e4fc0/1.png",
+      "sha256": "ab2b44c8bfbe60a841a0be62be9953218d5608391aeebe8b0fdf4cf6436d546e",
+      "size": 1094804,
+      "manifest_sha256": "b5411dfed904a289721089604d702f8e7779618036a45f9cee4b059ddf657a19"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/frontend/app.js",
+      "sha256": "c8fe0047bb8439c24bb02443316e369fdb7ae40d8fa459225fba1d438428c0c7",
+      "size": 69531,
+      "manifest_sha256": "24616102b37eedf85c4aeb0929020cc3cfd502f10c945ee8e40556b48f098416"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/browser-render-verification.json",
+      "sha256": "4e367b893d4334479e1b70627f84468e52027fcd2ab73f035a2fe0ae532a6fbc",
+      "size": 209,
+      "manifest_sha256": "6c80260aedb84fbc87ea2e069872a5ec8068a0abfc847cb2e9bb6b8fb8bf0695"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/browser-verification.json",
+      "sha256": "a8cd9fed46945cc3bfa5c008c1b55371e2e31ba9a3b8825c0d5a453f70fdb2f7",
+      "size": 176,
+      "manifest_sha256": "da6cc835217bcd7a076e7e29101fedcd84c4c186abd325d3c387e0803cf75675"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l04_0001-satellite/input.npz",
+      "sha256": "d6aa9de94b806643e8e06c91e649894dc8e61944097a58d931cc84a57f0849bd",
+      "size": 78143,
+      "manifest_sha256": "6219b4f0f8803a88008134ad02ff950ee26f978c392bedfa66e1244b211a80ae"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l04_0001-satellite/measurement.json",
+      "sha256": "cb8691c05136a64b8499f4e800d4eabb0577b8a7f41a970b1c11028d5313e080",
+      "size": 9431,
+      "manifest_sha256": "5c4fd9511ae6ba563585b84426d5bcc186e20f7d7733c9e8a37d73e6672e7b75"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l04_0959-satellite/input.npz",
+      "sha256": "c000648005ac311ced8eee8d9a5133912c0eb81a3e9c9d9b661631329d96ce0e",
+      "size": 78799,
+      "manifest_sha256": "e8029202a6ea262fa618ddac9cf8b2349e6618bbc084290dc472f7a5d64e891c"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l04_0959-satellite/measurement.json",
+      "sha256": "d72827b287ea519ed65755c3fa9675464441d13e5eeb7da6fdcc73a3ef1435c9",
+      "size": 9349,
+      "manifest_sha256": "9000913bf5cf357d102872d15800577ad75a2772ecd296a61e5afd47a18e6f9c"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l04_1893-satellite/input.npz",
+      "sha256": "e714ba78751455ce9693f5be3b89b906aa3ccdfa4bf1bcd0bc48d5673868e5f0",
+      "size": 77720,
+      "manifest_sha256": "baba41b74bac4b7b755d6f2dfcd724f67502a3a256f87c4bf909aeebb0ec3057"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l04_1893-satellite/measurement.json",
+      "sha256": "f39ae89385e35dc4ed16f0af64420c4d2cdd3069d26aeae403248118234d61b9",
+      "size": 9174,
+      "manifest_sha256": "e845a8887aa8432e26508029d59cdfdcf52995547898414ea188a750b757d171"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l04_2828-satellite/input.npz",
+      "sha256": "784e1d0952a224dd8b513501230894d26f5dde5b17e51ec27b4047ca3d92e9c4",
+      "size": 77863,
+      "manifest_sha256": "20bd5000d247a58576e033de4084ed816fc1a5010fbc746837a83d573cefbb4e"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l04_2828-satellite/measurement.json",
+      "sha256": "e2b9df264559e6485bdc1ee862b2f1178e11c2f34d8aa76dbe4554a182044a2f",
+      "size": 9517,
+      "manifest_sha256": "74fe8cadd69e7732db3361fd81ef76cd8b1c7fb411678a4980c687dd90c3b89b"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l06_0001-satellite/input.npz",
+      "sha256": "5c955b89f13276ca25fc3343ac9e9f4fbbdeb1a1938a44e0b8efde25a2219358",
+      "size": 77360,
+      "manifest_sha256": "d579d2fb5280c5539be08bad52b7d7586c010ea984274df813dd02d74d7cc64b"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l06_0001-satellite/measurement.json",
+      "sha256": "1211aaa38213cb2525a6685e2cd3c8989fcd52d9bf8071c3ed211c2c39034ef9",
+      "size": 9279,
+      "manifest_sha256": "3551754ac30377fc1a4fe6e257e54a699b4a4edc8df7a6b3ef69f9cf3deb9b1c"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l06_0425-satellite/input.npz",
+      "sha256": "64ee19161ace93ce747af2fb1b4070b80e5b3a995558f70f20ab6af1b5ab8ff1",
+      "size": 76676,
+      "manifest_sha256": "a9dad5333c035aedca1ba1dce10a2b2e2c8287166a0ba95f5540563660113827"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l06_0425-satellite/measurement.json",
+      "sha256": "67e32261ebe9dad2a4005ab4f9854fde22d9d9abb32aab233602fec51ea58fd7",
+      "size": 9456,
+      "manifest_sha256": "e7c9162f56d1dad0a1ece422bfac8e564353b4d7465fd23d319936392d7923a1"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l06_0849-satellite/input.npz",
+      "sha256": "89669f78f55b6cfbf0a08a12cec4f89281d0f54a0665fcd3f72106f47aef0f16",
+      "size": 76671,
+      "manifest_sha256": "56e712c5b46596cdd2d5a783fe4cf8a2f8036667f3cc5911a1ef396be1189335"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l06_0849-satellite/measurement.json",
+      "sha256": "d294dc8ac3dfbae9a96067252e0eb82e8980bb63298d19f7b7d0f6e86c517a76",
+      "size": 9232,
+      "manifest_sha256": "d5148f5ccd8b082c23b20281bb3eef1baa5651d381e13bb2c835c4fa07c03d6e"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l06_1274-satellite/input.npz",
+      "sha256": "e7643f9a4169386d5bf20153574a443e88374fe20513ea847023ddd4cd17f55d",
+      "size": 72844,
+      "manifest_sha256": "53b748c727151beea0a10c7b9882b8346efcd2ac003e1d73bcd406f8aabd9976"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l06_1274-satellite/measurement.json",
+      "sha256": "cd79c6179ac05f0a26b14634e1318ffb083c1ee87fdac1f8f5ec9d5646dd1daa",
+      "size": 9321,
+      "manifest_sha256": "481ec077a7343f89e31b7108225d441535e17d264f3f54ffd63b7836197b43a0"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l19_0001-satellite/input.npz",
+      "sha256": "9fb646f299e7e63346c5b89fd5a75a9fa58f331eff4073f8072fd260b089d8d3",
+      "size": 78259,
+      "manifest_sha256": "23f8df2535e18f74edc9f613c4aa0d90f87f95dbee6d4b06934df6fd27e0c6f4"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l19_0001-satellite/measurement.json",
+      "sha256": "72d2157148971d23e226a0a33f08cb8626867cb92229d62f3588deec147c0e84",
+      "size": 9433,
+      "manifest_sha256": "fa1736501ed3ae4359a0b0df6ff3ce4635895475c9d7e13b8de6f320c04c2844"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l19_0081-satellite/input.npz",
+      "sha256": "14cb3c72c7967e7e67fb5c39ba8de745d695c9ee8fdbab5cad4fe9d44bcdfa52",
+      "size": 77617,
+      "manifest_sha256": "72ca8219a027f1b227c65519c943f92b9dd0a18d5debac47d0d86ac33843527f"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l19_0081-satellite/measurement.json",
+      "sha256": "27e5d1a2a422d8c223faf91a5790f6252f4ca6822902207c811da7a95c2a1877",
+      "size": 9154,
+      "manifest_sha256": "76ce9697ecb3ece51e63396a5f945a5e882a17d7826ef85973bffdd05cf54d23"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l19_0161-satellite/input.npz",
+      "sha256": "31f7a26f6bb35b5171b804fd2041038775d2998433213229470e930ac171021e",
+      "size": 77155,
+      "manifest_sha256": "cf964aec5241b845f47f57e4bbcc221da8abc1bee54c292bcb8efcc86d7ec0ee"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l19_0161-satellite/measurement.json",
+      "sha256": "4fcfdf708e4d79536c537c456408e45797edcf7adfd7d8034a2cab8dc0a972e7",
+      "size": 9220,
+      "manifest_sha256": "30a88beeeb08a7ccec40f0d3a87949855635ce9b7b435869bd7b352c4a533dba"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l19_0241-satellite/input.npz",
+      "sha256": "9eca4b000a2265465920be9501f97df2a923a6f2e136d16cf83379b20732a33c",
+      "size": 74670,
+      "manifest_sha256": "402ddb6ce887d7840ce7337be81ce92f56dd674ab633139713e8d8a40c968c38"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/cases/any-l19_0241-satellite/measurement.json",
+      "sha256": "d0fecf86454ad0425b9d10f5b973943d40486d55a12aeac1f73e601735ed9582",
+      "size": 9203,
+      "manifest_sha256": "b9d140b0ffd013646a52540f50752aceca75a1c9cb43cdc543be555598f4b456"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/execution-notes.json",
+      "sha256": "094661557bc13f66b27fa443afa19f0a2ab1b3a3a1d4e36059a03ce96108bb4c",
+      "size": 2621,
+      "manifest_sha256": "7689e5aa306f798be6a710aca0978abd331312560cb5ebccea6f4e219b5c1ba9"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/exploratory-geometry-protocol.json",
+      "sha256": "ec5dacc620dd96f82e3d931b3dc0cb60558fbf3de1df3697a58464340279349b",
+      "size": 714,
+      "manifest_sha256": "8c0739668d8b3710e150f4a91253612c8d2713298f6c0c2433bdfe56b2064a86"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/geometry-diagnostics.json",
+      "sha256": "04006edb8bc321dfce045b9d8cfc6deed4ab486ad6166199d476faf2756698e4",
+      "size": 4429,
+      "manifest_sha256": "4f445577fc501103dfde0bcb3de91136deac93e7fbac8f9b9e079762d081a110"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/implementation.py",
+      "sha256": "59c164ade3ba0b854b1d821fdf0945b7d58c53f62b27cdd2611b741e43a9ffad",
+      "size": 27658,
+      "manifest_sha256": "9ddc9c75497aa87a81c748a85f38098bc3e7a734193e19f9ae9b47e05a4460c0"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/labels.json",
+      "sha256": "535d4d04c782506e35daa96c0b91516681abb6b04f64f93fbf1e4f1363c0c879",
+      "size": 2823,
+      "manifest_sha256": "cb9959eb1ecc8754c84d71649c8fd66238a671627443a9aea18956ee975d76ba"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/numeric-verification.json",
+      "sha256": "bc02a43b38c96278080096edf6cab3fa38bd97f3289949cd770b0e34b6f9a653",
+      "size": 267,
+      "manifest_sha256": "95496253238e801a79e5336b74fe079dac7bd37d2fc0a975c2d26ef173bde8e8"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/protocol.json",
+      "sha256": "58c5bf2ca94702156499204186b8beb45986fd1431462a3c0a03a1c331832067",
+      "size": 22864,
+      "manifest_sha256": "03f8b8396f3fcf62b6e62bca49a0f89e4b093db171c2038ad7439bca7719ac37"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/results.json",
+      "sha256": "4922b7b022d4cb7d29c80df4d7d91678d612f3097c76569d1234c28e64a658dc",
+      "size": 29746,
+      "manifest_sha256": "9c42c02c54254580ddc71c98e086c94fb236d7d7d8aba0417c584da2123a9112"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-desktop.png",
+      "sha256": "220da8a38dc06127a772b6abec06ef2ecd9c55f932cb7c384d3266aca8a3bc35",
+      "size": 176792,
+      "manifest_sha256": "9fe8dce38249a039ed5e606346472a0b7a32977615228639d865a14b28b8ff5c"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-0440e343c6374fee.json",
+      "sha256": "c04417d9f0b5ed724d8bb198bf584130f1c83467bc08d7533271484f89e09797",
+      "size": 270,
+      "manifest_sha256": "d8ed17ffd9f615e7ac515015a8a4b7c00d265f505ef06ccd10fa10c84cdb72b1"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-23913b68b69b45b0.json",
+      "sha256": "81dc48321309bb837976a04fea79cda28dc051b392186861fdebaad7dd4e002c",
+      "size": 270,
+      "manifest_sha256": "a2b5c8489ac3402d78d139b3c0f52e9e6ed3162a779e665a7460d14bb3a95ff8"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-2c4f776405584f52.json",
+      "sha256": "58f0e54fc137837eeb7942e778a97cdf085ea0fe83e0800acac6929837061aa1",
+      "size": 270,
+      "manifest_sha256": "399cc661a3705f84affd947f7ff251fd973d07432d1b7247a18e6300dcc27814"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-52af723d0b4c44ce.json",
+      "sha256": "92221c110d7f4e59867ccf1f71cbc6a22ecf87e3158a8444eb1ea6c1684aa3c5",
+      "size": 270,
+      "manifest_sha256": "061dd2b23b5ba2e3c9f2f4cb3db66b04b7af063c41603ea9bb7eebae8fa34df4"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-5dbff15891ca46b7.json",
+      "sha256": "5ee5a0b9c06cfaf8a84da1dcd64086be895e6c7791c919f255e74ab9b0f3fc54",
+      "size": 270,
+      "manifest_sha256": "7fb24362c33c73c031ff04156233a0bac270d4f4903f82d8da3aba872adc661b"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-8c41648abd0c4a7c.json",
+      "sha256": "996df56798f3c1a4e90e0fb48d7e8589fb3fd7726019135d4b0759b03e402b18",
+      "size": 270,
+      "manifest_sha256": "458b9b6913ef9aacfc3f095a06eb71c1a3f742d855b3f1500daf23ab4a6b78b9"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-a307f9047db6418b.json",
+      "sha256": "6096af2ff788639fc9bcc79f3f5e7a5c8bd87eeea47b44b4523e9512fd42dad7",
+      "size": 270,
+      "manifest_sha256": "c9797cf34d8132d14a64df141ed742bba1dc0f29849dfd45e11fbc8f1f70bd02"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-af44fefd3d274ce7.json",
+      "sha256": "b52f7f6ba91d5e966568ddbda4e5e9ac7ed6a67f75065510dd48061a219a6ada",
+      "size": 270,
+      "manifest_sha256": "58cc1f128646738cbb9bec010594fe9e73d8184f0c3a8fc59c746ee2f917219d"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-cf274b4c70594158.json",
+      "sha256": "78d23791a2ca101c04841192d22a3692151af852eb6ddb6f8c77ec5759c97862",
+      "size": 270,
+      "manifest_sha256": "a29aff90d98401a36b2d306b7c60739537e2ec8fa238963e923c9e5242c4b540"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-eaf2deb569354793.json",
+      "sha256": "3a78d1db2685a66121b23873c82c94f885da163783903f62897b8346ca00b3da",
+      "size": 270,
+      "manifest_sha256": "7dc9f538f0864d7272863aa21a167677a5a6c7be4ea6c2cb6d56ca7403fa70a0"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-eb23810c9fc04f11.json",
+      "sha256": "9ff24f5f0449c88428850c76d000b868026c49f1c59e0295f16c2ba0cdd6a72b",
+      "size": 270,
+      "manifest_sha256": "42ceb6e5673cc24a928abb7b10fb6c403efdd8adb20405652b87d820844dc88e"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-forms/custom-f9ea7f15ad4e4fc0.json",
+      "sha256": "7f6a21a644c73ffb37c1edbc6c89e17ec1391ece91e378929f491cf07ea835ca",
+      "size": 270,
+      "manifest_sha256": "48e510d127b5efbde0aac18757941a0262acd57e8dfeb1ee83f6229788536db8"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l04_0001-satellite.json",
+      "sha256": "040ef4ed4f8761083e402295c2f1e69a4c6c5e03bfde9d4561a3839afc9da2d7",
+      "size": 272,
+      "manifest_sha256": "b7112a033811bb314f834150528225ad5d1c21353e5e538f0ae16e54ede4d407"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l04_0959-satellite.json",
+      "sha256": "3eefeae8233226ce1d6da67ab74bd1dcfebf17e4479b06761ee132161465c37e",
+      "size": 272,
+      "manifest_sha256": "1445a4ce1091afb1646ff11e7982c14a217d95d6e4d53db8561fd3469de64708"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l04_1893-satellite.json",
+      "sha256": "ab8a952f5d502608b1e0533226bc7e81a0f3a40768cdfec6bee6e92418837a3d",
+      "size": 272,
+      "manifest_sha256": "acc1107825f01f697db99b682b49c4a31e0164d087d673eab79eae17cb47013f"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l04_2828-satellite.json",
+      "sha256": "f3fc8aa9c9fd7dc089cea6cabf9fa8d198fd3b5635ff38cb33182ebbc3d08a2c",
+      "size": 272,
+      "manifest_sha256": "dad8fc2260ac3d91b7b1a5911968efa8b5a4d30bb01f7a1057309bf9ddf74977"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l06_0001-satellite.json",
+      "sha256": "74e33f57463e7c7ed73c0e0b5a2d56a6c07b362edd7838989681d28293ec33f6",
+      "size": 272,
+      "manifest_sha256": "0f10a3ac57ba45c90b0c84d3efaa70bb61220e79288b3b33295a5182d62f5fd8"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l06_0425-satellite.json",
+      "sha256": "850eb4c9ccdf6ac4c7c2bebd90a92cd5d33c777a746b0b8a451e3f4a1fd6dd0e",
+      "size": 272,
+      "manifest_sha256": "8b7a0285487564ca94feb85db4070eeec4ccc37ce017a3e47f9cd671becc677a"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l06_0849-satellite.json",
+      "sha256": "cb231e85c6007f5720ee07bc57c0af69d989c6c96992a8e73583a7a14fedab8b",
+      "size": 272,
+      "manifest_sha256": "b7f3ad2e797258b630e7cef37bd50e00d6c59f50208d448a58cf0e8911bc179e"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l06_1274-satellite.json",
+      "sha256": "8f9ef6424632ae1a315fb7966932072d46cc2c941808bb0c9a6cde8b0043f4ca",
+      "size": 272,
+      "manifest_sha256": "d6ffa2a0cfce7ea613ce66955a2830fb8a6bc433c2bfb963c9757fd41062d901"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l19_0001-satellite.json",
+      "sha256": "f7b8c51ee34a2371550929046bff9336a701931466bcc5fad0931adb0f7398c2",
+      "size": 272,
+      "manifest_sha256": "112fbc57b70bd127f6b01b41610ba66d34f0975b5a96059983e4146b4c90686b"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l19_0081-satellite.json",
+      "sha256": "beff283503f48ea4845d5ea3caac76fbd7ae58bac7866633cb694c44eb8c2e7c",
+      "size": 272,
+      "manifest_sha256": "4430cb3f3e3cc8972a6407359ad1cb44a16e51be8e0a30fcc3782dc2c8fe3691"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l19_0161-satellite.json",
+      "sha256": "aa228932a3ef7860f9c2d77b59dd096c4eefc2c0ef8a5914aab4ed6d1d8302f3",
+      "size": 272,
+      "manifest_sha256": "3e5b92134c706213e08bd184ba30d19574453dfb4231c5cb978e118333b0fc6a"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-imports/any-l19_0241-satellite.json",
+      "sha256": "8920a47937da658ad5a37ab2552cda3edcf6cbec8d398533c2d84d06f21d72f4",
+      "size": 272,
+      "manifest_sha256": "dd72691a14e8eeed5939dce3d17bb86fae49e5cb782bd2a76986e9d2fb8cf59a"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-mobile.png",
+      "sha256": "d1f74a6bc2f2ea00313aa6d48c7235fe297d30246b7e643b81c9141e4f352b98",
+      "size": 118419,
+      "manifest_sha256": "33f73831096fbff9ec3680dbfbb53be469e0caee50c27181e8a80cc826db5755"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/results/radar-attribution/review-packet.json",
+      "sha256": "b0b1ff2cf5b6366e80abf01979269f221b86c788a0412ced2d979ee89f230f43",
+      "size": 5601,
+      "manifest_sha256": "797174fd97f65a01dcc38c6450b5f9c6c2fb1efcc457b7a0d4ccb35bd6b6c597"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/scripts/verify_radar_attribution.py",
+      "sha256": "4f7b86f041397b25906d1d4835c1c64bcf0e102d1d0651ccb74cb7dd3bd46faa",
+      "size": 11677,
+      "manifest_sha256": "18b7fadaf76d3cde1d800041de9f82bc313e84c8b000cd926d73e1f166fecf78"
+    },
+    {
+      "path": "/home/nadavo/pointmatch-atlas/tests/test_radar_attribution.py",
+      "sha256": "bcbe6ccc8294aeed4571f6d21891b4733cb8f3a8408b71182b25e35f608af640",
+      "size": 3693,
+      "manifest_sha256": "907a328a7ed1c4e7d6513de194371e8078a3836915a36f61608c8abc37e4999e"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0001-satellite/case.json",
+      "sha256": "cdc84d7f842983f99949b2e226577c0e9a939dcccd5ebd5cf5c408d1f3b8453a",
+      "size": 8927,
+      "manifest_sha256": "1169bcefa218eec17d9d6632034231747f38b9ba9ed8b2e0c2a3384707d732ae"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0001-satellite/query.png",
+      "sha256": "ac871370223962467b4d2f229c1a3448f89632b8e42f6d43a847d3ef4a9dc3e3",
+      "size": 1508583,
+      "manifest_sha256": "931ebcb400ea867b8d9d0b86eac08635cd6e45eae2feda409fe7e66ab6ad6ff0"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0001-satellite/roma-native.npz",
+      "sha256": "5e688e6a064c9ac1f787f16642dfcd742925e2d503045b2ae3c8d1a9d2aa80eb",
+      "size": 5457428,
+      "manifest_sha256": "ea4614a889263e509dc82332e3b91ec9a1c5be44e278b75510f5d5d77431bb79"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0001-satellite/roma-official.json",
+      "sha256": "a50e338350f374c9515183383a2bbbd66f032e626828c35dd6c04bb3d665cac4",
+      "size": 685521,
+      "manifest_sha256": "c53002a33956a0429a9f66ce80c6d1e76e5226c6ba14f84448dc47113386502e"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0001-satellite/target.png",
+      "sha256": "df6d17c69ae092b9c89f100604acab0dbec1bdda19a742c875b0cae58f0fe3ba",
+      "size": 1062902,
+      "manifest_sha256": "de4f27fd42490c13c11f9574e21ed141ff0201b4d61f8e079a9a244e4b5d2f24"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0959-satellite/case.json",
+      "sha256": "66f5ba3ac84b8fedfc3898460b86db4feda5c269f50a8b42290bcfbbd18f4926",
+      "size": 8953,
+      "manifest_sha256": "084be706097be176c480601ea3798f4cab8512c6a5a9b7c7b618d1d8c4df6513"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0959-satellite/query.png",
+      "sha256": "17a5ed7a33d48ca2b11740e4ebc5891adbbc68bc133438d6f824ae213cf7dc3e",
+      "size": 2532637,
+      "manifest_sha256": "c036acedb5653e5404fc87bf2fa374df35761a3c238e0e34679c9302b7e6554a"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0959-satellite/roma-native.npz",
+      "sha256": "fdc01816a14016bc1ce76188740c6debe47a05b1698f827f5098e6a24e45f958",
+      "size": 5490016,
+      "manifest_sha256": "f827c4481bddba16caed6f02cdbf2b41e6799bc0f8da5d06c6445c64881ea0ac"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0959-satellite/roma-official.json",
+      "sha256": "75465055af8036d237e59158ea777c82134dd91cb4c28a5873afca5c692c44f3",
+      "size": 685228,
+      "manifest_sha256": "e6e92a458907bed0f51c09310a909a2d97db6eb25e41c93a555f7853f961aeab"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_0959-satellite/target.png",
+      "sha256": "ab2b44c8bfbe60a841a0be62be9953218d5608391aeebe8b0fdf4cf6436d546e",
+      "size": 1094804,
+      "manifest_sha256": "344f0142d1e9beadf4828b3ea0ed1069120f00541fd11b1922525317854ac886"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_1893-satellite/case.json",
+      "sha256": "fd69a2ff2b273ef9c01ce4a0aaa5c6bc21ffe70ea3537466dda8d478ad3a628d",
+      "size": 8904,
+      "manifest_sha256": "cdba93545e3aeeed62f3c7d6e91708e1441221da9d0e59a89c917839945432c5"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_1893-satellite/query.png",
+      "sha256": "a5376fe86455fba7ef70e307c450e6e6cdc436ecd8ee819b35ec8a8cdf1a4458",
+      "size": 2870030,
+      "manifest_sha256": "08e93d7b0957e45e847e53fec1c9e193e9b49fabef3d1546dd3bd1c3f909038c"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_1893-satellite/roma-native.npz",
+      "sha256": "4c3c81955ae6b81bf21409f62d9a93a1194ec69c0740d9a6c413e6b948f031e5",
+      "size": 5560445,
+      "manifest_sha256": "bd12002dff774a55845df726143005291c0dc19ecdcfde0ab1050c0ba9b17df1"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_1893-satellite/roma-official.json",
+      "sha256": "284b41ac66974f194dca454b64fb98bea9d292206f9330d3ed7eee0b8c98a750",
+      "size": 689061,
+      "manifest_sha256": "5a53a94afb8a29cacda617718f533d8e0c920cd22342b80a5e6a2e4aa6b5566a"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_1893-satellite/target.png",
+      "sha256": "7bb3ae18a8a739e9619aa17e88d537d759fb5e992e14b3e46d847e715ebaed50",
+      "size": 268738,
+      "manifest_sha256": "054b2f2a5c77be19405b0362fc0fd6b46eefac0ac2de757a265e16363d149c72"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_2828-satellite/case.json",
+      "sha256": "4d9fec1a9f315c236af032d98f84ebc9fed3802137369d18c797020f79bfa097",
+      "size": 8913,
+      "manifest_sha256": "a578f9ab8a277ff87faed21402c6214b514b50e8120ca7a9c63ec9b19125c842"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_2828-satellite/query.png",
+      "sha256": "7b2e0c7e458da91bb602373ab002705f0fad89e7a5f2b3f7f517dbe04629d2a2",
+      "size": 2591839,
+      "manifest_sha256": "98e5656b003b92b1b254b5c25d760f5fa6762e8904ec09a31189354b0669d78e"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_2828-satellite/roma-native.npz",
+      "sha256": "c24e8e677fb2f7aadf8256d6370113815f5feec55a89c0583c20a4669df8179c",
+      "size": 5220876,
+      "manifest_sha256": "4474f0fc126861f4bd4def742e247867a30f1aa883d60631e0b1933f9731bc4d"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_2828-satellite/roma-official.json",
+      "sha256": "b2f982295b15d3abbe67400f287ae3aad8c02c2a207934dada668888e1f2c60c",
+      "size": 686386,
+      "manifest_sha256": "7196444c288f37e19c700d3fa1762f46d614a220849e9cc87decef357fbb57cb"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l04_2828-satellite/target.png",
+      "sha256": "98189a0d625b22a7e49fb0ff9e6f263a62c435527ef5302bc681089cfe36d324",
+      "size": 1094213,
+      "manifest_sha256": "7f16b24c9291c8cf57fe7e166f6dae27568f82d5fad6077d7a079ebc74162c3e"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0001-satellite/case.json",
+      "sha256": "fc5b5d7e2b7960971665d16b6c23d7b3f8ec4222743981c4f9f4887a1fd1773d",
+      "size": 8942,
+      "manifest_sha256": "7eab75d168d4e05a85ea38d05f2b7ec0b89109bd7f3fb92c75edc1ed3b3d36d1"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0001-satellite/query.png",
+      "sha256": "7b8a97bbc0341909e97fb0947d35cf3c60ada3ea5a9aecf1c92a35c0f0083f12",
+      "size": 1008365,
+      "manifest_sha256": "574b11bc25c66c271ed3fa89329528515b3835e440d7ea657b418f66b39fb716"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0001-satellite/roma-native.npz",
+      "sha256": "bdc2169402b4a711925aaf5df27603727ef0311b11fae1ff79c3968270860e2a",
+      "size": 5506883,
+      "manifest_sha256": "3c836f05e59829b0d200951baa9e6390c00ec6010551fc0ecb510dc27ca78965"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0001-satellite/roma-official.json",
+      "sha256": "a09f29e48e70f75876e25ec844093fa3b764028ce88f535e7631e27749062f47",
+      "size": 688639,
+      "manifest_sha256": "5054477989e514ad198265bd4706a2c861b14bfc084a8862a7612820a04c4b9e"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0001-satellite/target.png",
+      "sha256": "2d746de50d7399528f696dcc0b0ff5f12200366673944c46cc2ee7fcb4bc6afe",
+      "size": 265651,
+      "manifest_sha256": "038ca51f73e862d8cadf38ac584243535f8a65a8d007e8e222af469a168421f8"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0425-satellite/case.json",
+      "sha256": "b1df7d06e29a9a5ecc8807176ce5748db55b215d6dbd52de014f3055d699177e",
+      "size": 8911,
+      "manifest_sha256": "b2995c096df41653905d8b0ca881849a5cfa541b017afdd9d45ca9102403dea7"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0425-satellite/query.png",
+      "sha256": "bc5c1f354c4e7551a0a06c72928894d31b2747484bd039c8bedc92b56df7ccf2",
+      "size": 962290,
+      "manifest_sha256": "60d7c25957b5614a2e95dbfae50ab0efb16d949c077bd551d0f1dc9087c26579"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0425-satellite/roma-native.npz",
+      "sha256": "ef999d7b5e8370ef541b6b266b13c7e7ee021dc4a0eda55c591dfce348b48f27",
+      "size": 5291843,
+      "manifest_sha256": "e755b654963035d4b69521ee577070c9f6980bef8848355c5efa1ae558de7653"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0425-satellite/roma-official.json",
+      "sha256": "0fc74e88cd3416f920f419c4f39be0c7781f3a579648af0df882499607f91991",
+      "size": 685793,
+      "manifest_sha256": "408bc119e1b967bad117e27c1f1b460f5ad9a5e2dedec059e79554608eda8c78"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0425-satellite/target.png",
+      "sha256": "f19f7d1cdf998156ca38dfff1533d7d05a46226e151e505ed209aa578ef0efc2",
+      "size": 283105,
+      "manifest_sha256": "bd3e8f6656fb62ab9d7e836a022e4247e480815b01c08f28b2029f63e8bc9de7"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0849-satellite/case.json",
+      "sha256": "709fda5f608bcafb65aa6196ec99fdae588965241e2eedfb01ece4456535f934",
+      "size": 8940,
+      "manifest_sha256": "65f35a3364ad016cc6fab20c0be24c4572f680353795e5e802999352560f35c0"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0849-satellite/query.png",
+      "sha256": "79118cc59b7632b4c4d4b4b1e3d9fda743198c90880795cb463ce9304b9f3275",
+      "size": 1517254,
+      "manifest_sha256": "05a674cad0cf088cdbce3b4aa69a7a86089ebfb6c9926a7eabdc110e193ae93c"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0849-satellite/roma-native.npz",
+      "sha256": "1e5bf66902f301c5601ccb8da363d51c6ea58bf37686f969d27591a630dde123",
+      "size": 5508679,
+      "manifest_sha256": "0d595b7bfc40dab6e4226a9c114a0272a78685af17591dce9dba752c5ad5336d"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0849-satellite/roma-official.json",
+      "sha256": "d3d50033ebbe0f5662b49bebb608e852ad0355e47744cb0c9d6e24b12a0af303",
+      "size": 687279,
+      "manifest_sha256": "cc585d6adf327c1f3718b54ddd12c80163a03ef2fa9db108c196eaa82ebb2bf2"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_0849-satellite/target.png",
+      "sha256": "1cc2a57e77cb6ca21110d2e20a73ecca5e34ee446ed5fa613c5d5fa4ac397d8a",
+      "size": 261520,
+      "manifest_sha256": "11177ef1236009739e6402137c8beb80e6f5d60e1fa2d1a8971366fe2109433d"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_1274-satellite/case.json",
+      "sha256": "0e4573bc0907100b75c91b880451ae5117784ddc6457d31747cd4d7f8973eaa7",
+      "size": 8932,
+      "manifest_sha256": "5379e2bcd65d96975bc2980d90452ae837a73bc681b5ed3a4fbfd5f9ed8f982c"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_1274-satellite/query.png",
+      "sha256": "19ca88f8c6f6760053c54a3f344e7a3e57341d251c26a5324e15cc90c20adb2e",
+      "size": 954701,
+      "manifest_sha256": "ff5c62adadc8b600ad6a27c5c45d440a47846ddd562c91eda26392ef5486c645"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_1274-satellite/roma-native.npz",
+      "sha256": "bcd07db891203ad6266de0240121eeef5aa9af4458c2a88e28caf5288d77b940",
+      "size": 5332500,
+      "manifest_sha256": "7fc6e10bae74e6a8b53b240788fdcb845af2b8f503318bdd9b32140f0256903c"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_1274-satellite/roma-official.json",
+      "sha256": "4d02b06ddad530f2127abd2d59ded5df34156dea7d51b2fe78653cdb484872ae",
+      "size": 685160,
+      "manifest_sha256": "3e61d310eb12fafa6eccb031772732143644959f4a8f36ff3baa3a1b5f9772e1"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l06_1274-satellite/target.png",
+      "sha256": "874a2c47c3b21f5c91b6fa2a560564427dc03f8fdf688f81d5276fe51d9cafd6",
+      "size": 251427,
+      "manifest_sha256": "110ee0086f8fdd3765454cf64e5892a91b8d0f40905899fe0fb3a63a5e4c193a"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0001-satellite/case.json",
+      "sha256": "6f7088786a6090bcb211385ed19011067dc7a1afa4bada59b4d5d34dd3b8da48",
+      "size": 8957,
+      "manifest_sha256": "5944c959edf627a3d121149a1a91adc71d41b1cad3685815511d0a56a2709716"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0001-satellite/query.png",
+      "sha256": "5fbd77c685756dc29b3ae2f05f41393b96d40937be65ddf6929ba26c586c0ce7",
+      "size": 2699767,
+      "manifest_sha256": "fedc177626568c1a78c173cdceae67f27eb9f28fb23111f68cc6f70503ce01bc"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0001-satellite/roma-native.npz",
+      "sha256": "736e68d89604781326221871d8eb3218215efbc3e3bca897168af0d3148343dd",
+      "size": 5459879,
+      "manifest_sha256": "51c5ae8340c5ee1c8fc075bfc14b8d30349517e3019b1cc50c89ba9d860567f7"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0001-satellite/roma-official.json",
+      "sha256": "a9ad24094d05aa7a1e8b2a187eabb9366d7758d60834f829f20197818b6b46b5",
+      "size": 687396,
+      "manifest_sha256": "f67475aa4858203bcb3b11428a3f29595d178d92eb66e5789c96b8a249badd2a"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0001-satellite/target.png",
+      "sha256": "03b99e470bf30c892d2c97e8d62e8718ba066eceb2b5ee0aef87ecef59c92dc3",
+      "size": 236022,
+      "manifest_sha256": "93b098608e8368d9a9d4330dd9afa14a8566cf8df88c5c2ff6a8aa7e2ecf6dd6"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0081-satellite/case.json",
+      "sha256": "b6f33c993f203d77c12c825bdd2f1d891683a86470d2d710e5fca81bfc23b2a4",
+      "size": 8919,
+      "manifest_sha256": "32f1fc0a8df8268502680aba413d8166cb8b21786a232b1ea4ca1a10b911c34a"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0081-satellite/query.png",
+      "sha256": "e61df880d3be56ff560879cee96a6eb95a8c9881e2eb8939d63f5533e877396e",
+      "size": 1724621,
+      "manifest_sha256": "f53cc2dd20ee1588fdbb7c687a57e33e7eb461adac192d179ac62c46399aed8e"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0081-satellite/roma-native.npz",
+      "sha256": "3f91093f4ec889933390a11c030176d987b507dc3a3828e1dc20f5e9bdcae312",
+      "size": 5404293,
+      "manifest_sha256": "de8b1aabc45e24e6665a4542f2164efdfaa5e7200cc19a5985491591e438f417"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0081-satellite/roma-official.json",
+      "sha256": "93aad57b8f6d31d6f036afc6c27344e615a9688323bbe829b72259fe177febe3",
+      "size": 686268,
+      "manifest_sha256": "06cf754ced78282e1859f7a7f216f9073664746ee1e804e669e9181ef5fa0da8"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0081-satellite/target.png",
+      "sha256": "3242a26588ad2bba82567b17c7b7114d8644326a0e41c0a77dd0288f1cec67dd",
+      "size": 240208,
+      "manifest_sha256": "fa32b49810ef2b5b19dd1c74855b63966935b2a8a8df848dc37ea0db8821d9db"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0161-satellite/case.json",
+      "sha256": "9d1f79d2a5932f3589935064fd62ae4b746582dbb2ecf937b67c976a99209bac",
+      "size": 8912,
+      "manifest_sha256": "f5bebfe1396124f551a82736de8f93d0454d443177dfba864e77a222a5d0bf10"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0161-satellite/query.png",
+      "sha256": "0306eb37ee014c4847b9eb5ace5138cb37d3078f4d5263c10f25fcd13a392640",
+      "size": 1334137,
+      "manifest_sha256": "bfe5cf763ce6c97b6294601f3b12846e8fb62cd0a55e8f6e3f80eae12611a161"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0161-satellite/roma-native.npz",
+      "sha256": "128693e54afe9ed85a0aecf18bf2617bcfa6b981185246191ebe1f7a0d429b0a",
+      "size": 5345552,
+      "manifest_sha256": "39c4a7db6335942428ff671754a176a9d3948b0049d9b06e0fa8a9e37eb5ec6c"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0161-satellite/roma-official.json",
+      "sha256": "bbcedc101349fef1aaee3d08804e141f4e767179d64cdbd4e2f02854ac7b3eef",
+      "size": 687635,
+      "manifest_sha256": "ee242732757e991691354ec2dfcbf590383533cdc6098989a8ddef4aae0d24a1"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0161-satellite/target.png",
+      "sha256": "2533122fa9479fed0677f07e7bdc6426b004d38bc66d1e16c3c3d8a3b4a56371",
+      "size": 224128,
+      "manifest_sha256": "5469574e6e213f9e15161aa5b835252cbcd9550b8a671c7cc28900d4a911fdd9"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0241-satellite/case.json",
+      "sha256": "ee3f82858fd412b89ff86dbfc02325fdfcc9574cdfe0ac0d545ee2da46ba61a2",
+      "size": 8939,
+      "manifest_sha256": "9bf7ef2e4f8f88094096199f6c11d07b9f913f7c8b48e9fab189adb086be60d6"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0241-satellite/query.png",
+      "sha256": "a063155161bf8ccf5a82fc1069134c4ebabb5acf30e5ec5e050a06ff390de28c",
+      "size": 1408684,
+      "manifest_sha256": "0dc27fd1fab7bd4093bcd838b32ace8cfe9de918ee325de3a584e4631049fa9f"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0241-satellite/roma-native.npz",
+      "sha256": "2e5a46c73a55cf8343475cbf2441d4c4189b4c8b1ebe0b226ae141e84e5870ee",
+      "size": 5392932,
+      "manifest_sha256": "4fc2153f39d620cf60971ef3e7289f96124cf5d13b947782dd2e142c228ea6db"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0241-satellite/roma-official.json",
+      "sha256": "93e553995c86ce5c7cdbcb62c74d2573e929044a797c01a0c73b546311bcf048",
+      "size": 687599,
+      "manifest_sha256": "6c799b066edbefc31b4d034ee1b0e99267549bc47de164a7de0988d2e57e3761"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/cases/any-l19_0241-satellite/target.png",
+      "sha256": "67290111d7743da7ccdbb0a8b2244dc1b515303ccf23cd38ceff6ef93f087f94",
+      "size": 65037,
+      "manifest_sha256": "b29f260c7bb0e1cc13ddcd4c89515ae1abe1cec08ea45191158cb477043ea561"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l04_0001-satellite/roma-official-depth-inputs.npz",
+      "sha256": "d683644605420c009b8b8b39520717e8eddbe3ebbee0d582a7fb462f526210e0",
+      "size": 84663,
+      "manifest_sha256": "cf919614a4b975ee433c54c93ade1ad993eaff8fe0a77dcdba4f43318930cde1"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l04_0959-satellite/roma-official-depth-inputs.npz",
+      "sha256": "de791a242fb6ae61dd37ebdd132db6812c2a1251be3cc090c800912a4c2b3e25",
+      "size": 85597,
+      "manifest_sha256": "bf9de51fdd4df14dbddddf2d3eb64fcda3e58d659f3a24e72c8b87092d7135c1"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l04_1893-satellite/roma-official-depth-inputs.npz",
+      "sha256": "f8e5a3e4d91dd3651608c4bc55f2357691e189a32f300612c068363c86f91ac9",
+      "size": 84479,
+      "manifest_sha256": "f99fedcd344fa33c69f37515b5fec68592d61e3d68919b5a9af28f5b55b02a22"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l04_2828-satellite/roma-official-depth-inputs.npz",
+      "sha256": "af8468b611374b95377317bc2f92f3ac16e11b7618e8be156855765e29b6043a",
+      "size": 85174,
+      "manifest_sha256": "3cba501f124ff70e08ca306a94aefde3b5a16b43e1ab21804067cf74f11bd3e5"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l06_0001-satellite/roma-official-depth-inputs.npz",
+      "sha256": "5672c6c7bf629ab235e36703ec13385836805896bf83c8d48c7d1304bff7c4e2",
+      "size": 84345,
+      "manifest_sha256": "3f6c398deff9d87235d9308853dfe8e9626762c4abd7d1c9574558c15056d968"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l06_0425-satellite/roma-official-depth-inputs.npz",
+      "sha256": "f06485b9350ff790d22c65e0d2991f8c8893bdededac77e4afdaff94cce3e741",
+      "size": 83043,
+      "manifest_sha256": "c7a12c4ba2db9b18ca94fd2ac15af2854bb5dba3ad81f64fd8cfcfcdcf27ad11"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l06_0849-satellite/roma-official-depth-inputs.npz",
+      "sha256": "49de14187cec2a06601f010fdacdf58903c6110585cce02c1455784303b8b22c",
+      "size": 82565,
+      "manifest_sha256": "60cad79919d0df25d3d272772552864b3914c2edf907d596dc8aa61129b9ed91"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l06_1274-satellite/roma-official-depth-inputs.npz",
+      "sha256": "8f6eba8968bdd53ff32a32a15810ada96638f7c2bf523cd426fe42f8a2469688",
+      "size": 77264,
+      "manifest_sha256": "d3e190ff5f6c7c13bf8c277deeaf52e1429d7e6ac814269ac9ed22b6cecd6814"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l19_0001-satellite/roma-official-depth-inputs.npz",
+      "sha256": "c85ff1a14efb0ecfd0f6bddf1f5867aa8c6ab42e92fbc2766a18018bcbe055ed",
+      "size": 82689,
+      "manifest_sha256": "a6423e1e041e550121999efc30166fce4dc6641907140554869bae3b6f182e92"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l19_0081-satellite/roma-official-depth-inputs.npz",
+      "sha256": "4303595e2a3a368975d7cad73b36776c4023ca10594feda46c1f102c17538321",
+      "size": 80951,
+      "manifest_sha256": "18f95a216752405ddaa0c7e4a7f207f1d1a68d2249b1c2a6c44c19d984513001"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l19_0161-satellite/roma-official-depth-inputs.npz",
+      "sha256": "ddc7dd3e1276b0aca0ad46d53e06c51fff9305d323e553e59b4a514aab0ed889",
+      "size": 80838,
+      "manifest_sha256": "75d7786feb20023a96a5b13e5f5a1581c69e0a84dd8a2e3b2b6c9acf499da743"
+    },
+    {
+      "path": "/home/nadavo/project-hub/data/research-radar/failure-atlas/sampling-depth/cases/any-l19_0241-satellite/roma-official-depth-inputs.npz",
+      "sha256": "eaaf029867232ff1b0ad25042ab08bac14c22c9a56be99fcff263574696b99dd",
+      "size": 75983,
+      "manifest_sha256": "4dab855b025484ecc6644c69c58313d8bfea104a23dba4d0c9962b17f0bb0c21"
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/attribution_publish.py",
+      "sha256": "5a43194f3c8ea09a32dae55b5dc4fec3df580150fcb560caf4fc24bb50496fab",
+      "size": 8293,
+      "manifest_sha256": "2bdc5fe4b020dad499c06fc25ccabb07b4cf0fdd466b378077a85aee8122e2e8"
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/attribution/pointmatch-pairs.json",
+      "sha256": "733dba374c0ce70f18d5d8621d9cb35d17f4e5b337c80e073005266494471a74",
+      "size": 5127,
+      "manifest_sha256": "06191bdec50e4f78e35a783e55ea3a775f7a3ff8850a97cf57339a46d57c1992"
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/pilot/attribution/scientific-report.md",
+      "sha256": "38b73e08315ede72bfc9368a135ea8866fd68ac17d423cc30d2d57859b0538e8",
+      "size": 13206,
+      "manifest_sha256": "0a9a4866974355f839d04542f0a6d890934b169cf7b091af0336dc2bfa0d5735"
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/static/app.js",
+      "sha256": "36d7740f12d516cd70e96119e8c8e5e151350216081caa07ee944ef95c80f58e",
+      "size": 85125,
+      "manifest_sha256": "0f313e661b05a2f56fcb02dd8fb4e05dc1fb5cb20eae533833e448680ee26f9c"
+    },
+    {
+      "path": "/home/nadavo/project-hub/research_radar/test_ui.py",
+      "sha256": "dd2a09caffe4e7225c79e2e52793c1fdc030ab5a0ac6b57c918fe552624712d0",
+      "size": 44162,
+      "manifest_sha256": "164a9f8d339518813107c590c5861172c53ee984b8e7b469c9c56ce461ca7886"
+    }
+  ],
+  "artifact_count": 168,
+  "total_bytes": 128952231
+}

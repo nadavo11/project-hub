@@ -1,0 +1,56 @@
+{
+  "version": "M09-v2, prospective refinement; original M09 is unchanged",
+  "stage": "Frozen after inspecting unperturbed real-image matches, before corruption/probe outcomes",
+  "question": "Does consensus-switch excess predict pose failure beyond established linear sensitivity and nonlinear perturb-and-refit baselines on actual image correspondences?",
+  "scope": "Controlled DSM corruption on real imagery and actual SIFT correspondences. Corruptions are synthetic; pose labels are reconstruction-derived. Not independent external-map error truth, not a population benchmark.",
+  "bounds": {"experiment_cpu_seconds": 600, "soft_stop_seconds": 480, "trials": 120, "public_requests": 8, "new_primary_papers": 3, "gpu": false, "training": false},
+  "observed_motivation": [
+    "Actual local tracking logs contain many low-reprojection/high-pose-error frames. Bias, accumulated tracking drift and correspondence errors compete with DSM sensitivity as explanations.",
+    "Real same-domain OrthoLoC pair has111 SIFT matches and99 consensus inliers; real cross-domain pair has62 matches, only1 consistent with nominal geometry, and no solved pose. M09 cannot repair failure before a pose exists.",
+    "Cached InfoGeo point descriptors at two distinct selected query locations have cosine0.936 and the same target maximum despite successful identity retrieval. Pixel targets remain unreviewed, so no formal PCK claim follows."
+  ],
+  "data": {"paths": ["matches-samedomain.npz", "matches-crossdomain.npz"], "selection": "Both existing sample pairs retained; neither acquired or selected by new intervention outcomes. Only solvable baseline can enter uncertainty-scoring experiment. Unsolved cross-domain case remains a reported pipeline failure."},
+  "geometry": "P_i=(X_i,Y_i,Z_i) is the nearest DSM grid point at an actual target SIFT match; q_i is actual query SIFT pixel. Intrinsics K fixed. theta=(Rodrigues rotation,t), C(theta)=-R(theta)^T t. No GT filtering of matches.",
+  "supports": ["all matches", "55 matches selected uniformly with seed17", "55 matches nearest the query-match centroid"],
+  "modes": {
+    "raw": ["1","x","y","x^2","x*y","y^2","sin(pi*x)","sin(pi*y)"],
+    "coordinates": "x=2*u_reference/1024-1,y=2*v_reference/1024-1, using original reference-image pixels.",
+    "normalization": "Unpivoted QR of N x8 raw matrix; fix diagonal(R)>0 by paired column/row sign changes. B=sqrt(N)*Q so B^T B/N=I. Rank<8 excludes the support explicitly. No GT-dependent basis choice.",
+    "world_perturbation": "P_i(a)=P_i+e_z*(B*a)_i; a has metre units."
+  },
+  "injected_errors": {
+    "amplitudes_m_rms_expectation": [0,0.25,0.5,1,2],
+    "draws": 8,
+    "distribution": "For each draw, z~N(0,I8) with seed9100+draw, shared across supports/amplitudes as a paired block. a=amplitude*z/sqrt(8). These are independent of all probe directions.",
+    "prediction_target": "Failure if estimated camera-centre error against nominal label exceeds1 metre, or solver produces no pose. Rotation error also reported; no performance claim in independent surveyed coordinates."
+  },
+  "solver": {
+    "full": "OpenCV EPNP-RANSAC,1000 iterations,4px,.999 confidence,seed731; LM refinement on returned consensus. Positive-depth fraction recorded. Same seed and data ordering for counterfactuals.",
+    "fixed": "LM on the unperturbed/current-map consensus, warm-started at current-map pose; correspondence membership is held fixed.",
+    "switch": "1-|I_current intersection I_probe|/|I_current union I_probe|, where I is RANSAC's returned consensus before LM.",
+    "randomness_control": "Unchanged current-map data refit at seeds732,733; also exact seed731 replay on first baseline. Seed spread is a competing predictor, not evidence of physical uncertainty.",
+    "ambiguity_control": "Report excess with unchanged consensus separately; it can reflect optimizer basin changes rather than inlier switching."
+  },
+  "prediction_operators": {
+    "probes": "16 axis directions a=+/-1 metre*e_k for k=1..8, relative to each corrupted current map; both full and fixed fits use identical perturbed geometry.",
+    "analytic": "G=-D_theta C * pinv(J_theta) * J_z * B on current consensus. J_theta comes from cv2.projectPoints; J_z uses projection derivative along R*e_z. D_theta C uses centred1e-6 pose-coordinate differences. s_A=max_k ||G[:,k]||. Validate against fixed-consensus centred1e-3 metre re-solves before interpreting comparisons.",
+    "finite_fixed": "s_F=max_{k,sign} ||C_fixed(a)-C_current||.",
+    "finite_full": "s_R=max_{k,sign} ||C_full(a)-C_current||. This is the fully specified original M09 sensitivity score.",
+    "new_excess": "s_X=max_{k,sign} ||C_full(a)-C_fixed(a)||. A revised diagnostic intended to isolate effects beyond continuous fixed-consensus sensitivity, NOT a new pose estimator.",
+    "monte_carlo": "16 independent uniform directions on the8D unit sphere,seed4200+draw, full RANSAC refits; s_MC=max centre displacement. Standard nonlinear input propagation baseline.",
+    "other_baselines": ["negative inlier fraction","median inlier reprojection error","unchanged-data seed spread"],
+    "missing": "A failed required probe means unbounded risk for its score; preserve failure counts. Baseline-unsolved trials are reported separately and assigned solver-failure abstention, never silently dropped from pipeline coverage."
+  },
+  "prospective_gate": {
+    "derivative_check": "Relative Frobenius discrepancy <=0.05 versus centred fixed-consensus re-solving on each nominal support; otherwise the analytic comparison is flagged inconclusive.",
+    "primary": "On solvable trials containing both failure labels, s_X AUROC must exceed every predeclared established baseline by at least0.05; paired8-draw block bootstrap95% interval for difference versus strongest baseline must exclude0.",
+    "mechanistic": "A nonzero s_X must not be solely explained by unchanged-data solver variability. Report association with consensus changes and zero-switch excess.",
+    "scope": "Passing would support only this scene and controlled perturbation distribution, not global novelty, real-map generalization, or GO for a publishable contribution.",
+    "negative": "If no advantage, or signal follows solver randomness without discrimination, reject the proposed benefit for the tested regime; do not conclude no nonlinear regime could benefit.",
+    "underpowered": "No positive/negative labels, predominantly unsolved trials, or failed derivative check => inconclusive performance comparison.",
+    "no_retuning": "Do not change modes, amplitude, thresholds, selected supports or score after outcomes."
+  },
+  "secondary_analysis": "Report AUROC within each fixed corruption amplitude and within each support as sensitivity analyses, without selecting a better endpoint. Unknown uniform height offsets are unobservable and must not be used to claim that all nonlinear uncertainty methods are disproved.",
+  "cost_comparison": "s_A,s_F,s_R ands_X share16 full+16 fixed fits. MC has16 full fits and is a cheaper independent baseline. Actual elapsed/CPU measured; equal wall-time is not claimed.",
+  "publication_standard": "Distinctness requires external prior-art argument beyond a new application label, and substantive additional empirical evidence. No successful count is forced."
+}

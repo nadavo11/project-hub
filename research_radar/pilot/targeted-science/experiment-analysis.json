@@ -1,0 +1,122 @@
+{
+  "trials": 120,
+  "solvable_trials": 120,
+  "failures_over_1m_on_solvable_trials": 64,
+  "baseline_unsolved_trials": 0,
+  "held_out_crossdomain_baseline": "No PnP solution; remains a pipeline failure, not repaired or counted as a scored uncertainty success",
+  "auc": {
+    "analytic": 0.6467633928571429,
+    "negative_inlier_fraction": 0.7360491071428571,
+    "residual": 0.7837611607142857,
+    "finite_fixed": 0.6643415178571429,
+    "finite_full": 0.7795758928571429,
+    "switch_excess": 0.7293526785714286,
+    "monte_carlo": 0.7837611607142857,
+    "seed_spread": 0.5
+  },
+  "strongest_declared_baseline": "residual",
+  "switch_excess_minus_baseline": -0.054408482142857095,
+  "paired_draw_block_bootstrap_95pct": [
+    -0.14014648142555128,
+    0.022280409648830685
+  ],
+  "valid_bootstrap_replicates": 2000,
+  "derivative_check_passed": true,
+  "prospective_performance_gate_passed": false,
+  "per_amplitude": {
+    "0": {
+      "analytic": null,
+      "negative_inlier_fraction": null,
+      "residual": null,
+      "finite_fixed": null,
+      "finite_full": null,
+      "switch_excess": null,
+      "monte_carlo": null,
+      "seed_spread": null
+    },
+    "0.25": {
+      "analytic": 0.7685185185185185,
+      "negative_inlier_fraction": 0.12037037037037036,
+      "residual": 0.19444444444444445,
+      "finite_fixed": 0.7777777777777778,
+      "finite_full": 0.7407407407407407,
+      "switch_excess": 0.48148148148148145,
+      "monte_carlo": 0.6759259259259259,
+      "seed_spread": 0.5
+    },
+    "0.5": {
+      "analytic": 0.6592592592592592,
+      "negative_inlier_fraction": 0.5740740740740741,
+      "residual": 0.1259259259259259,
+      "finite_fixed": 0.6592592592592592,
+      "finite_full": 0.4444444444444444,
+      "switch_excess": 0.4222222222222222,
+      "monte_carlo": 0.6222222222222222,
+      "seed_spread": 0.5
+    },
+    "1": {
+      "analytic": 0.775,
+      "negative_inlier_fraction": 0.28125,
+      "residual": 0.5625,
+      "finite_fixed": 0.775,
+      "finite_full": 0.6375,
+      "switch_excess": 0.75,
+      "monte_carlo": 0.5875,
+      "seed_spread": 0.5
+    },
+    "2": {
+      "analytic": 0.8695652173913043,
+      "negative_inlier_fraction": 0.391304347826087,
+      "residual": 0.34782608695652173,
+      "finite_fixed": 0.8695652173913043,
+      "finite_full": 0.9130434782608695,
+      "switch_excess": 0.9565217391304348,
+      "monte_carlo": 0.8260869565217391,
+      "seed_spread": 0.5
+    }
+  },
+  "per_support": {
+    "all": {
+      "analytic": 0.6992481203007519,
+      "negative_inlier_fraction": 0.8308270676691729,
+      "residual": 0.8070175438596491,
+      "finite_fixed": 0.7368421052631579,
+      "finite_full": 0.8120300751879699,
+      "switch_excess": 0.9022556390977443,
+      "monte_carlo": 0.7568922305764411,
+      "seed_spread": 0.5
+    },
+    "random55": {
+      "analytic": 0.76,
+      "negative_inlier_fraction": 0.9,
+      "residual": 0.82,
+      "finite_fixed": 0.77,
+      "finite_full": 0.7525,
+      "switch_excess": 0.7375,
+      "monte_carlo": 0.8425,
+      "seed_spread": 0.5
+    },
+    "concentrated55": {
+      "analytic": 0.5146666666666667,
+      "negative_inlier_fraction": 0.7106666666666667,
+      "residual": 0.8373333333333334,
+      "finite_fixed": 0.592,
+      "finite_full": 0.76,
+      "switch_excess": 0.6346666666666667,
+      "monte_carlo": 0.712,
+      "seed_spread": 0.5
+    }
+  },
+  "probe_failure_counts": {
+    "finite_fixed": 0,
+    "finite_full": 0,
+    "switch_excess": 0,
+    "monte_carlo": 0,
+    "seed_spread": 0
+  },
+  "maximum_zero_switch_excess_m": 1.0110102794782988e-06,
+  "mean_consensus_change": 0.09963872610207501,
+  "minimum_positive_depth_fraction": 1.0,
+  "scope": "Conditional on one real scene, fixed real SIFT matches and stipulated synthetic map-error distribution. Eight paired random-error blocks, not120 independent scenes. Bootstrap is not scene-generalization evidence.",
+  "decision": "No promotion from this measurement alone; independent interpretation and prior-art review required."
+}

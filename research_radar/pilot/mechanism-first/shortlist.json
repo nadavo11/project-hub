@@ -1,0 +1,354 @@
+{
+  "job_id": "job-c3281b3017ce",
+  "completed_at": "2026-11-10T08:27:03.119936+00:00",
+  "result": {
+    "screening": [
+      {
+        "id": "M01",
+        "mechanism_complete": true,
+        "technically_coherent": true,
+        "failure_grounded": true,
+        "test_discriminating": false,
+        "reason": "The L2 observation (equal 2.5 px ME, TE 0.42 to 1.07 m) is grounded. But the aggregate cannot show that DSM height is the cause, since the populations differ (17/496 vs 17/423) and the demo experiment never tests the real cause. The mechanism is first-order propagation, which the submission itself says reduces to independent-O2. The 'blind residual' claim is correct in the null-space sense. The test checks only that the Jacobian predicts synthetic perturbations. That confirms the math and cannot falsify the claim. The baselines named (image-residual weighting, matcher confidence, full-covariance PnP) are listed but not tied to the success criterion. Unavailable inputs are admitted. Internally, M01, M05, M09 and M11 are all L2 sensitivity propagation.",
+        "axes": {
+          "novelty": "fail",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "pass",
+          "insufficient_evidence": "unresolved"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "novelty",
+            "reason": "Self-declared first-order propagation; direct comparator independent-O2 and no mechanism difference.",
+            "paper_ids": [
+              "independent-O2"
+            ]
+          },
+          {
+            "dimension": "scientific_significance",
+            "reason": "The result can only confirm the Jacobian on synthetic perturbations; it says nothing about real DSM error.",
+            "paper_ids": []
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L2-DSM-sensitivity"
+      },
+      {
+        "id": "M02",
+        "mechanism_complete": true,
+        "technically_coherent": false,
+        "failure_grounded": true,
+        "test_discriminating": true,
+        "reason": "The L1 failure is grounded in the authors' stated explanation, which is not isolated. The mechanism has defects. Step 4 divides by a constant but then mixes a 2D spread term with a depth factor in an ad hoc way. S uses (r3·P) depth from the PnP pose, yet the stage is said to run before PnP, which is inconsistent. Uniform-distribution lambda is stated as 1/12 for a unit square, but the normalization is by half-diagonal, so the constant is wrong. This is a heuristic scalar related to conditioning (independent-O3, in a different setting). The test is reasonably discriminating: it uses strong baselines (inlier count, hull area, covariance trace, oracle covisibility) and an AUROC gain with a bootstrap CI. Crop-based masking is a different mechanism from natural low covisibility. Matcher outputs are unavailable.",
+        "axes": {
+          "novelty": "unresolved",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "unresolved",
+          "insufficient_evidence": "unresolved"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "scientific_significance",
+            "reason": "Ad hoc scalar; no showing that it carries information beyond a covariance trace or hull area.",
+            "paper_ids": [
+              "ortholoc",
+              "independent-O3"
+            ]
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L1-support-observability"
+      },
+      {
+        "id": "M03",
+        "mechanism_complete": true,
+        "technically_coherent": false,
+        "failure_grounded": false,
+        "test_discriminating": true,
+        "reason": "The L3 miss cause is explicitly unknown, so the hypothesis is not supported by the supplied observation. The 'alpha=0.5 from the triangle inequality' derivation is unjustified. With s_L defined as a mean cosine distance and m_L as a cosine margin, the two have the same unit but no derived bound relates them. The classifier is evaluated per-location while the miss is per-view. It uses oracle group labels, and the centroid intervention is a test-time multi-view averaging with oracle grouping. The test has a margin-only baseline and a random-group control, but it uses unavailable weights and data. The AUROC criterion is falsifiable.",
+        "axes": {
+          "novelty": "unresolved",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "fail",
+          "insufficient_evidence": "fail"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "technical_feasibility",
+            "reason": "The OffNadirLoc benchmark and the ONLoc weights are unavailable and are rendered data.",
+            "paper_ids": [
+              "offnadirloc"
+            ]
+          },
+          {
+            "dimension": "insufficient_evidence",
+            "reason": "The cause is unknown and the threshold has no supported derivation.",
+            "paper_ids": []
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L3-spread-vs-alias-diagnostic"
+      },
+      {
+        "id": "M04",
+        "mechanism_complete": true,
+        "technically_coherent": true,
+        "failure_grounded": false,
+        "test_discriminating": true,
+        "reason": "The L3 cause is unknown. The A/B/C attribution is well specified and the oracle group-mean intervention with a random-group control is a sound design, with pre-set thresholds. However, S compares a query's same-group cosine with its wrong-satellite cosine, which mixes modalities. The oracle group mean uses ground-truth labels, so it is only a diagnostic. It depends on the ONLoc checkpoint and the benchmark, which are unavailable; the DINOv2 fallback does not test the ONLoc residual claim. Significance is a diagnostic of a rendered benchmark only.",
+        "axes": {
+          "novelty": "unresolved",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "fail",
+          "insufficient_evidence": "fail"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "technical_feasibility",
+            "reason": "No checkpoint, benchmark or non-oracle gallery available.",
+            "paper_ids": [
+              "offnadirloc"
+            ]
+          },
+          {
+            "dimension": "insufficient_evidence",
+            "reason": "Residual misses have no established cause; this is a hypothesis test only.",
+            "paper_ids": []
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L3-spread-vs-alias-diagnostic"
+      },
+      {
+        "id": "M05",
+        "mechanism_complete": true,
+        "technically_coherent": true,
+        "failure_grounded": true,
+        "test_discriminating": false,
+        "reason": "The L2 observation is grounded. The mechanism is a numerical Jacobian of PnP with respect to DSM bias families, which the submission itself calls equivalent to independent-O2 in the linearised limit. There is an internal inconsistency: 'sigma_pose^2 = S sigma_z^2 S^T' with a vector S, and the R ratio compares different quantities. The counterexample against residual confidence is valid but trivial. The test uses synthetic corruption on 2 demo scenes with held-out families, which is more discriminating than M01. It still only tests the injected-error response.",
+        "axes": {
+          "novelty": "fail",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "pass",
+          "insufficient_evidence": "unresolved"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "novelty",
+            "reason": "Self-declared equivalent to analytic error propagation.",
+            "paper_ids": [
+              "independent-O2"
+            ]
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L2-DSM-sensitivity"
+      },
+      {
+        "id": "M06",
+        "mechanism_complete": true,
+        "technically_coherent": true,
+        "failure_grounded": true,
+        "test_discriminating": true,
+        "reason": "The L1 failure is grounded, with the explanation labelled as unisolated. The mechanism is a prior-regularized Fisher information with an eigen-spectrum readout. The submission itself admits it is a monotone function of the standard covariance, so separation from covariance inflation is not established. The covisibility counterexample is valid. The test has strong baselines (covisibility, hull area, covariance trace, inlier count), a stop rule that says to report equivalence to covariance, and a CI. Crop-based low covisibility is synthetic, and matcher outputs are unavailable.",
+        "axes": {
+          "novelty": "fail",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "pass",
+          "insufficient_evidence": "unresolved"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "novelty",
+            "reason": "Established Gauss-Newton/Fisher conditioning, with no mechanism difference from covariance weighting shown.",
+            "paper_ids": [
+              "independent-O3",
+              "ortholoc"
+            ]
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L1-support-observability"
+      },
+      {
+        "id": "M07",
+        "mechanism_complete": true,
+        "technically_coherent": false,
+        "failure_grounded": true,
+        "test_discriminating": false,
+        "reason": "The L1 failure is grounded. The claim that the zero-residual PnP has a near-null direction is a plausible explanation. The scaling is dimensionally suspect: D multiplies columns by z_med/f for rotation but then by 1 for translation and f for the focal column, which doesn't give common pixel units. sigma_t = sigma_px/sqrt(s) mixes units. The 'counterexample' that unscaled condition numbers can match while s differs is just an artifact of the scaling choice. The 'active selection' step is an extra unevaluated feature. The synthetic test draws exact projected points with noise, so the Fisher bound is predicted almost by construction. The Spearman 0.8 is not discriminating. It does not test real matches.",
+        "axes": {
+          "novelty": "fail",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "pass",
+          "insufficient_evidence": "unresolved"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "novelty",
+            "reason": "E-optimality conditioning of a pose Jacobian; the claimed new part is only column scaling.",
+            "paper_ids": [
+              "independent-O3",
+              "ortholoc"
+            ]
+          },
+          {
+            "dimension": "technical_feasibility",
+            "reason": "The units in D and sigma_t are inconsistent.",
+            "paper_ids": []
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L1-support-observability"
+      },
+      {
+        "id": "M08",
+        "mechanism_complete": true,
+        "technically_coherent": true,
+        "failure_grounded": true,
+        "test_discriminating": true,
+        "reason": "The L1 failure is grounded and the cause is labelled as unisolated. The mechanism is standard: Schur complement marginalizing focal length of the Fisher information. The unit statement for kappa is loose (rotation scaled by scene radius, then lambda_min across mixed rows). Its difference from covariance weighting is only the Schur step. The test is the most discriminating of the L1 group: a partial Spearman controlling for inlier count, hull area and covisibility, plus a failure criterion that checks whether baselines already explain it. It is synthetic-only with exact matches plus Gaussian noise, which is nearly a self-consistent simulation that favors the Fisher bound. It omits wrong matches, which is where the stated L1 mechanism could differ.",
+        "axes": {
+          "novelty": "fail",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "pass",
+          "insufficient_evidence": "unresolved"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "novelty",
+            "reason": "Standard CRB/Schur covariance for PnP with a focal nuisance.",
+            "paper_ids": [
+              "independent-O3",
+              "ortholoc"
+            ]
+          },
+          {
+            "dimension": "insufficient_evidence",
+            "reason": "Synthetic noise-only trials cannot test the real-match failure.",
+            "paper_ids": [
+              "ortholoc"
+            ]
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L1-support-observability"
+      },
+      {
+        "id": "M09",
+        "mechanism_complete": true,
+        "technically_coherent": true,
+        "failure_grounded": true,
+        "test_discriminating": true,
+        "reason": "The L2 observation is grounded. The mechanism is a finite-difference re-solve under 8 fixed smooth height modes with max-norm, and is stated as first-order equal to analytic propagation. It is distinguished only by RANSAC and inlier-set switching and nonlinearity. The test is the only L2 one that names the analytic Jacobian as the baseline and has a stop rule that reports equivalence. The success threshold (0.15 above the analytic version) is a falsifiable claim. Its weakness is that max over 8 fixed modes is a restricted subspace, and the synthetic truth is generated by the same operation, with no real DSM-error data.",
+        "axes": {
+          "novelty": "unresolved",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "pass",
+          "insufficient_evidence": "unresolved"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "novelty",
+            "reason": "Largely first-order propagation; any difference is limited to the nonlinear/inlier-switch regime.",
+            "paper_ids": [
+              "independent-O2"
+            ]
+          },
+          {
+            "dimension": "insufficient_evidence",
+            "reason": "No real DSM error truth or matcher outputs.",
+            "paper_ids": []
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L2-DSM-sensitivity"
+      },
+      {
+        "id": "M10",
+        "mechanism_complete": false,
+        "technically_coherent": false,
+        "failure_grounded": false,
+        "test_discriminating": false,
+        "reason": "The L3 cause is unknown, and the azimuth-shift and alias classes are invented hypotheses. The core intervention, re-rendering at other azimuths, requires Google Earth, which is unavailable. The proxy (synthetic oblique warps from OrthoLoC point maps on DINOv2-small over DOP tiles) is a different system and cannot test the OffNadirLoc claim. The test therefore validates the diagnostic on a toy it built. The 'success' is satisfied only if the proxy shows that structure. 'Remove top-1 tile' is a gallery edit that doesn't establish a cause.",
+        "axes": {
+          "novelty": "unresolved",
+          "scientific_significance": "fail",
+          "technical_feasibility": "fail",
+          "insufficient_evidence": "fail"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "technical_feasibility",
+            "reason": "Re-rendering and benchmark metadata are unavailable.",
+            "paper_ids": [
+              "offnadirloc"
+            ]
+          },
+          {
+            "dimension": "scientific_significance",
+            "reason": "The proxy cannot say anything about the observed residual misses.",
+            "paper_ids": []
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L3-spread-vs-alias-diagnostic"
+      },
+      {
+        "id": "M11",
+        "mechanism_complete": true,
+        "technically_coherent": false,
+        "failure_grounded": true,
+        "test_discriminating": false,
+        "reason": "The L2 observation is grounded. The invisibility gain is a generalized singular value, which is a meaningful extension of propagation (bias versus visible residual). But J_z being 2N x N and the claim of a '6 x N sensitivity' is consistent only if the DSM error is a per-match variable, which the DCT-mode restriction contradicts. If pose is fit by least squares, db = -J_pose^+ J_z dz exactly gives the bias to first order, so the proposed 'correlation of 0.9' is near a tautology on synthetic data. The covariance-trace baseline is not the appropriate comparator for bias. The degenerate case (N<=6) is stated as complete invisibility, which is correct. The nadir flat case is hand-waved: gamma infinite means the answer is unidentifiable.",
+        "axes": {
+          "novelty": "unresolved",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "pass",
+          "insufficient_evidence": "unresolved"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "novelty",
+            "reason": "Bias-gain is a possible variant, yet unknown against standard sensitivity and bias analysis; independent-O2 covers systematic model-wide errors.",
+            "paper_ids": [
+              "independent-O2"
+            ]
+          },
+          {
+            "dimension": "scientific_significance",
+            "reason": "The test is near tautological under the same linearisation.",
+            "paper_ids": []
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L2-DSM-sensitivity"
+      },
+      {
+        "id": "M12",
+        "mechanism_complete": true,
+        "technically_coherent": false,
+        "failure_grounded": false,
+        "test_discriminating": true,
+        "reason": "The L3 cause is unknown, and the hubness hypothesis is imported from the literature with no supplied evidence. CSLS is described with an inconsistent step (A = log r, then a tile-level cutoff). It uses test queries as a pool, which is transductive. The test has a falsifiable CSLS gain and hub fraction, but it needs the benchmark and the ONLoc weights, which are unavailable, and a fallback dataset changes the claim.",
+        "axes": {
+          "novelty": "fail",
+          "scientific_significance": "unresolved",
+          "technical_feasibility": "fail",
+          "insufficient_evidence": "fail"
+        },
+        "elimination_reasons": [
+          {
+            "dimension": "novelty",
+            "reason": "CSLS/hubness reduction is established; the submission says so.",
+            "paper_ids": []
+          },
+          {
+            "dimension": "technical_feasibility",
+            "reason": "No benchmark or weights.",
+            "paper_ids": [
+              "offnadirloc"
+            ]
+          }
+        ],
+        "internal_duplicate_group": "INTERNAL-L3-spread-vs-alias-diagnostic"
+      }
+    ],
+    "shortlist_ids": [
+      "M09",
+      "M08",
+      "M06"
+    ],
+    "selection_rationale": "These are provisional diagnostic finalists only. All three fail the novelty gate on the supplied evidence because each reduces to established propagation or Fisher conditioning, and none has real matcher outputs. They were picked because each is technically coherent, grounded in an actual observation (L1 or L2), and has a test with a strong baseline plus a stop rule that can report equivalence. M09 explicitly names the analytic Jacobian as the baseline. M08 controls for inlier count, hull area and covisibility. M06 includes a covariance-trace baseline and a bootstrap CI. The L3 candidates were excluded: the cause is unknown there, and they need unavailable weights and data. M01, M05 and M11 are L2 duplicates of M09 and were ranked lower on test strength. M02 has unit and ordering errors and M07 has inconsistent scaling. The remaining failures are no real-match test, no independent DSM-error truth, and the circular synthetic evaluation.",
+    "shortlist_is_scientific_success": false
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "job_id": "job-009a806b55bf",
+  "completed_at": "2026-11-10T07:48:18.207803+00:00",
+  "result": {
+    "opportunities": [
+      {
+        "id": "G1",
+        "title": "Leave-one-footprint-out disagreement as a common-wrong-alias diagnostic for selective UAV localization",
+        "question": "Does the shift in an accepted pose when each overlapping reference footprint is removed predict wrong-building or wrong-tile acceptance better than dispersion, residual and inlier scores, once those scores are held fixed?",
+        "hypothesis": "Inference: when several retrieved references overlap, a pose that depends on one footprint or on a shared wrong structure changes more under leave-one-footprint-out recomputation than a well-supported pose does. The shift therefore adds failure-ranking information beyond RIC-Loc-style dispersion and residual scores. This is a ranking claim only, not a calibrated posterior and not an OCI-equivalent covariance.",
+        "contribution": "Test whether a leave-one-footprint-out pose-shift statistic, computed over overlapping reference footprints, adds incremental AUROC and risk-coverage value over dispersion, residual and inlier-count scores. Inclusion criterion: stress queries made by deleting the true gallery entry.",
+        "mechanism_family": "Selective prediction / dependence-aware evidence audit",
+        "prior_art": [
+          {
+            "paper_id": "ricloc",
+            "overlap": "It already provides failure-ranking via dispersion/covariance scores, risk-coverage evaluation and a common-mode scale term. It also admits that hypotheses sharing a VGGT pass are treated as independent.",
+            "difference": "The proposed statistic uses geographic footprint overlap among references, not a shared network pass. It is evaluated only as an increment over RIC-Loc-style scores. RIC-Loc is the strongest baseline, and it needs posed references."
+          },
+          {
+            "paper_id": "independent-O1",
+            "overlap": "OCI already treats overlapping sources as partially correlated and gives a conservative fusion construction.",
+            "difference": "No OCI covariance, zero-mean or linear-measurement assumptions are claimed. A common wrong alias is a biased error, so this is an empirical diagnostic and not a fusion law."
+          },
+          {
+            "paper_id": "rim",
+            "overlap": "RIM states it has no calibrated reject option and proposes confidence fusion as future work. Its Appendix E shows that solver output can be finite but wrong.",
+            "difference": "This candidate tests one narrow signal and does not claim a full confidence estimator."
+          }
+        ],
+        "novelty_basis": "No global novelty is claimed. The narrower claim is that footprint-overlap leave-one-out pose shift gives incremental failure-ranking information beyond dispersion and residual scores. This could be redundant with existing scores, as T09 notes.",
+        "evidence_gaps": [
+          "RIC-Loc cached hypotheses and the VGGT/MegaLoc environment are unavailable (O1 prerequisite blocked).",
+          "Deleting the true gallery entry is only a stress test, not realistic temporal map change.",
+          "Whether footprint overlap tracks error dependence is unmeasured.",
+          "Prior art outside the supplied corpus was not searched."
+        ],
+        "feasibility": "Feasible only if the blocked prerequisites resolve. Otherwise, the fallback is a CPU pilot on stored retrieval/pose outputs from any available pipeline, such as RIM or OrthoLoC, using the same statistic.",
+        "experiment": {
+          "hypothesis": "Adding the leave-one-out pose-shift feature to dispersion, residual and inlier-count scores raises failure-detection AUROC and lowers selective risk.",
+          "datasets": [
+            "Stored outputs for OrthoLoC pairs or any available posed-reference set with cached top-K candidates",
+            "Stress split: true reference removed, with a random-removal control"
+          ],
+          "baselines": [
+            "Top-1 inlier count",
+            "Residual score",
+            "RIC-Loc-style dispersion/covariance score",
+            "Combined baseline using logistic regression on the three"
+          ],
+          "metrics": [
+            "Failure AUROC",
+            "Risk at 50% and 80% coverage",
+            "Bootstrap CI over scenes",
+            "Rate of wrong-building acceptance"
+          ],
+          "config": "Fix K=5 and the failure threshold (position error >5 m) before looking at results. Use scene-grouped cross-validation, with the same logistic model plus or minus the new feature. Bootstrap by scene, 1000 resamples.",
+          "success": "Preregistered gate: the feature adds >=0.03 AUROC with a bootstrap 95% CI lower bound >0, and lowers risk at 80% coverage by >=10% relative, on both the natural and the stress split.",
+          "falsification": "Stop and report a null result if the AUROC gain is <0.01, if the CI includes 0 on the stress split, or if the Spearman correlation with dispersion is >0.9 and the gain is <0.02.",
+          "compute": "CPU only, an estimated <=4 hours if hypotheses are cached. Not measured."
+        }
+      },
+      {
+        "id": "G2",
+        "title": "Scene-model-violation diagnostic: homography versus DSM-lifted fit disagreement",
+        "question": "Does the disagreement between a quasi-planar homography fit and a DSM-lifted PnP fit on the same matches detect tall-structure, parallax or occlusion failures better than inlier residuals?",
+        "hypothesis": "Inference: where a single plane is violated, the homography-implied and DSM-lifted poses diverge even when RANSAC inlier ratios look healthy. That divergence should rank failures better than the inlier residual. Localized failures should then be separable from semantic-identity failures.",
+        "contribution": "Test a cheap two-model disagreement score in local coordinates, using the two existing OrthoLoC pipeline fits. Inclusion criterion: samples with at least 20% covisibility, as the source requires.",
+        "mechanism_family": "Model-misspecification detection by estimator disagreement",
+        "prior_art": [
+          {
+            "paper_id": "ortholoc",
+            "overlap": "Both fits already exist: AdHoP quasi-planar preconditioning and DSM-elevation lifting to PnP. It is the strongest named source, and it reports failure on corrupted matches.",
+            "difference": "It does not use disagreement between the two fits as a validity score. It also has not tested whether that score beats inlier residuals."
+          },
+          {
+            "paper_id": "skyreg",
+            "overlap": "It reports planar-homography breakdown with tall structures and parallax. It also predicts per-pixel confidence, which is a required baseline.",
+            "difference": "The diagnostic is training-free and operates on matches, but it does not produce dense geodetic output."
+          },
+          {
+            "paper_id": "independent-O2",
+            "overlap": "Analytic photogrammetric covariance propagation already exists.",
+            "difference": "Disagreement is a model-validity signal, not a propagated covariance. It must be compared with analytic propagation if feasible."
+          }
+        ],
+        "novelty_basis": "The narrow claim is about the estimator-disagreement signal for scene-model violation. Novelty is not claimed. Its stated difference from the ortholoc and skyreg baselines is tentative and unverified.",
+        "evidence_gaps": [
+          "No full matcher environment is verified.",
+          "Truth is not independently certified.",
+          "No global coordinate transform is verified, so results are local-metric only.",
+          "Same-domain truth shares a reconstruction with the references."
+        ],
+        "feasibility": "Specifiable on CPU using the local-coordinate geometry diagnostic confirmed in the O2 prerequisite. Cached matches are needed, and otherwise the plan is blocked.",
+        "experiment": {
+          "hypothesis": "Homography/DSM pose disagreement has higher failure AUROC than the inlier residual.",
+          "datasets": [
+            "OrthoLoC same-domain arrays",
+            "OrthoLoC cross-domain arrays, stratified by relief/height"
+          ],
+          "baselines": [
+            "Inlier ratio",
+            "Reprojection residual",
+            "SkyReg-style confidence if available",
+            "Constant-prior ranker"
+          ],
+          "metrics": [
+            "Failure AUROC",
+            "Spearman correlation with local-frame error",
+            "Per-height-stratum AUROC"
+          ],
+          "config": "Failure means local-frame translation error >2 m or rotation error >5 degrees, fixed in advance. Compute the two poses from the same matches. Report all-query and eligible-only results.",
+          "success": "AUROC >=0.70 and exceeds the inlier-ratio AUROC by >=0.05 with a bootstrap 95% CI lower bound >0, in the cross-domain strata.",
+          "falsification": "Stop if the AUROC gain over inlier ratio is <0.02 or if the gain disappears in the tall-structure stratum.",
+          "compute": "CPU, an estimated 2-6 hours given cached matches. Not measured."
+        }
+      },
+      {
+        "id": "G3",
+        "title": "Evidence-selection ablation: is budgeted reference choice distinct from top-K by retrieval score?",
+        "question": "Under a fixed budget of matcher calls, does choosing references by footprint complementarity beat top-K by retrieval score in accepted-pose risk, or does it collapse into the same candidates?",
+        "hypothesis": "Inference: nearby overlapping tiles may repeat the same wrong structure (T09). A greedy rule that spreads selected footprints may therefore reduce correlated wrong acceptances at a fixed budget. It may also lose coverage, and it may be indistinguishable from top-K.",
+        "contribution": "Test a greedy footprint-complementarity selector under a fixed budget B against top-K, measuring both accepted-pose risk and the overlap between the two selected sets. A null or redundancy result is an acceptable outcome.",
+        "mechanism_family": "Budgeted evidence selection",
+        "prior_art": [
+          {
+            "paper_id": "independent-O3",
+            "overlap": "OASIS already does budgeted subset selection with an E-optimal information objective.",
+            "difference": "It selects physical sensor mounts under independence assumptions. This candidate selects retrieved satellite references with uncertain association. No exact selector was established by the bounded search."
+          },
+          {
+            "paper_id": "rim",
+            "overlap": "It already uses a reranking-plus-PnP pipeline and proposes confidence fusion.",
+            "difference": "It reranks for accuracy and does not study how the reference set is chosen. RIM is the strongest named source."
+          },
+          {
+            "paper_id": "ricloc",
+            "overlap": "Geometry-aware reference selection is explicitly named as future work. It already has risk-coverage evaluation.",
+            "difference": "This is a direct attempt at that future work, so it carries a high redundancy risk."
+          },
+          {
+            "paper_id": "hfnet",
+            "overlap": "It already clusters candidates by 3D covisibility and uses PnP-RANSAC.",
+            "difference": "Covisibility grouping is a stronger overlap than generic hierarchy. Here the grouping is footprint-based, with no 3D map."
+          }
+        ],
+        "novelty_basis": "No novelty is claimed. The only supportable claim is a controlled comparison. It must survive classical active-localization and optimal-design prior art that was not searched here.",
+        "evidence_gaps": [
+          "A non-oracle retrieval gallery is unverified.",
+          "External checkpoints and the full online runtime are unverified.",
+          "Footprint geometry is needed for each tile."
+        ],
+        "feasibility": "Marginal. It needs the released RIM weights and evaluation source (confirmed), but the non-oracle gallery is unverified. A simulated-score fallback would only test the selection logic, not the real system.",
+        "experiment": {
+          "hypothesis": "Complementarity selection at fixed B yields lower risk at matched coverage than top-K.",
+          "datasets": [
+            "Cached RIM-protocol queries with candidate lists, if a non-oracle gallery is obtained"
+          ],
+          "baselines": [
+            "Top-B by retrieval score",
+            "Random B from top-20",
+            "RIM reranking as-is"
+          ],
+          "metrics": [
+            "Risk at matched coverage",
+            "Wrong-building acceptance rate",
+            "Jaccard overlap of selected sets"
+          ],
+          "config": "B in {3,5}. Use a diversity weight picked on a held-out scene split before testing. Run 1000 scene-level bootstrap resamples.",
+          "success": "Risk is lower by >=15% relative at 80% coverage, with a bootstrap CI excluding 0 for B=5, and set overlap with top-K is <0.8 so the selector is demonstrably distinct.",
+          "falsification": "Stop if set overlap with top-K is >=0.9 or the risk gain is <5% relative; either means redundancy with the baseline.",
+          "compute": "CPU, an estimated 3-8 hours if matcher outputs for the top-20 are cached. Not measured, and it would be blocked otherwise."
+        }
+      }
+    ]
+  }
+}

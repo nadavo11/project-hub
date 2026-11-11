@@ -1,0 +1,87 @@
+{
+  "verdict": "NO_GO_FOR_CONTRIBUTION; useful bounded negative experiment",
+  "contribution_supported": false,
+  "M09_disposition": {
+    "original": "Preserve frozen M09 unchanged and under investigation, not a validated new method. Its original 300-trial/Spearman/calibrated-rejection protocol was not executed.",
+    "v2": "Explicit prospective refinement executed; consensus-switch excess fails its declared incremental-discrimination gate. Retain the full-support interaction as an unconfirmed lead, not a promoted endpoint.",
+    "interpretation": "Failure to establish benefit here neither proves universal equivalence to linear propagation nor rules out useful nonlinear regimes."
+  },
+  "scientific_findings": [
+    {
+      "finding": "Three observed problems are real within the inspected records, but do not identify a common cause.",
+      "evidence": "Tracking: 293/1858 and 15/1001 frames meet exploratory low-residual/high-error criteria. InfoGeo: two selected native DINOv2 patch descriptors have cosine 0.93599 and the same target maximum; all three inspected query identities rank first. Cross-domain SIFT: 62 matches, only 1 nominal-geometry-consistent, no pose.",
+      "interpretation": "Tracking drift, correspondence errors and map bias remain competing explanations. Unreviewed point annotations prohibit formal PCK. A post-pose uncertainty diagnostic cannot repair the unsolved cross-domain case."
+    },
+    {
+      "finding": "A real correspondence-based intervention ran, not merely an algebraic identity check.",
+      "evidence": "Actual SIFT pixels and DSM lifting feed RANSAC and LM. All 120 designed cases solve; 64 exceed 1 m camera-centre error. No failed probes; positive-depth fraction is 1.",
+      "interpretation": "Images and matches are real; injected height errors are synthetic; truth is reconstruction-derived, not surveyed external-DSM truth."
+    },
+    {
+      "finding": "Consensus-associated excess exists but does not add pooled discrimination.",
+      "auc": {
+        "analytic": 0.6467633928571429,
+        "finite_fixed": 0.6643415178571429,
+        "finite_full": 0.7795758928571429,
+        "switch_excess": 0.7293526785714286,
+        "monte_carlo": 0.7837611607142857,
+        "residual": 0.7837611607142857,
+        "negative_inlier_fraction": 0.7360491071428571,
+        "seed_spread": 0.5
+      },
+      "primary_gap": -0.054408482142857095,
+      "paired_eight_block_95pct_interval": [-0.14014648142555128, 0.022280409648830685],
+      "mean_consensus_change": 0.09963872610207501,
+      "maximum_unchanged_consensus_excess_m": 1.0110102794782988e-6,
+      "maximum_seed_spread_m": 0.0
+    },
+    {
+      "finding": "A support-dependent lead survives, without confirmation.",
+      "evidence": "Full support: excess AUROC 0.9023 versus best ordinary 0.8308; random55 0.7375; concentrated55 0.6347.",
+      "interpretation": "No retrospective subgroup promotion. At amplitude 2 m, excess AUROC 0.9565 uses only one negative; smaller-amplitude results are much weaker."
+    },
+    {
+      "finding": "Distinct, significant contribution is not established by the available prior art and measurements.",
+      "evidence": "JCGM101:2008 sections 5.8-5.9 establish numerical nonlinear propagation; Vakhitov et al. section 3.5 models 2D and 3D uncertainty in PnP refinement; Chen et al. sections 3.1-3.2 address non-Gaussian pose ambiguity and Monte Carlo integration.",
+      "interpretation": "These sources invalidate broad novelty claims about perturbation propagation or uncertainty-aware PnP, but do not prove exact equivalence to the proposed full-minus-fixed diagnostic. Its practical incremental value remains unsupported."
+    }
+  ],
+  "invalid_claims_or_errors": [
+    {
+      "issue": "Original M09 motivation confuses matching error with reprojection residual.",
+      "correction": "OrthoLoC Table 6 reports SP+LG matching error 2.5/2.5 px but reprojection error 3.4/9.0 px. Tracking records, not that table, support the new low-residual/high-error motivation."
+    },
+    {
+      "issue": "Analytic baseline is not an exact-Hessian covariance calculation.",
+      "correction": "It computes a Gauss-Newton implicit camera-centre sensitivity and maximum column norm, without forming propagated covariance. Nominal fixed-consensus finite-difference discrepancies are 0.00583, 0.00583 and 0.01232; corrupted-state accuracy is not separately checked."
+    },
+    {
+      "issue": "Published-method and original-protocol coverage must not be overstated.",
+      "correction": "No Vakhitov covariance-weighted estimator or EProPnP posterior/training implementation exists here. MC16 is a spherical-probe maximum, not calibrated posterior uncertainty. finite_full is an operationalized v2 comparator, not literal execution of original M09."
+    },
+    {
+      "issue": "Mechanistic isolation and uncertainty statements have boundaries.",
+      "correction": "Full and fixed solves differ in initialization as well as consensus. Near-zero unchanged-consensus excess supports, but does not prove, pure consensus causation. cv2.setRNGSeed may not alter PnPRansac internal sampling: zero spread demonstrates this API control only, not independent hypothesis streams. The bootstrap fixes the empirically selected strongest baseline; it is not a simultaneous comparison."
+    }
+  ],
+  "experimental_limits": [
+    "One solvable same-domain scene; cross-domain failure is retained, not an uncertainty success.",
+    "Eight perturbation blocks and 99 unique input geometries, not 120 independent scenes. Twenty-four zero-amplitude rows repeat three geometries/labels; MC probes still vary.",
+    "Conditional bootstrap only; no scene-generalization inference.",
+    "Pooling amplitude regimes changes ranking: residual AUROC is 0.7838 pooled but 0.1944/0.1259 at amplitudes 0.25/0.5.",
+    "Support-specific QR bases mean shared coefficients do not impose identical physical fields across supports; support contrasts do not isolate concentration.",
+    "DC height is a universal translation gauge; no calibrated abstention or real-map causal attribution is demonstrated.",
+    "No exhaustive novelty search; original tracker, feature models and full experiment were not rerun."
+  ],
+  "selection_audit_summary": {
+    "all_nine": {"M01": "retain as control", "M02": "revise", "M03": "revise", "M04": "revise", "M05": "revise as control", "M07": "reject frozen proposal", "M10": "revise/defer", "M11": "revise", "M12": "revise"},
+    "deep_sample": "M02 normalization/depth defects are genuine. M11 residual space is 2N-dimensional; DCT composition is valid, but DC makes the proposed unrestricted gain degenerate. M12 query-constant CSLS omission preserves ranking; exposure-adjusted hubness controls remain necessary.",
+    "judgment": "Selection optimality is unproved. Missing experiments do not establish nonnovelty. Preserve M11 bias/visibility, M02 support and M12 retrieval hypotheses without treating them as established explanations. M06/M08 remain rejected under the user's separate disposition; this audit does not reinstate them."
+  },
+  "verification": {
+    "tasks_A_to_E": "A: specified v2 checked; B: all nine and deep three reviewed; C: three recorded failure patterns inspected; D: real experiment and statistics verified; E: independent no-contribution decision.",
+    "checks": "Protocol, implementation, matching-report and correspondence-cache hashes match. Independently recomputed all pooled AUROCs by rank sums, labels, factorial completeness and 2000 paired-block bootstrap replicates. Read closest-prior-art and exact-retrieval packets; decisive primary passages were also inspected directly.",
+    "blocking_defects_for_negative_verdict": []
+  },
+  "next_scientific_action": "Freeze a separate, independent-scene test of absorbed map bias versus residual-visible mismatch (M11-v2), with DC separated, common physical perturbation fields and count-matched supports. Test the full-support interaction prospectively against residual, inlier fraction, GN sensitivity and nonlinear propagation; do not promote M09 meanwhile."
+}

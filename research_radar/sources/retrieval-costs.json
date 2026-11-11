@@ -1,0 +1,10 @@
+{
+  "http_requests": 56,
+  "download_bytes": 267027628,
+  "elapsed_seconds": 619,
+  "api_cost_usd": null,
+  "gpu_hours": 0,
+  "instrumented_request_seconds_sum": 80.855,
+  "measurement": "Snapshot elapsed from first instrumented batch request through corpus/candidate validation; report finalization not included. Includes 40,000,001 discarded PDF bytes and 600-byte initial probe. No paid API was called; CLI model billing is not available.",
+  "raw_manifest": "sources/retrieval-log.json"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "uncertainty-pnp",
+    "title": "Vakhitov et al., Uncertainty-Aware Camera Pose Estimation from Points and Lines",
+    "year": 2021,
+    "url": "https://arxiv.org/pdf/2107.03890",
+    "comparison": "Published 2D and3D uncertainty-aware residual covariance and refinement, not the exact consensus-switch-excess diagnostic.",
+    "evidence": [
+      {
+        "quote": "Visual odometry systems, e.g. [25, 26], use the 2D covariance of the feature detection as the residual covariance.\nThis corresponds to setting Σr̄pt = Σu , Σr̄ln = σl2 I, and\nwe will dub this scheme as standard refinement. It is often implemented based on a fast and efficient LevenbergMarquardt method.\nIn our case, we wish to use the full residual covariance,\nincluding both 2D and 3D uncertainty. For the point residual it is\nΣr̄pt = Σu + J(x̂)RΣx RT JT (x̂),\n(21)\nwhere J is a Jacobian of π with respect to x̂; for the line\nresidual the covariance is",
+        "location": "Section3.5, equation21",
+        "archive_manifest": "8f998612aaa0f5f04e88fcd4c332e98a47c7f7b80245ee6f9991237104321d3a"
+      }
+    ]
+  },
+  {
+    "id": "gum-monte-carlo",
+    "title": "JCGM101:2008, Propagation of distributions using a Monte Carlo method",
+    "year": 2008,
+    "url": "https://www.bipm.org/documents/20126/2071204/JCGM_101_2008_E.pdf",
+    "comparison": "Nonlinear uncertainty propagation is established;16 directional stress probes are not calibrated MonteCarlo coverage estimates.",
+    "evidence": [
+      {
+        "quote": "This Supplement to the “Guide to the expression of uncertainty in measurement” (GUM) is concerned with the\npropagation of probability distributions through a mathematical model of measurement [GUM:1995 3.1.6] as a basis\nfor the evaluation of uncertainty of measurement, and its implementation by a Monte Carlo method. The treatment\napplies to a model having any number of input quantities, and a single output quantity.\nThe described Monte Carlo method is a practical alternative to the GUM uncertainty framework [GUM:1995 3.4.8].\nIt has value when\na)\n\nlinearization of the model provides an inadequate representation, or\n\nb) the probability density function (PDF) for the output quantity departs appreciably from a Gaussian distribution\nor a scaled and shifted t-distribution, e.g. due to marked asymmetry.\nIn case a), the estimate of the output quantity and the associated standard uncertainty provided by the GUM uncertainty framework might be unreliable. In case b), unrealistic coverage intervals (a generalization of “expanded\nuncertainty” in the GUM uncertainty framework) might be the outcome.",
+        "location": "Introduction, printed pagevii",
+        "archive_manifest": "b87f91326a180461bb832b4c8890359c0a483db4d2826961bd5d773dbb10d0bc"
+      }
+    ]
+  },
+  {
+    "id": "epropnp",
+    "title": "Chen et al., EPro-PnP: Generalized End-to-End Probabilistic Perspective-n-Points",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2203.13254",
+    "comparison": "Probabilistic PnP addresses ambiguity/nondifferentiability using learned distributions; not an exact publication of the present map-perturbation score.",
+    "evidence": [
+      {
+        "quote": "\fPnP as a differentiable layer and employs pose-driven loss\nfunction, so that gradient of the pose error can be backpropagated to the 2D-3D correspondences.\nHowever, existing work on differentiable PnP learns\nonly a portion of the correspondences (either 2D coordinates [12], 3D coordinates [4, 6] or corresponding\nweights [9]), assuming other components are given a priori.\nThis raises an important question: why not learn the entire\nset of points and weights altogether in an end-to-end manner? The simple answer is: the solution of the PnP problem is inherently non-differentiable at some points, causing\ntraining difficulties and convergence issues. For example, a\nPnP problem can have ambiguous solutions [32, 38].\nTo overcome the above limitations, we propose a generalized end-to-end probabilistic PnP (EPro-PnP) approach\nthat enables learning the weighted 2D-3D point correspondences entirely from scratch (Figure 1). The main idea\nis straightforward: deterministic pose is non-differentiable,\nbut the probability density of pose is apparently differentiable, just like categorical classification scores. Therefore, we interpret the output of PnP as a probabilistic distribution parameterized by the learnable 2D-3D correspondences. During training, the Kullback-Leibler (KL) divergence between the predicted and target pose distributions\nis minimized as the loss function, which can be efficiently\nimplemented by the Adaptive Multiple Importance Sampling [14] algorithm.\nAs a general approach, EPro-PnP inherently unifies existing correspondence learning techniques (Section 3.1).",
+        "location": "Section1, PDFpage2",
+        "archive_manifest": "80528da74c5f282aaebed4288ab43b2c06017748820bd4f9851cd53583fa55b1"
+      }
+    ]
+  }
+]

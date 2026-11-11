@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-10T07:51:52.794907+00:00",
+  "scope": "This ITERATE only; no previous-pilot costs included",
+  "public_request_operations": 22,
+  "download_bytes": 112086336,
+  "public_request_seconds": 42.485,
+  "actual_cli_receipts": {
+    "http_requests": 0,
+    "download_bytes": 0,
+    "elapsed_seconds": 136.3,
+    "api_cost_usd": null,
+    "external_api_cost_usd": 0,
+    "gpu_hours": 0,
+    "cli_requests": 5,
+    "cli_nano_aiu": 54992020000,
+    "model_input_tokens": 220622,
+    "model_output_tokens": 16266,
+    "measurement_notes": [],
+    "incomplete_measurement_records": 0,
+    "note": "Elapsed work time, not wall-clock campaign time. CLI credits are recorded when available; USD conversion is unavailable."
+  },
+  "gpu_hours": 0,
+  "paid_external_api_calls": 0,
+  "total_usd": null,
+  "unmeasured": [
+    "Enclosing coordinator and two delegated-agent model usage/billing not exposed here",
+    "CLI accounting units have no independently verified USD conversion"
+  ],
+  "model_calls": 5
+}

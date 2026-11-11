@@ -1,0 +1,14 @@
+{
+  "timing": "After all four generators; before any technical screening or external search",
+  "old_input_unchanged": true,
+  "L1": {
+    "issue": "Form-feed-aware splitlines selected chart ticks instead of supporting prose. Integrity did not imply entailment.",
+    "supersedes_manifest": "a718ac84d9c91c82da2dc6b96c9dbb7b2cb0d48be935010760ebab34d610cb25",
+    "correct_quote": "When the covisibility ratio drops below 20%, we observe a sharp increase in both translation and\n rotation errors. This degradation occurs because the distribution of matched points becomes non-\n uniform across the image. This non-uniformity causes PnP to overfit to specific image regions,\n creating an underdetermined problem that compromises localization accuracy.\n",
+    "source_url": "https://arxiv.org/pdf/2509.18350",
+    "archive_manifest": "5fded88d44b474bbbc0d7f9a2b509b304fe4d9d817bd477716d0ea5a9b376f5a",
+    "causal_limit": "Spatial concentration and rank deficiency remain explanations, not separately isolated empirical causes."
+  },
+  "L2": "Aggregate populations can differ (17/496 vs17/423 in-place/out-place available test samples); equal rounded matching error is not identical matches or a controlled DSM-only intervention.",
+  "L3": "Views are Google Earth renderings and Recall@1 is patch retrieval under basemap/IoU criteria, not real-flight pose. Residual error has no established causal partition."
+}

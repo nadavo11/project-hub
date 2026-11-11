@@ -1,0 +1,239 @@
+{
+  "job_id": "job-b1a63ad27596",
+  "completed_at": "2026-11-10T08:21:14.747343+00:00",
+  "result": {
+    "candidates": [
+      {
+        "local_id": "L1",
+        "limitation_id": "L1",
+        "title": "Gauge-split Fisher observability of the 7-parameter pose+focal block from match support (a-priori covisibility replacement)",
+        "exact_failure": "Below ~20% covisibility, correspondences cluster spatially and pose error rises sharply (authors' report, not reproduced). The cause (focal/tz coupling from concentrated support) is the authors' explanation, not isolated.",
+        "mechanism": {
+          "inputs": [
+            "Inlier 2D matches x_i (px, image frame) with DSM-lifted 3D points P_i (m, local frame), available at test time",
+            "Intrinsics prior f0 (px) with prior sigma_f (px)",
+            "Pixel noise sigma (px), fixed 1.0 or estimated by residual MAD"
+          ],
+          "outputs": [
+            "Scalar kappa_pose = lambda_min of the Schur-complemented Fisher block for (R,t) after marginalizing f (dimensionless px^2/m^2 units, normalized by sigma^2)",
+            "Direction of the weakest eigenvector (which of tx,ty,tz,f is unobservable)",
+            "Accept/abstain flag, and per-axis translation std (m) from the inverse block"
+          ],
+          "operations": [
+            "1. For each inlier compute Jacobian J_i = d pi(R P_i + t; f)/d[rot,t,f] (2x7)",
+            "2. Form I = sum_i J_i^T J_i / sigma^2 + diag(0,0,0,0,0,0,1/sigma_f^2)",
+            "3. Schur complement: I_pose = I_pp - I_pf I_ff^-1 I_fp (6x6), then scale rot rows by the scene radius to give uniform units",
+            "4. kappa = lambda_min(I_pose); cov_t = (I_pose^-1)[t,t]",
+            "5. Report cov_t and abstain if sqrt(trace cov_t) > tau_m"
+          ],
+          "parameters": [
+            "sigma: fixed 1 px",
+            "sigma_f: fixed from the OrthoLoC calibration spread",
+            "tau_m: chosen on a validation split to give 90% precision at 1 m"
+          ],
+          "degenerate_cases": [
+            "Fewer than 4 inliers or rank-deficient I: kappa=0 and abstain",
+            "Coplanar P_i with centered pixels: f/tz coupling makes lambda_min≈0 and the flag fires (expected)",
+            "sigma_f→0: the f block is dropped and the scheme reduces to standard PnP covariance"
+          ],
+          "non_equivalence": "This is the standard Gauss-Newton/Cramér-Rao covariance of PnP with a focal nuisance, so it is not a new estimator. The only difference from the established covariance-inflation/support-weighting comparators is the explicit Schur marginalization of f and the conditioning of a pose-only block. Counterexample: two match sets with identical covisibility fraction and inlier count. Set A is spread across the image with depth variation, set B is clustered and quasi-planar. A covisibility threshold cannot separate them, but kappa differs by orders of magnitude. Also, a spread match set containing an aliased/biased match has high kappa and a wrong pose, so kappa does not certify correctness."
+        },
+        "prior_art": [
+          {
+            "paper_id": "ortholoc",
+            "already_solves": "Identifies the f–tz ambiguity and mitigates it with AdHoP spatial diversity, with a 20% covisibility condition",
+            "does_not_solve": "Does not provide a per-query observability measure; whether kappa predicts error better than covisibility is untested (uncertain)"
+          },
+          {
+            "paper_id": "independent-O3",
+            "already_solves": "E-optimal Fisher conditioning for selecting sources",
+            "does_not_solve": "Applies to sensor placement under independent known models, not to post-hoc scoring of matcher output"
+          },
+          {
+            "paper_id": "hfnet",
+            "already_solves": "Covisibility clustering plus PnP-RANSAC",
+            "does_not_solve": "No conditioning diagnostic"
+          }
+        ],
+        "most_likely_failure": "Wrong matches or DSM bias dominate the error, so kappa is uncorrelated with the error. It may also add nothing over inlier count and spatial dispersion.",
+        "significance": "If kappa predicts the error beyond covisibility, it supports the concentrated-support explanation. If not, that explanation is falsified.",
+        "falsification": {
+          "data": "Two OrthoLoC demo NPZs only: synthesize queries by cropping the query image to varied covisibility 5-60% and by subsampling the pointmap-derived correspondences. Exact projection gives ground-truth matches; add Gaussian noise at 0.5-3 px. Real matcher outputs are unavailable.",
+          "baselines": [
+            "Covisibility fraction",
+            "Inlier count",
+            "Convex-hull area of the matches",
+            "Convex-hull area times depth variance"
+          ],
+          "primary_metric": "Spearman correlation between log kappa and log translation error of noisy PnP+focal solves, plus partial correlation controlling for the three baselines",
+          "success": "Partial Spearman ≥0.5 given inlier count, hull area and covisibility, across ≥2000 synthetic trials",
+          "failure": "Partial correlation <0.2, or the baselines' joint rank-regression R² within 0.05 of that obtained with kappa added",
+          "cpu_budget": "About 1 CPU-day: 2000-10000 Gauss-Newton solves in NumPy/SciPy, each under 1 s",
+          "leakage_controls": [
+            "Draw the noise seed independently of the crop",
+            "Fix tau and any thresholds on one demo scene and evaluate on the other",
+            "Report synthetic-only results explicitly"
+          ],
+          "unavailable_inputs": [
+            "Real matcher outputs",
+            "Independent DSM error truth",
+            "Real low-overlap queries beyond the 2 demo scenes"
+          ]
+        }
+      },
+      {
+        "local_id": "L2",
+        "limitation_id": "L2",
+        "title": "Height-gauge identifiability test: the DSM-shift residual null space of ray-height sensitivity",
+        "exact_failure": "Under DOP+DSM domain shift the pixel match error is unchanged (2.5 px) but translation error grows from 0.42 to 1.07 m, so image residuals do not reveal DSM-induced pose error (authors' report, not reproduced).",
+        "mechanism": {
+          "inputs": [
+            "Lifted anchors (u_i, v_i, z_i) with z from the DSM (m)",
+            "Pose estimate (R,t) and intrinsics",
+            "Matcher pixel noise sigma (px)",
+            "The DSM is the only available height source; no independent truth"
+          ],
+          "outputs": [
+            "Per-pose sensitivity matrix S = d pose / d z (6 x N, units m/m or deg/m)",
+            "Residual-visibility ratio rho = ||P_perp(J_z dz)|| / ||J_z dz|| for a unit-norm height perturbation dz",
+            "Predicted translation bias for a hypothesized DSM error"
+          ],
+          "operations": [
+            "1. Build the PnP Jacobians J_pose (2N x 6) and J_z (2N x N, diagonal blocks d pi / d z_i)",
+            "2. Projector onto the orthogonal complement of range(J_pose): P_perp = I - J_pose J_pose^+",
+            "3. Pose bias for a height error dz: db = -J_pose^+ J_z dz; residual visibility = ||P_perp J_z dz||",
+            "4. Compute rho for dz in the DSM-error subspace: a low-frequency smooth field (e.g. the first K DCT modes) versus a high-frequency field",
+            "5. The worst case is the rank-K subspace maximizing ||J_pose^+ J_z dz|| / ||P_perp J_z dz||, found as the top generalized singular value",
+            "6. Report gamma = that generalized singular value (m of pose bias per px of residual) as the invisible-bias gain"
+          ],
+          "parameters": [
+            "K: number of DCT modes, 4 or 8, fixed",
+            "Basis: DCT on the tile footprint",
+            "Noise sigma fixed at 1 px"
+          ],
+          "degenerate_cases": [
+            "Nadir camera with a flat DSM: J_z is nearly parallel to the tz column, so gamma→infinity (pure scale ambiguity)",
+            "N<=6: P_perp=0, residual invisibility is complete and the flag is trivially true",
+            "dz=0: undefined ratio, return 0"
+          ],
+          "non_equivalence": "This is first-order error propagation and a bias-sensitivity analysis, i.e. the established DSM-to-pose uncertainty analysis. The distinct output is the generalized-singular-value gain (bias per unit visible residual), not covariance. Counterexample to full-covariance propagation or confidence weighting: a smooth DSM error that is nearly collinear with a rigid camera translation has a large gain with zero residual, whereas the covariance from random pixel noise is small. A random-noise covariance cannot detect this, since it models variance and not bias."
+        },
+        "prior_art": [
+          {
+            "paper_id": "independent-O2",
+            "already_solves": "Error propagation to per-point covariance, including model-wide systematic errors",
+            "does_not_solve": "Does not give a bias-to-residual gain for external DSMs in drone-to-map PnP (uncertain)"
+          },
+          {
+            "paper_id": "ortholoc",
+            "already_solves": "Provides the domain-shift measurements",
+            "does_not_solve": "No mechanism explanation for height-error-induced bias"
+          },
+          {
+            "paper_id": "skyreg",
+            "already_solves": "Per-pixel confidence-weighted regression",
+            "does_not_solve": "Confidence does not capture residual-invisible systematic height bias"
+          }
+        ],
+        "most_likely_failure": "First-order linearization is a poor model for large DSM errors. Real DSM errors may also be mostly high-frequency building edges, outside the DCT subspace.",
+        "significance": "It would turn the 'same matching error, different pose error' observation into a testable identifiability property.",
+        "falsification": {
+          "data": "Two OrthoLoC demo NPZs: perturb the DSM with synthetic smooth and high-frequency fields of 0.5-3 m RMS, re-solve PnP using exact projected matches from the unperturbed scene, and measure the actual bias and residual.",
+          "baselines": [
+            "Pixel residual RMS",
+            "Random-noise PnP covariance trace",
+            "Mean ray-height sensitivity (|d pi / dz|)"
+          ],
+          "primary_metric": "Pearson correlation between predicted bias ||db|| and the measured translation bias (m) across perturbations",
+          "success": "Correlation ≥0.9 for smooth fields and the predicted bias within 25% median relative error, with measured residuals under 3 px for ≥50% of the biased cases",
+          "failure": "Correlation <0.7, or the covariance-trace baseline reaches within 0.05 correlation of the gain-based prediction",
+          "cpu_budget": "Under 1 CPU-day: SVDs of 2N x 6 matrices with N≈500-2000 subsampled",
+          "leakage_controls": [
+            "Generate perturbation fields independently of the Jacobian basis for the high-frequency test",
+            "Evaluate on the other scene for the K choice"
+          ],
+          "unavailable_inputs": [
+            "Independently certified DSM error truth",
+            "Cached matcher outputs"
+          ]
+        }
+      },
+      {
+        "local_id": "L3",
+        "limitation_id": "L3",
+        "title": "Test of whether residual off-nadir retrieval misses are explained by within-group descriptor spread (falsifiable cause hypothesis)",
+        "exact_failure": "After SACW and VCLS, 27.36% of Recall@1 queries still miss. Cause unknown. We propose and test one falsifiable hypothesis: misses concentrate where the same-location group's embedding dispersion exceeds the margin to the nearest wrong-location centroid.",
+        "mechanism": {
+          "inputs": [
+            "L2-normalized descriptors d_q (dim D, unitless) for each UAV view, for angles 70-85 degrees, from any retrieval model",
+            "Satellite gallery descriptors g_j",
+            "Group membership (which UAV views belong to the same location), available in OffNadirLoc training/test labels"
+          ],
+          "outputs": [
+            "Per-location dispersion s_L = mean over views of (1 - cos(d_v, c_L)), with c_L the normalized group centroid",
+            "Margin m_L = cos(c_L, g_true) - max_{j != true} cos(c_L, g_j)",
+            "Prediction: miss iff s_L > m_L / 2 (testable boundary), and a measured fraction of misses explained"
+          ],
+          "operations": [
+            "1. Compute c_L = normalize(sum_v d_v) per location",
+            "2. Compute s_L and m_L as above",
+            "3. Evaluate the classifier miss_hat = [s_L > alpha * m_L] with alpha fixed at 0.5 (derived from the triangle inequality on the unit sphere)",
+            "4. Compare it with the true miss of each view; also compute the per-view angle-conditioned miss rate",
+            "5. Intervention: replace the query descriptor with c_L (view averaging) and measure whether Recall@1 rises to the predicted level"
+          ],
+          "parameters": [
+            "alpha: 0.5 fixed a priori, not tuned",
+            "Descriptor model: any public DINOv2 baseline"
+          ],
+          "degenerate_cases": [
+            "Single-view groups: s_L=0, so the hypothesis predicts misses only when m_L<0",
+            "m_L<=0: location is always predicted a miss",
+            "Identical descriptors: s_L=0"
+          ],
+          "non_equivalence": "This is a diagnostic reducing to an established operation (centroid pooling and margin analysis); there is no new learning mechanism. Counterexample to ONLoc's VCLS group supervision: VCLS lowers s_L in training but cannot say which misses remain explained by dispersion. If misses occur with s_L≈0 and m_L<0, the cause is a gallery-confusable location (aliasing), not view spread, so the hypothesis is falsified."
+        },
+        "prior_art": [
+          {
+            "paper_id": "offnadirloc",
+            "already_solves": "Group supervision and spatial weighting that reduce dispersion",
+            "does_not_solve": "Does not report which misses remain explained by dispersion (unexamined)"
+          },
+          {
+            "paper_id": "sample4geo",
+            "already_solves": "Hard-negative mining to enlarge m_L",
+            "does_not_solve": "No decomposition of misses into spread versus aliasing"
+          },
+          {
+            "paper_id": "game4loc",
+            "already_solves": "Overlap-weighted partial-match supervision",
+            "does_not_solve": "Does not diagnose cause"
+          }
+        ],
+        "most_likely_failure": "The dataset and weights are not available here, and descriptor dispersion may be non-informative (misses dominated by aliasing).",
+        "significance": "A clear split between dispersion-driven and aliasing-driven misses would tell what a next method must target, and may falsify the dispersion cause.",
+        "falsification": {
+          "data": "OffNadirLoc rendered benchmark with the released test split and a public DINOv2 checkpoint (not currently available locally; must be downloaded). Descriptor extraction on CPU for a few thousand images.",
+          "baselines": [
+            "Always-predict-miss-at-the-largest-angle",
+            "Predict-miss-by-margin-only (m_L<0)",
+            "Random with the same miss rate"
+          ],
+          "primary_metric": "AUROC of s_L/m_L for predicting top-1 miss, plus the Recall@1 gain from the centroid intervention",
+          "success": "AUROC ≥0.75 and ≥40% of misses explained (s_L > 0.5 m_L) with the margin-only baseline AUROC at least 0.08 lower",
+          "failure": "AUROC <0.6 or margin-only AUROC within 0.03 of the dispersion statistic; also if centroid replacement lifts Recall@1 by <2 points",
+          "cpu_budget": "1-2 CPU-days for DINOv2-small/base embedding of the test set at 224-448 px",
+          "leakage_controls": [
+            "Compute centroids using test-time group labels only for the intervention arm and mark that oracle grouping in the report",
+            "Do not tune alpha",
+            "Keep the train and test locations disjoint"
+          ],
+          "unavailable_inputs": [
+            "The authors' trained ONLoc weights",
+            "Cached embeddings",
+            "Verified test-split membership"
+          ]
+        }
+      }
+    ]
+  }
+}

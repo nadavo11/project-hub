@@ -1,0 +1,74 @@
+{
+  "status": "retrieval_log_preserved_but_primary_source_cache_unavailable",
+  "explanation": "The investigator deleted its downloaded PDFs, HTML responses, and extracted texts during cleanup at the end of the original blind audit. The original source directory no longer exists. No downloaded primary files remain to copy or hash. Null source hashes mean unavailable, not verified. No new searches or downloads were performed for this persistence request.",
+  "former_source_directory": "/home/nadavo/project-hub/research_radar/blind-source-cache",
+  "unchanged_audit": {
+    "filename": "../../blind-audit.json",
+    "sha256": "9f3479e269327854b343347004a612a6277cac2c335473a357f607a0009d6484"
+  },
+  "preserved_artifacts": [
+    {
+      "filename": "retrieval-log.json",
+      "sha256": "9bf09693ba3978271b141fac39df016865fc2bb0b475a218693154b27615f3ef",
+      "provenance": "Exact structured copy of blind-audit.json retrieval_log, serialized as indented JSON."
+    }
+  ],
+  "missing_primary_pdfs": [
+    {
+      "url": "https://arxiv.org/pdf/2002.12186",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "university.pdf"
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "sample4geo.pdf"
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "transgeo.pdf"
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "roma.pdf"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2403.04172",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "sdpl.pdf"
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Zhu_VIGOR_Cross-View_Image_Geo-Localization_Beyond_One-to-One_Retrieval_CVPR_2021_paper.pdf",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "vigor.pdf"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2008.11646",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "lpn.pdf"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2312.08060",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "cbev.pdf"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1809.05979",
+      "sha256": null,
+      "filename": null,
+      "former_filename": "uav-pose.pdf"
+    }
+  ],
+  "missing_extracted_texts": "All nine PDFs had layout and reading-order text extractions, and four also had compact whitespace-normalized text. These were deleted together with their PDFs; no hashes were recorded.",
+  "verification_scope": "Hashes can verify only the unchanged audit and exported retrieval log, not unavailable primary-source bytes."
+}

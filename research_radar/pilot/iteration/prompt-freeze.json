@@ -1,0 +1,6 @@
+{
+  "benchmark-revised-prompt.txt": "b9bbc23dc307100c154038e20d4f4645ebf8eccc5efda849596315a2686fcf1e",
+  "generation-revised-prompt.txt": "e7bad736ef9606ecf246ac4a9ff944867fdf5dd32c8a66ca946ca4462684c713",
+  "benchmark-baseline-prompt.txt": "9fbe270f477e47dbcf842fa8a27cadc92dd5312f0d249b6aabac6ae344334206",
+  "generation-baseline-prompt.txt": "afc2d8e5e721e94a34e9dc984a92e9cb9467a816e808158fcb398f6f33932385"
+}

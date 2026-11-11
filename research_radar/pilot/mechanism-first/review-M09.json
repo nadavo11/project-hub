@@ -1,0 +1,64 @@
+{
+  "job_id": "job-233c46091825",
+  "completed_at": "2026-11-10T08:32:14.567992+00:00",
+  "result": {
+    "candidate_id": "L2",
+    "disposition": "revise",
+    "fatal_prior_art_overlap": false,
+    "novelty_status": "unresolved",
+    "axes": {
+      "novelty": {
+        "status": "unresolved",
+        "reason": "The core operator is finite-difference sensitivity of a PnP solution to input perturbations. This is standard first-order error propagation, and the packet's own non_equivalence text concedes the method reduces to the analytic Jacobian unless nonlinearity or inlier-set switching matters. The elevation-mode parameterization and the selective-abstention use under DSM error are an application-specific evaluation. They are not a distinct operator. The supplied papers do not show perturbed-DSM PnP-RANSAC re-solving, but that absence does not establish novelty."
+      },
+      "scientific_significance": {
+        "status": "pass",
+        "reason": "The authors report that matching error stays at 2.5 px while TE rises from 0.42 to 1.07 m and recall falls from 71.3% to 42.3%. These are author reports, not reproduced here. The report suggests residuals do not expose elevation error, so a test of whether elevation sensitivity explains the gap is worthwhile. The significance holds even if the result is a negative one showing equivalence."
+      },
+      "technical_feasibility": {
+        "status": "pass",
+        "reason": "Eight warm-started PnP solves at under 50 ms each is plausible on CPU. Two demo NPZs are available. Cached matcher outputs are unverified, but the plan may not need them: matches can be recomputed or derived synthetically from nominal projection."
+      },
+      "insufficient_evidence": {
+        "status": "unresolved",
+        "reason": "No experiment exists. Two demo scenes are a very small base for 300 trials, and trials from the same scene are not independent. The design needs scene-level clustering in the CI and a scene-held-out split."
+      }
+    },
+    "closest_prior_art": [
+      {
+        "paper_id": "mf-bundle",
+        "quote": "cost iso-surfaces above\nthe minimum define natural confidence regions. Locally, these regions are nested ellipsoids centred\non the cost minimum, with size and shape characterized by the dispersion matrix",
+        "location": "Section 3",
+        "equivalence": "The first-order covariance from the inverse Hessian is the analytic comparator. Propagating DSM error through the Jacobian is the same linearization as finite differencing over mode coefficients as the step size goes to 0. Note the quote covers measurement-noise dispersion, not input-parameter (DSM) sensitivity. Extending it to DSM error needs the standard propagation formula, which the quote does not state.",
+        "remaining_difference": "Finite 1 m re-solving with RANSAC can capture nonlinearity and inlier switching, which the linearized covariance cannot. That is the only room for a distinct contribution."
+      },
+      {
+        "paper_id": "independent-O2",
+        "quote": "The uncertainty propagated from SfM captures the low-frequency, systematic errors that affect the entire model",
+        "location": "Section 2.3, PDF page 5",
+        "equivalence": "This is analytic propagation of systematic, low-frequency errors into per-point covariance. It is conceptually close to smooth low-order DSM modes, but it applies to point-cloud reconstruction, not to PnP pose.",
+        "remaining_difference": "It does not address abstention, DSM-lifted PnP, or RANSAC re-solving."
+      }
+    ],
+    "technical_counterexamples": [
+      "Mode symmetry: the bias mode in a flat-DSM nadir scene is a height translation coupled with the focal-length/height ambiguity. It dominates s regardless of real error, giving a constant score and no ranking power.",
+      "The max over modes is scale-sensitive. 1 m RMS fields over different footprint sizes are not comparable, so tilt modes change their meaning with footprint extent.",
+      "Perturbation modes are smooth, but the proposed testing includes building-scale errors. The fixed modes may not span the injected errors, so s could correlate with TE only through shared footprint geometry.",
+      "Both s and the analytic Jacobian are functions of the same geometry, so they may be highly correlated. An absolute gap of 0.15 Spearman is then hard to reach."
+    ],
+    "falsification_assessment": "The design is adequate. It has a stated failure criterion, and equivalence is accepted as a valid result. It would be stronger with these changes. (1) Add a stronger comparator than the plain Jacobian covariance: the Jacobian taken against the same eight modes, plus a RANSAC-aware variant such as bootstrap or inlier-count margin. (2) Report whether the inlier set changes, since that is the proposed separating mechanism. (3) Use a scene-clustered CI. (4) Include a control where the injected error is horizontal DOP misregistration, which the document names as the likely alternative cause. The 0.03 to 0.15 band between failure and success is undefined.",
+    "elimination_reasons": [
+      {
+        "dimension": "novelty",
+        "reason": "The operator is a finite-difference form of established first-order propagation. Any contribution is limited to nonlinear, RANSAC or inlier-switching regimes and to the DSM-abstention application.",
+        "paper_ids": [
+          "mf-bundle",
+          "independent-O2"
+        ]
+      }
+    ],
+    "prerequisite_status": "Available: two demo NPZs with DSM/DOP and cameras, and nominal projection passes. Unverified: cached matcher outputs, matcher environment, and certified external-DSM truth. They are not guessed unavailable. Synthetic injected-error truth is possible but only tests a self-defined error model.",
+    "experimentally_supported": false,
+    "rationale": "This is a defensible, cheap test, but as written it is mostly an established sensitivity operator. It should be revised to add a strong analytic and RANSAC-aware comparator, define the inlier-switch separating regime, handle scene clustering, and include a horizontal-misregistration control. It has no empirical validation, and the supplied papers neither confirm nor refute it."
+  }
+}

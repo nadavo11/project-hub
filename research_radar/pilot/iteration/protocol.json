@@ -1,0 +1,29 @@
+{
+  "id": "iterate-2026-11-10",
+  "scope": "Fixed existing corpus; no literature expansion, no training or GPU experiments",
+  "public_request_cap": 25,
+  "download_byte_cap": 120000000,
+  "model_call_cap": 5,
+  "model_call_plan": ["balanced benchmark old policy", "balanced benchmark revised policy", "old-policy generation", "revised-policy generation", "blind joint candidate review"],
+  "benchmark": {
+    "overlap_cases": 5,
+    "distinct_cases": 5,
+    "minimum_recall_per_class": 0.8,
+    "positive_class": "distinct within supplied evidence",
+    "false_positive": "overlap incorrectly called distinct",
+    "false_negative": "distinct incorrectly rejected as overlap",
+    "abstentions": "Reported separately and reduce per-class recall",
+    "scope_limit": "Mechanism discrimination against a frozen source packet; NOT proof of worldwide novelty",
+    "historical_limit": "Only version-dated documents can be cutoff-eligible; pretrained-model hindsight cannot be eliminated"
+  },
+  "discovery": {
+    "candidates_per_policy": 3,
+    "same_corpus": true,
+    "survival_rule": "Independent review finds a specified contribution distinguishable from cited competing mechanisms; significant question and concrete falsification; prerequisites separately assessed",
+    "no_forced_survivor": true,
+    "diversity_measure": "Number of materially different mechanism families assigned by a blinded reviewer; descriptive, not calibrated",
+    "limitations": "One bounded run per policy, no causal or statistical improvement claim"
+  },
+  "cost_policy": "Retain public responses and CLI usage receipts. USD unknown; enclosing assistant/agent billing unavailable. Public request counts include failures.",
+  "historical_loss": "Prior deleted blind snapshots cannot be retroactively recovered; this iteration must preserve its own evidence."
+}

@@ -1,0 +1,20 @@
+{
+  "checks": [
+    {
+      "support": "all",
+      "relative_derivative_difference": 0.00582897666280199,
+      "maximum_absolute_difference": 0.02527847972402264
+    },
+    {
+      "support": "random55",
+      "relative_derivative_difference": 0.0058256320743950585,
+      "maximum_absolute_difference": 0.021343914375837936
+    },
+    {
+      "support": "concentrated55",
+      "relative_derivative_difference": 0.012323043042393265,
+      "maximum_absolute_difference": 0.08426342016371224
+    }
+  ],
+  "limit": "Gauss-Newton derivative omits residual-weighted second derivatives; discrepancy is retained, not silently retuned."
+}

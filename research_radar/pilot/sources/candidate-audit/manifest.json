@@ -1,0 +1,59 @@
+{
+  "scope": "Exact local snapshots used for the independent three-candidate critique. These primary-source text extractions were originally fetched by the literature investigator and independently inspected by the auditor. They are not independent network retrievals.",
+  "input": {
+    "filename": "literature-input.json",
+    "sha256": "43418a9d93de675dbcc991579b819557f66c54f2fe2eb7fa9e7e82138d6bf6b0",
+    "opportunities_canonical_json_sha256": "33b402a13182d17cdbe52b9202ee6fc00829ef4faf42e95149df3dca1f5ee9a8",
+    "canonicalization": "Python json.dumps(opportunities, sort_keys=True, separators=(',', ':'), ensure_ascii=False), encoded UTF-8"
+  },
+  "sources": [
+    {
+      "url": "https://arxiv.org/pdf/2607.04722",
+      "filename": "2607.04722.txt",
+      "sha256": "7b57fe818e5bec48cc8bbb75af5600e4a666ff6ef75f32cbc3a714624ca357d5",
+      "bytes": 93931,
+      "representation": "PDF text extraction; form-feed pages"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2607.20116",
+      "filename": "2607.20116.txt",
+      "sha256": "499f87fadaa489079d3034794587c3d79f4586ec311206f1517bd28614e61a99",
+      "bytes": 144072,
+      "representation": "PDF text extraction; form-feed pages"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2509.18350",
+      "filename": "2509.18350.txt",
+      "sha256": "4a65c0275294e1ad997809659d734bce2ab5aa3b8daf7067273dc11b48b6a2e7",
+      "bytes": 144070,
+      "representation": "PDF text extraction; form-feed pages"
+    },
+    {
+      "url": "https://arxiv.org/html/2608.28891v1",
+      "filename": "2608.28891.full.txt",
+      "sha256": "c0422403be5cd28695c5bf88f147dac8a0f756603160d6327e78e63ee8a13c2f",
+      "bytes": 56041,
+      "representation": "HTML text extraction; use section identifiers, not PDF pages"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2505.07622",
+      "filename": "2505.07622.txt",
+      "sha256": "99cdea0aaf169d4001d565b104f379069f5b0050d78ba8dd4870f09dabcf6acd",
+      "bytes": 133229,
+      "representation": "PDF text extraction; form-feed pages"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1812.03506",
+      "filename": "1812.03506.txt",
+      "sha256": "69aa7be8bd0373b6781f32834201ab0e6e92c367a6b57666d02c959f13d95c4d",
+      "bytes": 92188,
+      "representation": "PDF text extraction; form-feed pages"
+    }
+  ],
+  "limitations": [
+    "SHA-256 values authenticate the copied text bytes, not the original PDF/HTML response bytes.",
+    "No new public HTTP requests were made.",
+    "SkyReg's inspected v1 title is Pixel-wise Geo-registration of Drone Images; the literature file reports a different latest abstract title.",
+    "The literature input was snapshotted while its author was still finalizing provenance; later versions may differ."
+  ]
+}

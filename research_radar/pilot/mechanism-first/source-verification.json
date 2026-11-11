@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "verified_manifests": 29,
+  "manifests": [
+    "0e54357dd0dec7dcc36ce4e1017a30335f74cabfd725c5beae202aac47be31c2",
+    "12c725a4cd277d1e158aa11cab1899b19a47077d47456b78b9513ae6c487c07f",
+    "1a6c572b12b49d4ec96967a1f7afff2ea6282b9b43a069ee01860b041f668adc",
+    "1f90aa7f1592740eb43498ef3c5c184e7cebdb851e7d374ea793c09c31590963",
+    "36ff5792ab59c855dc71c294c987d25faaf95d4c4be9d64daf0c94b56058877a",
+    "40a6ad61f27c12ddb5aecfa896160673d2b797234f55ec90256c83831036f189",
+    "427769d37a7f9c16b9e9b9bfee4e7ec452c76b87ea7ea61ffae6796ad1f72a99",
+    "5700cc1fa0e0a9435e130f4a33f24526f162e917db2b6d9c8ed3300830197f01",
+    "5781bbd0f91bbbbc8c078bd46f510d57da4d283cbd925d531abab8c21bb1ad51",
+    "5fded88d44b474bbbc0d7f9a2b509b304fe4d9d817bd477716d0ea5a9b376f5a",
+    "616b76406fc36e15270a4aebefedf6cbf6dbb5b385ab659867a9397754261ec4",
+    "76afbc5ebd6ea68aaee16e845dea19cfb6c93e4d80222a62d68c95fcd9a5c087",
+    "846c733a51a3e65f3ffb73ef22d2b86624bdf149ec7e9302f5eb9bf0d97e089e",
+    "86a7ef44f1c685a5669604584424db95ae95cd10be49a95741be4c6be6a230cb",
+    "8c292d824b2cd31b46a032ba43bc8c52a6f746c9ecfb6229706ce34f29bc1f3f",
+    "a718ac84d9c91c82da2dc6b96c9dbb7b2cb0d48be935010760ebab34d610cb25",
+    "ad9c370503bbb9a4fa60f97acc64124512a7719c59c001499e7c7ecb3305fb69",
+    "b0c71058b1cfbf4b3ac87cfe21fd9cb7ce710505084c954a772ae339650b1793",
+    "b7605650e1f9d99090512706ff59a184250b70dd9bb06cb733a4b866d1f140c3",
+    "bd50002ef24317679708eab8784d9791ccd22bee684425b61a4fe87dad27907b",
+    "c663ba6641b89e1becb288f47221c3d059a20f919d59fb436b2bf20a3796016c",
+    "c976f01056a945aba932da947cec9996664f22120ef45cb4a7583c07393102b7",
+    "cdaec60858453abc1fb4acc4d183182ed7581f80e2fc4df7a995dfa98f454cb2",
+    "d2fa6bf0ff9bc997d9e63067416daf267f2172d0e1a59613e4b67adcf48f3b37",
+    "d4f56b117d2752c8da2af9428c0bac348cb2e77fd8a59d935f8dc14f077ad2b2",
+    "dbecfa5cf4480147a55de5e10dafa3a1ffcc696af37c9d315a60624eee921817",
+    "e616db1e573f918aa8a09e6cf1037d2fb92372aee251a14a29b2551a6a5f241f",
+    "fa64493dc6a61b00457781679da1b3a0f807e1bde381b965cdfaf3af92fbe8dd",
+    "fd16f5e660e00c683c71f5d2c5cd0a82eaa215f97d0b1ce9bc23305eeceffbab"
+  ],
+  "decisive_source_correction": {
+    "timing": "After all four generators; before any technical screening or external search",
+    "old_input_unchanged": true,
+    "L1": {
+      "issue": "Form-feed-aware splitlines selected chart ticks instead of supporting prose. Integrity did not imply entailment.",
+      "supersedes_manifest": "a718ac84d9c91c82da2dc6b96c9dbb7b2cb0d48be935010760ebab34d610cb25",
+      "correct_quote": "When the covisibility ratio drops below 20%, we observe a sharp increase in both translation and\n rotation errors. This degradation occurs because the distribution of matched points becomes non-\n uniform across the image. This non-uniformity causes PnP to overfit to specific image regions,\n creating an underdetermined problem that compromises localization accuracy.\n",
+      "source_url": "https://arxiv.org/pdf/2509.18350",
+      "archive_manifest": "5fded88d44b474bbbc0d7f9a2b509b304fe4d9d817bd477716d0ea5a9b376f5a",
+      "causal_limit": "Spatial concentration and rank deficiency remain explanations, not separately isolated empirical causes."
+    },
+    "L2": "Aggregate populations can differ (17/496 vs17/423 in-place/out-place available test samples); equal rounded matching error is not identical matches or a controlled DSM-only intervention.",
+    "L3": "Views are Google Earth renderings and Recall@1 is patch retrieval under basemap/IoU criteria, not real-flight pose. Residual error has no established causal partition."
+  },
+  "limitation": "Byte/quote linkage only; semantic validity independently checked. The original L1 manifest is intentionally retained but not supporting evidence."
+}

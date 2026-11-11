@@ -1,0 +1,24 @@
+{
+  "protocol_unchanged": true,
+  "executed_code_unchanged": true,
+  "actual_inputs_unchanged": true,
+  "public_requests": 6,
+  "response_bytes": 11674029,
+  "new_primary_sources": 3,
+  "public_failures": 0,
+  "successful_matching_cpu_seconds": 0.9978594379999999,
+  "experiment_cpu_seconds": 2.575070102,
+  "experiment_wall_seconds": 2.579126937998808,
+  "failed_preflight_cpu_seconds": null,
+  "gpu_hours": 0,
+  "training": false,
+  "new_dependencies": 0,
+  "direct_research_cli_model_calls": 0,
+  "independent_audit_contexts": 2,
+  "dollar_cost": null,
+  "cost_limitations": [
+    "Coordinator/auditor model billing unavailable",
+    "Feature-cache inspection, statistics and audit CPU not included in timed experiment component",
+    "Failed first matching attempt CPU not measured separately"
+  ]
+}

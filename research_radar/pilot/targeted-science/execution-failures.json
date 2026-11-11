@@ -1,0 +1,11 @@
+{
+  "failures": [
+    {
+      "stage": "matching preflight",
+      "error": "Missing output directory before first correspondence save",
+      "correction": "Created output directory and repeated identical fixed matching parameters; no scientific result selected or overwritten",
+      "failed_attempt_cpu_seconds": null
+    }
+  ],
+  "limit": "Failed attempt CPU billing unavailable, not zero"
+}

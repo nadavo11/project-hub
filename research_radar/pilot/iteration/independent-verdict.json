@@ -1,0 +1,702 @@
+{
+  "schema_version": 1,
+  "audit_id": "iterate-2026-11-10-final-independent-validation",
+  "evidence_cutoff_utc": "2026-11-10T08:02:35.260247+00:00",
+  "verdict": "ITERATE",
+  "campaign_id": "campaign-0ea39fd68d9c",
+  "operating_url": "http://127.0.0.1:8776/?campaign=campaign-0ea39fd68d9c",
+  "operating_url_verified_live": false,
+  "report": "research_radar/pilot/iteration/independent-validation-report.md",
+  "summary": "Both policies pass assigned-source mechanism controls, with no classification gain. Raw survivor counts are compromised by duplicate/prior-art conflation and specification failures. No submitted candidate meets all frozen scientific-eligibility conditions as written; none is experiment-ready or empirically supports a valuable paper. Preserve the useful questions and improved provenance, but do not claim broad novelty discrimination or discovery success.",
+  "independence": {
+    "ground_truth_audit_completed_before_outcomes": true,
+    "ground_truth_labels_changed": false,
+    "final_auditor_blind_to_policy": false,
+    "parent_suggested_objections_disclosed": true,
+    "raw_outputs_preserved": true,
+    "new_network_requests": 0,
+    "new_subagents": 0,
+    "new_model_runs": 0,
+    "candidate_experiments_run_by_auditor": 0,
+    "software_suites_run_by_auditor": 0,
+    "verification_actions": [
+      "Retained primary-method reads and mechanism analysis",
+      "Frozen input, key, prompt and review hash checks",
+      "104 archived quotation/raw/text-link integrity checks",
+      "Read-only campaign database and direct CLI cost-event inspection",
+      "Recorded software and annotation-preflight receipt inspection"
+    ],
+    "limitation": "Final policy labels and suggested concerns were visible. Separate calls share evidence and, for the five measured jobs, the same model family. This is not independent historical novelty certification."
+  },
+  "criterion_flags": {
+    "frozen_protocol_and_inputs_preserved": {
+      "passed": true,
+      "reason": "Input/key and four prompt hashes plus measured review hash match their freezes."
+    },
+    "same_generation_evidence_payload": {
+      "passed": true,
+      "sha256": "bc2fd4f622e79eef4370b931434c1cdff97d4842f314443f4a2ea3ef51866c19"
+    },
+    "benchmark_labels_hidden_in_measured_payload": {
+      "passed": true,
+      "reason": "Both benchmark payloads equal benchmark-input.json and omit expected labels/target fields."
+    },
+    "review_policy_labels_removed": {
+      "passed": true,
+      "reason": "Review candidates omit policy and original_index; stylistic concealment is not guaranteed."
+    },
+    "balanced_assigned_source_discrimination": {
+      "passed": true,
+      "threshold": 0.8,
+      "baseline_overlap_recall": 1.0,
+      "baseline_distinct_recall": 1.0,
+      "revised_overlap_recall": 1.0,
+      "revised_distinct_recall": 1.0
+    },
+    "broad_research_novelty_discrimination": {
+      "passed": false,
+      "status": "not_established",
+      "reason": "Five correlated assigned-source pairs do not test closest-prior discrimination, global novelty or value of generated opportunities."
+    },
+    "historical_source_document_cutoffs": {
+      "passed": true,
+      "reason": "Retained source v1 headers precede each cutoff; later targets are excluded from evaluator payloads."
+    },
+    "pretraining_leakage_controlled": {
+      "passed": false,
+      "status": "unresolved",
+      "reason": "Historical document controls cannot remove model hindsight or paper recognition."
+    },
+    "benchmark_policy_improvement_demonstrated": {
+      "passed": false,
+      "reason": "Both arms have identical perfect label counts; qualitative rationale differences are not a causal estimate."
+    },
+    "consistent_raw_candidate_adjudication": {
+      "passed": false,
+      "reason": "R03 uses a generated duplicate as prior art; R04 contradicts its specification requirement; R05's equivalence threat and R01's output mismatch remain unresolved."
+    },
+    "at_least_one_scientifically_eligible_candidate_as_written": {
+      "passed": false,
+      "reason": "All six have specific definition, equivalence, baseline or identification defects; missing empirical results alone are not the reason."
+    },
+    "at_least_one_experiment_ready_candidate": {
+      "passed": false,
+      "reason": "Cached matches/hypotheses, full runtime, relevant annotations, gallery and/or permissions remain unresolved."
+    },
+    "valuable_paper_evidence": {
+      "passed": false,
+      "status": "not_established",
+      "reason": "No candidate measurements or validated non-equivalent operational contribution."
+    },
+    "current_quoted_evidence_preserved": {
+      "passed": true,
+      "verified_claims": 104,
+      "historical_corpus_claims": 75,
+      "benchmark_passages": 29,
+      "distinct_archived_blobs_checked": 83
+    },
+    "historical_lineage_complete": {
+      "passed": false,
+      "explicit_missing_records": 20
+    },
+    "software_receipt_validated": {
+      "passed": true,
+      "executions": 129,
+      "browser_executions": 10,
+      "archive_executions": 14,
+      "skipped": 0,
+      "scientific_validity_implied": false
+    },
+    "bounded_prerequisite_check_completed": {
+      "passed": true,
+      "readiness_result": "PARTIAL"
+    },
+    "annotation_internal_consistency": {
+      "passed": true,
+      "independent_truth_established": false,
+      "candidate_experiment": false
+    },
+    "iteration_resource_caps_respected": {
+      "passed": true,
+      "public_requests": 22,
+      "public_request_cap": 25,
+      "download_bytes": 112086336,
+      "download_byte_cap": 120000000,
+      "direct_model_calls": 5,
+      "direct_model_call_cap": 5
+    },
+    "complete_total_cost_accounting": {
+      "passed": false,
+      "reason": "Direct CLI receipts are complete; outer-agent usage and dollar conversion remain unavailable."
+    }
+  },
+  "benchmark": {
+    "positive_class": "distinct relative to assigned source",
+    "labels_revised_by_audit": false,
+    "baseline": {
+      "true_positive": 5,
+      "true_negative": 5,
+      "false_positive": 0,
+      "false_negative": 0,
+      "abstained": 0,
+      "balanced_accuracy": 1.0,
+      "coverage": 1.0
+    },
+    "revised": {
+      "true_positive": 5,
+      "true_negative": 5,
+      "false_positive": 0,
+      "false_negative": 0,
+      "abstained": 0,
+      "balanced_accuracy": 1.0,
+      "coverage": 1.0
+    },
+    "cases": [
+      {
+        "id": "C01",
+        "expected": "overlap",
+        "baseline": "overlap",
+        "revised": "overlap",
+        "label_status": "pass",
+        "semantic_finding": "Both identify DenseUAV components and appropriately acknowledge real-flight evidence missing from the excerpt."
+      },
+      {
+        "id": "C02",
+        "expected": "overlap",
+        "baseline": "overlap",
+        "revised": "overlap",
+        "label_status": "pass",
+        "semantic_finding": "Square-ring pooling and part-wise classification reproduce LPN; rotation robustness is not exact invariance."
+      },
+      {
+        "id": "C03",
+        "expected": "distinct",
+        "baseline": "distinct",
+        "revised": "distinct",
+        "label_status": "pass",
+        "semantic_finding": "Layer/token adaptation differs from HF-Net hierarchy. HF-Net already stops after a valid pose, so generic early stopping is not the distinction."
+      },
+      {
+        "id": "C04",
+        "expected": "distinct",
+        "baseline": "distinct",
+        "revised": "distinct",
+        "label_status": "pass",
+        "baseline_rationale_issue": "Incorrectly describes University-1652 as one-to-one; it already supports multiple true-matched viewpoints.",
+        "revised_rationale": "More defensibly contrasts building-identity retrieval with geographic coverage and offset regression."
+      },
+      {
+        "id": "C05",
+        "expected": "overlap",
+        "baseline": "overlap",
+        "revised": "overlap",
+        "label_status": "pass",
+        "baseline_rationale_issue": "Asserts identity-training detail absent from supplied excerpts, although full retained source supports it.",
+        "revised_rationale": "Explicitly recognizes missing training details; core overlap remains supported."
+      },
+      {
+        "id": "C06",
+        "expected": "overlap",
+        "baseline": "overlap",
+        "revised": "overlap",
+        "label_status": "pass",
+        "semantic_finding": "Both correctly identify distillation, covisibility grouping and local geometric localization."
+      },
+      {
+        "id": "C07",
+        "expected": "distinct",
+        "baseline": "distinct",
+        "revised": "distinct",
+        "label_status": "pass",
+        "semantic_finding": "Negative-selection schedule differs from LPN partition; generic shared encoders or contrastive losses alone are insufficient."
+      },
+      {
+        "id": "C08",
+        "expected": "distinct",
+        "baseline": "distinct",
+        "revised": "distinct",
+        "label_status": "pass",
+        "semantic_finding": "Pointmap-derived pixel geography differs from image-location retrieval; valid-pixel evaluation limits universal wording."
+      },
+      {
+        "id": "C09",
+        "expected": "overlap",
+        "baseline": "overlap",
+        "revised": "overlap",
+        "label_status": "pass",
+        "semantic_finding": "Both identify the RoMa mechanism; anchor/multimodality details are not fully demonstrated by the evaluator packet."
+      },
+      {
+        "id": "C10",
+        "expected": "distinct",
+        "baseline": "distinct",
+        "revised": "distinct",
+        "label_status": "pass",
+        "semantic_finding": "Joint pointmap/descriptor representation differs from 2D warp estimation. Do not infer mandatory fused 3D-plus-descriptor matching."
+      }
+    ],
+    "rationale_quality_rescored_numerically": false,
+    "temporal_notes": [
+      "VIGOR target evidence is v2 dated 2021-03-22, not the key's earlier date.",
+      "Sample4Geo target evidence is v2 dated 2023-08-29, not the key's earlier date.",
+      "Both targets remain after cutoff; exact v1 target-mechanism attribution is unverified.",
+      "SkyReg retained title and flattened-HTML location qualifications remain as in the before-outcome audit.",
+      "Later publication is not evidence that a mechanism was historically novel."
+    ],
+    "limitations": [
+      "Five correlated pairs, narrow assigned-source comparisons.",
+      "Recognizable paper signatures, near-paraphrase overlaps and explicit contrast cues.",
+      "Partial and repetitive excerpts.",
+      "No closest-prior/global-novelty validation.",
+      "Pretraining and shared-model dependence unresolved."
+    ]
+  },
+  "source_evidence": [
+    {
+      "id": "E-ORTHO",
+      "path": "research_radar/sources/2509.18350.txt",
+      "locations": ["Fig. 4 and Sections 4.2-4.3, lines 489-534 and 565-566", "Appendix C.7, lines 1978-2051"],
+      "finding": "AdHoP warps the orthophoto and rematches before another DSM-PnP solve; it is not already a separate homography-derived pose. Refinement is accepted by reduced reprojection error. Below-20% covisibility is an empirical performance cliff."
+    },
+    {
+      "id": "E-RIC",
+      "path": "research_radar/sources/2607.04722.txt",
+      "locations": ["Section 3.4, lines 368-414", "Limitations/future work, lines 763-780"],
+      "finding": "Implemented covariance, residual inflation, common-mode term, dispersion and held-out combined rejection. Geometry-aware reference selection is future work; shared-hypothesis independence approximation is acknowledged."
+    },
+    {
+      "id": "E-RIM",
+      "path": "research_radar/sources/2607.20116.txt",
+      "locations": ["Section 2.1, lines 212-233", "Limitations and future directions, lines 1112-1117 and 1150-1153", "Appendix E discussion, lines 1934-1939"],
+      "finding": "Frozen retrieval token field supports a separately distilled local decoder. No current calibrated rejector; confidence fusion is future work. Finite PnP output can be wrong."
+    },
+    {
+      "id": "E-SKY",
+      "path": "research_radar/sources/2608.28891.full.txt",
+      "locations": ["Sections 3.3-3.4, characters 19678:22778", "Section 5.1, characters 34430:37530"],
+      "finding": "Dense pointmaps and confidence-weighted supervision already exist; evaluation uses valid pixels and geometric error."
+    },
+    {
+      "id": "E-OCI",
+      "path": "research_radar/pilot/sources/candidate-independent-search/2603.16768.txt",
+      "locations": ["Section II, lines 637-657"],
+      "finding": "Known linear measurement matrices, zero-mean errors and unbiased linear fusion assumptions do not establish a footprint-based detector of biased wrong-building aliases."
+    },
+    {
+      "id": "E-UQ",
+      "path": "research_radar/pilot/sources/candidate-independent-search/2507.13486.txt",
+      "locations": ["Section 2.3, lines 493-531"],
+      "finding": "Photogrammetric model-wide/local uncertainty and anchor cross-covariance are established comparators, not an exact implemented external-map disagreement diagnostic."
+    },
+    {
+      "id": "E-OASIS",
+      "path": "research_radar/pilot/sources/candidate-independent-search/2309.10698.txt",
+      "locations": ["Abstract, lines 17-21", "Section III, lines 276-280 and 426-429"],
+      "finding": "Budgeted E-optimal sensor subset selection assumes independent known-model measurements; not a verified exact satellite-reference selector."
+    },
+    {
+      "id": "E-HFNET",
+      "path": "data/research-radar/iteration-sources/1812.03506v1.txt",
+      "locations": ["Section 3, lines 169-190"],
+      "finding": "Covisibility grouping and local PnP/RANSAC are implemented prior art."
+    },
+    {
+      "id": "E-INFO",
+      "path": "research_radar/sources/2605.07099.txt",
+      "locations": ["Appendix C, lines 1240-1252 and 1309-1318", "Appendix D.3, lines 1388-1400"],
+      "finding": "Altitude/noisy-object-relation effects are reported, not causal proof of erased spatial equivariance; some examples improve at higher altitude."
+    },
+    {
+      "id": "E-ROMA",
+      "path": "data/research-radar/iteration-sources/2305.15404v1.txt",
+      "locations": ["Sections 4-5, lines 402-540"],
+      "finding": "Coarse global consistency and fine localizability use decoupled features and robust losses; no guarantee of exact equivariance."
+    },
+    {
+      "id": "E-VIGOR",
+      "path": "research_radar/sources/2011.12172.txt",
+      "locations": ["Coverage construction, lines 95-180"],
+      "finding": "Multiple geographically covering references demonstrate why deleting a single ground-truth tile need not produce map absence."
+    }
+  ],
+  "candidate_findings": {
+    "R01": {
+      "id": "R01",
+      "policy": "revised",
+      "generation_id": "G2",
+      "recommended_disposition": "revise",
+      "recommended_reason": "Define a comparable homography/DSM-PnP observable; AdHoP does not supply the assumed second pose, and the strongest-baseline success gate is incomplete.",
+      "raw": {
+        "novelty": "uncertain",
+        "survives_scientific_audit": true,
+        "experiment_ready": false,
+        "mechanism_family": "geometry-or-identifiability"
+      },
+      "audited": {
+        "novelty": "uncertain",
+        "published_exact_equivalence_established": false,
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "valuable_paper_evidence": false,
+        "mechanism_family": "geometry-or-identifiability",
+        "disposition": "revise",
+        "significance": "Meaningful planar-model-validity question",
+        "empirical_support": "none"
+      },
+      "source_refs": ["E-ORTHO", "E-SKY", "E-UQ"],
+      "reason": "AdHoP is a homography warp/rematch procedure, not the alternative pose implied by the candidate. A common observable, gauge, per-anchor support and aggregation are undefined; success is not gated against all advertised strongest comparators.",
+      "within_batch_duplicate_group": "geometry-disagreement",
+      "correction": "Withdraw raw survival as written, without claiming published overlap.",
+      "repair_not_counted_as_success": "Define a non-equivalent held-out projection discrepancy and its exact target before testing."
+    },
+    "R02": {
+      "id": "R02",
+      "policy": "baseline",
+      "generation_id": "G3",
+      "recommended_disposition": "reject",
+      "recommended_reason": "Reject the submitted generic selector: no explicit utility, non-oracle gallery or complete budget accounting. Exact published equivalence remains uncertain, not proven.",
+      "raw": {
+        "novelty": "overlap",
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "mechanism_family": "acquisition-or-system-design"
+      },
+      "audited": {
+        "novelty": "uncertain",
+        "published_exact_equivalence_established": false,
+        "broad_principle_overlap_established": true,
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "valuable_paper_evidence": false,
+        "mechanism_family": "posthoc-score-or-selection",
+        "disposition": "do_not_advance_as_written",
+        "significance": "Useful systems issue, weak submitted contribution",
+        "empirical_support": "none"
+      },
+      "source_refs": ["E-RIC", "E-HFNET", "E-OASIS"],
+      "reason": "No exact utility or budget accounting; future-work anticipation and sensor placement are not an implemented equivalent. Jaccard difference is not scientific novelty, and cached top-20 matcher outputs can hide uncharged work.",
+      "correction": "Replace unsupported exact-overlap conclusion with uncertainty plus documented broad overlap. Reclassify actual operation as post-retrieval selection, not sensor acquisition."
+    },
+    "R03": {
+      "id": "R03",
+      "policy": "baseline",
+      "generation_id": "G2",
+      "recommended_disposition": "revise",
+      "recommended_reason": "Merge with R01 for development, not as prior art. Both need the same common-observable repair; duplicate status does not establish published overlap.",
+      "raw": {
+        "novelty": "overlap",
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "mechanism_family": "geometry-or-identifiability"
+      },
+      "audited": {
+        "novelty": "uncertain",
+        "published_exact_equivalence_established": false,
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "valuable_paper_evidence": false,
+        "mechanism_family": "geometry-or-identifiability",
+        "disposition": "revise",
+        "significance": "Same meaningful question as R01",
+        "empirical_support": "none"
+      },
+      "source_refs": ["E-ORTHO", "E-SKY", "E-UQ"],
+      "reason": "R01 is a generated duplicate, not prior art. Same common-observable defect as R01, weaker comparator requirements, and a potentially oracle 20% covisibility restriction.",
+      "within_batch_duplicate_group": "geometry-disagreement",
+      "correction": "Remove duplicate-based published-overlap classification. Apply the same mechanism eligibility standard to R01/R03, and deduplicate only pooled opportunity counts."
+    },
+    "R04": {
+      "id": "R04",
+      "policy": "revised",
+      "generation_id": "G1",
+      "recommended_disposition": "revise",
+      "recommended_reason": "The statistic and empty-set behavior are undefined, and deleting one true tile does not establish absence of all valid references.",
+      "raw": {
+        "novelty": "uncertain",
+        "survives_scientific_audit": true,
+        "experiment_ready": false,
+        "mechanism_family": "posthoc-score-or-selection"
+      },
+      "audited": {
+        "novelty": "uncertain",
+        "published_exact_equivalence_established": false,
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "valuable_paper_evidence": false,
+        "mechanism_family": "posthoc-score-or-selection",
+        "disposition": "revise",
+        "significance": "Important map-absence rejection question",
+        "empirical_support": "none"
+      },
+      "source_refs": ["E-RIC", "E-OCI", "E-RIM", "E-VIGOR"],
+      "reason": "Score, overlap grouping, empty-set behavior and normalization are unspecified. Removing one true tile does not ensure absence of all valid references. Manipulation AUROC is not automatically wrong-pose rejection.",
+      "correction": "Raw survival contradicts its own under-specification finding and the frozen precision rule; retain uncertain novelty but remove eligibility."
+    },
+    "R05": {
+      "id": "R05",
+      "policy": "baseline",
+      "generation_id": "G1",
+      "recommended_disposition": "revise",
+      "recommended_reason": "Specify grouping and recomputation and resolve the mean/jackknife equivalence to dispersion before granting a distinct operational contribution.",
+      "raw": {
+        "novelty": "uncertain",
+        "survives_scientific_audit": true,
+        "experiment_ready": false,
+        "mechanism_family": "posthoc-score-or-selection"
+      },
+      "audited": {
+        "novelty": "uncertain",
+        "published_exact_equivalence_established": false,
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "valuable_paper_evidence": false,
+        "mechanism_family": "posthoc-score-or-selection",
+        "disposition": "revise",
+        "significance": "Meaningful incremental failure-ranking question",
+        "empirical_support": "none"
+      },
+      "source_refs": ["E-RIC", "E-OCI", "E-RIM"],
+      "reason": "Footprint grouping, recomputation and statistic are not precise. Mean-center leave-one-out RMS shift equals dispersion/(K-1); a common wrong alias can have zero shift. Complete RIC-Loc confidence is stronger than a dispersion-only proxy.",
+      "analytic_counterexample": {
+        "assumption": "Unweighted arithmetic mean of K centers, deleting one center at a time",
+        "identity": "mu_minus_i - mu = (mu - x_i)/(K-1)",
+        "implication": "RMS leave-one-out shift equals RMS dispersion divided by K-1",
+        "scope": "Does not prove equivalence for all robust or cluster-weighted variants; no candidate experiment was executed."
+      },
+      "correction": "Do not assert exact published overlap from the word jackknife, but do not grant precise distinguishability before resolving the explicit equivalence threat."
+    },
+    "R06": {
+      "id": "R06",
+      "policy": "revised",
+      "generation_id": "G3",
+      "recommended_disposition": "defer",
+      "recommended_reason": "Frozen cross-network comparisons cannot identify the claimed supervision effect; matched-backbone training is outside scope. A descriptive question needs a separate design.",
+      "raw": {
+        "novelty": "uncertain",
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "mechanism_family": "representation-or-training"
+      },
+      "audited": {
+        "novelty": "uncertain",
+        "published_exact_equivalence_established": false,
+        "survives_scientific_audit": false,
+        "experiment_ready": false,
+        "valuable_paper_evidence": false,
+        "mechanism_family": "representation-or-training",
+        "disposition": "defer_causal_claim_or_reframe_descriptively",
+        "significance": "Potentially useful descriptive question, unsupported causal attribution",
+        "empirical_support": "none"
+      },
+      "source_refs": ["E-INFO", "E-RIM", "E-ROMA"],
+      "reason": "Cross-network architecture, data, resolution and feature-stride confounding prevents attributing a locality gap to invariance supervision. Correspondence truth and a comparable spatial metric are not established. RIM contradicts blanket locality-loss claims but is not proof about raw tokens.",
+      "correction": "Retain rejection as written. Do not execute the reviewer's proposed matched-backbone training, which violates the authorized scope."
+    }
+  },
+  "before_after": {
+    "baseline_definition": "Frozen baseline-policy arm of this iteration, not the older pilot",
+    "raw": {
+      "baseline": {
+        "candidates": 3,
+        "novelty_distinct": 0,
+        "novelty_overlap": 2,
+        "novelty_uncertain": 1,
+        "scientific_survivors": 1,
+        "experiment_ready": 0,
+        "coarse_family_count": 3
+      },
+      "revised": {
+        "candidates": 3,
+        "novelty_distinct": 0,
+        "novelty_overlap": 0,
+        "novelty_uncertain": 3,
+        "scientific_survivors": 2,
+        "experiment_ready": 0,
+        "coarse_family_count": 3
+      }
+    },
+    "audited": {
+      "baseline": {
+        "candidates": 3,
+        "novelty_distinct": 0,
+        "novelty_overlap_exact": 0,
+        "novelty_uncertain": 3,
+        "scientific_survivors_as_written": 0,
+        "experiment_ready": 0,
+        "valuable_paper_evidence": 0,
+        "coarse_family_count": 2,
+        "specific_operation_count": 3,
+        "existing_pipeline_score_or_selection_operations": 3
+      },
+      "revised": {
+        "candidates": 3,
+        "novelty_distinct": 0,
+        "novelty_overlap_exact": 0,
+        "novelty_uncertain": 3,
+        "scientific_survivors_as_written": 0,
+        "experiment_ready": 0,
+        "valuable_paper_evidence": 0,
+        "coarse_family_count": 3,
+        "specific_operation_count": 3,
+        "existing_pipeline_score_or_selection_operations": 2
+      }
+    },
+    "pooled": {
+      "candidate_descriptions": 6,
+      "descriptions_after_exact_geometry_duplicate_merge": 5,
+      "broader_shared_themes": 4,
+      "scientific_survivors_as_written": 0,
+      "experiment_ready": 0
+    },
+    "diversity_interpretation": "Reassigning R02's post-retrieval operation yields 2 to 3 coarse families; retaining the raw acquisition label gives 3 to 3. Specific-operation counts stay 3 to 3. A representation question replaces reference selection; diversity is descriptive and taxonomy-sensitive, not causal evidence of quality.",
+    "scientific_improvement_established": false,
+    "statistical_or_causal_improvement_claim": false,
+    "scope": "One bounded batch per policy and a shared joint reviewer; no threshold relaxation, extra generation or repaired-candidate credit."
+  },
+  "prerequisites": {
+    "status": "PARTIAL",
+    "sample_arrays_and_finite_calibration_confirmed": true,
+    "rim_weight_files_sha_match": 2,
+    "weight_execution_verified": false,
+    "heldout_index_files": 1415,
+    "heldout_locations": ["L08", "L50", "L51"],
+    "heldout_index_all_downloaded": false,
+    "full_baseline_executed": false,
+    "numpy_available_at_preflight": false,
+    "non_oracle_gallery_verified": false,
+    "independent_truth_verified": false,
+    "global_geodetic_transform_verified": false,
+    "licensing": {
+      "OrthoLoC": "CC BY-NC-SA 4.0 retained",
+      "RIM": "GPL-3.0-only stated; separate third-party terms remain",
+      "RIC-Loc": "No license found in inspected tree; permission unresolved",
+      "UAV-VisLoc": "Data licensing and large sample not verified within bound"
+    },
+    "annotation_preflight": {
+      "receipt": "geometry-preflight.json",
+      "rerun_by_auditor": false,
+      "threshold": "Nominal pose: at least 30/48 valid; median <=2px; p95 <=5px",
+      "passed": true,
+      "crossdomain": {
+        "attempted": 48,
+        "valid": 48,
+        "nominal_median_px": 0.00017350511904752497,
+        "nominal_p95_px": 0.0002779651399953356,
+        "refined_median_px": 0.08696566446294081,
+        "refined_p95_px": 0.11044255498603114
+      },
+      "samedomain": {
+        "attempted": 48,
+        "valid": 44,
+        "invalid_or_nonpositive_depth": 4,
+        "nominal_median_px": 0.00010766788348908881,
+        "nominal_p95_px": 0.0002072700027861324,
+        "refined_median_px": 0.16029175329958076,
+        "refined_p95_px": 0.2847972681332641
+      },
+      "best_pose_selected": false,
+      "interpretation": "Within-source camera/pointmap consistency only; not DSM correctness, independent truth, matcher performance or candidate evidence."
+    }
+  },
+  "costs": {
+    "ledger": "cost-ledger.json",
+    "public_requests": 22,
+    "download_bytes": 112086336,
+    "public_request_seconds": 42.485,
+    "direct_cli_receipts_independently_reconciled": 5,
+    "direct_cli_model": "claude-sonnet-5.5",
+    "model_input_tokens": 220622,
+    "model_output_tokens": 16266,
+    "raw_nano_aiu": 54992020000,
+    "direct_cli_elapsed_seconds": 136.30485667599714,
+    "gpu_hours_recorded": 0,
+    "paid_external_api_calls_recorded": 0,
+    "total_usd": null,
+    "outer_agent_usage_measured": false,
+    "limitations": [
+      "Elapsed work is not full campaign wall-clock time.",
+      "Input totals include cached token categories; nested metrics must not be double-counted.",
+      "No verified nanoAIU-to-USD conversion.",
+      "Coordinator and delegated-agent usage/billing are outside these five receipts.",
+      "Public-request totals are from the retained prerequisite/request accounting, not newly issued requests."
+    ]
+  },
+  "failure_causes": [
+    {
+      "cause": "Broad-principle overlap",
+      "finding": "Confidence/dispersion, error propagation and budgeted geometric selection are established; exact submitted methods are often too underspecified to decide equivalence.",
+      "correction": "Separate documented primitive overlap from a source-proven exact implementation."
+    },
+    {
+      "cause": "Concentrated search space",
+      "finding": "Two related posthoc themes persist; one representation question broadens the revised set without demonstrated scientific value.",
+      "correction": "Do not equate renamed mechanism families or diversity counts with discovery."
+    },
+    {
+      "cause": "Inconsistent reviewer categories",
+      "finding": "Duplicate/prior-art conflation and permissive survival despite definition gaps coexist.",
+      "correction": "Keep duplicate, prior-art equivalence, scientific eligibility and experiment readiness separate; publish raw and audited results together."
+    },
+    {
+      "cause": "Non-equivalence and baseline gaps",
+      "finding": "Undefined comparable outputs, a mean/jackknife identity, incomplete map-absence labels and weak success comparators prevent the claimed interpretations.",
+      "correction": "Require an operational quantity and its strongest-baseline distinction before any empirical pilot."
+    },
+    {
+      "cause": "Validation scope mismatch",
+      "finding": "Assigned-source controls and software tests do not validate global novelty or candidate merit.",
+      "correction": "Retain the scoped pass without promoting it to the user's broader research objective."
+    }
+  ],
+  "post_measurement_change": {
+    "description": "Parent reports a production prompt clarification that generated proposals are not published prior art.",
+    "frozen_measured_prompts_changed": false,
+    "rerun": false,
+    "effectiveness_claimed": false
+  },
+  "next_cheapest_decisive_step": {
+    "status": "recommendation_only_not_executed",
+    "target": "R01/R03 shared geometric-disagreement proposal",
+    "budget": "30-60 minutes manual specification/equivalence review; no network, new model calls, training or GPU",
+    "actions": [
+      "Define one common held-out projection observable for homography and DSM-PnP, not an undefined pose difference.",
+      "Freeze homography direction, coordinate gauge, calibration, supports, units, aggregation and degenerate cases.",
+      "Check analytic reduction to residual, relief/off-nadir sensitivity or existing AdHoP acceptance; include coherent wrong-match/common-bias counterexamples.",
+      "List exact cached matches and uncertainty inputs needed for the strongest comparator; do not substitute ground-truth-derived matches for real estimator evidence."
+    ],
+    "stop_rule": "Reject the current mechanism if no non-equivalent, leakage-free observable can be defined within available modalities and no-training constraints. If it passes, freeze a separately identified protocol before any later experiment; do not retroactively count a repair as this run's success.",
+    "additional_zero_compute_screen": "Resolve the R05 mean/leave-one-out identity before any recomputation pilot.",
+    "measured_iteration_closed_at_five_calls": true
+  },
+  "confidence_and_limits": {
+    "bounded_overall_verdict": "high",
+    "reviewer_duplicate_category_correction": "high",
+    "strict_as_written_candidate_eligibility": "moderate",
+    "global_novelty_or_future_publication_prediction": "low",
+    "limitations": [
+      "One batch per policy; no statistical or causal policy comparison.",
+      "Same direct-call model family and shared corpus.",
+      "Final auditor saw policy mapping and suggested issues.",
+      "Bounded retained corpus, no new literature search.",
+      "Twenty historical response losses remain unresolved.",
+      "Archive integrity is not scientific entailment or independent reproduction.",
+      "No live URL verification or baseline inference run.",
+      "No candidate is proved universally unoriginal merely because it fails this submitted specification."
+    ]
+  },
+  "raw_artifact_sha256": {
+    "benchmark-baseline.json": "a2366ba01ad3cf3b55d5e238969e7fff7d81e04b753f6d541b9d24946b59a7b9",
+    "benchmark-revised.json": "39fe1b0699662425dee9aa707fbd13ad7f1e2b27e7f89ca33691200b0e4f3e83",
+    "generation-baseline.json": "465399795ca8fcf9ce42c62adc1db4b88b064985bcc324c1f5ecb1c95d24cc84",
+    "generation-revised.json": "faa5d7d4976400ec3f947ac970ba0497df77298fe335d47035ad34d8907f3534",
+    "candidate-blind-review.json": "9a65ea09dde49a68ca03496e1fa7c24dc317e9c2aeb351077d51ecf58fbd7a5f",
+    "review-blinding-key.json": "3dfe05675240faf86579c3ab14ef108ca2961a264aab5f038f1c8a3a9dc3a77a",
+    "prerequisites.json": "0d7ad19be2c202909018024f0efd4fa26ab5e14fce4e99779f0be11adb7d8abd",
+    "source-preservation.json": "5ea6613dd427d085a5095c7520600051cd029375b25a783af0a398b82eeb1776",
+    "input-preservation.json": "7755ecef8f99b42112e494daa6542614c722b35412a402e0284373c163b69af6",
+    "cost-ledger.json": "f08f0338174203c4f6710d6d12333dd7c6a503d613b586ddcf23de2e30b9fb2d",
+    "geometry-preflight.json": "563d9b282329d8fca64f06438fe03a6d86262050e10f7a24a72449677983484e",
+    "software-validation.json": "971cc31e892b765301c37c40ac592cb237e0804bdcc109289ab8191d319039c6",
+    "comparison.json": "fd3d2bd8b9c62d22d2402e3faf6f4e68933224c20ddb4a13c5666705697295e1"
+  }
+}

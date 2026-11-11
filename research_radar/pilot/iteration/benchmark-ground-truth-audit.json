@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "audit_id": "iterate-2026-11-10-before-outcome-ground-truth",
+  "audited_at_utc": "2026-11-10T07:43:47.631590+00:00",
+  "scope": "Independent semantic audit of ten frozen controls against their assigned retained source, not historical or worldwide novelty certification.",
+  "independence": {
+    "statement": "The assignment stated that no model outcomes existed. I inspected the frozen protocol, input, key and freeze manifest, then their retained source texts and the target texts named in the key. I have not opened baseline/revised-result files, model responses, discovery outputs, preflight outputs or outcome summaries. No result or score influenced these judgments. This is a before-outcome audit, not a result-conditioned relabeling.",
+    "labels_blind_to_auditor": false,
+    "qualification": "Expected labels were intentionally visible to this auditor. Independence means a separate mechanism-based assessment before receiving outcomes; it does not mean independently constructed labels, blind relabeling, a different model family, or proof that no external process has already produced an outcome.",
+    "actions": "Local document reads, searches and provenance checks only; no HTTP, new sources, subagents, model evaluations, GPU work or software test suite.",
+    "write_scope": "Only research_radar/pilot/iteration/benchmark-ground-truth-audit.json; frozen files and all other campaign artifacts left unchanged."
+  },
+  "method": {
+    "status_semantics": {
+      "pass": "The expected overlap/distinct label is supported by substantive mechanisms in the retained primary texts, relative only to the assigned source.",
+      "uncertain": "Available primary evidence cannot reliably resolve the expected mechanism label.",
+      "fail": "Primary evidence contradicts the expected mechanism label."
+    },
+    "separate_dimensions": "A label pass does not imply complete evaluator excerpts, correct first-version target attribution, difficult discrimination, global novelty, or discovery readiness. Those dimensions are assessed separately below.",
+    "evidence_read": "All supplied source excerpts; the five retained v1 source headers and relevant method, task and evaluation passages; relevant method passages and version headers in all five retained target texts. Full retained source texts were searched for potentially overlapping mechanisms. This was not an exhaustive audit of every reference cited by those papers.",
+    "location_convention": "Line ranges are one-based in the exact retained text; character ranges are zero-based, end-exclusive Unicode character offsets. The flattened SkyReg HTML text has one line, so its locations use character ranges and section names."
+  },
+  "freeze_integrity": {
+    "protocol_sha256": "5cdbaf4ebe8136526a0a7fe8f3f5ab87d4621428778fbdc702a3b31310288396",
+    "input_sha256": "f6da64c8ad023342a388d3a76b95cf9b0f0ceac13917b3f7ae8f10013de972a2",
+    "key_sha256": "404aec86a4236fe9ad7c600887a878e1f0f34d3a24690fa5c3235eca40439699",
+    "input_and_key_match_freeze": true,
+    "input_case_fields_match_key": true,
+    "all_five_source_pdf_hashes_match_input": true,
+    "all_five_source_text_hashes_match_input": true,
+    "all_five_target_text_hashes_match_key": true,
+    "all_19_source_excerpts_match_declared_character_slices": true,
+    "all_10_unique_target_excerpts_match_declared_character_slices": true,
+    "qualification": "Hash checks establish consistency with this local freeze, not independent remote authenticity. Version dates were checked in retained text headers; PDFs were hashed, not independently re-extracted."
+  },
+  "source_versions": [
+    {
+      "id": "S1",
+      "title": "University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization",
+      "arxiv_version": "2002.12186v1",
+      "header_date": "2020-02-27",
+      "cutoff": "2020-06-30",
+      "path": "data/research-radar/iteration-sources/2002.12186v1.txt",
+      "cutoff_eligible": true,
+      "unique_excerpt_characters": 5072,
+      "full_text_characters": 55374
+    },
+    {
+      "id": "S2",
+      "title": "Each Part Matters: Local Patterns Facilitate Cross-view Geo-localization",
+      "arxiv_version": "2008.11646v1",
+      "header_date": "2020-08-26",
+      "cutoff": "2022-12-31",
+      "path": "data/research-radar/iteration-sources/2008.11646v1.txt",
+      "cutoff_eligible": true,
+      "unique_excerpt_characters": 4513,
+      "full_text_characters": 52482,
+      "date_note": "The August 2015 journal-template heading is not this manuscript's publication date."
+    },
+    {
+      "id": "S3",
+      "title": "From Coarse to Fine: Robust Hierarchical Localization at Large Scale",
+      "arxiv_version": "1812.03506v1",
+      "header_date": "2018-12-09",
+      "cutoff": "2022-12-31",
+      "path": "data/research-radar/iteration-sources/1812.03506v1.txt",
+      "cutoff_eligible": true,
+      "unique_excerpt_characters": 6779,
+      "full_text_characters": 61466
+    },
+    {
+      "id": "S4",
+      "title": "RoMa: Revisiting Robust Losses for Dense Feature Matching",
+      "arxiv_version": "2305.15404v1",
+      "header_date": "2023-05-24",
+      "cutoff": "2023-12-31",
+      "path": "data/research-radar/iteration-sources/2305.15404v1.txt",
+      "cutoff_eligible": true,
+      "unique_excerpt_characters": 4506,
+      "full_text_characters": 48460
+    },
+    {
+      "id": "S5",
+      "title": "Vision-Based UAV Localization System in Denial Environments",
+      "arxiv_version": "2201.09201v1",
+      "header_date": "2022-01-23",
+      "cutoff": "2025-12-31",
+      "path": "data/research-radar/iteration-sources/2201.09201v1.txt",
+      "cutoff_eligible": true,
+      "unique_excerpt_characters": 3194,
+      "full_text_characters": 56822
+    }
+  ],
+  "target_versions": [
+    {
+      "id": "T-VIGOR",
+      "path": "research_radar/sources/2011.12172.txt",
+      "key_date": "2020-11-24",
+      "examined_version": "2011.12172v2",
+      "examined_version_header_date": "2021-03-22",
+      "after_assigned_cutoff": true,
+      "qualification": "The retained evidence is v2, not the version corresponding to the key's earlier date. The exact v1 mechanism and first-publication date were not independently verified. Both stated dates are later than the source cutoff, so this is not a pre-cutoff source-document leak."
+    },
+    {
+      "id": "T-Sample4Geo",
+      "path": "research_radar/sources/2303.11851.txt",
+      "key_date": "2023-03-21",
+      "examined_version": "2303.11851v2",
+      "examined_version_header_date": "2023-08-29",
+      "after_assigned_cutoff": true,
+      "qualification": "The retained evidence supports the mechanism as of v2. Do not attribute all inspected details to the key's earlier date without inspecting v1. This mismatch does not contaminate the pre-cutoff LPN source packet."
+    },
+    {
+      "id": "T-LightGlue",
+      "path": "research_radar/sources/2306.13643.txt",
+      "key_date": "2023-06-23",
+      "examined_version": "2306.13643v1",
+      "examined_version_header_date": "2023-06-23",
+      "after_assigned_cutoff": true
+    },
+    {
+      "id": "T-MASt3R",
+      "path": "research_radar/sources/2406.09756.txt",
+      "key_date": "2024-06-14",
+      "examined_version": "2406.09756v1",
+      "examined_version_header_date": "2024-06-14",
+      "after_assigned_cutoff": true
+    },
+    {
+      "id": "T-SkyReg",
+      "path": "research_radar/sources/2608.28891.full.txt",
+      "key_date": "2026-08-28",
+      "examined_version": "2608.28891v1",
+      "examined_version_header_date": "2026-08-28",
+      "after_assigned_cutoff": true,
+      "actual_retained_title": "Pixel-wise Geo-registration of Drone Images",
+      "qualification": "The key's title adds 'and Satellite', unlike the retained primary title. Its target excerpt labels say PDF page 1, but this file is flattened HTML text: character locations are verifiable, PDF-page claims are not."
+    }
+  ],
+  "cases": [
+    {
+      "id": "C01",
+      "source_id": "S5",
+      "source_version_date": "2022-01-23",
+      "cutoff": "2025-12-31",
+      "expected": "overlap",
+      "audited_label": "overlap",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/2201.09201v1.txt",
+          "locations": ["Abstract, lines 19-33", "Introduction and neighbor-search procedure, lines 145-220", "Section 3.1, lines 516-564", "Section 3.2, lines 613-685"],
+          "finding": "DenseUAV explicitly supplies real drone imagery, a shared-weight siamese transformer retrieval baseline, neighbor-search postprocessing, and a continuous GPS-distance-sensitive SDM score. The capture procedure uses DJI waypoint acquisition at three heights; the postprocessor restricts candidate tiles around the previous match using motion-related radius."
+        }
+      ],
+      "substantive_judgment": "All proposed central components are already present. Dense sampling of image locations is not dense per-pixel geographic registration.",
+      "later_target_reference": "T-SkyReg",
+      "target_role": "Paired contrast only, not evidence that this overlap idea was first published later. The target's Sections 3.2-3.4 and 5.1 instead predict and evaluate pixel-wise coordinates.",
+      "excerpt_sufficiency": {
+        "status": "sufficient_for_core_label",
+        "note": "The supplied abstract states the baseline, SDM and neighbor-search components. Real-flight acquisition details require the retained Section 3.1. All four excerpts overlap heavily and together cover only characters 0:3194."
+      },
+      "difficulty_note": "Easy positive-overlap control: wording closely tracks the source abstract."
+    },
+    {
+      "id": "C02",
+      "source_id": "S2",
+      "source_version_date": "2020-08-26",
+      "cutoff": "2022-12-31",
+      "expected": "overlap",
+      "audited_label": "overlap",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/2008.11646v1.txt",
+          "locations": ["Abstract, lines 19-36", "Feature partition strategy, characters 16554:18567", "Figure 3 caption and optimization objective, lines 428-491"],
+          "finding": "LPN partitions feature maps into center-based square rings, averages each region, predicts geo-tags for parts, and minimizes summed part-wise cross-entropy. Rotation robustness motivates the partition."
+        }
+      ],
+      "substantive_judgment": "This is the LPN representation and training mechanism, not a distinguishable new contribution. Rotation support is claimed robustness, not a mathematical guarantee of exact invariance.",
+      "later_target_reference": "T-Sample4Geo",
+      "target_role": "Paired contrast: its Sections 3.3-3.4 change hard-negative selection rather than introducing rings. Retained target is v2 dated 2023-08-29.",
+      "excerpt_sufficiency": {
+        "status": "sufficient_for_core_label",
+        "note": "The abstract and supplied partition/architecture excerpt support rings, pooling and cross-entropy. The clearest explanatory optimization text lies immediately beyond the truncated caption."
+      },
+      "difficulty_note": "Easy near-paraphrase of the named source mechanism."
+    },
+    {
+      "id": "C03",
+      "source_id": "S3",
+      "source_version_date": "2018-12-09",
+      "cutoff": "2022-12-31",
+      "expected": "distinct",
+      "audited_label": "distinct",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/1812.03506v1.txt",
+          "locations": ["Section 3, lines 169-190", "Sections 4.1-4.2, lines 255-326"],
+          "finding": "HF-Net computes local/global features with a shared CNN, retrieves and covisibility-clusters database images, then geometrically localizes against their 3D points. Its existing early stop occurs when a valid pose is found."
+        },
+        {
+          "path": "research_radar/sources/2306.13643.txt",
+          "locations": ["Sections 3.2-3.3, lines 278-340"],
+          "finding": "LightGlue v1 separately predicts confidence and matchability, halts transformer layers when enough tokens are confident, and prunes confidently unmatchable tokens when continuing."
+        }
+      ],
+      "substantive_judgment": "The new locus of adaptive computation is inside pairwise matching: per-token width and transformer-depth control, not map-level retrieval pruning, CNN feature sharing, or stopping a localization search after PnP succeeds. Merely saying 'early stopping' would not establish a distinction.",
+      "later_target_reference": "T-LightGlue",
+      "target_version_date": "2023-06-23",
+      "excerpt_sufficiency": {
+        "status": "sufficient_for_core_label",
+        "note": "The packet exposes the hierarchy and its existing pose-search stopping rule, enabling this particular distinction without needing the later target."
+      },
+      "difficulty_note": "Relatively easy cross-module contrast; HF-Net is not the closest antecedent to a learned adaptive pairwise matcher. Does not test discrimination from all pre-cutoff pairwise matching work."
+    },
+    {
+      "id": "C04",
+      "source_id": "S1",
+      "source_version_date": "2020-02-27",
+      "cutoff": "2020-06-30",
+      "expected": "distinct",
+      "audited_label": "distinct",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/2002.12186v1.txt",
+          "locations": ["Section 3 and evaluation discussion, lines 328-379", "Section 4 and instance loss, lines 385-459"],
+          "finding": "University-1652 retrieves building identities, already supports multiple true-matched viewpoints and AP, and learns shared identity-discriminative features. Multiple positives alone are therefore not absent from this source."
+        },
+        {
+          "path": "research_radar/sources/2011.12172.txt",
+          "locations": ["Dataset problem statement and coverage construction, lines 95-180", "Section 4 introduction, lines 224-239", "Section 4.3, lines 290-318"],
+          "finding": "VIGOR covers arbitrary query locations with overlapping aerial tiles, distinguishes one positive from three semi-positive references, and learns a within-tile latitude/longitude offset using an MLP and regression loss."
+        }
+      ],
+      "substantive_judgment": "The valid difference is geographic coverage and offset regression for arbitrary query positions, rather than building-identity retrieval. The idea's opening 'one-to-one' contrast is an imprecise description of University-1652 as a whole; the label remains distinct because of the specified geographic and regression mechanism.",
+      "later_target_reference": "T-VIGOR",
+      "target_version_date": "2021-03-22",
+      "excerpt_sufficiency": {
+        "status": "sufficient_for_core_label_with_important_qualification",
+        "note": "The packet shows the building target and multiple images per location, but omits the clearest prose about multiple true matches. Do not credit a model explanation that claims the assigned source can only have one positive."
+      },
+      "difficulty_note": "Meaningful task/output contrast, but using the later paper's characteristic 'beyond one-to-one' framing makes recognition possible. The target's actual evidence distinguishes positive and semi-positive references, not four interchangeable positives."
+    },
+    {
+      "id": "C05",
+      "source_id": "S1",
+      "source_version_date": "2020-02-27",
+      "cutoff": "2020-06-30",
+      "expected": "overlap",
+      "audited_label": "overlap",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/2002.12186v1.txt",
+          "locations": ["Abstract, lines 20-43", "Section 3.1 and Table 1, characters 14042:16050", "Evaluation, lines 328-348", "Section 4, equations 1-6 and Figure 3, lines 408-459"],
+          "finding": "The source contains university building identities, satellite/synthetic-drone/street views, Recall@K and AP, and a shared classification-space instance-loss retrieval baseline."
+        }
+      ],
+      "substantive_judgment": "The bundle restates University-1652. 'Shared' is supported as identity-classifier/feature-space sharing; it should not be read as a claim that every branch parameter is shared.",
+      "later_target_reference": "T-VIGOR",
+      "target_role": "Paired contrast only: arbitrary-location coverage and offset regression distinguish the VIGOR target, not this overlap control.",
+      "excerpt_sufficiency": {
+        "status": "partial",
+        "note": "The supplied excerpts explicitly establish dataset identity, views and metrics, but omit Section 4's instance loss and shared classifier. The full source resolves the label; an evaluator cannot specifically substantiate the shared identity-training detail from its packet alone."
+      },
+      "difficulty_note": "The conspicuous university/building dataset signature makes the broad overlap decision easy despite the missing baseline-method excerpt."
+    },
+    {
+      "id": "C06",
+      "source_id": "S3",
+      "source_version_date": "2018-12-09",
+      "cutoff": "2022-12-31",
+      "expected": "overlap",
+      "audited_label": "overlap",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/1812.03506v1.txt",
+          "locations": ["Contribution bullets, lines 128-134", "Section 3, lines 169-190", "Section 4.1, lines 255-280", "Section 4.2, lines 303-326"],
+          "finding": "HF-Net combines global and local feature heads in one student network, learns via multitask teacher distillation, retrieves candidate images, clusters their co-observed 3D structure and performs local 2D-to-3D pose estimation."
+        }
+      ],
+      "substantive_judgment": "Every core operation is in the assigned source. This is not a new inference-adaptive pairwise matcher.",
+      "later_target_reference": "T-LightGlue",
+      "target_role": "Paired contrast only: LightGlue's token-level confidence/matchability gates differ from this existing HF-Net hierarchy.",
+      "excerpt_sufficiency": {
+        "status": "sufficient_for_core_label",
+        "note": "The packet includes the distillation contribution and the retrieval/clustering/geometric-localization sequence."
+      },
+      "difficulty_note": "Easy restatement of the supplied hierarchy."
+    },
+    {
+      "id": "C07",
+      "source_id": "S2",
+      "source_version_date": "2020-08-26",
+      "cutoff": "2022-12-31",
+      "expected": "distinct",
+      "audited_label": "distinct",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/2008.11646v1.txt",
+          "locations": ["Figure 3 and optimization objective, lines 428-491", "Implementation details, lines 580-595", "Related-work loss discussion, lines 214-220"],
+          "finding": "LPN's contribution is contextual square-ring representation with part-wise identity cross-entropy. It already shares weights across satellite/drone branches and discusses metric-learning losses, but does not specify the proposed geography-initialized, periodically refreshed embedding-neighbor schedule."
+        },
+        {
+          "path": "research_radar/sources/2303.11851.txt",
+          "locations": ["Section 3.1, lines 122-158", "Figure 2 and Sections 3.2-3.4, lines 202-243"],
+          "finding": "Sample4Geo v2 uses a weight-shared off-the-shelf ConvNeXt, symmetric InfoNCE, GPS/coordinate-neighbor initialization where available, and Dynamic Similarity Sampling with periodically recomputed cosine neighbors. University-1652 instead starts with shuffling when coordinates are unavailable."
+        }
+      ],
+      "substantive_judgment": "The training-batch distribution and its update schedule are a substantive distinction from LPN's spatial feature partition. Shared weights, a generic encoder or contrastive learning by themselves are not sufficient novelty claims.",
+      "later_target_reference": "T-Sample4Geo",
+      "target_version_date": "2023-08-29",
+      "excerpt_sufficiency": {
+        "status": "sufficient_for_core_label",
+        "note": "The source mechanism is explicit enough to contrast the negative-selection schedule. Absence of the schedule from selected excerpts alone would not prove its absence from every historical paper."
+      },
+      "difficulty_note": "The prompt explicitly says the contribution is the schedule 'not a feature partition', providing a label-correlated explanatory cue. Retained VIGOR also describes earlier global hard-negative mining, illustrating why hard-negative mining broadly cannot be certified novel here."
+    },
+    {
+      "id": "C08",
+      "source_id": "S5",
+      "source_version_date": "2022-01-23",
+      "cutoff": "2025-12-31",
+      "expected": "distinct",
+      "audited_label": "distinct",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/2201.09201v1.txt",
+          "locations": ["Abstract, lines 19-33", "Retrieval/localization pipeline, lines 145-220", "Section 3.2, lines 613-685"],
+          "finding": "DenseUAV predicts image-level UAV locations by retrieval and evaluates distance to sampled geographic reference locations. 'Dense' describes sampling, not pointmap output or per-pixel GPS supervision."
+        },
+        {
+          "path": "research_radar/sources/2608.28891.full.txt",
+          "locations": ["Section 3.1, characters 15092:17602", "Section 3.2, characters 17602:19678", "Sections 3.3-3.4, characters 19678:22778", "Section 5.1, characters 34430:37530"],
+          "finding": "SkyReg predicts cross-view 3D pointmaps, recovers alignment/camera geometry, projects query points into the georeferenced reference, transfers geographic coordinates, trains with dense pointmap supervision and evaluates valid-pixel geodetic error."
+        }
+      ],
+      "substantive_judgment": "The output representation, supervision and primary evaluation unit change from an image's retrieved location to a dense pixel-to-geographic map. This is demonstrably distinct from S5 without relying on the target's later date.",
+      "later_target_reference": "T-SkyReg",
+      "target_version_date": "2026-08-28",
+      "excerpt_sufficiency": {
+        "status": "sufficient_for_core_label",
+        "note": "The abstract makes S5's image-retrieval task clear. The supplied target snippets in the key are much less informative than the retained methods and should not substitute for them."
+      },
+      "difficulty_note": "Easy task/output-granularity contrast, not a nearest-prior-art comparison.",
+      "qualifications": [
+        "'Every visible query pixel' is a task aspiration, not a guarantee of correct registration for all pixels; the target's evaluation uses valid pixels.",
+        "The target requires a georeferenced reference and camera/geodetic assumptions. It is not unrestricted coordinate prediction from an isolated query.",
+        "The target explicitly builds on MASt3R and an AerialMegaDepth checkpoint. Those dependencies and other pre-2026 georegistration work are outside this assigned-source control; later publication is not proof of global novelty.",
+        "The target key title and PDF-page location annotation have the provenance defects recorded in T-SkyReg."
+      ]
+    },
+    {
+      "id": "C09",
+      "source_id": "S4",
+      "source_version_date": "2023-05-24",
+      "cutoff": "2023-12-31",
+      "expected": "overlap",
+      "audited_label": "overlap",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/2305.15404v1.txt",
+          "locations": ["Abstract, lines 20-34", "Sections 4.1-4.2, lines 415-444", "Sections 5.1-5.2, lines 451-540"],
+          "finding": "RoMa v1 freezes pretrained DINOv2 coarse features, decouples a local refinement encoder, discretizes coarse output over classification anchors to represent multimodality, and uses robust regression for refinement."
+        }
+      ],
+      "substantive_judgment": "This is the retained RoMa v1 mechanism, not a later-version substitution or a distinct method.",
+      "later_target_reference": "T-MASt3R",
+      "target_role": "Paired contrast only: joint 3D pointmaps and discriminative dense descriptors differ from this 2D warp estimation mechanism.",
+      "excerpt_sufficiency": {
+        "status": "partial",
+        "note": "The packet supports coarse classification, frozen features, decoupling and robust refinement at a high level. It cuts off at the start of the local-encoder paragraph and omits Section 5.1's anchors and multimodality justification. The full source supports these details; the evaluator cannot cite their derivation from its excerpts."
+      },
+      "difficulty_note": "Core language closely paraphrases the source. Missing fine detail is an evidence-packet weakness, not evidence that the control is distinct."
+    },
+    {
+      "id": "C10",
+      "source_id": "S4",
+      "source_version_date": "2023-05-24",
+      "cutoff": "2023-12-31",
+      "expected": "distinct",
+      "audited_label": "distinct",
+      "status": "pass",
+      "primary_locations": [
+        {
+          "path": "data/research-radar/iteration-sources/2305.15404v1.txt",
+          "locations": ["Abstract, lines 20-34", "Sections 4-5, lines 402-540"],
+          "finding": "RoMa estimates dense 2D correspondence/warp distributions with coarse classification and local refinement. Using correspondence geometry for downstream 3D tasks does not mean it jointly predicts 3D pointmaps and descriptors."
+        },
+        {
+          "path": "research_radar/sources/2406.09756.txt",
+          "locations": ["Pointmap representation and Section 3.2, lines 199-312", "Section 3.3 and equations 13-15, lines 273-325"],
+          "finding": "MASt3R v1 retains the pointmap head, adds dense descriptor heads, combines confidence-aware 3D regression with a matching InfoNCE objective, and extracts reciprocal descriptor matches."
+        }
+      ],
+      "substantive_judgment": "Joint 3D pointmap prediction and explicitly discriminative descriptors constitute a different representation/training mechanism from RoMa's 2D coarse-classification/refinement pipeline. Sharing coarse-to-fine matching language is not sufficient overlap.",
+      "later_target_reference": "T-MASt3R",
+      "target_version_date": "2024-06-14",
+      "excerpt_sufficiency": {
+        "status": "sufficient_for_core_label",
+        "note": "The packet describes RoMa's predicted correspondence task and decomposition sufficiently to contrast joint pointmap/descriptor prediction."
+      },
+      "difficulty_note": "More closely related than retrieval-versus-matching controls, but the idea explicitly supplies the contrast to 2D classification/refinement.",
+      "qualification": "'Together with the pointmap representation' is supported as a jointly learned architecture. It must not be interpreted as requiring a fused 3D-distance-plus-descriptor score for every reciprocal match. DUSt3R ancestry means pointmaps alone are not certified globally novel by this control."
+    }
+  ],
+  "findings": {
+    "label_counts": {
+      "overlap": 5,
+      "distinct": 5,
+      "pass": 10,
+      "uncertain": 0,
+      "fail": 0
+    },
+    "wrong_expected_labels_identified": [],
+    "label_count_interpretation": "Ten supported pairwise labels, not ten cleanly validated historical-novelty examples or a complete benchmark-design pass.",
+    "temporal_document_leak": {
+      "status": "none_identified_in_assigned_source_packets",
+      "basis": "All source text headers identify the frozen v1 documents before their case cutoffs; hashes and excerpt character slices match. Later target documents are in the key, not the evaluator source packet.",
+      "unresolved": "I did not inspect the evaluator runtime or prompt assembly. Whether only the intended input is supplied must be checked separately. Model-pretraining hindsight, named-paper recognition, author selection bias and benchmark contamination remain unresolved."
+    },
+    "issues": [
+      {
+        "id": "I1",
+        "severity": "major_scope_limitation",
+        "finding": "Assigned-source discrimination is not global historical novelty detection. A later paper can contain already-established components and still be distinct from an arbitrarily assigned older paper.",
+        "required_interpretation": "Report success only as a closed-packet diagnostic. No discovery, historical firstness, or meaningful research opportunity follows from passing it."
+      },
+      {
+        "id": "I2",
+        "severity": "moderate_evidence_limitation",
+        "finding": "Overlapping snippets substantially reduce coverage. S5's four excerpts collapse to 3194 characters; S2 and S4 each include repeated abstract material. C05 lacks explicit shared identity-loss evidence and C09 lacks anchor/multimodality details in the evaluator packet.",
+        "required_interpretation": "Do not penalize a careful abstention or unsupported-detail warning as if the evaluator saw the full auditor source. Count abstentions using the frozen policy, but discuss this evidence limitation. Do not silently modify excerpts after seeing outcomes."
+      },
+      {
+        "id": "I3",
+        "severity": "moderate_provenance_limitation",
+        "finding": "VIGOR and Sample4Geo key dates precede the actual retained v2 texts; SkyReg's key title differs from the primary title and its flattened HTML excerpts are labeled as PDF page 1.",
+        "required_interpretation": "Cite the actual inspected versions/dates/locations in reports. This does not invalidate their post-cutoff target role, but exact v1-target attribution is unverified. Frozen key is preserved."
+      },
+      {
+        "id": "I4",
+        "severity": "major_design_limitation",
+        "finding": "Several overlap controls are close abstract paraphrases. Distinct controls often switch module or output type, and C07/C10 explicitly explain the intended contrast. Five repeated source families allow within-batch pairing cues; exact paper names and mechanisms remain recognizable even without expected labels.",
+        "required_interpretation": "A passing score may reflect easy recognition, contrastive wording, pairing or hindsight, rather than robust mechanism-level novelty discrimination among nearest competing priors."
+      },
+      {
+        "id": "I5",
+        "severity": "moderate_construct_precision",
+        "finding": "C04's one-to-one framing overlooks University-1652's existing multiple true matches. C03 must distinguish token/layer gating from HF-Net's existing valid-pose early stop. C07's novelty cannot be shared weights alone. C08's universal pixel wording exceeds its valid-pixel evaluation. C10 must not imply a mandatory fused matching score.",
+        "required_interpretation": "These qualifications preserve the substantive labels but must govern semantic review of rationales; a correct label with the wrong mechanism is not sufficient evidence of understanding."
+      },
+      {
+        "id": "I6",
+        "severity": "major_validation_limitation",
+        "finding": "The ten controls are five correlated pairs, not ten independent samples. Four out of five correct per class meets the frozen 0.8 threshold, permitting one overlap false positive and one distinct false negative. There is no uncertainty calibration, difficult near-prior subset, hidden generalization set or population accuracy estimate.",
+        "required_interpretation": "Report exact per-class counts, false positives, false negatives, abstentions and rationale validity. Do not infer statistical improvement, production readiness or acceptable global-novelty false-positive rates."
+      }
+    ]
+  },
+  "readiness": {
+    "bounded_diagnostic": "GO",
+    "recommendation": "The frozen benchmark is ready to run as the declared closed-source, assigned-mechanism diagnostic, with this audit attached and the above limitations preserved. No expected-label change is warranted by the inspected evidence. GO here authorizes only the diagnostic interpretation, not a research conclusion.",
+    "conditions": [
+      "Keep input/key hashes unchanged and hide the key, targets and this audit from the tool-free evaluator. Verify actual prompt isolation before interpreting results.",
+      "Report the inspected target versions, not unsupported v1 mechanism attribution.",
+      "Keep the frozen score threshold, include abstentions, and separately audit substantive reasons against the actual supplied excerpts.",
+      "Do not retrofit controls, rationales or the audit based on baseline/revised outcomes. Any changed packet requires a separately identified freeze.",
+      "Treat the current controls as a sanity check; do not broaden literature collection or run experiments to repair their limitations within this bounded iteration."
+    ],
+    "independent_campaign_recommendation_before_outcomes": "ITERATE",
+    "reason": "The ground truth is suitable for the narrow diagnostic, but the user's meaningful-discovery objective remains unverified. A model can pass all ten controls while failing to distinguish worthwhile candidates from their actual closest competing mechanisms.",
+    "global_discrimination_validation": "incomplete",
+    "discovery_assessment": "pending independent review of actual candidates and competing-mechanism evidence",
+    "preflight_assessment": "not inspected; pending separately supplied outputs",
+    "final_before_after_verdict": "deferred until actual benchmark, discovery and preflight evidence is supplied; this artifact makes no before/after improvement claim"
+  }
+}

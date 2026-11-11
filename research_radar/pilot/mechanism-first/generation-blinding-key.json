@@ -1,0 +1,86 @@
+[
+  {
+    "id": "M01",
+    "generator": "generator-b",
+    "local_id": "L2",
+    "job_id": "job-05e50345f2a9",
+    "completed_at": "2026-11-10T08:22:02.829819+00:00"
+  },
+  {
+    "id": "M02",
+    "generator": "generator-d",
+    "local_id": "L1",
+    "job_id": "job-7517e671849e",
+    "completed_at": "2026-11-10T08:23:43.937068+00:00"
+  },
+  {
+    "id": "M03",
+    "generator": "generator-a",
+    "local_id": "L3",
+    "job_id": "job-b1a63ad27596",
+    "completed_at": "2026-11-10T08:21:14.747343+00:00"
+  },
+  {
+    "id": "M04",
+    "generator": "generator-b",
+    "local_id": "L3",
+    "job_id": "job-05e50345f2a9",
+    "completed_at": "2026-11-10T08:22:02.829819+00:00"
+  },
+  {
+    "id": "M05",
+    "generator": "generator-c",
+    "local_id": "L2-C1",
+    "job_id": "job-f689219b0619",
+    "completed_at": "2026-11-10T08:23:01.682708+00:00"
+  },
+  {
+    "id": "M06",
+    "generator": "generator-c",
+    "local_id": "L1-C1",
+    "job_id": "job-f689219b0619",
+    "completed_at": "2026-11-10T08:23:01.682708+00:00"
+  },
+  {
+    "id": "M07",
+    "generator": "generator-b",
+    "local_id": "L1",
+    "job_id": "job-05e50345f2a9",
+    "completed_at": "2026-11-10T08:22:02.829819+00:00"
+  },
+  {
+    "id": "M08",
+    "generator": "generator-a",
+    "local_id": "L1",
+    "job_id": "job-b1a63ad27596",
+    "completed_at": "2026-11-10T08:21:14.747343+00:00"
+  },
+  {
+    "id": "M09",
+    "generator": "generator-d",
+    "local_id": "L2",
+    "job_id": "job-7517e671849e",
+    "completed_at": "2026-11-10T08:23:43.937068+00:00"
+  },
+  {
+    "id": "M10",
+    "generator": "generator-c",
+    "local_id": "L3-C1",
+    "job_id": "job-f689219b0619",
+    "completed_at": "2026-11-10T08:23:01.682708+00:00"
+  },
+  {
+    "id": "M11",
+    "generator": "generator-a",
+    "local_id": "L2",
+    "job_id": "job-b1a63ad27596",
+    "completed_at": "2026-11-10T08:21:14.747343+00:00"
+  },
+  {
+    "id": "M12",
+    "generator": "generator-d",
+    "local_id": "L3",
+    "job_id": "job-7517e671849e",
+    "completed_at": "2026-11-10T08:23:43.937068+00:00"
+  }
+]

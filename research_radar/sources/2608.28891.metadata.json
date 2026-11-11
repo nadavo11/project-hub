@@ -1,0 +1,28 @@
+{
+  "arxiv_id": "2608.28891",
+  "citation_title": [
+    "Pixel-wise Geo-registration of Drone and Satellite Images"
+  ],
+  "citation_author": [
+    "Liu, Qingyang",
+    "Shatwell, David G",
+    "Kulkarni, Parth Parag",
+    "Shah, Mubarak"
+  ],
+  "citation_date": [
+    "2026/08/28"
+  ],
+  "citation_online_date": [
+    "2026/08/28"
+  ],
+  "citation_pdf_url": [
+    "https://arxiv.org/pdf/2608.28891"
+  ],
+  "citation_arxiv_id": [
+    "2608.28891"
+  ],
+  "citation_abstract": [
+    "Pixel-level cross-view geo-registration aims to align a query image (e.g., drone) to a geo-referenced satellite map so that every query pixel can be mapped to real-world GPS coordinates. Despite strong progress in cross-view geo-localization, existing benchmarks largely provide only GPS labels, limiting evaluation to a single coordinate per image and leaving dense geodetic alignment underexplored. We introduce SkyReg, a dataset and standardized benchmark for pixel-level drone-to-satellite geo-registration, providing dense per-pixel geo-location supervision across diverse settings (orthographic and perspective), scene types (urban, landmark-centric, suburban/rural), and camera configurations. Using SkyReg, we evaluate a broad set of baselines spanning retrieval, feature matching, homography-based alignment, and feed-forward 3D reconstruction. Finally, cross-view pairs from SkyReg, we train a geometry-aware reconstruction pipeline that achieves state-of-the-art results,improving performance by a significant margin."
+  ],
+  "abstract": "Abstract: Pixel-level cross-view geo-registration aims to align a query image (e.g., drone) to a geo-referenced satellite map so that every query pixel can be mapped to real-world GPS coordinates. Despite strong progress in cross-view geo-localization, existing benchmarks largely provide only GPS labels, limiting evaluation to a single coordinate per image and leaving dense geodetic alignment underexplored. We introduce SkyReg, a dataset and standardized benchmark for pixel-level drone-to-satellite geo-registration, providing dense per-pixel geo-location supervision across diverse settings (orthographic and perspective), scene types (urban, landmark-centric, suburban/rural), and camera configurations. Using SkyReg, we evaluate a broad set of baselines spanning retrieval, feature matching, homography-based alignment, and feed-forward 3D reconstruction. Finally, cross-view pairs from SkyReg, we train a geometry-aware reconstruction pipeline that achieves state-of-the-art results,improving performance by a significant margin."
+}

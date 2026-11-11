@@ -1,0 +1,943 @@
+{
+  "title": "Offline source integrity and citation checks",
+  "checks": [
+    {
+      "id": "hash:sources/2002.12186.html",
+      "expected": "71449f6f549ca68aa290857edb9a1380666b2670c44107648fc6189ce1d09bfb",
+      "observed": "71449f6f549ca68aa290857edb9a1380666b2670c44107648fc6189ce1d09bfb",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2002.12186.pdf",
+      "expected": "60cba13d08ca30fadac7136dc36192030bfa8e412f3a1810408d89c145552dbf",
+      "observed": "60cba13d08ca30fadac7136dc36192030bfa8e412f3a1810408d89c145552dbf",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2201.09201.html",
+      "expected": "eb24aa0e84470cade6e45331fffa976d927215a8a3a1e3a0dd749e9a42eba943",
+      "observed": "eb24aa0e84470cade6e45331fffa976d927215a8a3a1e3a0dd749e9a42eba943",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2201.09201.pdf",
+      "expected": "9587126c9327f1a3cdd79c7e2d053bd0a60d1f57ef41c1ed86e4a7f2e109dd87",
+      "observed": "9587126c9327f1a3cdd79c7e2d053bd0a60d1f57ef41c1ed86e4a7f2e109dd87",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2303.11851.html",
+      "expected": "e002b06f36813599248ff9f9b990b8cf7347df0ce641b238ff08a948b3a06c33",
+      "observed": "e002b06f36813599248ff9f9b990b8cf7347df0ce641b238ff08a948b3a06c33",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2303.11851.pdf",
+      "expected": "839fc1762d1967cee2406df8c6228b59d8c8624367f3429d860883b40ff276a5",
+      "observed": "839fc1762d1967cee2406df8c6228b59d8c8624367f3429d860883b40ff276a5",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2309.16020.html",
+      "expected": "08e37c35974d3beaddb4e16290a8723bd887cb61c6b57ec95fe42eb549eb0630",
+      "observed": "08e37c35974d3beaddb4e16290a8723bd887cb61c6b57ec95fe42eb549eb0630",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2309.16020.pdf",
+      "expected": "db8ff66320581e35d37bb9ded74cc862e987db863404481f0e031ec370c6f97a",
+      "observed": "db8ff66320581e35d37bb9ded74cc862e987db863404481f0e031ec370c6f97a",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2405.11936.html",
+      "expected": "2bc3ba22629293ed32ca0e906c1f14f27135293e89a9d1aeac2e45bfa0436286",
+      "observed": "2bc3ba22629293ed32ca0e906c1f14f27135293e89a9d1aeac2e45bfa0436286",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2405.11936.pdf",
+      "expected": "612d438d57a01b94e8472f13d9f48daff223ed8b7bbec2cd5b7a5b8bf3acaae8",
+      "observed": "612d438d57a01b94e8472f13d9f48daff223ed8b7bbec2cd5b7a5b8bf3acaae8",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2409.16925.html",
+      "expected": "d4e88ad41dbb3c9c81e8aaf1dd182dd63d13f496e3bef891eb39923fae4f353f",
+      "observed": "d4e88ad41dbb3c9c81e8aaf1dd182dd63d13f496e3bef891eb39923fae4f353f",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2409.16925.pdf",
+      "expected": "468c00bfb9fd27c774d2b13a402f5cd4e2696c23d707b00e2e73432c00b66d25",
+      "observed": "468c00bfb9fd27c774d2b13a402f5cd4e2696c23d707b00e2e73432c00b66d25",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2607.19951.html",
+      "expected": "bfadf6cb8759327922e6994b580dc28173de373ae6d40ef1af2d5b9e00ea66cf",
+      "observed": "bfadf6cb8759327922e6994b580dc28173de373ae6d40ef1af2d5b9e00ea66cf",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2607.19951.pdf",
+      "expected": "52c43af265b4adf7899c19f9d94d5cf7a24731381950dae6cfa0ff09032e6d7a",
+      "observed": "52c43af265b4adf7899c19f9d94d5cf7a24731381950dae6cfa0ff09032e6d7a",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2607.20116.html",
+      "expected": "ef81f740b7ea42d551cd3be79b128c8f915b3084431d9bea3e1aa43984d57686",
+      "observed": "ef81f740b7ea42d551cd3be79b128c8f915b3084431d9bea3e1aa43984d57686",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2607.20116.pdf",
+      "expected": "d425c507143c3c47b38a17c4f19af3a7c82cbc283ba877dda6f1f101dfdbe404",
+      "observed": "d425c507143c3c47b38a17c4f19af3a7c82cbc283ba877dda6f1f101dfdbe404",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2605.07099.html",
+      "expected": "9325f1d75481facb34a9d8e8edff33f381c05352c8502544c99861b50ee34cee",
+      "observed": "9325f1d75481facb34a9d8e8edff33f381c05352c8502544c99861b50ee34cee",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2605.07099.pdf",
+      "expected": "b3564692179025a7ef525c619d56b6d7a36d7853727b373ed0cee63c0205df16",
+      "observed": "b3564692179025a7ef525c619d56b6d7a36d7853727b373ed0cee63c0205df16",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2608.28891.html",
+      "expected": "6c96f01c063f450c19dec537ca024e45b58b415592791efa9407a4c36b7cbbce",
+      "observed": "6c96f01c063f450c19dec537ca024e45b58b415592791efa9407a4c36b7cbbce",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2505.07622.html",
+      "expected": "d12925c68144942bfd7fc8e5353c08068733420edc7f9efe283de25eccd1134b",
+      "observed": "d12925c68144942bfd7fc8e5353c08068733420edc7f9efe283de25eccd1134b",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2505.07622.pdf",
+      "expected": "4d14d4b4b25470b7394942ff50d9f2a158a8987086dbc43cac3fe1ef407c0764",
+      "observed": "4d14d4b4b25470b7394942ff50d9f2a158a8987086dbc43cac3fe1ef407c0764",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2308.16906.html",
+      "expected": "36dbf17721bcc3c1b6112ce31b7486301c2fe503db15a80020bb738bc2b39408",
+      "observed": "36dbf17721bcc3c1b6112ce31b7486301c2fe503db15a80020bb738bc2b39408",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2308.16906.pdf",
+      "expected": "e3f51790de63d17af015f010b5bcaeefb9eaeeac19a7de6e9201b0533af5936c",
+      "observed": "e3f51790de63d17af015f010b5bcaeefb9eaeeac19a7de6e9201b0533af5936c",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2305.15404.html",
+      "expected": "314f3c60570b8169012d26bfd89b8c836f7b697d601ed65740bd142c400dabf3",
+      "observed": "314f3c60570b8169012d26bfd89b8c836f7b697d601ed65740bd142c400dabf3",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2305.15404.pdf",
+      "expected": "9243778869375cf98c1354ce9c6f196eee674fef12df20facb3c42539578832f",
+      "observed": "9243778869375cf98c1354ce9c6f196eee674fef12df20facb3c42539578832f",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2406.09756.html",
+      "expected": "752465566fb41a61a244d14a1a58cb5cae6d7ec71e3e9939333bac6a20458145",
+      "observed": "752465566fb41a61a244d14a1a58cb5cae6d7ec71e3e9939333bac6a20458145",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2406.09756.pdf",
+      "expected": "5e205c3d67c6eea4085bed045daa4584709d76e7566c3d1f8ec46551095d7fbb",
+      "observed": "5e205c3d67c6eea4085bed045daa4584709d76e7566c3d1f8ec46551095d7fbb",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2503.11651.html",
+      "expected": "7bac4dd140608acbf89b97d101960ce285446ec3773f2f38b2808e957aa144d1",
+      "observed": "7bac4dd140608acbf89b97d101960ce285446ec3773f2f38b2808e957aa144d1",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2503.11651.pdf",
+      "expected": "5d7ab44d129172f39ef5918feb0014c4d041fd0e92f995d4dbbd7327a6e91d52",
+      "observed": "5d7ab44d129172f39ef5918feb0014c4d041fd0e92f995d4dbbd7327a6e91d52",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/1812.03506.html",
+      "expected": "f84e2416e52e66f33fe0d2932bb0231edd1f44dbc86b81ae509267e7d721afaa",
+      "observed": "f84e2416e52e66f33fe0d2932bb0231edd1f44dbc86b81ae509267e7d721afaa",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/1812.03506.pdf",
+      "expected": "e4ad7449b2b501a929230861d7732f15982a3f6d1da659147ade5c89fa5c7166",
+      "observed": "e4ad7449b2b501a929230861d7732f15982a3f6d1da659147ade5c89fa5c7166",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2306.13643.html",
+      "expected": "eb01a1bb7de8bdff37703a47a9da65814f246ff6fe21e8f1947ba664ac236dd4",
+      "observed": "eb01a1bb7de8bdff37703a47a9da65814f246ff6fe21e8f1947ba664ac236dd4",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2306.13643.pdf",
+      "expected": "2d77fcdfdc38cc4704bee343092502f819e9c7119ca4fd907ef10f2efa47891f",
+      "observed": "2d77fcdfdc38cc4704bee343092502f819e9c7119ca4fd907ef10f2efa47891f",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2011.12172.html",
+      "expected": "c58de808798e4adf5de4b6efc6f643ef24ba76d0f6b902fe252e03015aa0ed12",
+      "observed": "c58de808798e4adf5de4b6efc6f643ef24ba76d0f6b902fe252e03015aa0ed12",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2011.12172.pdf",
+      "expected": "4060fdf39c98269a0b84fead8396265257a5e35ef20b7f4a9b0a9f9433fccdcb",
+      "observed": "4060fdf39c98269a0b84fead8396265257a5e35ef20b7f4a9b0a9f9433fccdcb",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2607.04722.html",
+      "expected": "2c195a98b7cf8d78c927d49fb8ce62ea22cf456127fece1177af2671d924763e",
+      "observed": "2c195a98b7cf8d78c927d49fb8ce62ea22cf456127fece1177af2671d924763e",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2607.04722.pdf",
+      "expected": "f0cd7f8811af147b828f0a3bab76b33e5e68077b00ac44a92598d3e3150b3def",
+      "observed": "f0cd7f8811af147b828f0a3bab76b33e5e68077b00ac44a92598d3e3150b3def",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2509.18350.html",
+      "expected": "35a06d4f1421b231dfce473e1640b3516956945e19c75bd0dd766c2889c45616",
+      "observed": "35a06d4f1421b231dfce473e1640b3516956945e19c75bd0dd766c2889c45616",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2509.18350.pdf",
+      "expected": "11d4ff15e5290f09607ecde2afa449d60de4de3bc1dc637acebdc3cd6258db75",
+      "observed": "11d4ff15e5290f09607ecde2afa449d60de4de3bc1dc637acebdc3cd6258db75",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2409.14634.html",
+      "expected": "f23c6e9f7a59ebbc61ed318d2f1e6f766ad148b164f86b8168bb073455abc3e6",
+      "observed": "f23c6e9f7a59ebbc61ed318d2f1e6f766ad148b164f86b8168bb073455abc3e6",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2409.14634.pdf",
+      "expected": "81c202dec4b9abff133eb0f7f085d60637996027e2d4df11dc0078f3462a10e0",
+      "observed": "81c202dec4b9abff133eb0f7f085d60637996027e2d4df11dc0078f3462a10e0",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2409.04109.html",
+      "expected": "39d9ca62b3a85193f36c780f27463290351720fe32ff5d663dbb1d0f3421e2e0",
+      "observed": "39d9ca62b3a85193f36c780f27463290351720fe32ff5d663dbb1d0f3421e2e0",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2409.04109.pdf",
+      "expected": "fc1d14afd403c19bebb1c8ede9e74ed9aa3de0ee3a1f8656a6dcd6c7da90f79c",
+      "observed": "fc1d14afd403c19bebb1c8ede9e74ed9aa3de0ee3a1f8656a6dcd6c7da90f79c",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2506.22026.html",
+      "expected": "8b369673a57595a794ad10281e5ee36ba0f3530442e985e7471f96f3730eef65",
+      "observed": "8b369673a57595a794ad10281e5ee36ba0f3530442e985e7471f96f3730eef65",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2506.22026.pdf",
+      "expected": "b923c062676138302ceb4a3b8867db764a2039e1bcc791ac50bb5ae81f0ab9c9",
+      "observed": "b923c062676138302ceb4a3b8867db764a2039e1bcc791ac50bb5ae81f0ab9c9",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2504.08066.html",
+      "expected": "dfb82cc514527492adc778ed31016ca09c25a9bb8befbe5dfaaad38c053e16c8",
+      "observed": "dfb82cc514527492adc778ed31016ca09c25a9bb8befbe5dfaaad38c053e16c8",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2504.08066.pdf",
+      "expected": "53bafd3028e3f8829a3d85220e84dcf0d18934f9b75c092a60de303ff3644bd2",
+      "observed": "53bafd3028e3f8829a3d85220e84dcf0d18934f9b75c092a60de303ff3644bd2",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/anthropic-research.html",
+      "expected": "7d4364af962ce201bb2477a30de14deb1910596c0c8b6abf7ef230fb75f5cd29",
+      "observed": "7d4364af962ce201bb2477a30de14deb1910596c0c8b6abf7ef230fb75f5cd29",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2608.28891.full.html",
+      "expected": "47140eb6cefd0ca117641cfc94b6f0716eacbe7ad234cd260099fd7ccfd8c32e",
+      "observed": "47140eb6cefd0ca117641cfc94b6f0716eacbe7ad234cd260099fd7ccfd8c32e",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/discovery-1.html",
+      "expected": "8940ce6f11fd491379e0a4cef0638aa0bb89cae0562b4fa082f79d953a2fb270",
+      "observed": "8940ce6f11fd491379e0a4cef0638aa0bb89cae0562b4fa082f79d953a2fb270",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/discovery-2.html",
+      "expected": "1b40d45462d5f72ace8ae80979f6adaeb29fd502d48dbfc3739e8caa950491c0",
+      "observed": "1b40d45462d5f72ace8ae80979f6adaeb29fd502d48dbfc3739e8caa950491c0",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/discovery-3.html",
+      "expected": "368491f8de52ce63b4246165a62cfcdde5c8510483ac3fdf8388d105042db87b",
+      "observed": "368491f8de52ce63b4246165a62cfcdde5c8510483ac3fdf8388d105042db87b",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2508.20066.html",
+      "expected": "52e26462093ae5be2104e580a5595f92428f40f20c9610f4211b9321f96f6d57",
+      "observed": "52e26462093ae5be2104e580a5595f92428f40f20c9610f4211b9321f96f6d57",
+      "passed": true
+    },
+    {
+      "id": "hash:sources/2508.20066.pdf",
+      "expected": "a5741a541b948b0ab399e8849ff8c8db499c4ae901a4a737dd1d7f5ab6c5d529",
+      "observed": "a5741a541b948b0ab399e8849ff8c8db499c4ae901a4a737dd1d7f5ab6c5d529",
+      "passed": true
+    },
+    {
+      "id": "title:university1652",
+      "expected": "University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization",
+      "observed": "University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization",
+      "passed": true
+    },
+    {
+      "id": "title:denseuav",
+      "expected": "Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments",
+      "observed": "Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments",
+      "passed": true
+    },
+    {
+      "id": "title:sample4geo",
+      "expected": "Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation",
+      "observed": "Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation",
+      "passed": true
+    },
+    {
+      "id": "title:geoclip",
+      "expected": "GeoCLIP: Clip-Inspired Alignment between Locations and Images for Effective Worldwide Geo-localization",
+      "observed": "GeoCLIP: Clip-Inspired Alignment between Locations and Images for Effective Worldwide Geo-localization",
+      "passed": true
+    },
+    {
+      "id": "title:uavvisloc",
+      "expected": "UAV-VisLoc: A Large-scale Dataset for UAV Visual Localization",
+      "observed": "UAV-VisLoc: A Large-scale Dataset for UAV Visual Localization",
+      "passed": true
+    },
+    {
+      "id": "title:game4loc",
+      "expected": "Game4Loc: A UAV Geo-Localization Benchmark from Game Data",
+      "observed": "Game4Loc: A UAV Geo-Localization Benchmark from Game Data",
+      "passed": true
+    },
+    {
+      "id": "title:offnadirloc",
+      "expected": "OffNadirLoc: Benchmark and Framework for Challenging UAV-to-Satellite Geo-Localization under Large Off-Nadir Views",
+      "observed": "OffNadirLoc: Benchmark and Framework for Challenging UAV-to-Satellite Geo-Localization under Large Off-Nadir Views",
+      "passed": true
+    },
+    {
+      "id": "title:rim",
+      "expected": "RIM: A Retrieval-In-Matching Framework for Cross-Domain Global Visual Localization of UAVs",
+      "observed": "RIM: A Retrieval-In-Matching Framework for Cross-Domain Global Visual Localization of UAVs",
+      "passed": true
+    },
+    {
+      "id": "title:infogeo",
+      "expected": "InfoGeo: Information-Theoretic Object-Centric Learning for Cross-View Generalizable UAV Geo-Localization",
+      "observed": "InfoGeo: Information-Theoretic Object-Centric Learning for Cross-View Generalizable UAV Geo-Localization",
+      "passed": true
+    },
+    {
+      "id": "title:skyreg",
+      "expected": "Pixel-wise Geo-registration of Drone and Satellite Images",
+      "observed": "Pixel-wise Geo-registration of Drone and Satellite Images",
+      "passed": true
+    },
+    {
+      "id": "title:unifygeo",
+      "expected": "A Unified Hierarchical Framework for Fine-grained Cross-view Geo-localization over Large-scale Scenarios",
+      "observed": "A Unified Hierarchical Framework for Fine-grained Cross-view Geo-localization over Large-scale Scenarios",
+      "passed": true
+    },
+    {
+      "id": "title:cahomo",
+      "expected": "Fine-Grained Cross-View Geo-Localization Using a Correlation-Aware Homography Estimator",
+      "observed": "Fine-Grained Cross-View Geo-Localization Using a Correlation-Aware Homography Estimator",
+      "passed": true
+    },
+    {
+      "id": "title:roma",
+      "expected": "RoMa: Robust Dense Feature Matching",
+      "observed": "RoMa: Robust Dense Feature Matching",
+      "passed": true
+    },
+    {
+      "id": "title:mast3r",
+      "expected": "Grounding Image Matching in 3D with MASt3R",
+      "observed": "Grounding Image Matching in 3D with MASt3R",
+      "passed": true
+    },
+    {
+      "id": "title:vggt",
+      "expected": "VGGT: Visual Geometry Grounded Transformer",
+      "observed": "VGGT: Visual Geometry Grounded Transformer",
+      "passed": true
+    },
+    {
+      "id": "title:hfnet",
+      "expected": "From Coarse to Fine: Robust Hierarchical Localization at Large Scale",
+      "observed": "From Coarse to Fine: Robust Hierarchical Localization at Large Scale",
+      "passed": true
+    },
+    {
+      "id": "title:lightglue",
+      "expected": "LightGlue: Local Feature Matching at Light Speed",
+      "observed": "LightGlue: Local Feature Matching at Light Speed",
+      "passed": true
+    },
+    {
+      "id": "title:vigor",
+      "expected": "VIGOR: Cross-View Image Geo-localization beyond One-to-one Retrieval",
+      "observed": "VIGOR: Cross-View Image Geo-localization beyond One-to-one Retrieval",
+      "passed": true
+    },
+    {
+      "id": "title:ricloc",
+      "expected": "Reference-Induced Consensus for Selective Posed-Reference Visual Localization",
+      "observed": "Reference-Induced Consensus for Selective Posed-Reference Visual Localization",
+      "passed": true
+    },
+    {
+      "id": "title:ortholoc",
+      "expected": "OrthoLoC: UAV 6-DoF Localization and Calibration Using Orthographic Geodata",
+      "observed": "OrthoLoC: UAV 6-DoF Localization and Calibration Using Orthographic Geodata",
+      "passed": true
+    },
+    {
+      "id": "title:paul",
+      "expected": "PAUL: Uncertainty-Guided Partition and Augmentation for Robust Cross-View Geo-Localization under Noisy Correspondence",
+      "observed": "PAUL: Uncertainty-Guided Partition and Augmentation for Robust Cross-View Geo-Localization under Noisy Correspondence",
+      "passed": true
+    },
+    {
+      "id": "quote:university1652:0",
+      "expected": "synthetic drone-view camera",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2002.12186",
+      "location": "PDF p.1, Figure 1 caption; sources/2002.12186.txt"
+    },
+    {
+      "id": "quote:university1652:1",
+      "expected": "Recall@K & AP",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2002.12186",
+      "location": "PDF p.4, Table 1 and Section 3.2"
+    },
+    {
+      "id": "quote:denseuav:0",
+      "expected": "the UAV\u2019s down-looking camera in real scenarios",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2201.09201",
+      "location": "PDF p.2, contributions and evaluation motivation"
+    },
+    {
+      "id": "quote:denseuav:1",
+      "expected": "feature similarity",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2201.09201",
+      "location": "PDF p.2, pipeline paragraph"
+    },
+    {
+      "id": "quote:sample4geo:0",
+      "expected": "off-the-shelf",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2303.11851",
+      "location": "PDF p.3, Section 3.2"
+    },
+    {
+      "id": "quote:sample4geo:1",
+      "expected": "Dynamic Similarity Sampling",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2303.11851",
+      "location": "PDF p.4, Sections 3.3-3.4"
+    },
+    {
+      "id": "quote:geoclip:0",
+      "expected": "1km, 25km, 200km, 750km",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2309.16020",
+      "location": "PDF pp.6-7, evaluation protocol and Table 1"
+    },
+    {
+      "id": "quote:geoclip:1",
+      "expected": "precomputing the image",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2309.16020",
+      "location": "PDF p.10, Limitations"
+    },
+    {
+      "id": "quote:uavvisloc:0",
+      "expected": "ground-down view",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2405.11936",
+      "location": "PDF pp.2-3, task definition and contributions"
+    },
+    {
+      "id": "quote:uavvisloc:1",
+      "expected": "Fixed-wing drone images",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2405.11936",
+      "location": "PDF p.3, dataset contributions"
+    },
+    {
+      "id": "quote:game4loc:0",
+      "expected": "intersection ratio",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2409.16925",
+      "location": "PDF p.2, contributions; p.4, weighted contrastive learning"
+    },
+    {
+      "id": "quote:game4loc:1",
+      "expected": "partial matching",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2409.16925",
+      "location": "PDF pp.1-2, task motivation"
+    },
+    {
+      "id": "quote:offnadirloc:0",
+      "expected": "Google Earth\u2019s 3D engine",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.19951",
+      "location": "PDF p.3, Section 3.1"
+    },
+    {
+      "id": "quote:offnadirloc:1",
+      "expected": "Recall@k",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.19951",
+      "location": "PDF p.6, Section 5.1"
+    },
+    {
+      "id": "quote:rim:0",
+      "expected": "frozen-retriever preservation, full-token reuse",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.20116",
+      "location": "PDF p.6, positioning relative to GLVL"
+    },
+    {
+      "id": "quote:rim:1",
+      "expected": "No explicit localization-confidence estimator",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.20116",
+      "location": "PDF p.27, Section 4.7 Limitations"
+    },
+    {
+      "id": "quote:rim:2",
+      "expected": "finite-but-wrong pattern",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.20116",
+      "location": "PDF p.51, Appendix E, Figure E.1 discussion"
+    },
+    {
+      "id": "quote:rim:3",
+      "expected": "Confidence-aware sequential integration",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.20116",
+      "location": "PDF p.28, Future Work"
+    },
+    {
+      "id": "quote:infogeo:0",
+      "expected": "sparse latent slots",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2605.07099",
+      "location": "PDF p.3, method overview"
+    },
+    {
+      "id": "quote:infogeo:1",
+      "expected": "intrinsic limitation of object-centric learning",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2605.07099",
+      "location": "PDF p.21, appendix preceding C.4"
+    },
+    {
+      "id": "quote:skyreg:0",
+      "expected": "dense per-pixel latitude\u2013longitude supervision",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/html/2608.28891v1",
+      "location": "Introduction and \u00a7\u00a73-4; sources/2608.28891.full.txt"
+    },
+    {
+      "id": "quote:skyreg:1",
+      "expected": "we assign the median error as the geodetic error",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/html/2608.28891v1",
+      "location": "Section 5.1 Evaluation Protocol"
+    },
+    {
+      "id": "quote:skyreg:2",
+      "expected": "planar homography assumptions often break down",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/html/2608.28891v1",
+      "location": "Section 5.2 Results and Discussion"
+    },
+    {
+      "id": "quote:skyreg:3",
+      "expected": "per-pixel confidence maps",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/html/2608.28891v1",
+      "location": "Section 3.4, equations 8-9; checked after independent audit feedback"
+    },
+    {
+      "id": "quote:unifygeo:0",
+      "expected": "re-ranking mechanism",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2505.07622",
+      "location": "PDF p.2, contributions; p.6, loss definitions"
+    },
+    {
+      "id": "quote:cahomo:0",
+      "expected": "Spherical Transform",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2308.16906",
+      "location": "PDF pp.2-3, Figure 1 and Section 3.1"
+    },
+    {
+      "id": "quote:roma:0",
+      "expected": "global matching stage needs to model multimodal distributions",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2305.15404",
+      "location": "PDF p.2, Figure 2 caption"
+    },
+    {
+      "id": "quote:mast3r:0",
+      "expected": "repetitive patterns or low-texture areas",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2406.09756",
+      "location": "PDF p.2, motivation"
+    },
+    {
+      "id": "quote:mast3r:1",
+      "expected": "reciprocal matches",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2406.09756",
+      "location": "PDF p.2, contributions"
+    },
+    {
+      "id": "quote:vggt:0",
+      "expected": "extreme input",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2503.11651",
+      "location": "PDF p.10, Limitations"
+    },
+    {
+      "id": "quote:vggt:1",
+      "expected": "camera parameters, point maps, depth maps",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/abs/2503.11651",
+      "location": "Abstract"
+    },
+    {
+      "id": "quote:hfnet:0",
+      "expected": "multitask distillation",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/1812.03506",
+      "location": "PDF p.2, contributions; p.3, Figure 2"
+    },
+    {
+      "id": "quote:hfnet:1",
+      "expected": "within a RANSAC scheme",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/1812.03506",
+      "location": "PDF p.3, hierarchical localization description"
+    },
+    {
+      "id": "quote:hfnet:2",
+      "expected": "Covisibility clustering",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/1812.03506",
+      "location": "PDF p.3, Covisibility clustering; checked after independent audit feedback"
+    },
+    {
+      "id": "quote:lightglue:0",
+      "expected": "adaptive to the difficulty of the problem",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/abs/2306.13643",
+      "location": "Abstract"
+    },
+    {
+      "id": "quote:lightglue:1",
+      "expected": "fine-tuned with the MegaDepth",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2306.13643",
+      "location": "PDF p.5, training protocol"
+    },
+    {
+      "id": "quote:vigor:0",
+      "expected": "within-image calibration",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2011.12172",
+      "location": "PDF p.2, contribution paragraph"
+    },
+    {
+      "id": "quote:vigor:1",
+      "expected": "semi-positive samples",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2011.12172",
+      "location": "PDF p.2, dataset construction discussion"
+    },
+    {
+      "id": "quote:ricloc:0",
+      "expected": "Localization also needs rejection",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.04722",
+      "location": "PDF pp.2,9-10, task and evaluation"
+    },
+    {
+      "id": "quote:ricloc:1",
+      "expected": "aggregated as if independent",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.04722",
+      "location": "PDF p.15, Limitations; p.20, Appendix G calibration discussion"
+    },
+    {
+      "id": "quote:ricloc:2",
+      "expected": "ranking score rather than a posterior",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.04722",
+      "location": "PDF p.20, covariance discussion"
+    },
+    {
+      "id": "quote:ricloc:3",
+      "expected": "ineligible queries treated as least reliable or as failures",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.04722",
+      "location": "PDF p.9, Section 4.1; checked after independent audit feedback"
+    },
+    {
+      "id": "quote:ricloc:4",
+      "expected": "common-mode scale term",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2607.04722",
+      "location": "PDF p.8, equations 18-20; checked after independent audit feedback"
+    },
+    {
+      "id": "quote:ortholoc:0",
+      "expected": "assuming quasi-planar surfaces",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2509.18350",
+      "location": "PDF p.2, method overview"
+    },
+    {
+      "id": "quote:ortholoc:1",
+      "expected": "fails when matches are completely corrupted",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2509.18350",
+      "location": "PDF p.10, Limitations and future work"
+    },
+    {
+      "id": "quote:ortholoc:2",
+      "expected": "DSM elevations",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2509.18350",
+      "location": "PDF p.4, dataset/geodata description; p.7, pose estimation"
+    },
+    {
+      "id": "quote:ortholoc:3",
+      "expected": "coordinate system to preserve privacy",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2509.18350",
+      "location": "PDF pp.4-5, Sections 3.1-3.3; checked after independent audit feedback"
+    },
+    {
+      "id": "quote:paul:0",
+      "expected": "systematic alignment bias rather than",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2508.20066",
+      "location": "PDF p.2, task definition"
+    },
+    {
+      "id": "quote:paul:1",
+      "expected": "uncertainty-aware co-augmentation and evidential co-training",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/abs/2508.20066",
+      "location": "Abstract"
+    },
+    {
+      "id": "quote:F1:0",
+      "expected": "the user decides",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2409.14634",
+      "location": "PDF p.2, human-LLM design; pp.5,8,14 retrieve/rerank and limits"
+    },
+    {
+      "id": "quote:F2:0",
+      "expected": "conclusions that are based primarily on LLM evaluators",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2409.04109",
+      "location": "PDF pp.13-15, Section 7"
+    },
+    {
+      "id": "quote:F3:0",
+      "expected": "retrieve-then-rerank",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2506.22026",
+      "location": "PDF p.4, Figure 1"
+    },
+    {
+      "id": "quote:F3:1",
+      "expected": "also classified the test ideas",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2506.22026",
+      "location": "PDF pp.8-9, Section 8"
+    },
+    {
+      "id": "quote:F4:0",
+      "expected": "agentic tree search",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://arxiv.org/pdf/2504.08066",
+      "location": "PDF p.2 contributions and caveats; Section 5 pp.13-14"
+    },
+    {
+      "id": "quote:F5:0",
+      "expected": "retry logic and regular checkpoints",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://www.anthropic.com/research/multi-agent-research-system",
+      "location": "Production reliability and engineering challenges; sources/anthropic-research.txt"
+    },
+    {
+      "id": "quote:F5:1",
+      "expected": "these architectures burn through tokens fast",
+      "observed": "Located in cached primary text",
+      "passed": true,
+      "source": "https://www.anthropic.com/research/multi-agent-research-system",
+      "location": "Benefits of a multi-agent system, cost paragraph"
+    },
+    {
+      "id": "references:O1",
+      "expected": "At least three existing competing paper records",
+      "observed": [
+        "paul",
+        "ricloc",
+        "rim",
+        "roma"
+      ],
+      "passed": true
+    },
+    {
+      "id": "references:O2",
+      "expected": "At least three existing competing paper records",
+      "observed": [
+        "cahomo",
+        "mast3r",
+        "ortholoc",
+        "skyreg"
+      ],
+      "passed": true
+    },
+    {
+      "id": "references:O3",
+      "expected": "At least three existing competing paper records",
+      "observed": [
+        "hfnet",
+        "ricloc",
+        "rim",
+        "unifygeo"
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "count": 134,
+  "failures": [],
+  "limitations": [
+    "Exact title, hash and quotation checks do not prove every interpretation or reproduce any experiment.",
+    "Latest metadata and earlier manuscript versions can differ; SkyReg is explicitly documented."
+  ]
+}

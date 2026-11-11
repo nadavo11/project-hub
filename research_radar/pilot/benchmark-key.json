@@ -1,0 +1,22 @@
+{
+  "protocol": "Fixed before reading the investigator's output. Investigator received only B1-B5 descriptions, not labels, titles, URLs or this file. Context separation is procedural, not a filesystem sandbox.",
+  "cases": [
+    {"id":"B1","expected":"already established","title":"Each Part Matters: Local Patterns Facilitate Cross-view Geo-localization","acceptable_url_fragments":["10.1109/tcsvt.2021.3061265","Each_Part_Matters"],"mechanism":"Concentric square-ring partitioning and per-part feature learning for cross-view localization."},
+    {"id":"B2","expected":"already established","title":"Sample4Geo: Hard Negative Sampling For Cross-View Geo-Localisation","acceptable_url_fragments":["10.1109/iccv51070.2023.01545","Deuser_Sample4Geo","Sample4Geo"],"mechanism":"Geographic and feature-similarity hard-negative sampling for contrastive cross-view representation learning."},
+    {"id":"B3","expected":"already established","title":"University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization","acceptable_url_fragments":["2002.12186","University-1652","university-1652"],"mechanism":"University-building satellite/drone/ground benchmark and bidirectional drone-satellite retrieval tasks."},
+    {"id":"B4","expected":"already established","title":"TransGeo: Transformer Is All You Need for Cross-view Image Geo-localization","acceptable_url_fragments":["2204.00097","Zhu_TransGeo","TransGeo"],"mechanism":"Transformer cross-view localization without polar transformation and attention-guided non-uniform cropping."},
+    {"id":"B5","expected":"already established","title":"RoMa: Robust Dense Feature Matching","acceptable_url_fragments":["2305.15404","Edstedt_RoMa","RoMa_Robust"],"mechanism":"Frozen foundation features, coarse anchor-based matching and fine refinement."}
+  ],
+  "scoring": "Count a substantive already-established or partially-overlapping determination only if a verified matching expected reference and mechanism comparison are present. Uncertain is not a detection. Manual source verification is recorded separately; identifiers alone do not prove overlap.",
+  "threshold": 4,
+  "ground_truth_corrections": [
+    "Before seeing investigator output, direct source checks invalidated provisional arXiv identifiers 2107.14068 and 2303.11845: these belong to unrelated astronomy and mathematics papers. Removed and replaced with OpenAlex-verified exact DOI/title pairs.",
+    "A further attempted LPN locator 2011.14506 was also unrelated and was never accepted as evidence. These errors are a concrete demonstration of why model-memory citations cannot be trusted.",
+    "One OpenAlex query returned HTTP 429; the already-recorded successful Sample4Geo retrieval supplied the verified DOI. No label or mechanism expectation changed."
+  ],
+  "limitations": [
+    "Five purposively chosen positive overlap cases are a smoke test, not a statistical accuracy estimate.",
+    "All cases are overlap positives; this test alone cannot measure specificity or false rejection rate.",
+    "The investigator may know these methods from training. Procedural blinding does not establish memorization-free retrieval ability."
+  ]
+}

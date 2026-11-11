@@ -1,0 +1,10 @@
+{
+  "campaign_id": "campaign-16abc539e9ed",
+  "validation_id": "targeted-scientific-discovery",
+  "url": "http://127.0.0.1:8776/?campaign=campaign-16abc539e9ed#validation",
+  "reopened_store_verified": true,
+  "new_jobs": 0,
+  "scientific_claim_verdict": "NO_GO_FOR_CONTRIBUTION; useful bounded negative experiment",
+  "campaign_verdict": "ITERATE",
+  "original_candidates_sha256": "73708dc39af71d6eff439689ca476a91b9dae30e84f6fb74d413b334ccda1dd4"
+}

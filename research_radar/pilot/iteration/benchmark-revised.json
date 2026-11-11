@@ -1,0 +1,108 @@
+{
+  "job_id": "job-f23244d0bfe3",
+  "completed_at": "2026-11-10T07:47:42.977106+00:00",
+  "result": {
+    "cases": [
+      {
+        "id": "C01",
+        "classification": "overlap",
+        "source_ids": [
+          "S5"
+        ],
+        "reason": "S5's abstract states a dense UAV positioning dataset (DenseUAV), a siamese/metric-learning transformer baseline, a neighbor-search post-processing strategy, and the continuum-type SDM metric. Each element of the idea is present. The only possible difference is 'real-UAV' data, which the excerpt does not address (inference), so it is not a distinguishing mechanism.",
+        "evidence_gap": "The excerpts do not show whether DenseUAV imagery is real or simulated. The experimental results are also not in the excerpts. Neither point settles the overlap in the mechanism.",
+        "feasibility": "Feasible: all components are standard and already described."
+      },
+      {
+        "id": "C02",
+        "classification": "overlap",
+        "source_ids": [
+          "S2"
+        ],
+        "reason": "LPN uses a square-ring partition by distance from the image center, pools each part, and trains part-wise cross-entropy identity classification. Its abstract claims scalability to rotation variations and the use of contextual information. This is the same mechanism and purpose.",
+        "evidence_gap": "The excerpts give no details of the rotation experiments. This does not affect the overlap.",
+        "feasibility": "Highly feasible; it is a simple pooling and classification head."
+      },
+      {
+        "id": "C03",
+        "classification": "distinct",
+        "source_ids": [
+          "S3"
+        ],
+        "reason": "HF-Net is a hierarchical localization method: global retrieval, then local matching, with multitask distillation. It has no learned pairwise matcher with token matchability, keypoint pruning, or early stopping of transformer layers for adaptive width and depth. The purposes also differ: HF-Net gets efficiency from a coarse-to-fine pipeline and a compact network. The idea adapts compute per pair at inference.",
+        "evidence_gap": "S3 is the only source examined. Adaptive-computation matchers in other work are not covered here, so this is not a claim of global novelty. There is no evidence that the idea works.",
+        "feasibility": "Moderately feasible; it requires training a pairwise matcher with confidence heads and exit criteria."
+      },
+      {
+        "id": "C04",
+        "classification": "distinct",
+        "source_ids": [
+          "S1"
+        ],
+        "reason": "University-1652 uses discrete building-identity retrieval, with Recall@K and AP scored against the same location identity. The idea instead uses arbitrary query locations and multiple covering references. It adds a regressed offset from the tile center and evaluates localization beyond exact reference identity. The supervision, problem formulation and evaluation differ, and the excerpts show none of these in S1.",
+        "evidence_gap": "Whether the offset regression is better than identity retrieval is untested. The excerpts also do not cover other sources that may do metric localization.",
+        "feasibility": "Needs data with precise coordinates and overlapping reference tiles, which is harder to obtain than identity-labelled data."
+      },
+      {
+        "id": "C05",
+        "classification": "overlap",
+        "source_ids": [
+          "S1"
+        ],
+        "reason": "The idea matches S1's contribution closely. S1 builds a benchmark of university buildings with satellite, synthetic drone and ground views, and supplies a CNN baseline for retrieval. S1 evaluates with Recall@K and AP. The 'shared identity-discriminative baseline' is generic and corresponds to S1's baseline.",
+        "evidence_gap": "The excerpts do not give S1's training details. The weights-sharing and loss details of the baseline are therefore unverified, though they are unlikely to be the distinguishing factor.",
+        "feasibility": "Feasible, but it duplicates an existing public dataset."
+      },
+      {
+        "id": "C06",
+        "classification": "overlap",
+        "source_ids": [
+          "S3"
+        ],
+        "reason": "HF-Net is a single network distilled to predict both global descriptors and local features. Its pipeline runs prior retrieval, covisibility clustering of references into places by co-observed 3D points, and local geometric localization within each place. This matches the idea step by step.",
+        "evidence_gap": "The excerpts do not show the distillation targets in detail. The overlap is established by the stated pipeline.",
+        "feasibility": "Feasible; HF-Net already reports this."
+      },
+      {
+        "id": "C07",
+        "classification": "distinct",
+        "source_ids": [
+          "S2"
+        ],
+        "reason": "S2 contributes a square-ring feature partition with part-wise classification, trained with cross-entropy and no negative-selection scheme. The idea's contribution is a hard-negative schedule that starts from geographic neighbors and refreshes by embedding similarity, with symmetric contrastive training. The supervision and training mechanism are different, and the excerpts contain no equivalent.",
+        "evidence_gap": "Other contrastive geo-localization work is outside the supplied source. There is no evidence that the schedule helps, and it needs coordinates.",
+        "feasibility": "Feasible with a standard encoder and batch-mining code, but it needs geo-tagged data."
+      },
+      {
+        "id": "C08",
+        "classification": "distinct",
+        "source_ids": [
+          "S5"
+        ],
+        "reason": "S5 does retrieval of geo-tagged satellite images for UAV images, evaluated with SDM. The idea predicts a coordinate for each visible query pixel, using feed-forward 3D pointmap alignment, with dense pixel-wise supervision and evaluation. The question, the supervision and the evaluation differ. S5's excerpts mention no pointmaps or pixel-wise georegistration.",
+        "evidence_gap": "Whether dense georegistration is feasible against satellite imagery is unshown. Other work on pixel-wise geo-localization is not in the supplied source.",
+        "feasibility": "Hard; it needs dense ground truth for pixel-level georegistration and pointmap models that work across drone and satellite views."
+      },
+      {
+        "id": "C09",
+        "classification": "overlap",
+        "source_ids": [
+          "S4"
+        ],
+        "reason": "RoMa uses frozen DINOv2 coarse features and a regression-by-classification coarse matcher, with a separately trained local refinement branch using robust regression losses. This is the same decoupled coarse/refine design with the same ingredients. The 'over anchors' detail is a form of the regression-by-classification paradigm.",
+        "evidence_gap": "The excerpts do not detail the anchor classification. The paradigm is stated in the abstract.",
+        "feasibility": "Feasible; RoMa already implements it with released code."
+      },
+      {
+        "id": "C10",
+        "classification": "distinct",
+        "source_ids": [
+          "S4"
+        ],
+        "reason": "RoMa predicts 2D warps and refines 2D coordinates with robust losses. The idea jointly predicts cross-view 3D pointmaps and dense descriptors, and matches by reciprocal descriptor search combined with the pointmap representation. The idea explicitly differs from classifying and refining 2D correspondences. The excerpts show no pointmap or reciprocal-matching component in S4.",
+        "evidence_gap": "S4 is the only source examined. Pointmap-based matching in other work is not covered, and the idea has no evidence of benefit.",
+        "feasibility": "Moderately hard; it needs 3D supervision and cross-view training data."
+      }
+    ]
+  }
+}

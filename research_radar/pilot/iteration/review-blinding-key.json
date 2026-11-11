@@ -1,0 +1,32 @@
+[
+  {
+    "id": "R01",
+    "policy": "revised",
+    "original_index": 1
+  },
+  {
+    "id": "R02",
+    "policy": "baseline",
+    "original_index": 2
+  },
+  {
+    "id": "R03",
+    "policy": "baseline",
+    "original_index": 1
+  },
+  {
+    "id": "R04",
+    "policy": "revised",
+    "original_index": 0
+  },
+  {
+    "id": "R05",
+    "policy": "baseline",
+    "original_index": 0
+  },
+  {
+    "id": "R06",
+    "policy": "revised",
+    "original_index": 2
+  }
+]

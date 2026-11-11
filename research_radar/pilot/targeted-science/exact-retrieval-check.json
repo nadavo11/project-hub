@@ -1,0 +1,37 @@
+{
+  "source": "/home/nadavo/localization-models/data/validation/crossview/denseuav-48-review/point-identity-infogeo-job.json",
+  "sha256": "5d8db9d36a4a1e7a250a2261129c42b64ccce161ae18420f733a905176bddfa0",
+  "queries": [
+    {
+      "id": "drone-002256-H100",
+      "gt_rank": 1,
+      "feature_grid": {
+        "height": 32,
+        "width": 32,
+        "channels": 768,
+        "source": "DINOv2 backbone patch tokens; not global descriptor"
+      }
+    },
+    {
+      "id": "drone-002272-H100",
+      "gt_rank": 1,
+      "feature_grid": {
+        "height": 32,
+        "width": 32,
+        "channels": 768,
+        "source": "DINOv2 backbone patch tokens; not global descriptor"
+      }
+    },
+    {
+      "id": "drone-002288-H100",
+      "gt_rank": 1,
+      "feature_grid": {
+        "height": 32,
+        "width": 32,
+        "channels": 768,
+        "source": "DINOv2 backbone patch tokens; not global descriptor"
+      }
+    }
+  ],
+  "limit": "Native identity retrieval success; not pixel correspondence correctness"
+}

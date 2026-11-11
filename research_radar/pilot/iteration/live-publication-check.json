@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "url": "http://127.0.0.1:8776/?campaign=campaign-0ea39fd68d9c#validation",
+  "javascript_errors": [],
+  "checks": [
+    "Independent overall verdict rendered",
+    "Both ten-case policy results rendered",
+    "Rejected-candidate inspector opened",
+    "Reload preserved six candidates and exact rejection reason"
+  ],
+  "candidate_count": 6,
+  "verdict": "ITERATE"
+}

@@ -1,0 +1,129 @@
+{
+  "protocol": "Fresh primary-source verification independent of the investigator. Mechanical identity and quotation matching is not a substitute for mechanism examination.",
+  "cases": [
+    {
+      "id": "B1",
+      "source_url": "https://arxiv.org/pdf/2008.11646",
+      "checked_at": "2026-11-09T16:53:36.065825+00:00",
+      "mechanism_verified": true,
+      "review_status": "Independent coordinator inspected the retrieved primary text: square-ring partition, part-wise pooled features, shared satellite/drone backbone and per-part cross-entropy are explicit in Section III/Figure 3. No new retrieval mechanism is supplied by B1.",
+      "sha256": "efab5221fefba5326f8dc0b092db32186b33c5a6c2f8d8477338dbedd77e1873",
+      "text_sha256": "499ce0bb55b3687e83c1ac08fba9c14bc29e60121636cf1d76fb7893df70a87d",
+      "cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B1.pdf",
+      "text_cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B1.txt",
+      "identity_verified": true,
+      "quote_verified": true,
+      "quote": "The network is optimized by minimizing the sum of the cross-entropy losses over all parts.",
+      "location": "Section III, especially Figure 3 and its caption, PDF page 4; partition and classifier discussion on PDF pages 4\u20135; abstract for contextual motivation.",
+      "bytes": 8390338,
+      "extraction_note": "Natural reading order. Initial layout-preserving extraction interleaved two columns and gave three quotation false negatives; re-extracted the same cached PDFs without another network request."
+    },
+    {
+      "id": "B2",
+      "source_url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+      "checked_at": "2026-11-09T16:53:37.031086+00:00",
+      "mechanism_verified": true,
+      "review_status": "Independent coordinator inspected Sections 3.1-3.4: shared Siamese ConvNeXt, geographic near-neighbor initialization and replacement by dynamic feature-similarity sampling are explicit. The University-1652 exception must be preserved; GPS initialization was not possible there.",
+      "sha256": "0fe0f37bfacd4c2c043cf58e88895b4dd328a7054d3ca6f25bbdd8662dcb56ac",
+      "text_sha256": "e81ca5b4a0ea4632dd13686d4ca15c2b60af6d8fd572fe49d9b1f8b0b5672721",
+      "cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B2.pdf",
+      "text_cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B2.txt",
+      "identity_verified": true,
+      "quote_verified": true,
+      "quote": "After a certain amount of epochs, GPS-based sampling is replaced by our Dynamic Similarity Sampling (DSS).",
+      "location": "Sections 3.1\u20133.4; PDF page 4, particularly Section 3.3 Near Neighbour Sampling Based on GPS and Section 3.4 Dynamic Similarity Sampling.",
+      "bytes": 3566292,
+      "extraction_note": "Natural reading order. Initial layout-preserving extraction interleaved two columns and gave three quotation false negatives; re-extracted the same cached PDFs without another network request."
+    },
+    {
+      "id": "B3",
+      "source_url": "https://arxiv.org/pdf/2002.12186",
+      "checked_at": "2026-11-09T16:53:39.804585+00:00",
+      "mechanism_verified": true,
+      "review_status": "Independent coordinator inspected the abstract and dataset protocol: university buildings, satellite/simulated-drone/ground views, and both named query directions are explicit. The main drone set is simulated, not all-real photographs.",
+      "sha256": "60cba13d08ca30fadac7136dc36192030bfa8e412f3a1810408d89c145552dbf",
+      "text_sha256": "0b935151561286b49c98793d1df9e0ddd972aaa5d54921bdc8eae68de1a3b4e9",
+      "cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B3.pdf",
+      "text_cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B3.txt",
+      "identity_verified": true,
+      "quote_verified": true,
+      "quote": "In this paper, we collect satellite-view images, drone-view images with the simulated drone cameras, and ground-view images for every location.",
+      "location": "Abstract and Figure 1, PDF page 1; Section 3.1 Dataset Description, PDF page 3; Section 3.2 Evaluation Protocol and Tables 1\u20132, PDF page 4.",
+      "bytes": 11772032,
+      "extraction_note": "Natural reading order. Initial layout-preserving extraction interleaved two columns and gave three quotation false negatives; re-extracted the same cached PDFs without another network request."
+    },
+    {
+      "id": "B4",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf",
+      "checked_at": "2026-11-09T16:53:40.677242+00:00",
+      "mechanism_verified": true,
+      "review_status": "Independent coordinator inspected the abstract and method passages: a pure transformer without polar transform and attention-guided non-uniform cropping with higher-resolution informative regions match all substantive B4 facets. Original evidence is street-to-aerial, not a drone-specific adaptation.",
+      "sha256": "e2863e20d678fe02e92671406262971b037ee60d1fed9ce1ecb31cd184a1667f",
+      "text_sha256": "43d49f3b052bdf034757bed05a514380eda9bc43a798d21c9060f789c47d3794",
+      "cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B4.pdf",
+      "text_cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B4.txt",
+      "identity_verified": true,
+      "quote_verified": true,
+      "quote": "We further leverage the flexibility of transformer input and propose an attention-guided non-uniform cropping method",
+      "location": "Abstract, PDF page 1; Figure 1, PDF page 3; Section 3.3 and Figure 2, PDF page 4; Table 4 and Section 4.5 ablations.",
+      "bytes": 1545574,
+      "extraction_note": "Natural reading order. Initial layout-preserving extraction interleaved two columns and gave three quotation false negatives; re-extracted the same cached PDFs without another network request."
+    },
+    {
+      "id": "B5",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf",
+      "checked_at": "2026-11-09T16:53:42.294566+00:00",
+      "mechanism_verified": true,
+      "review_status": "Independent coordinator inspected Section 3: frozen DINOv2 coarse features, specialized fine ConvNet features, transformer classification anchors and subsequent robust refinement explicitly establish B5. This is general matching, not proof of drone-domain performance.",
+      "sha256": "efa6298218f6a40f90a592deb70de8861989db8c02bbb8a312b8102d26487d26",
+      "text_sha256": "29692d634404554b72170570a846b5fac8795552eb988c6d5425f5c673698eba",
+      "cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B5.pdf",
+      "text_cache": "/home/nadavo/project-hub/data/research-radar/sources/seed-verification/B5.txt",
+      "identity_verified": true,
+      "quote_verified": true,
+      "quote": "We keep the DINOv2 encoder frozen throughout training.",
+      "location": "Section 3.2, PDF page 4; Section 3.3 Regression-by-Classification and Equation 8, PDF page 5; Section 3.4 losses, PDF pages 5\u20136; abstract.",
+      "bytes": 7522573,
+      "extraction_note": "Natural reading order. Initial layout-preserving extraction interleaved two columns and gave three quotation false negatives; re-extracted the same cached PDFs without another network request."
+    }
+  ],
+  "retrieval_log": [
+    {
+      "url": "https://arxiv.org/pdf/2008.11646",
+      "status": "retrieved",
+      "bytes": 8390338,
+      "seconds": 0.9646993440037477
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Deuser_Sample4Geo_Hard_Negative_Sampling_For_Cross-View_Geo-Localisation_ICCV_2023_paper.pdf",
+      "status": "retrieved",
+      "bytes": 3566292,
+      "seconds": 2.7740049900021404
+    },
+    {
+      "url": "https://arxiv.org/pdf/2002.12186",
+      "status": "retrieved",
+      "bytes": 11772032,
+      "seconds": 0.8719304810001631
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.pdf",
+      "status": "retrieved",
+      "bytes": 1545574,
+      "seconds": 1.6179875169982552
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Edstedt_RoMa_Robust_Dense_Feature_Matching_CVPR_2024_paper.pdf",
+      "status": "retrieved",
+      "bytes": 7522573,
+      "seconds": 4.81899213300494
+    }
+  ],
+  "costs": {
+    "http_requests": 5,
+    "download_bytes": 32796809,
+    "elapsed_seconds": 11.047786739000003,
+    "api_cost_usd": null,
+    "gpu_hours": 0
+  }
+}

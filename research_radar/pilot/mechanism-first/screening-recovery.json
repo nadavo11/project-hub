@@ -1,0 +1,9 @@
+{
+  "failure": "Selection artifact collided with shortlist prompt freeze filename after successful model call and record persistence",
+  "correction": "Distinct shortlist-selection.json; replayed saved result without model re-execution and deduplicated assessment history",
+  "selected": [
+    "M09",
+    "M08",
+    "M06"
+  ]
+}
